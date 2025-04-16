@@ -1,0 +1,85 @@
+.button_primary {
+  max-width: 340px;
+  width: 100%;
+
+  border: 1px solid var(--gray-100);
+
+  background: transparent;
+
+  border-radius: 4px;
+
+  text-wrap: nowrap;
+
+  transition-duration: var(--transition-duration);
+
+  box-shadow: rgba(136, 136, 136, 0.8) 0px 1px 2px 0px,
+    rgba(136, 136, 136, 0.15) 0px 1px 3px 1px;
+}
+
+.button_context {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 700;
+  font-size: clamp(12px, 2vw, 16px);
+  line-height: 325%;
+  letter-spacing: 0.03em;
+
+  color: var(--white);
+}
+
+.button_primary:hover {
+  color: var(--gray-100);
+
+  background: transparent;
+}
+
+.button_primary:hover .button_context {
+  color: var(--gray-100);
+}
+
+.button_transparent {
+  max-width: 240px;
+  width: 100%;
+
+  background: transparent;
+
+  text-wrap: nowrap;
+
+  border: 1px solid var(--gray-100);
+  border-radius: 4px;
+
+  transition-duration: var(--transition-duration);
+
+  box-shadow: rgba(44, 44, 44, 0.8) 0px 1px 2px 0px,
+    rgba(136, 136, 136, 0.4) 0px 1px 3px 1px;
+}
+
+.button_transparent:hover {
+  background: var(--primary);
+  border-color: transparent;
+}
+
+.button_context_t {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 700;
+  font-size: clamp(12px, 2vw, 16px);
+  line-height: 325%;
+  letter-spacing: 0.03em;
+
+  color: var(--white);
+}
+
+.button_transparent:hover .button_context_t {
+}
+
+@media screen and (max-width: 767.98px) {
+  .button_primary,
+  .button_transparent {
+    max-width: 100%;
+  }
+}

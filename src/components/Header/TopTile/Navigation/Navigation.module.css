@@ -1,0 +1,16 @@
+.top_tile_nav {
+  display: flex;
+  gap: 32px;
+}
+
+.link:hover {
+  color: #fff;
+  text-decoration: underline;
+
+  transition-duration: var(--transition-duration);
+}
+
+.active {
+  text-decoration: underline;
+  color: #fff;
+}

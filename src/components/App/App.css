@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+
+/* Setup */
+
+#root {
+  width: 100%;
+
+  text-align: center;
+
+  background-color: var(--white);
+  color: var(--gray-900);
+
+  font-family: var(--font-family), sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+}
+
+h1 {
+  font-size: clamp(2rem, 0.9244rem + 4.6512vw, 4.5rem);
+
+  font-weight: 900;
+  line-height: 130%;
+  letter-spacing: 0.01em;
+}
+
+.container {
+  padding-inline: var(--container-padding-x);
+  margin: 0 auto;
+
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

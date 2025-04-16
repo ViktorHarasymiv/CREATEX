@@ -1,0 +1,30 @@
+.content {
+  z-index: 9999;
+  display: block;
+
+  position: fixed;
+
+  width: 80%;
+  height: 100vh;
+
+  right: 0;
+
+  background-color: var(--gray-200);
+
+  animation-name: loadMenu;
+  animation-duration: 1.3s;
+}
+
+@keyframes loadMenu {
+  0% {
+    width: 0%;
+    transform: translateX(105%);
+    opacity: 0.7;
+  }
+
+  100% {
+    width: 80%;
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

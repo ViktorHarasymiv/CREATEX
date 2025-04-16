@@ -1,0 +1,15 @@
+.custom_select_tile {
+  margin: 0 !important;
+}
+
+.custom_select {
+  display: flex;
+  align-items: center;
+
+  font-size: 14px !important;
+  color: inherit !important;
+}
+
+.custom_select svg {
+  fill: rgba(255, 255, 255, 0.6) !important;
+}

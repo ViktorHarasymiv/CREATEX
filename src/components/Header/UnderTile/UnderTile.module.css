@@ -1,0 +1,16 @@
+.under_tile {
+  width: 100%;
+
+  background-color: var(--primary);
+}
+
+.prom_slider {
+  font-size: clamp(8px, 2vw, 12px);
+  color: var(--white);
+  padding-block: 5px;
+}
+
+.prom_link {
+  margin-left: 5px;
+  text-decoration: underline;
+}

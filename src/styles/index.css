@@ -1,0 +1,43 @@
+:root {
+  --font-family: "Lato", sans-serif;
+  --second-family: "Ubuntu", sans-serif;
+}
+
+:root {
+  /* Font */
+  --font-family: "Lato", sans-serif;
+  --second-family: "Ubuntu", sans-serif;
+
+  /* Color */
+
+  --white: #fff;
+  --primary: #17696a;
+  --success: #03cea4;
+  --danger: rgb(255, 66, 66);
+  --warning: #f89828;
+  --info: #5a87fc;
+  --gray-900: #1e212c;
+  --gray-800: #424551;
+  --gray-700: #787a80;
+  --gray-600: #9a9ca5;
+  --gray-500: #b3b7bc;
+  --gray-400: #d7dadd;
+  --gray-300: #e5e8ed;
+  --gray-200: #f4f5f6;
+  --gray-100: #f9f9f9;
+
+  /*
+  Lato Regular
+  Lato Bold
+  Lato Black
+  Ubuntu Bold
+  */
+
+  /* Size */
+
+  --container-width: 1230px;
+
+  --container-padding-x: 1rem;
+
+  --transition-duration: 0.3s;
+}

@@ -1,0 +1,22 @@
+.logo_box {
+  flex-grow: 0;
+}
+.logo {
+  transition-duration: var(--transition-duration);
+  max-width: none;
+  width: clamp(80px, 55vw, 130px);
+
+  padding-right: 10px;
+
+  display: inherit;
+}
+
+.logo:hover {
+  transform: scale(1.03);
+}
+
+@media screen and (max-width: 1024.98px) {
+  .logo_box {
+    flex-grow: 1;
+  }
+}
