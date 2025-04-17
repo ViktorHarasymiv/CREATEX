@@ -21,7 +21,7 @@ function Сurrency() {
     <div className={css.price_tile}>
       <FormControl
         className={css.custom_select_tile}
-        sx={{ m: 1, minWidth: 120 }}
+        sx={{ m: 1 }}
         size="small"
       >
         <Select

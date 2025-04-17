@@ -2,9 +2,9 @@
   max-width: 340px;
   width: 100%;
 
-  border: 1px solid var(--gray-100);
+  border: 1px solid var(--primary);
 
-  background: transparent;
+  background: var(--primary);
 
   border-radius: 4px;
 
@@ -30,13 +30,13 @@
 }
 
 .button_primary:hover {
-  color: var(--gray-100);
+  color: var(--primary);
 
   background: transparent;
 }
 
 .button_primary:hover .button_context {
-  color: var(--gray-100);
+  color: var(--primary);
 }
 
 .button_transparent {
@@ -47,13 +47,13 @@
 
   text-wrap: nowrap;
 
-  border: 1px solid var(--gray-100);
+  border: 1px solid var(--primary);
   border-radius: 4px;
 
   transition-duration: var(--transition-duration);
 
   box-shadow: rgba(44, 44, 44, 0.8) 0px 1px 2px 0px,
-    rgba(136, 136, 136, 0.4) 0px 1px 3px 1px;
+    rgba(136, 136, 136, 0.15) 0px 1px 3px 1px;
 }
 
 .button_transparent:hover {
@@ -71,10 +71,11 @@
   line-height: 325%;
   letter-spacing: 0.03em;
 
-  color: var(--white);
+  color: var(--primary);
 }
 
 .button_transparent:hover .button_context_t {
+  color: var(--white);
 }
 
 @media screen and (max-width: 767.98px) {

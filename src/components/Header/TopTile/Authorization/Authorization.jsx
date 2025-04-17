@@ -20,13 +20,14 @@ const overlay = {
 
   backgroundColor: "rgba(0, 0, 0, 0.7)",
 };
+
 const override = {
   zIndex: "9999",
   display: "block",
 
   position: "fixed",
   top: "50%",
-  left: "50%",
+  right: "50%",
   transfotm: "translate(-50%, -50%)",
 };
 
@@ -59,7 +60,7 @@ function Authorization() {
       <MdOutlineAccountCircle
         style={{ fontSize: "18px", marginRight: "8px  " }}
       />
-      <Link onClick={openModalPageSignIn}>Log in</Link>
+      <Link onClick={openModalPageSignIn}>Log In</Link>
 
       {/* MODAL */}
       {signIn && (
@@ -70,7 +71,7 @@ function Authorization() {
         />
       )}
       <span style={{ marginInline: "5px" }}>/</span>
-      <Link onClick={openModalPageRegistration}>Register</Link>
+      <Link onClick={openModalPageRegistration}>Sign Up</Link>
 
       {/* MODAL */}
       {registration && (

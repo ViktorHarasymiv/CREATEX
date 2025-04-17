@@ -18,18 +18,18 @@ const sliderSlice = createSlice({
       {
         id: crypto.randomUUID(),
         name: "womenswear",
-        image: "women.jpg",
-        video:
-          "https://image.hm.com/content/dam/global_campaigns/season_01/women/startpage-assets/wk15/1011B-startpage-women-wk15-16x9.mp4",
-        videoMobile:
-          "https://image.hm.com/content/dam/global_campaigns/season_01/women/startpage-assets/wk15/1011B-startpage-women-wk15-9x16.mp4",
+        image: "./../src/images/slider/women.jpg",
+        // video:
+        //   "https://image.hm.com/content/dam/global_campaigns/season_01/women/startpage-assets/wk15/1011B-startpage-women-wk15-16x9.mp4",
+        // videoMobile:
+        //   "https://image.hm.com/content/dam/global_campaigns/season_01/women/startpage-assets/wk15/1011B-startpage-women-wk15-9x16.mp4",
         PR: "New collection",
         title: "Womenswear 2025",
       },
       {
         id: crypto.randomUUID(),
         name: "kidswear",
-        image: "kids.jpg",
+        image: "./../src/images/slider/kids.jpg",
         PR: "New collection",
         title: "Kidswear 2025",
       },
