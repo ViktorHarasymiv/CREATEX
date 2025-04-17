@@ -19,3 +19,7 @@
 .custom_select svg {
   fill: rgba(255, 255, 255, 0.6) !important;
 }
+
+.price_tile img {
+  display: inline-block;
+}

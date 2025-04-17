@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import { Suspense, lazy } from "react";
 
 import "./App.css";
@@ -5,6 +6,8 @@ import "./App.css";
 import Router from "../Routes/Routes";
 
 import PuffLoader from "react-spinners/PuffLoader";
+import Subscribe from "../Subscribe/Subscribe";
+
 /* Setup for spiner */
 const override = {
   display: "block",
@@ -18,8 +21,27 @@ const override = {
 const Header = lazy(() => import("./../Header/Header/Header"));
 
 function App() {
+  const [openSubscribe, setSubscribe] = useState(false);
+
+  const openSubscribePanel = () => {
+    setSubscribe((prevState) => !prevState);
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setSubscribe(true);
+      return;
+    }, 1000);
+  }, []);
+
   return (
     <>
+      {openSubscribe && (
+        <Subscribe
+          isSubscribe={openSubscribe}
+          openSubscribe={openSubscribePanel}
+        />
+      )}
       <Header />
       {
         <Suspense
@@ -33,7 +55,7 @@ function App() {
             />
           }
         >
-          <Router></Router>
+          <Router />
         </Suspense>
       }
     </>

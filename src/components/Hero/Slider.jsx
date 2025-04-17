@@ -17,7 +17,6 @@ function Slider({
   title,
   windowWidth,
 }) {
-  console.log({ windowWidth });
   return (
     <div
       className={css.slider_tile}
@@ -42,7 +41,7 @@ function Slider({
           />
         ) : (
           <img
-            src={image}
+            src={`src/images/slider/${image}`}
             alt=""
             width="100%"
             className={css.image_background}

@@ -32,8 +32,6 @@ function UnderTile() {
       path: "Shop our latest sale styles",
     },
   ];
-
-  console.log(PROM);
   return (
     <div className={css.under_tile}>
       <Swiper
