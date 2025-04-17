@@ -41,8 +41,8 @@ function Slider({
           />
         ) : (
           <img
-            src={`images/slider/${image}`}
-            alt=""
+            src={`/images/slider/${image}`}
+            alt={image}
             width="100%"
             className={css.image_background}
           />
