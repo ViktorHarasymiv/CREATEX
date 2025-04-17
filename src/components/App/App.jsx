@@ -42,7 +42,7 @@ function App() {
           openSubscribe={openSubscribePanel}
         />
       )}
-      <Header />
+      <Header openSubscribe={openSubscribePanel} />
       {
         <Suspense
           fallback={

@@ -2,7 +2,7 @@ import React from "react";
 
 import css from "./Logo.module.css";
 
-import CREATEX from "../../../../images/icons/logo.png";
+import CREATEX from "./../icons/logo.png";
 import { Link } from "react-router-dom";
 
 function Logo() {

@@ -25,6 +25,7 @@ function UnderTile() {
       id: 1,
       text: "-20% | Online offer for Club Members",
       path: "Subscribe",
+      url: "",
     },
     {
       id: 2,
