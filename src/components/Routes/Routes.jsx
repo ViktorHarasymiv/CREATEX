@@ -13,7 +13,11 @@ const Blog = lazy(() => import("../Blog/Blog"));
 const Contacts = lazy(() => import("../Contacts/Contacts"));
 
 const Women = lazy(() => import("../Women/Women"));
+const New = lazy(() => import("../New/New"));
 const Men = lazy(() => import("../Men/Men"));
+
+import NewMen from "../New/NewMen";
+import NewWomen from "../New/NewWomen";
 
 const Account = lazy(() => import("../Account/Account"));
 const Sale = lazy(() => import("../Sale/Sale"));
@@ -53,7 +57,9 @@ function Router() {
 
         {/* Page navigation */}
         <Route path="/women" element={<Women />} />
+        <Route path="/women/women_collection" element={<NewWomen />}></Route>
         <Route path="/men" element={<Men />} />
+        <Route path="/men/men_collection" element={<NewMen />}></Route>
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/checkout" element={<Checkout />} />
 

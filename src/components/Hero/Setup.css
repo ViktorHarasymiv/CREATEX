@@ -109,8 +109,8 @@
 
   .swiper-button-prev,
   .swiper-button-next {
-    width: clamp(20px, 2rem, 48px) !important;
-    height: clamp(20px, 5vh, 48px) !important;
+    width: clamp(20px, 2.3rem, 48px) !important;
+    height: clamp(20px, 5.5vh, 48px) !important;
   }
 
   .swiper-button-prev:after,

@@ -1,9 +1,11 @@
 .price_tile {
   max-width: 140px;
+  max-height: 37px;
 }
 
 .custom_select_tile {
   margin: 0 !important;
+  padding: 0 !important;
 }
 
 .custom_select {
