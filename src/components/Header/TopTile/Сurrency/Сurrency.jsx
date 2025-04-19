@@ -31,19 +31,19 @@ function Сurrency() {
         >
           <MenuItem value={"Dollar"}>
             <img
-              style={{ width: "20px", height: "12px", marginRight: "12px" }}
+              style={{ width: "20px", height: "12px", marginRight: "5px" }}
               src={America}
               alt="America"
             />
-            <span>Eng / $</span>
+            <span className="select_text">Eng / $</span>
           </MenuItem>
           <MenuItem value={"Euro"}>
             <img
-              style={{ width: "20px", height: "12px", marginRight: "12px" }}
+              style={{ width: "20px", height: "12px", marginRight: "5px" }}
               src={Europe}
               alt="Europe"
-            />{" "}
-            <span>Euro / €</span>
+            />
+            <span className="select_text">Euro / €</span>
           </MenuItem>
         </Select>
       </FormControl>

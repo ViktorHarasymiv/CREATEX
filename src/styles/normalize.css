@@ -209,6 +209,61 @@ h6 {
   margin: 0;
 }
 
+input[type="radio"] {
+  position: absolute;
+
+  display: none;
+  overflow: hidden;
+}
+
+.radio_label {
+  padding: 5.5px 16px;
+  position: relative;
+  display: inline-block;
+
+  cursor: pointer;
+  border: 1px solid var(--gray-400);
+
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 150%;
+  color: var(--gray-700);
+
+  border-radius: 4px;
+}
+
+input[type="radio"]:checked + .radio_label {
+  background-color: var(--primary) !important;
+  color: white;
+}
+
+input[type="email"] {
+  width: 100%;
+
+  height: clamp(34px, 5vw, 52px) !important;
+  border: none;
+  outline: 1px solid var(--gray-400);
+
+  font-size: clamp(10px, 2vw, 16px) !important;
+
+  border-radius: 4px;
+  background: var(--white);
+
+  padding: 13px 7px;
+}
+
+input[type="email"]::placeholder {
+  font-family: var(--font-family);
+  font-size: clamp(12px, 2vw, 16px) !important;
+  line-height: 160%;
+  color: var(--gray-600);
+}
+
+input[type="email"]:focus {
+  outline: 1px solid var(--primary);
+}
+
 /* Для всього документа */
 ::-webkit-scrollbar {
   width: 7px; /* Ширина вертикального скролла */

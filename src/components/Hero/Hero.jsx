@@ -59,22 +59,25 @@ function Hero() {
       className={css.heroSwiper}
       style={{ maxHeight: "100%" }}
     >
-      {slider.map(({ id, name, image, video, videoMobile, PR, title }) => {
-        return (
-          <SwiperSlide>
-            <Slider
-              id={id}
-              name={name}
-              image={image}
-              video={video}
-              videoMobile={videoMobile}
-              PR={PR}
-              title={title}
-              windowWidth={windowWidth}
-            />
-          </SwiperSlide>
-        );
-      })}
+      {slider.map(
+        ({ id, name, image, video, videoMobile, PR, title, motivational }) => {
+          return (
+            <SwiperSlide>
+              <Slider
+                id={id}
+                name={name}
+                image={image}
+                video={video}
+                videoMobile={videoMobile}
+                PR={PR}
+                title={title}
+                motivational={motivational}
+                windowWidth={windowWidth}
+              />
+            </SwiperSlide>
+          );
+        }
+      )}
     </Swiper>
   );
 }

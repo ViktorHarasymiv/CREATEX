@@ -15,6 +15,7 @@ function Slider({
   videoMobile,
   PR,
   title,
+  motivational,
   windowWidth,
 }) {
   return (
@@ -52,6 +53,7 @@ function Slider({
         <div className={css.slider_content_tile}>
           <p className={css.PR_text}>{PR}</p>
           <h1 className={css.title_text}>{title}</h1>
+          <h4 className={css.motivational_text}>{motivational}</h4>
           <div className={css.buttons_tile}>
             <Button_T>Shop sale</Button_T>
             <Button>Shop the {name}</Button>

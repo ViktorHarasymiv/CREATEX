@@ -14,7 +14,7 @@ import "swiper/css/navigation";
 // import required modules
 import { Autoplay, Navigation } from "swiper/modules";
 
-function UnderTile() {
+function UnderTile({ openSubscribe }) {
   const PROM = [
     {
       id: 0,
@@ -25,7 +25,7 @@ function UnderTile() {
       id: 1,
       text: "-20% | Online offer for Club Members",
       path: "Subscribe",
-      url: "",
+      modalPath: openSubscribe,
     },
     {
       id: 2,
@@ -48,13 +48,19 @@ function UnderTile() {
         modules={[Autoplay, Navigation]}
         className={css.prom_slider}
       >
-        {PROM.map(({ text, path }, index) => {
+        {PROM.map(({ text, path, modalPath }, index) => {
           return (
             <SwiperSlide key={index}>
               <b>{text}</b>
-              <Link className={css.prom_link} to="/hot_sale">
-                {path}
-              </Link>
+              {modalPath ? (
+                <Link onClick={modalPath} className={css.prom_link}>
+                  {path}
+                </Link>
+              ) : (
+                <Link to={"/hot_sale"} className={css.prom_link}>
+                  {path}
+                </Link>
+              )}
             </SwiperSlide>
           );
         })}

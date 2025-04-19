@@ -31,3 +31,7 @@
   .MuiOutlinedInput-notchedOutline {
   border: none !important;
 }
+
+.select_text {
+  min-width: 55px !important;
+}

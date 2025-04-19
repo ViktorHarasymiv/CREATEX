@@ -41,10 +41,10 @@
 /* PREV , NEXT BUTTONS */
 
 .swiper-button-next {
-  right: 2em !important;
+  right: 1em !important;
 }
 .swiper-button-prev {
-  left: 2em !important;
+  left: 1em !important;
 }
 
 .swiper-button-prev,
@@ -84,19 +84,16 @@
 }
 
 @media screen and (max-width: 1024.98px) {
-  /* PREV , NEXT BUTTONS */
-
-  .swiper-button-next {
-    right: 1em !important;
-  }
-  .swiper-button-prev {
-    left: 1em !important;
-  }
-
   .swiper-button-prev,
   .swiper-button-next {
     width: clamp(28px, 2rem, 48px) !important;
     height: clamp(28px, 5vh, 48px) !important;
+  }
+
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
+    width: clamp(14px, 1vw, 24px) !important;
+    height: clamp(14px, 1vh, 24px) !important;
   }
 }
 
@@ -112,15 +109,15 @@
 
   .swiper-button-prev,
   .swiper-button-next {
-    width: clamp(28px, 2rem, 48px) !important;
-    height: clamp(28px, 6vh, 48px) !important;
+    width: clamp(20px, 2rem, 48px) !important;
+    height: clamp(20px, 5vh, 48px) !important;
   }
 
   .swiper-button-prev:after,
   .swiper-button-next:after {
     font-family: none !important;
 
-    width: clamp(14px, 1vw, 24px) !important;
-    height: clamp(14px, 1vh, 24px) !important;
+    width: clamp(14px, 2vw, 24px) !important;
+    height: clamp(14px, 2vh, 24px) !important;
   }
 }
