@@ -1,12 +1,10 @@
-/* MuiTypography */
-
-.css-rvoa5x-MuiTypography-root-MuiDialogTitle-root {
+/* .css-rvoa5x-MuiTypography-root-MuiDialogTitle-root {
   padding-bottom: 5px !important;
 
   font-weight: 900 !important;
-  line-height: 130%;
+  line-height: 130% !important;
 
-  color: var(--gray-900);
+  color: var(--gray-900) !important;
 }
 
 .css-ujudvl-MuiTypography-root-MuiDialogContentText-root {
@@ -15,28 +13,4 @@
   font-size: clamp(10px, 2vw, 16px) !important;
 
   color: var(--gray-700) !important;
-}
-
-/* CANCEL */
-.css-10d30g3-MuiPaper-root-MuiDialog-paper {
-  padding-bottom: 20px;
-}
-.css-kw13he-MuiDialogContent-root {
-  padding-bottom: 20px !important;
-}
-
-.css-15fu35s-MuiDialogActions-root,
-.css-1uent87-MuiButtonBase-root-MuiButton-root {
-  padding: 0 !important;
-}
-
-.css-1uent87-MuiButtonBase-root-MuiButton-root {
-  color: var(--primary) !important;
-
-  padding-right: 20px !important;
-  font-weight: 900 !important;
-}
-
-.success_dialog_tile .css-10d30g3-MuiPaper-root-MuiDialog-paper {
-  padding: 20px 25px !important;
-}
+} */
