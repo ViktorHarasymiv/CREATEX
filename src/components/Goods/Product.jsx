@@ -45,11 +45,18 @@ function Product() {
               variant="rectangular"
             />
           ) : (
-            <img
-              src={`./../../../public/images/goods/${selfItem.image}`}
-              width="285px"
-              height="320px"
-            />
+            <>
+              <img
+                src={`/public/images/goods/${selfItem.image}`}
+                width="285px"
+                height="320px"
+              />
+              <img
+                src={`images/goods/${selfItem.image}`}
+                width="285px"
+                height="320px"
+              />
+            </>
           )}
 
           <h2>{selfItem.title}</h2>

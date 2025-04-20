@@ -56,7 +56,7 @@ function Hero() {
       pagination={pagination}
       navigation={true}
       modules={[Pagination, Navigation]}
-      className={css.heroSwiper}
+      className="hero_swiper"
       style={{ maxHeight: "100%" }}
     >
       {slider.map(
