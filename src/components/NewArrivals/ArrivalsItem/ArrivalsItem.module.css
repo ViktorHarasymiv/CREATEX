@@ -1,0 +1,124 @@
+.product_tile {
+  max-height: 413px;
+  height: 100%;
+}
+
+.product_slide {
+  margin-right: 0px !important;
+}
+
+.product_image_tile {
+  position: relative;
+
+  transition-duration: var(--transition-duration);
+}
+
+.product_image_tile img {
+  width: 100%;
+}
+
+.top_info_panel {
+  position: absolute;
+
+  width: 100%;
+  padding-inline: 16px;
+  top: 16px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.product_image_tile:hover {
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+  transform: scale(1.02);
+}
+
+.sale_tile {
+}
+
+.sale_band {
+  display: inline-block;
+  padding: 1.5px 10px;
+  background: var(--danger);
+
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 160%;
+  color: var(--white);
+
+  border-radius: 4px;
+}
+
+.rating_tile {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.favorite_tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+
+  width: 32px;
+  height: 32px;
+
+  background-color: var(--white);
+  border-radius: 25px;
+}
+
+.favorite_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  background-color: transparent;
+}
+
+.favorite_button svg {
+  width: 16px;
+  height: 16px;
+  fill: #787a80;
+}
+
+.favorite_button:hover svg {
+  stroke-width: 1px;
+  stroke: var(--primary);
+  fill: var(--primary);
+}
+
+.product_info {
+  padding: 16px;
+  display: flex;
+
+  flex-direction: column;
+  gap: 8px;
+
+  text-align: start;
+}
+
+.product_title {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--gray-800);
+}
+
+.price_tile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.product_price {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--gray-900);
+}

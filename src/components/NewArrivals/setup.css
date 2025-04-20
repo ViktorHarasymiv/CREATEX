@@ -1,0 +1,25 @@
+.new_arrivals_slider {
+  padding-bottom: 80px !important;
+}
+
+.new_arrivals_slider .swiper-pagination-bullet {
+  background-color: var(--gray-500);
+
+  border: 2px solid var(--gray-500) !important;
+  border-radius: 25px !important;
+}
+
+.new_arrivals_slider .swiper-pagination-bullet {
+  width: 30px !important;
+}
+
+.new_arrivals_slider .swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+  margin-bottom: 0 !important;
+
+  width: auto !important;
+  bottom: 0;
+  left: 50% !important;
+
+  transform: translateX(-50%) !important;
+}

@@ -1,0 +1,29 @@
+.new_arrivals_title {
+  font-weight: 900;
+  font-size: 46px;
+  line-height: 130%;
+  color: var(--gray-900);
+}
+
+.new_arrivals_product_tile {
+  margin-inline: 30px;
+}
+
+.new_arrivals_title_tile {
+  margin-bottom: 60px;
+}
+
+.new_arrivals_subb_text {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  text-align: center;
+  color: var(--gray-700);
+}
+
+.link_new_arrivals {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: var(--primary);
+}

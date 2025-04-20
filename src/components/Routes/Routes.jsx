@@ -16,6 +16,9 @@ const Women = lazy(() => import("../Women/Women"));
 const New = lazy(() => import("../New/New"));
 const Men = lazy(() => import("../Men/Men"));
 
+const Goods = lazy(() => import("../Goods/Goods"));
+
+import Product from "../Goods/Product";
 import NewMen from "../New/NewMen";
 import NewWomen from "../New/NewWomen";
 
@@ -64,6 +67,9 @@ function Router() {
         <Route path="/checkout" element={<Checkout />} />
 
         {/* E-Commerce */}
+
+        <Route path="/goods" element={<Goods />}></Route>
+        <Route path="/goods/:id" element={<Product />}></Route>
 
         <Route path="/sale" element={<Sale />} />
         <Route path="/hot_sale" element={<Latest />} />

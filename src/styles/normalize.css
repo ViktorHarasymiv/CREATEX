@@ -78,6 +78,7 @@ p:where(:not([class]):not(:last-child)) {
   */
 img,
 video {
+  box-sizing: border-box;
   display: block;
   max-width: 100%;
   height: auto;
@@ -121,7 +122,7 @@ html {
 }
 
 body {
-  min-width: 100%;
+  overflow: hidden;
   /**
      Пригодится в большинстве ситуаций
      (когда, например, нужно будет "прижать" футер к низу сайта)
@@ -268,7 +269,7 @@ input[type="email"]:focus {
 /* Для всього документа */
 ::-webkit-scrollbar {
   width: 0px; /* Ширина вертикального скролла */
-  height: 0px; /* Висота горизонтального скролла */
+  height: 0%; /* Висота горизонтального скролла */
 }
 
 /* Смуга прокрутки (фоновий трек) */

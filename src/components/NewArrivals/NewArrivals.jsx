@@ -1,0 +1,93 @@
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+import "./setup.css";
+
+// import required modules
+import { Keyboard, Pagination } from "swiper/modules";
+
+import css from "./NewArrivals.module.css";
+import ArrivalsItem from "./ArrivalsItem/ArrivalsItem";
+
+function NewArrivals() {
+  const products = useSelector((state) => state.goods.items);
+  return (
+    <div className={css.new_arrivals_tile}>
+      <div className={css.new_arrivals_title_tile}>
+        <h2 className={css.new_arrivals_title}>New arrivals</h2>
+        <p className={css.new_arrivals_subb_text}>
+          Check out our latest arrivals for the upcoming season
+        </p>
+        <Link to={"/new"} className={css.link_new_arrivals}>
+          See the collection here
+        </Link>
+      </div>
+      <div className={css.new_arrivals_product_tile}>
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={30}
+          keyboard={{
+            enabled: true,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Keyboard, Pagination]}
+          className="new_arrivals_slider"
+          breakpoints={{
+            420: { slidesPerView: 2 },
+            576: { slidesPerView: 2 }, // Для екранів ≥576px
+            768: { slidesPerView: 3 }, // Для екранів ≥768px
+            1024: { slidesPerView: 4 }, // Для екранів ≥1024px
+            1280: { slidesPerView: 5 },
+            1480: { slidesPerView: 5 },
+            1680: { slidesPerView: 6 },
+          }}
+        >
+          {products
+            .filter((product) => product.filter === "New") // Використовуємо властивість new
+            .map((filteredProduct) => {
+              const {
+                id,
+                filter,
+                title,
+                image,
+                alt,
+                rating,
+                saleValue,
+                price,
+                sale,
+              } = filteredProduct;
+
+              return (
+                <SwiperSlide
+                  style={{ marginRight: "0" }}
+                  className={css.product_slide}
+                >
+                  <ArrivalsItem
+                    id={id}
+                    filter={filter}
+                    title={title}
+                    image={image}
+                    alt={alt}
+                    ratingStart={rating}
+                    saleValue={saleValue}
+                    price={price}
+                    sale={sale}
+                  />
+                </SwiperSlide>
+              );
+            })}
+        </Swiper>
+      </div>
+    </div>
+  );
+}
+
+export default NewArrivals;

@@ -27,17 +27,17 @@ function Season() {
     <div className={css.season_section}>
       {seasonArray.map(({ id, title, image, gender, url }) => {
         return (
-          <Link
-            to={`/${gender}/${url}`}
-            key={id}
-            className={css.season_tile}
-            style={{
-              backgroundImage: `url(${image})`,
-              backgroundSize: "cover",
-              width: "50vw",
-              height: "100%",
-            }}
-          >
+          <Link to={`/${gender}/${url}`} key={id} className={css.season_tile}>
+            <img
+              className={css.season_images}
+              src={image}
+              alt={title}
+              style={{
+                backgroundSize: "cover",
+                width: "50vw",
+                height: "100vh",
+              }}
+            />
             <h2 className={css.season_title}>{title}</h2>
           </Link>
         );
