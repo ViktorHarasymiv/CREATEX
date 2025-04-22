@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
+import { useDispatch, useSelector } from "react-redux";
+import { addProduct, deleteProduct } from "../../../redux/wishlistSlice";
+
 import { CiHeart } from "react-icons/ci";
+import { IoMdHeart } from "react-icons/io";
 import starEmpty from "./icons/StarEmpty.svg";
 import starSelect from "./icons/StarColor.svg";
 
@@ -17,9 +21,41 @@ function ArrivalsItem({
   saleValue,
   price,
   sale,
+
+  data,
 }) {
+  const wishlistArray = useSelector((state) => state.wishlist.products);
+  const dispatch = useDispatch();
+  const [isLiked, setIsLiked] = useState(false);
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
+
+  const salePrice = price - price * (saleValue / 100);
+
+  // ADD CONTACT ACTION
+
+  const getLike = (id, title, rating, price, sale, saleValue, image) => {
+    dispatch(
+      addProduct({
+        id,
+        title,
+        rating,
+        price,
+        sale,
+        saleValue,
+        image,
+      })
+    );
+  };
+
+  const deleteLike = () => {
+    dispatch(deleteProduct(data.id));
+    setIsLiked(false);
+  };
+
+  const wishlistID = wishlistArray.map((item) => {
+    return item.id;
+  });
 
   return (
     <div className={css.product_tile}>
@@ -61,9 +97,20 @@ function ArrivalsItem({
           </div>
         </div>
         <div className={css.favorite_tile}>
-          <button className={css.favorite_button}>
-            <CiHeart></CiHeart>
-          </button>
+          {wishlistID.find((itemID) => itemID == id) ? (
+            <button onClick={deleteLike} className={css.favorite_button}>
+              <IoMdHeart style={{ fill: "red" }} />
+            </button>
+          ) : (
+            <button
+              onClick={() =>
+                getLike(id, title, ratingStart, price, sale, saleValue, image)
+              }
+              className={css.favorite_button}
+            >
+              <CiHeart onClick={() => setIsLiked(true)} />
+            </button>
+          )}
         </div>
       </div>
       <div className={css.product_info}>
@@ -78,7 +125,7 @@ function ArrivalsItem({
                 lineHeight: "1",
               }}
             >
-              ${price - price * (saleValue / 100)}
+              ${salePrice.toFixed(2)}
             </span>
           )}
           <span

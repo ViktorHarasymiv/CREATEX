@@ -38,7 +38,7 @@ const goodsSlice = createSlice({
         rating: 5,
         sale: false,
         saleValue: "",
-        price: "18.15",
+        price: "20.3",
       },
       {
         id: crypto.randomUUID(),
@@ -62,8 +62,8 @@ const goodsSlice = createSlice({
         id: crypto.randomUUID(),
         filter: "New",
         image: "3.png",
-        alt: "Black and white sport cap",
-        title: "Black and white sport cap",
+        alt: "Metal bridge sunglasses",
+        title: "Metal bridge sunglasses",
         category: "",
         subCategory: "",
         gender: "",
@@ -74,7 +74,7 @@ const goodsSlice = createSlice({
         rating: 5,
         sale: false,
         saleValue: "",
-        price: "18.15",
+        price: "89.95",
       },
       {
         id: crypto.randomUUID(),
@@ -109,10 +109,9 @@ const goodsSlice = createSlice({
         favorite: false,
         rating: 5,
         sale: false,
-        saleValue: "50",
+        saleValue: "",
         price: "18.15",
       },
-
       {
         id: crypto.randomUUID(),
         filter: "New",
@@ -128,10 +127,9 @@ const goodsSlice = createSlice({
         favorite: false,
         rating: 5,
         sale: false,
-        saleValue: "50",
+        saleValue: "",
         price: "85.50",
       },
-
       {
         id: crypto.randomUUID(),
         filter: "New",
@@ -147,7 +145,7 @@ const goodsSlice = createSlice({
         favorite: false,
         rating: 5,
         sale: true,
-        saleValue: 50,
+        saleValue: "50",
         price: "179.00",
       },
     ],

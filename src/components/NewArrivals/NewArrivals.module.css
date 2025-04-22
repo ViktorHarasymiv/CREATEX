@@ -1,4 +1,9 @@
+.new_arrivals_tile {
+  margin-top: 180px;
+  margin-bottom: 90px;
+}
 .new_arrivals_title {
+  margin-bottom: 24px;
   font-weight: 900;
   font-size: 46px;
   line-height: 130%;
@@ -14,6 +19,7 @@
 }
 
 .new_arrivals_subb_text {
+  margin-bottom: 5px;
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 18px;

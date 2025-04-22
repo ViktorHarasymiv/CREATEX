@@ -5,7 +5,7 @@
 .new_arrivals_slider .swiper-pagination-bullet {
   background-color: var(--gray-500);
 
-  border: 2px solid var(--gray-500);
+  border: 1px solid var(--gray-500);
   border-radius: 25px;
 }
 

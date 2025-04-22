@@ -42,9 +42,8 @@ function NewArrivals() {
           className="new_arrivals_slider"
           breakpoints={{
             420: { slidesPerView: 2 },
-            576: { slidesPerView: 2 }, // Для екранів ≥576px
-            768: { slidesPerView: 3 }, // Для екранів ≥768px
-            1024: { slidesPerView: 4 }, // Для екранів ≥1024px
+            768: { slidesPerView: 3 },
+            1024: { slidesPerView: 4 },
             1280: { slidesPerView: 5 },
             1480: { slidesPerView: 5 },
             1680: { slidesPerView: 6 },
@@ -80,6 +79,7 @@ function NewArrivals() {
                     saleValue={saleValue}
                     price={price}
                     sale={sale}
+                    data={filteredProduct}
                   />
                 </SwiperSlide>
               );
