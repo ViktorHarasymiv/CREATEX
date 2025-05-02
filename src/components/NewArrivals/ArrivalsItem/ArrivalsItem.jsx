@@ -13,11 +13,11 @@ import { Link } from "react-router-dom";
 
 function ArrivalsItem({
   id,
-  filter,
+  gender,
   title,
   image,
   alt,
-  ratingStart,
+  ratingState,
   saleValue,
   price,
   sale,
@@ -27,17 +27,27 @@ function ArrivalsItem({
   const wishlistArray = useSelector((state) => state.wishlist.products);
   const dispatch = useDispatch();
   const [isLiked, setIsLiked] = useState(false);
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(ratingState || 0);
   const [hover, setHover] = useState(0);
 
   const salePrice = price - price * (saleValue / 100);
 
   // ADD CONTACT ACTION
 
-  const getLike = (id, title, rating, price, sale, saleValue, image) => {
+  const getLike = (
+    id,
+    title,
+    gender,
+    rating,
+    price,
+    sale,
+    saleValue,
+    image
+  ) => {
     dispatch(
       addProduct({
         id,
+        gender,
         title,
         rating,
         price,
@@ -60,7 +70,7 @@ function ArrivalsItem({
   return (
     <div className={css.product_tile}>
       <div className={css.product_image_tile}>
-        <Link to={`/goods/${id}`}>
+        <Link to={`/${gender}/${id}`}>
           <img
             className={css.product_image}
             src={`images/goods/${image}`}
@@ -80,7 +90,7 @@ function ArrivalsItem({
                 <span key={index}>
                   <img
                     src={
-                      currentRating <= (rating || hover || ratingStart)
+                      currentRating <= (rating || hover || ratingState)
                         ? starSelect
                         : starEmpty
                     }
@@ -104,7 +114,16 @@ function ArrivalsItem({
           ) : (
             <button
               onClick={() =>
-                getLike(id, title, ratingStart, price, sale, saleValue, image)
+                getLike(
+                  id,
+                  title,
+                  gender,
+                  rating,
+                  price,
+                  sale,
+                  saleValue,
+                  image
+                )
               }
               className={css.favorite_button}
             >

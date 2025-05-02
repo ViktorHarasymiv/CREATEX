@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+import HistoryBar from "../HistoryBar/HistoryBar";
+
 import Skeleton from "@mui/material/Skeleton";
 
 function Product() {
@@ -35,28 +37,31 @@ function Product() {
   }, [param.id, product]);
 
   return (
-    <div>
-      {selfItem && (
-        <div>
-          {!selfItem.image ? (
-            <Skeleton
-              sx={{ width: 285, height: 320 }}
-              animation="wave"
-              variant="rectangular"
-            />
-          ) : (
-            <img
-              src={`/images/goods/${selfItem.image}`}
-              width="285px"
-              height="320px"
-            />
-          )}
+    <>
+      <HistoryBar></HistoryBar>
+      <div className="container">
+        {selfItem && (
+          <div>
+            {!selfItem.image ? (
+              <Skeleton
+                sx={{ width: 285, height: 320 }}
+                animation="wave"
+                variant="rectangular"
+              />
+            ) : (
+              <img
+                src={`/images/goods/${selfItem.image}`}
+                width="285px"
+                height="320px"
+              />
+            )}
 
-          <h2>{selfItem.title}</h2>
-          <h5>{selfItem.price}</h5>
-        </div>
-      )}
-    </div>
+            <h2>{selfItem.title}</h2>
+            <h5>{selfItem.price}</h5>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 

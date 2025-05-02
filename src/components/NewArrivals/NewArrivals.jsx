@@ -55,6 +55,7 @@ function NewArrivals() {
               const {
                 id,
                 filter,
+                gender,
                 title,
                 image,
                 alt,
@@ -71,11 +72,12 @@ function NewArrivals() {
                 >
                   <ArrivalsItem
                     id={id}
+                    gender={gender}
                     filter={filter}
                     title={title}
                     image={image}
                     alt={alt}
-                    ratingStart={rating}
+                    ratingState={rating}
                     saleValue={saleValue}
                     price={price}
                     sale={sale}

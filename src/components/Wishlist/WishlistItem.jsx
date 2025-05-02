@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
@@ -18,11 +18,16 @@ function WishlistItem({ data }) {
     dispatch(deleteProduct(id));
   };
 
+  // STATE
+  const [isLiked, setIsLiked] = useState(false);
+
+  console.log(data);
+
   const salePrice = data.price - data.price * (data.saleValue / 100);
   return (
     <div className={css.product_tile}>
       <div className={css.product_image_tile}>
-        <Link to={`/goods/${data.id}`}>
+        <Link to={`/${data.gender}/${data.id}`}>
           <img
             className={css.product_image}
             src={`images/goods/${data.image}`}
@@ -41,18 +46,11 @@ function WishlistItem({ data }) {
               return (
                 <span key={index}>
                   <img
-                    src={
-                      currentRating <=
-                      (data.rating || hover || data.ratingStart)
-                        ? starSelect
-                        : starEmpty
-                    }
+                    src={currentRating <= data.rating ? starSelect : starEmpty}
                     alt=""
                     width={14}
                     height={14}
                     onClick={() => setRating(currentRating)}
-                    onMouseEnter={() => setHover(currentRating)}
-                    onMouseLeave={() => setHover(0)}
                   />
                 </span>
               );

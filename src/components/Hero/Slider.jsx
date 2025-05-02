@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import ReactPlayer from "react-player";
 
@@ -30,7 +31,7 @@ function Slider({
       // }}
     >
       <div className={css.wrapper_background}>
-        {video ? (
+        {/* {video ? (
           <ReactPlayer
             loop={true}
             playing={true}
@@ -40,14 +41,14 @@ function Slider({
             height="100vh"
             className={css.image_background}
           />
-        ) : (
-          <img
-            src={`images/slider/${image}`}
-            alt={image}
-            width="100%"
-            className={css.image_background}
-          />
-        )}
+        ) : ( */}
+        <img
+          src={`images/slider/${image}`}
+          alt={image}
+          width="100%"
+          className={css.image_background}
+        />
+        {/* )} */}
       </div>
       <div className="container">
         <div className={css.slider_content_tile}>
@@ -56,7 +57,9 @@ function Slider({
           <h4 className={css.motivational_text}>{motivational}</h4>
           <div className={css.buttons_tile}>
             <Button_T>Shop sale</Button_T>
-            <Button>Shop the {name}</Button>
+            <Button>
+              <Link to={name}>Shop the {name}</Link>
+            </Button>
           </div>
         </div>
       </div>

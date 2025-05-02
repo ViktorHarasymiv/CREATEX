@@ -1,0 +1,36 @@
+.history_bar {
+  padding-block: 18px;
+  width: 100%;
+  background-color: #e5e8ed;
+
+  font-size: 14px;
+}
+
+.history_list {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.history_item {
+  position: relative;
+}
+
+.history_item:not(:last-child)::after {
+  position: absolute;
+
+  content: "";
+
+  top: 0;
+  left: 20px;
+
+  background: url("icons/Right-chevron.svg") no-repeat;
+
+  width: 16px;
+  height: 16px;
+}
+
+.history_link {
+  color: #424551;
+  font-size: 14px;
+}

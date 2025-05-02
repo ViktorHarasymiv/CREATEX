@@ -15,6 +15,7 @@ const Contacts = lazy(() => import("../Contacts/Contacts"));
 const Women = lazy(() => import("../Women/Women"));
 const New = lazy(() => import("../New/New"));
 const Men = lazy(() => import("../Men/Men"));
+const Kids = lazy(() => import("../Kids/Kids"));
 
 const Goods = lazy(() => import("../Goods/Goods"));
 
@@ -59,17 +60,26 @@ function Router() {
         <Route path="/account" element={<Account />} />
 
         {/* Page navigation */}
+
+        {/* Women */}
         <Route path="/women" element={<Women />} />
+        <Route path="/women/:id" element={<Product />}></Route>
         <Route path="/women/women_collection" element={<NewWomen />}></Route>
+        {/* Men */}
         <Route path="/men" element={<Men />} />
+        <Route path="/men/:id" element={<Product />}></Route>
         <Route path="/men/men_collection" element={<NewMen />}></Route>
+        {/* Kids */}
+        <Route path="/kids" element={<Kids />} />
+        <Route path="/kids/:id" element={<Product />}></Route>
+
+        {/* Media */}
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/checkout" element={<Checkout />} />
 
         {/* E-Commerce */}
 
         <Route path="/goods" element={<Goods />}></Route>
-        <Route path="/goods/:id" element={<Product />}></Route>
 
         <Route path="/sale" element={<Sale />} />
         <Route path="/hot_sale" element={<Latest />} />

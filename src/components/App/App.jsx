@@ -27,12 +27,12 @@ function App() {
     setSubscribe((prevState) => !prevState);
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      setSubscribe(true);
-      return;
-    }, 1000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setSubscribe(true);
+  //     return;
+  //   }, 1000);
+  // }, []);
 
   return (
     <>

@@ -1,0 +1,10 @@
+.product_page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px 30px;
+}
+
+.product_card {
+  padding-block: 32px 80px;
+}
