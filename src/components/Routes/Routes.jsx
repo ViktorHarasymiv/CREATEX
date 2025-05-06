@@ -63,7 +63,7 @@ function Router() {
 
         {/* Women */}
         <Route path="/women" element={<Women />} />
-        <Route path="/women/:id" element={<Product />}></Route>
+        <Route path="/women/:id" element={<Product />} />
         <Route path="/women/women_collection" element={<NewWomen />}></Route>
         {/* Men */}
         <Route path="/men" element={<Men />} />
