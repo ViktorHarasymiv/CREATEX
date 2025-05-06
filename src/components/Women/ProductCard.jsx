@@ -8,8 +8,8 @@ import { addProduct, deleteProduct } from "../../redux/wishlistSlice";
 import "../../styles/productCard.css";
 import css from "./../NewArrivals/ArrivalsItem/ArrivalsItem.module.css";
 
-import starEmpty from "./../Wishlist/icons/StarEmpty.svg";
-import starSelect from "./../Wishlist/icons/StarColor.svg";
+import starEmpty from "../../icons/StarEmpty.svg";
+import starSelect from "../../icons/StarColor.svg";
 
 import { CiHeart } from "react-icons/ci";
 import { IoMdHeart } from "react-icons/io";
@@ -27,7 +27,7 @@ function ProductCard({
 }) {
   // STATE
   const [isLiked, setIsLiked] = useState(false);
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(ratingStart || 0);
   const [hover, setHover] = useState(0);
 
   // STORE
@@ -38,9 +38,10 @@ function ProductCard({
 
   const deleteLike = (id) => {
     dispatch(deleteProduct(id));
+    setIsLiked(false);
   };
 
-  const getLike = (id, title, ratingStart, price, sale, saleValue, image) => {
+  const getLike = (id, title, rating, price, sale, saleValue, image) => {
     dispatch(
       addProduct({
         id,
@@ -84,7 +85,7 @@ function ProductCard({
                 <span key={index}>
                   <img
                     src={
-                      currentRating <= (rating || hover || ratingStart)
+                      currentRating <= (hover || rating || ratingStart)
                         ? starSelect
                         : starEmpty
                     }
@@ -102,7 +103,10 @@ function ProductCard({
         </div>
         <div className={css.favorite_tile}>
           {wishlistID.find((itemID) => itemID == id) ? (
-            <button onClick={deleteLike} className={css.favorite_button}>
+            <button
+              onClick={() => deleteLike(id)}
+              className={css.favorite_button}
+            >
               <IoMdHeart style={{ fill: "red" }} />
             </button>
           ) : (

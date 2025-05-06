@@ -8,14 +8,15 @@ import ProductCard from "./ProductCard";
 
 function Men() {
   const products = useSelector((state) => state.goods.items);
+
   return (
     <>
       <HistoryBar></HistoryBar>
       <div className="container">
         <div className="product_page">
           {products
-            .filter((women) => women.gender == "men")
-            .map((womenItems) => {
+            .filter((men) => men.gender == "men")
+            .map((MensItems) => {
               const {
                 id,
                 gender,
@@ -26,13 +27,13 @@ function Men() {
                 saleValue,
                 price,
                 sale,
-              } = womenItems;
+              } = MensItems;
 
               return (
                 <ProductCard
                   key={id}
-                  gender={gender}
                   id={id}
+                  gender={gender}
                   title={title}
                   image={image}
                   alt={alt}

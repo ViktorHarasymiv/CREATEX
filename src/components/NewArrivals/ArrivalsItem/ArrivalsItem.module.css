@@ -1,4 +1,5 @@
 .product_tile {
+  max-width: 285px;
   max-height: 413px;
   height: 100%;
 }

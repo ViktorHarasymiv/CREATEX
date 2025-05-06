@@ -153,6 +153,15 @@ button,
 label {
   cursor: pointer;
 }
+button {
+  outline: none;
+  border: none;
+
+  margin: 0;
+  padding: 0;
+
+  transition-duration: var(--transition-duration);
+}
 
 /**
    Приводим к единому цвету svg-элементы
@@ -211,6 +220,10 @@ h6 {
   margin: 0;
 }
 
+ul {
+  list-style: none;
+}
+
 input[type="radio"] {
   position: absolute;
 
@@ -264,6 +277,23 @@ input[type="email"]::placeholder {
 
 input[type="email"]:focus {
   outline: 1px solid var(--primary);
+}
+
+/* Для Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Для Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+p,
+span {
+  display: inline-block;
 }
 
 /* Для всього документа */

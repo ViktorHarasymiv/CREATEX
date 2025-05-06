@@ -5,12 +5,11 @@
 #root {
   width: 100%;
 
-  text-align: center;
-
   background-color: var(--white);
   color: var(--gray-900);
 
   font-family: var(--font-family), sans-serif;
+  font-size: 1em;
   line-height: 1.5;
   font-weight: 400;
   font-style: normal;

@@ -1,54 +1,52 @@
 import React, { useState } from "react";
 
+import { Link } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct, deleteProduct } from "../../../redux/wishlistSlice";
+import { addProduct, deleteProduct } from "../../redux/wishlistSlice";
+
+import "../../styles/productCard.css";
+import css from "./../NewArrivals/ArrivalsItem/ArrivalsItem.module.css";
+
+import starEmpty from "./../Wishlist/icons/StarEmpty.svg";
+import starSelect from "./../Wishlist/icons/StarColor.svg";
 
 import { CiHeart } from "react-icons/ci";
 import { IoMdHeart } from "react-icons/io";
-import starEmpty from "../../../icons/StarEmpty.svg";
-import starSelect from "../../../icons/StarColor.svg";
 
-import css from "./ArrivalsItem.module.css";
-import { Link } from "react-router-dom";
-
-function ArrivalsItem({
+function ProductCard({
   id,
   gender,
   title,
   image,
   alt,
-  ratingState,
+  ratingStart,
   saleValue,
   price,
   sale,
-
-  data,
 }) {
-  const wishlistArray = useSelector((state) => state.wishlist.products);
-  const dispatch = useDispatch();
+  // STATE
   const [isLiked, setIsLiked] = useState(false);
-  const [rating, setRating] = useState(ratingState || 0);
+  const [rating, setRating] = useState(ratingStart || 0);
   const [hover, setHover] = useState(0);
 
-  const salePrice = price - price * (saleValue / 100);
+  // STORE
+  const wishlistArray = useSelector((state) => state.wishlist.products);
+  const dispatch = useDispatch();
 
-  // ADD CONTACT ACTION
+  // FUNCTION
 
-  const getLike = (
-    id,
-    title,
-    gender,
-    rating,
-    price,
-    sale,
-    saleValue,
-    image
-  ) => {
+  const deleteLike = (id) => {
+    dispatch(deleteProduct(id));
+    setIsLiked(false);
+  };
+
+  const getLike = (id, title, rating, price, sale, saleValue, image) => {
     dispatch(
       addProduct({
         id,
-        title,
         gender,
+        title,
         rating,
         price,
         sale,
@@ -58,17 +56,14 @@ function ArrivalsItem({
     );
   };
 
-  const deleteLike = () => {
-    dispatch(deleteProduct(data.id));
-    setIsLiked(false);
-  };
+  const salePrice = price - price * (saleValue / 100);
 
   const wishlistID = wishlistArray.map((item) => {
     return item.id;
   });
 
   return (
-    <div className={css.product_tile}>
+    <div key={id} className="product_card">
       <div className={css.product_image_tile}>
         <Link to={`/${gender}/${id}`}>
           <img
@@ -90,7 +85,7 @@ function ArrivalsItem({
                 <span key={index}>
                   <img
                     src={
-                      currentRating <= (hover || rating || ratingState)
+                      currentRating <= (hover || rating || ratingStart)
                         ? starSelect
                         : starEmpty
                     }
@@ -108,22 +103,16 @@ function ArrivalsItem({
         </div>
         <div className={css.favorite_tile}>
           {wishlistID.find((itemID) => itemID == id) ? (
-            <button onClick={deleteLike} className={css.favorite_button}>
+            <button
+              onClick={() => deleteLike(id)}
+              className={css.favorite_button}
+            >
               <IoMdHeart style={{ fill: "red" }} />
             </button>
           ) : (
             <button
               onClick={() =>
-                getLike(
-                  id,
-                  title,
-                  gender,
-                  rating,
-                  price,
-                  sale,
-                  saleValue,
-                  image
-                )
+                getLike(id, title, rating, price, sale, saleValue, image)
               }
               className={css.favorite_button}
             >
@@ -164,4 +153,4 @@ function ArrivalsItem({
   );
 }
 
-export default ArrivalsItem;
+export default ProductCard;

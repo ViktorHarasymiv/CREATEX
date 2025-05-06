@@ -18,9 +18,6 @@ function WishlistItem({ data }) {
     dispatch(deleteProduct(id));
   };
 
-  // STATE
-  const [isLiked, setIsLiked] = useState(false);
-
   console.log(data);
 
   const salePrice = data.price - data.price * (data.saleValue / 100);
@@ -50,7 +47,6 @@ function WishlistItem({ data }) {
                     alt=""
                     width={14}
                     height={14}
-                    onClick={() => setRating(currentRating)}
                   />
                 </span>
               );

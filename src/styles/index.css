@@ -40,4 +40,9 @@
   --container-padding-x: 1rem;
 
   --transition-duration: 0.3s;
+
+  --border-light-grey: 1px solid var(--gray-400);
+
+  --button-shadow: rgba(20, 39, 15, 0.25) 0px 2px 5px -1px,
+    rgba(20, 39, 15, 0.25) 0px 1px 3px -1px;
 }

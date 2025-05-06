@@ -1,0 +1,17 @@
+.css-sc8y68-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  font-family: var(--font-family) !important;
+  font-style: normal !important;
+  font-weight: 400;
+  font-size: 14px !important;
+  line-height: 150%;
+  color: var(--gray-800) !important;
+}
+
+em {
+  font-style: normal !important;
+  letter-spacing: 0.05em;
+}
+
+.css-w76bbz-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+  padding: 11px 16px !important;
+}

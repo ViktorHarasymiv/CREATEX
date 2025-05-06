@@ -3,12 +3,12 @@
   width: 100%;
 }
 .wishlist_list {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  padding-block: 32px 80px;
 
-  gap: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: stretch;
+  gap: 60px 30px;
 }
 
 .no_data_image {

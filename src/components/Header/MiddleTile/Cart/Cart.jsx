@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 
+import { useDispatch, useSelector } from "react-redux";
+
 import { BsCart2 } from "react-icons/bs";
 
 import css from "./Cart.module.css";
-import Modal from "./Modal/Modal";
+import Modal from "./Basket/Basket";
 
 const overlay = {
   zIndex: "9999",
@@ -15,7 +17,9 @@ const overlay = {
   right: "0",
 
   backgroundColor: "rgba(0, 0, 0, 0.7)",
+  backdropFilter: "blur(3px)",
 };
+
 const content = {
   zIndex: "9999",
   display: "flex",
@@ -27,7 +31,7 @@ const content = {
   top: "0",
   bottom: "0",
 
-  maxWidth: "352px",
+  maxWidth: "452px",
   width: "100%",
 
   transfotm: "translate(-50%, -50%)",
@@ -39,6 +43,7 @@ const content = {
 };
 
 function Card() {
+  const basketSize = useSelector((state) => state.basket.basketArr);
   const [openCart, setOpenCart] = useState(false);
 
   const openModal = () => {
@@ -46,11 +51,12 @@ function Card() {
       setOpenCart(false);
     } else setOpenCart(true);
   };
+
   return (
     <>
       <div onClick={openModal} className={css.cart_tile}>
         <BsCart2 className={css.cart_icon} />
-        <div className={css.value_cart_tile}> + </div>
+        <div className={css.value_cart_tile}> {basketSize.length} </div>
       </div>
       {openCart && (
         <Modal overlay={overlay} content={content} closePage={openModal} />

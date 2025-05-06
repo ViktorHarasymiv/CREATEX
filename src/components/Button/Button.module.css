@@ -1,5 +1,4 @@
 .button_primary {
-  max-width: 340px;
   width: 100%;
 
   border: 1px solid var(--primary);
