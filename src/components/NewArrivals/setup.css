@@ -1,5 +1,5 @@
 .new_arrivals_slider {
-  padding-bottom: 80px;
+  padding-block: 5px 80px;
 }
 
 .new_arrivals_slider .swiper-pagination-bullet {
@@ -20,4 +20,8 @@
   left: 50% !important;
 
   transform: translateX(-50%) !important;
+}
+
+.new_arrivals_slider .swiper-pagination-bullet {
+  height: 3px !important;
 }

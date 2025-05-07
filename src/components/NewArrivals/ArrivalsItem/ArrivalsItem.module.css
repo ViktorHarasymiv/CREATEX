@@ -9,13 +9,19 @@
 }
 
 .product_image_tile {
+  height: 320px;
   position: relative;
 
+  background-color: var(--gray-100);
   transition-duration: var(--transition-duration);
+
+  display: flex;
+  justify-content: center;
 }
 
 .product_image_tile img {
-  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .top_info_panel {
@@ -33,9 +39,6 @@
   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
     rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
   transform: scale(1.02);
-}
-
-.sale_tile {
 }
 
 .sale_band {

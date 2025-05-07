@@ -9,5 +9,7 @@
 
 .product_card {
   max-width: 285px;
+  width: 100%;
   max-height: 413px;
+  height: 100%;
 }

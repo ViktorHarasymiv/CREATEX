@@ -73,13 +73,15 @@ function ArrivalsItem({
         <Link to={`/${gender}/${id}`}>
           <img
             className={css.product_image}
-            src={`images/goods/${image}`}
+            src={`images/goods/${image[0]}`}
             alt={alt}
+            width={285}
+            style={{ backgroundColor: "#f8f8f8" }}
           />
         </Link>
         <div className={css.top_info_panel}>
           <div className={css.sale_tile}>
-            {saleValue.length > 0 && (
+            {saleValue > 0 && (
               <span className={css.sale_band}>-{saleValue}%</span>
             )}
           </div>

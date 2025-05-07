@@ -27,7 +27,7 @@ function WishlistItem({ data }) {
         <Link to={`/${data.gender}/${data.id}`}>
           <img
             className={css.product_image}
-            src={`images/goods/${data.image}`}
+            src={`images/goods/${data.image[0]}`}
             alt={data.alt}
           />
         </Link>

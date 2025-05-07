@@ -1,21 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addProduct, deleteProduct } from "../../redux/wishlistSlice";
-import { getInBasket, deleteFromBasket } from "../../redux/basketSlice";
+import { addProduct, deleteProduct } from "../../../redux/wishlistSlice";
+import { getInBasket, deleteFromBasket } from "../../../redux/basketSlice";
+
+import Delivery from "../components/Delivery/Delivery";
 
 import { BsCart2 } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
-import starEmpty from "../../icons/StarEmpty.svg";
-import starSelect from "../../icons/StarColor.svg";
+import starEmpty from "../../../icons/StarEmpty.svg";
+import starSelect from "../../../icons/StarColor.svg";
 
 import css from "./SelfProduct.module.css";
 import "./mui.css";
-import style from "./../NewArrivals/ArrivalsItem/ArrivalsItem.module.css";
+import style from "./../../NewArrivals/ArrivalsItem/ArrivalsItem.module.css";
 import clsx from "clsx";
 
-import HistoryBar from "../HistoryBar/HistoryBar";
+import HistoryBar from "../../HistoryBar/HistoryBar";
 
 import Skeleton from "@mui/material/Skeleton";
 
@@ -28,6 +30,20 @@ import Select from "@mui/material/Select";
 
 import { TiArrowSortedUp } from "react-icons/ti";
 import { TiArrowSortedDown } from "react-icons/ti";
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+
+import "./Swiper.css";
+
+// import required modules
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 
 function Product() {
   // REDUX
@@ -42,10 +58,9 @@ function Product() {
   const param = useParams();
 
   // STATE
-  const [selfItem, setSelfItem] = useState(undefined);
+  const [selfItem, setSelfItem] = useState(null);
 
   const [tab, setTab] = useState("General info");
-
   const [color, setColor] = useState("");
 
   const [isLiked, setIsLiked] = useState(false);
@@ -201,6 +216,12 @@ function Product() {
     setSize(event.target.value);
   };
 
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
+  useEffect(() => {
+    setThumbsSwiper(null);
+  }, [tab]);
+
   return (
     <>
       <HistoryBar></HistoryBar>
@@ -230,20 +251,65 @@ function Product() {
             <div className={css.tabs_tile}>
               {tab == "General info" && (
                 <div className={css.general_info}>
-                  <div className={css.product_slider_images}>
-                    {!selfItem.image ? (
-                      <Skeleton
-                        sx={{ width: 450, height: 450 }}
-                        animation="wave"
-                        variant="rectangular"
-                      />
-                    ) : (
-                      <img
-                        src={`/images/goods/${selfItem.image}`}
-                        width="450px"
-                        height="450px"
-                      />
-                    )}
+                  <div className="image_slider">
+                    <Swiper
+                      style={{
+                        "--swiper-navigation-color": "#fff",
+                        "--swiper-pagination-color": "#fff",
+                      }}
+                      spaceBetween={10}
+                      navigation={true}
+                      thumbs={{ swiper: thumbsSwiper }}
+                      modules={[FreeMode, Navigation, Thumbs]}
+                      className="mySwiper2"
+                    >
+                      {selfItem.image && selfItem.image.length > 0 ? (
+                        selfItem.image.map((image, index) => (
+                          <SwiperSlide key={index}>
+                            <img
+                              src={`/images/goods/${image}`}
+                              width={600}
+                              height={600}
+                            />
+                          </SwiperSlide>
+                        ))
+                      ) : (
+                        <Skeleton
+                          sx={{ width: 450, height: 450 }}
+                          animation="wave"
+                          variant="rectangular"
+                        />
+                      )}
+                    </Swiper>
+                    <Swiper
+                      onSwiper={(swiper) => {
+                        setThumbsSwiper(swiper);
+                      }}
+                      spaceBetween={20}
+                      slidesPerView={5}
+                      freeMode={true}
+                      modules={[FreeMode, Navigation, Thumbs]}
+                      className="mySwiperThumbs"
+                    >
+                      {selfItem.image && selfItem.image.length > 0 ? (
+                        selfItem.image.map((image, index) => (
+                          <SwiperSlide key={index} style={{ width: "104px" }}>
+                            <img
+                              src={`/images/goods/${image}`}
+                              width={104}
+                              height={104}
+                              alt={`Product ${index}`}
+                            />
+                          </SwiperSlide>
+                        ))
+                      ) : (
+                        <Skeleton
+                          sx={{ width: 104, height: 104 }}
+                          animation="wave"
+                          variant="rectangular"
+                        />
+                      )}
+                    </Swiper>
                   </div>
                   <div className={css.product_info}>
                     <div className={css.product_info_top}>
@@ -376,13 +442,15 @@ function Product() {
                                       : css.size_item_label
                                   }
                                 >
+                                  <span className={css.size_number}>
+                                    {item}
+                                  </span>
                                   <input
                                     type="radio"
                                     name="size"
                                     value={item}
                                     onChange={handleChange}
                                   />
-                                  {item}
                                 </label>
                               );
                             })}
@@ -531,6 +599,8 @@ function Product() {
                         <span>Favourite</span>
                       </button>
                     </div>
+                    {/* DELIVERY */}
+                    <Delivery />
                   </div>
                 </div>
               )}

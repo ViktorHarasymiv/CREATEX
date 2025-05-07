@@ -37,7 +37,7 @@ function Modal({ overlay, content, closePage }) {
             return (
               <li key={item.id} className={css.basket_product_tile}>
                 <img
-                  src={`/images/goods/${item.image}`}
+                  src={`/images/goods/${item.image[0]}`}
                   alt={item.title}
                   width={80}
                   height={80}

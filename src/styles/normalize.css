@@ -81,7 +81,7 @@ video {
   box-sizing: border-box;
   display: block;
   max-width: 100%;
-  height: auto;
+  max-height: 100%;
 }
 
 video {
@@ -161,6 +161,16 @@ button {
   padding: 0;
 
   transition-duration: var(--transition-duration);
+}
+
+table {
+  border-collapse: collapse;
+  border: none;
+}
+
+th,
+td {
+  border: none;
 }
 
 /**

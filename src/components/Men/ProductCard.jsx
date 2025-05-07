@@ -80,7 +80,7 @@ function ProductCard({
         <Link to={`/${gender}/${id}`}>
           <img
             className={css.product_image}
-            src={`images/goods/${image}`}
+            src={`images/goods/${image[0]}`}
             alt={alt}
           />
         </Link>

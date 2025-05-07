@@ -19,7 +19,7 @@ const Kids = lazy(() => import("../Kids/Kids"));
 
 const Goods = lazy(() => import("../Goods/Goods"));
 
-import Product from "../Goods/Product";
+import Product from "../Goods/product/Product";
 import NewMen from "../New/NewMen";
 import NewWomen from "../New/NewWomen";
 
