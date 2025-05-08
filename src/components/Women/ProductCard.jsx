@@ -62,8 +62,6 @@ function ProductCard({
     return item.id;
   });
 
-  console.log(image);
-
   return (
     <div key={id} className="product_card">
       <div className={css.product_image_tile}>

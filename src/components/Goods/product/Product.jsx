@@ -266,11 +266,7 @@ function Product() {
                       {selfItem.image && selfItem.image.length > 0 ? (
                         selfItem.image.map((image, index) => (
                           <SwiperSlide key={index}>
-                            <img
-                              src={`/images/goods/${image}`}
-                              width={600}
-                              height={600}
-                            />
+                            <img src={`/images/goods/${image}`} />
                           </SwiperSlide>
                         ))
                       ) : (
@@ -296,8 +292,6 @@ function Product() {
                           <SwiperSlide key={index} style={{ width: "104px" }}>
                             <img
                               src={`/images/goods/${image}`}
-                              width={104}
-                              height={104}
                               alt={`Product ${index}`}
                             />
                           </SwiperSlide>

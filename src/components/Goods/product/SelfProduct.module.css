@@ -53,6 +53,7 @@
 }
 
 .self_product_tabs_button span {
+  font-size: clamp(0.75rem, 0.6522rem + 0.4348vw, 1rem);
   font-weight: 700;
 
   line-height: 160%;
@@ -105,6 +106,17 @@
   margin-left: 80px;
 
   flex: 1 1 50%;
+}
+
+@media screen and (max-width: 1089.98px) {
+  .general_info {
+    flex-wrap: wrap;
+  }
+  .product_info {
+    margin-top: 50px;
+    margin-left: 0px;
+    flex: 1 1 100%;
+  }
 }
 
 .product_info_top {
@@ -251,6 +263,12 @@
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
+}
+
+@media screen and (max-width: 1089.98px) {
+  .commerce_box {
+    width: 100%;
+  }
 }
 
 /* COUNT BUTTON */
@@ -442,4 +460,19 @@
 
   fill: #fff;
   stroke: #fff;
+}
+
+/* MEDIA */
+
+@media screen and (max-width: 499.98px) {
+  .self_product_tabs {
+    justify-content: space-between;
+  }
+  .self_product_tabs_button {
+    padding: 5px 10px;
+  }
+
+  .select_size_tile {
+    max-width: 310px !important;
+  }
 }
