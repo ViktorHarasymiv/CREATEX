@@ -60,7 +60,17 @@ function Hero() {
       style={{ maxHeight: "100%" }}
     >
       {slider.map(
-        ({ id, name, image, video, videoMobile, PR, title, motivational }) => {
+        ({
+          id,
+          name,
+          image,
+          video,
+          videoMobile,
+          PR,
+          title,
+          year,
+          motivational,
+        }) => {
           return (
             <SwiperSlide>
               <Slider
@@ -71,6 +81,7 @@ function Hero() {
                 videoMobile={videoMobile}
                 PR={PR}
                 title={title}
+                year={year}
                 motivational={motivational}
                 windowWidth={windowWidth}
               />

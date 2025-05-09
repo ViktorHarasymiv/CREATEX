@@ -1,36 +1,63 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useSelector } from "react-redux";
 
 import css from "./Search.module.css";
 
+import SearchTile from "./SearchTile";
+
 import { CiSearch } from "react-icons/ci";
 
-function Search() {
+function Search({ valute }) {
+  const product = useSelector((state) => state.goods.items);
   const [inputValue, setInputValue] = useState("");
 
-  const getSearch = (event) => {
-    event.preventDefault();
+  const myRef = useRef(null);
 
-    const form = event.target;
+  const handleChange = (event) => {
+    setInputValue(event.target.value.trim().toLowerCase());
+  };
 
-    const searchValue = form.elements.SEARCH.value.trim().toLowerCase();
-
-    setInputValue(searchValue);
-
-    form.reset();
+  const handleKeyDown = (event) => {
+    const form = event.target.closest("form");
+    if (event.key === "Escape") {
+      setInputValue("");
+      form.reset();
+    } else {
+      setInputValue("");
+    }
   };
 
   return (
-    <form onSubmit={getSearch} type="submit" className={css.input_tile}>
-      <input
-        className={css.search_input}
-        name="SEARCH"
-        type="text"
-        placeholder="Search for products..."
-      />
-      <button className={css.search_button} type="submit">
-        <CiSearch className={css.search_icon} />
-      </button>
-    </form>
+    <div className={css.search_header}>
+      <form
+        ref={myRef}
+        onSubmit={(event) => {
+          event.preventDefault();
+        }}
+        onKeyDown={handleKeyDown}
+        className={css.input_tile}
+      >
+        <input
+          onChange={handleChange}
+          className={css.search_input}
+          name="SEARCH"
+          placeholder="Search for products..."
+        />
+        <button className={css.search_button} type="submit">
+          <CiSearch className={css.search_icon} />
+        </button>
+      </form>
+      {inputValue.length > 0 && (
+        <SearchTile
+          DATA={product}
+          value={inputValue}
+          valute={valute}
+          input={myRef}
+          setInputValue={setInputValue}
+          close={handleKeyDown}
+        />
+      )}
+    </div>
   );
 }
 

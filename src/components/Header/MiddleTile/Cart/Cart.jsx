@@ -17,7 +17,6 @@ const overlay = {
   right: "0",
 
   backgroundColor: "rgba(0, 0, 0, 0.7)",
-  backdropFilter: "blur(3px)",
 };
 
 const content = {
@@ -42,7 +41,7 @@ const content = {
   paddingBlock: "32px",
 };
 
-function Card() {
+function Card({ valute }) {
   const basketSize = useSelector((state) => state.basket.basketArr);
   const [openCart, setOpenCart] = useState(false);
 
@@ -59,7 +58,12 @@ function Card() {
         <div className={css.value_cart_tile}> {basketSize.length} </div>
       </div>
       {openCart && (
-        <Modal overlay={overlay} content={content} closePage={openModal} />
+        <Modal
+          overlay={overlay}
+          content={content}
+          closePage={openModal}
+          valute={valute}
+        />
       )}
     </>
   );

@@ -1,4 +1,5 @@
 .button_primary {
+  max-width: 244px;
   width: 100%;
 
   border: 1px solid var(--primary);
@@ -16,6 +17,7 @@
 }
 
 .button_context {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,7 +41,7 @@
 }
 
 .button_transparent {
-  max-width: 240px;
+  max-width: 152px;
   width: 100%;
 
   background: transparent;
@@ -48,6 +50,8 @@
 
   border: 1px solid var(--primary);
   border-radius: 4px;
+
+  backdrop-filter: blur(2px);
 
   transition-duration: var(--transition-duration);
 

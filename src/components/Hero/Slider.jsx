@@ -16,20 +16,12 @@ function Slider({
   videoMobile,
   PR,
   title,
+  year,
   motivational,
   windowWidth,
 }) {
   return (
-    <div
-      className={css.slider_tile}
-      // style={{
-      //   backgroundImage: `url(./../src/images/slider/${image}) `,
-      //   backgroundSize: "cover",
-      //   backgroundRepeat: "no-repeat",
-      //   width: "100%",
-      //   height: "100%",
-      // }}
-    >
+    <div className={css.slider_tile}>
       <div className={css.wrapper_background}>
         {/* {video ? (
           <ReactPlayer
@@ -53,7 +45,10 @@ function Slider({
       <div className="container">
         <div className={css.slider_content_tile}>
           <p className={css.PR_text}>{PR}</p>
-          <h1 className={css.title_text}>{title}</h1>
+          <h1 className={css.title_text}>
+            <span style={{ marginRight: "40px" }}>{title}</span>
+            <span>{year}</span>
+          </h1>
           <h4 className={css.motivational_text}>{motivational}</h4>
           <div className={css.buttons_tile}>
             <Button_T>Shop sale</Button_T>

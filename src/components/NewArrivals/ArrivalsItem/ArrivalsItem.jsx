@@ -23,14 +23,14 @@ function ArrivalsItem({
   sale,
 
   data,
+
+  valute,
 }) {
   const wishlistArray = useSelector((state) => state.wishlist.products);
   const dispatch = useDispatch();
   const [isLiked, setIsLiked] = useState(false);
   const [rating, setRating] = useState(ratingState || 0);
   const [hover, setHover] = useState(0);
-
-  const salePrice = price - price * (saleValue / 100);
 
   // ADD CONTACT ACTION
 
@@ -66,6 +66,14 @@ function ArrivalsItem({
   const wishlistID = wishlistArray.map((item) => {
     return item.id;
   });
+
+  const changeValute = () => {
+    if (valute == "Dollar") {
+      return price.toFixed(2);
+    } else return (price * 0.876).toFixed(2);
+  };
+
+  const salePrice = price - price * (saleValue / 100);
 
   return (
     <div className={css.product_tile}>
@@ -158,7 +166,8 @@ function ArrivalsItem({
             }}
             className={css.product_price}
           >
-            ${price}
+            {valute == "Dollar" ? "$" : "€"}
+            {changeValute()}
           </span>
         </div>
       </div>

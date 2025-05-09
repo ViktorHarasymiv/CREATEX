@@ -15,7 +15,7 @@ import { Keyboard, Pagination } from "swiper/modules";
 import css from "./NewArrivals.module.css";
 import ArrivalsItem from "./ArrivalsItem/ArrivalsItem";
 
-function NewArrivals() {
+function NewArrivals({ valute }) {
   const products = useSelector((state) => state.goods.items);
   return (
     <div className={css.new_arrivals_tile}>
@@ -82,6 +82,7 @@ function NewArrivals() {
                     price={price}
                     sale={sale}
                     data={filteredProduct}
+                    valute={valute}
                   />
                 </SwiperSlide>
               );

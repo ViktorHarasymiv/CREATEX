@@ -19,9 +19,11 @@ const override = {
 };
 
 const Header = lazy(() => import("./../Header/Header/Header"));
-
 function App() {
+  const [valute, setValute] = useState("Dollar");
   const [openSubscribe, setSubscribe] = useState(false);
+
+  console.log(valute);
 
   const openSubscribePanel = () => {
     setSubscribe((prevState) => !prevState);
@@ -42,7 +44,11 @@ function App() {
           openSubscribe={openSubscribePanel}
         />
       )}
-      <Header openSubscribe={openSubscribePanel} />
+      <Header
+        openSubscribe={openSubscribePanel}
+        setValute={setValute}
+        valute={valute}
+      />
       {
         <Suspense
           fallback={
@@ -55,7 +61,7 @@ function App() {
             />
           }
         >
-          <Router />
+          <Router valute={valute} />
         </Suspense>
       }
     </>

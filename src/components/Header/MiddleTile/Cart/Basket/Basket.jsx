@@ -10,7 +10,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { MdOutlinePayments } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-function Modal({ overlay, content, closePage }) {
+function Modal({ overlay, content, closePage, valute }) {
   const dispatch = useDispatch();
   const basket = useSelector((state) => state.basket.basketArr);
 
@@ -23,7 +23,11 @@ function Modal({ overlay, content, closePage }) {
     0
   );
 
-  console.log(basket);
+  const changeValute = () => {
+    if (valute == "Dollar") {
+      return totalPrice.toFixed(2);
+    } else return (totalPrice * 0.876).toFixed(2);
+  };
 
   return (
     <div style={overlay}>
@@ -69,8 +73,10 @@ function Modal({ overlay, content, closePage }) {
           <div className={css.subtotal_tile}>
             <span className={css.subtotal_text}>Subtotal:</span>
             <b className={css.total_price}>
-              <span style={{ marginRight: "3px" }}>$</span>
-              <span>{totalPrice.toFixed(2)}</span>
+              <span style={{ marginRight: "3px" }}>
+                {valute == "Dollar" ? "$" : "€"}
+              </span>
+              <span>{changeValute()}</span>
             </b>
           </div>
           <Link onClick={closePage} to={"./checkout"}>

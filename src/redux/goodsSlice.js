@@ -6,7 +6,7 @@ const goodsSlice = createSlice({
     items: [
       {
         id: 183260000,
-        filter: "New",
+        filter: "",
         gender: "kids",
         image: ["6.png", "drop1.png", "drop2.png", "drop3.png", "drop4.png"],
         alt: "Baby shoes with laces",
@@ -24,7 +24,7 @@ const goodsSlice = createSlice({
       },
       {
         id: 183260001,
-        filter: "New",
+        filter: "",
         gender: "kids",
         image: ["1.png", "drop1.png", "drop2.png", "drop3.png", "drop4.png"],
         alt: "Green baby romper",
@@ -60,7 +60,7 @@ const goodsSlice = createSlice({
       },
       {
         id: 183260003,
-        filter: "New",
+        filter: "",
         gender: "men",
         image: ["3.png", "drop1.png", "drop2.png", "drop3.png", "drop4.png"],
         alt: "Metal bridge sunglasses",

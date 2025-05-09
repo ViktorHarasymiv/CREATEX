@@ -7,7 +7,7 @@ import Navigation from "./Navigation/Navigation";
 import Currency from "./Сurrency/Сurrency";
 import Authorization from "./Authorization/Authorization";
 
-function TopTile({ active }) {
+function TopTile({ active, setValute, valute }) {
   return (
     <div className={css.top_tile_wrapper}>
       <div className="container">
@@ -17,7 +17,7 @@ function TopTile({ active }) {
             <Navigation />
           </>
         )}
-        <Currency />
+        <Currency setValute={setValute} valute={valute} />
         <Authorization />
       </div>
     </div>

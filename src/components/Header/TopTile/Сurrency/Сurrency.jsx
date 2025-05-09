@@ -10,9 +10,7 @@ import Select from "@mui/material/Select";
 import America from "./icons/america.png";
 import Europe from "./icons/europe.png";
 
-function Сurrency() {
-  const [valute, setValute] = React.useState("Dollar");
-
+function Currency({ setValute, valute }) {
   const handleChange = (event) => {
     setValute(event.target.value);
   };
@@ -51,4 +49,4 @@ function Сurrency() {
   );
 }
 
-export default Сurrency;
+export default Currency;

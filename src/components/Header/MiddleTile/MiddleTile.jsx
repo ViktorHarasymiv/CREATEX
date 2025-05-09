@@ -11,18 +11,18 @@ import Card from "./Cart/Cart";
 import Line from "./Line/Line";
 import ButtonBurger from "../../Mobile/ButtonBurger/ButtonBurger";
 
-function MiddleTile({ active, windowWidth }) {
+function MiddleTile({ active, windowWidth, valute }) {
   return (
     <div className={css.middle_tile_wrapper}>
       <div className="container">
         <div className={css.middle_tile}>
           <Logo />
           {!active && <Navigation />}
-          {windowWidth > 599.98 && <Search />}
+          {windowWidth > 599.98 && <Search valute={valute} />}
           <div className={css.user_commerce}>
             <Favorite />
             <Line />
-            <Card />
+            <Card valute={valute} />
           </div>
           {active && <ButtonBurger />}
         </div>
