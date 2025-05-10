@@ -1,12 +1,9 @@
-import React from "react";
-import css from "./Sale.module.css";
-
 import { useSelector } from "react-redux";
 
 import HistoryBar from "../HistoryBar/HistoryBar";
 import ProductCard from "./ProductCard";
 
-function Sale() {
+function Sale({ valute }) {
   const products = useSelector((state) => state.goods.items);
   return (
     <>
@@ -40,6 +37,7 @@ function Sale() {
                   saleValue={saleValue}
                   price={price}
                   sale={sale}
+                  valute={valute}
                 />
               );
             })}

@@ -46,7 +46,7 @@ function Slider({
         <div className={css.slider_content_tile}>
           <p className={css.PR_text}>{PR}</p>
           <h1 className={css.title_text}>
-            <span style={{ marginRight: "40px" }}>{title}</span>
+            <span className={css.hero_title}>{title}</span>
             <span>{year}</span>
           </h1>
           <h4 className={css.motivational_text}>{motivational}</h4>

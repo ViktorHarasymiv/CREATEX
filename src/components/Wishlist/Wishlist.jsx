@@ -1,12 +1,13 @@
-import React from "react";
 import { useSelector } from "react-redux";
+
 import css from "./Wishlist.module.css";
+
 import WishlistItem from "./WishlistItem";
 import HistoryBar from "../HistoryBar/HistoryBar";
 
 import NO_DATA from "./images/9264828.jpg";
 
-function Wishlist() {
+function Wishlist({ valute }) {
   const wishlistArray = useSelector((state) => state.wishlist.products);
   return (
     <div className={css.wishlist_page}>
@@ -16,7 +17,11 @@ function Wishlist() {
           <ul className={css.wishlist_list}>
             {wishlistArray.map((item) => (
               <li key={item.id}>
-                <WishlistItem data={item} />
+                <WishlistItem
+                  data={item}
+                  array={wishlistArray}
+                  valute={valute}
+                />
               </li>
             ))}
           </ul>

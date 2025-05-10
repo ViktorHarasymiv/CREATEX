@@ -45,7 +45,7 @@ import "./Swiper.css";
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 
-function Product() {
+function Product({ valute }) {
   // REDUX
   const product = useSelector((state) => state.goods.items);
   const wishlistArray = useSelector((state) => state.wishlist.products);
@@ -216,6 +216,14 @@ function Product() {
     setSize(event.target.value);
   };
 
+  const changeValute = (PRICE) => {
+    if (valute == "Dollar") {
+      return PRICE.toFixed(2);
+    } else return (PRICE * 0.876).toFixed(2);
+  };
+
+  /* SWIPER */
+
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   useEffect(() => {
@@ -318,10 +326,10 @@ function Product() {
                                 lineHeight: "1",
                               }}
                             >
-                              $
+                              {valute == "Dollar" ? "$" : "€"}
                               {(
-                                selfItem.price * count -
-                                selfItem.price *
+                                changeValute(selfItem.price) * count -
+                                changeValute(selfItem.price) *
                                   count *
                                   (selfItem.saleValue / 100)
                               ).toFixed(2)}
@@ -341,7 +349,8 @@ function Product() {
                             }}
                             className={css.product_price}
                           >
-                            ${(selfItem.price * count).toFixed(2)}
+                            {valute == "Dollar" ? "$" : "€"}
+                            {(changeValute(selfItem.price) * count).toFixed(2)}
                           </span>
                         </div>
                         <div

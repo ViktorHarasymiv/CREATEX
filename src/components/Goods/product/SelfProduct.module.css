@@ -7,6 +7,7 @@
 
 .self_product_title_tile {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 }
@@ -14,11 +15,12 @@
 .selfItem_title {
   margin-bottom: 32px;
   font-weight: 900;
-  font-size: 46px;
+  font-size: clamp(1.5rem, 1.1044rem + 1.978vw, 2.625rem);
   line-height: 130%;
   color: var(--gray-900);
 }
 .selfItem_article {
+  font-size: clamp(0.8125rem, 0.7466rem + 0.3297vw, 1rem);
   line-height: 160%;
   color: var(--gray-700);
 }

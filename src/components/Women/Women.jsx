@@ -1,13 +1,10 @@
-import React from "react";
-
 import { useSelector } from "react-redux";
 
 import HistoryBar from "../HistoryBar/HistoryBar";
 
-import css from "./Women.module.css";
 import ProductCard from "./ProductCard";
 
-function Women() {
+function Women({ valute }) {
   const products = useSelector((state) => state.goods.items);
   return (
     <>
@@ -41,6 +38,7 @@ function Women() {
                   saleValue={saleValue}
                   price={price}
                   sale={sale}
+                  valute={valute}
                 />
               );
             })}

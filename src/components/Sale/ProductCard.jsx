@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -24,6 +24,7 @@ function ProductCard({
   saleValue,
   price,
   sale,
+  valute,
 }) {
   // STATE
   const [isLiked, setIsLiked] = useState(false);
@@ -56,11 +57,19 @@ function ProductCard({
     );
   };
 
-  const salePrice = price - price * (saleValue / 100);
-
   const wishlistID = wishlistArray.map((item) => {
     return item.id;
   });
+
+  /* VALUTE */
+
+  const changeValute = (PRICE) => {
+    if (valute == "Dollar") {
+      return PRICE.toFixed(2);
+    } else return (PRICE * 0.876).toFixed(2);
+  };
+
+  /* BODY */
 
   return (
     <div key={id} className="product_card">
@@ -129,23 +138,25 @@ function ProductCard({
               style={{
                 color: "var(--danger)",
                 fontWeight: "700",
-                fontSize: "24px",
+                fontSize: "20px",
                 lineHeight: "1",
               }}
             >
-              ${salePrice.toFixed(2)}
+              <span className="valute">{valute == "Dollar" ? "$" : "€"}</span>
+              {(changeValute(price) * (saleValue / 100)).toFixed(2)}
             </span>
           )}
           <span
             style={{
               textDecoration: sale ? "line-through" : "none",
-              fontSize: sale ? "16px" : "24",
+              fontSize: sale ? "14px" : "20px",
               color: sale ? "var(--gray-700)" : "var(--gray-900)",
               fontWeight: sale ? "400" : "900",
             }}
             className={css.product_price}
           >
-            ${price}
+            <span className="valute">{valute == "Dollar" ? "$" : "€"}</span>
+            {changeValute(price)}
           </span>
         </div>
       </div>

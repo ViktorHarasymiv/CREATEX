@@ -18,6 +18,7 @@
 
 .mySwiper2 img {
   width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -25,6 +26,7 @@
   padding: 20px 2px;
 
   width: 100%;
+  min-height: 160px;
   height: 100%;
 
   box-sizing: border-box;
@@ -32,12 +34,12 @@
 
 .mySwiperThumbs img {
   width: 100%;
-  object-fit: cover;
+  height: 100%;
+
+  object-fit: fill;
 }
 
 .mySwiperThumbs .swiper-slide {
-  overflow: hidden;
-
   opacity: 0.7;
   border-radius: 5px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
@@ -57,6 +59,7 @@
 .mySwiper2 .swiper-button-next {
   right: 15px;
 }
+
 .mySwiper2 .swiper-button-prev:after,
 .mySwiper2 .swiper-button-next:after {
   padding: 12px 16px;
@@ -82,7 +85,7 @@
     flex-direction: row;
   }
   .mySwiperThumbs {
-    max-width: 104px;
+    max-width: 120px;
     margin-left: 35px;
     padding: 0;
   }
@@ -90,6 +93,7 @@
     min-width: 104px;
   }
   .mySwiperThumbs .swiper-wrapper {
+    margin-block: 4px;
     flex-direction: column;
     row-gap: 20px;
   }
@@ -108,28 +112,42 @@
     flex-direction: column;
   }
   .mySwiperThumbs {
+    padding-block: 5px;
     margin-top: 40px;
     margin-left: 0;
+
     min-width: 100%;
   }
   .mySwiperThumbs .swiper-wrapper {
+    margin-left: 2px;
+    overflow: auto;
     flex-direction: row;
+
+    align-items: center;
   }
 }
 
 @media screen and (max-width: 499.98px) {
   .mySwiperThumbs {
-    margin-top: 30px;
+    margin-top: 20px;
+
+    height: 75px;
   }
+
+  .mySwiperThumbs .swiper-slide {
+    min-height: 120px;
+  }
+
   .mySwiperThumbs .swiper-slide {
     min-width: 60px;
-    height: 80px;
+    max-height: 70px;
+    height: 70px;
   }
 
   .mySwiperThumbs img {
     min-width: 60px !important;
   }
   .mySwiper2 {
-    min-height: 450px;
+    min-height: auto;
   }
 }

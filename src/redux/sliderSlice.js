@@ -6,7 +6,7 @@ const sliderSlice = createSlice({
     items: [
       {
         id: crypto.randomUUID(),
-        name: "menswear",
+        name: "men",
         image: "men.avif",
         video:
           "https://image.hm.com/content/dam/global_campaigns/season_01/men/start-page-assets/w15/video/MS21E4-15A-CLEAN-16x9.mp4",
@@ -19,7 +19,7 @@ const sliderSlice = createSlice({
       },
       {
         id: crypto.randomUUID(),
-        name: "womenswear",
+        name: "women",
         image: "women.jpg",
         // video:
         //   "https://image.hm.com/content/dam/global_campaigns/season_01/women/startpage-assets/wk15/1011B-startpage-women-wk15-16x9.mp4",
@@ -33,7 +33,7 @@ const sliderSlice = createSlice({
       },
       {
         id: crypto.randomUUID(),
-        name: "kidswear",
+        name: "kids",
         image: "kids.jpg",
         PR: "New collection",
         title: "Kidswear",

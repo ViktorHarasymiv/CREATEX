@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -24,14 +24,13 @@ function ProductCard({
   saleValue,
   price,
   sale,
+  valute,
 }) {
   // STATE
   const [isLiked, setIsLiked] = useState(false);
 
   const [rating, setRating] = useState(ratingStart || 0);
   const [hover, setHover] = useState(0);
-
-  console.log(rating);
 
   // STORE
   const wishlistArray = useSelector((state) => state.wishlist.products);
@@ -72,7 +71,15 @@ function ProductCard({
     setIsLiked(false);
   };
 
-  const salePrice = price - price * (saleValue / 100);
+  /* VALUTE */
+
+  const changeValute = (PRICE) => {
+    if (valute == "Dollar") {
+      return PRICE.toFixed(2);
+    } else return (PRICE * 0.876).toFixed(2);
+  };
+
+  /* BODY */
 
   return (
     <div key={id} className="product_card">
@@ -154,7 +161,8 @@ function ProductCard({
                 lineHeight: "1",
               }}
             >
-              ${salePrice.toFixed(2)}
+              <span className="valute">{valute == "Dollar" ? "$" : "€"}</span>
+              {(changeValute(price) * (saleValue / 100)).toFixed(2)}
             </span>
           )}
           <span
@@ -166,7 +174,8 @@ function ProductCard({
             }}
             className={css.product_price}
           >
-            ${price}
+            <span className="valute">{valute == "Dollar" ? "$" : "€"}</span>
+            {changeValute(price)}
           </span>
         </div>
       </div>

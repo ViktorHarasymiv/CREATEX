@@ -6,7 +6,7 @@ import HistoryBar from "../HistoryBar/HistoryBar";
 import css from "./Men.module.css";
 import ProductCard from "./ProductCard";
 
-function Men() {
+function Men({ valute }) {
   const products = useSelector((state) => state.goods.items);
 
   return (
@@ -41,6 +41,7 @@ function Men() {
                   saleValue={saleValue}
                   price={price}
                   sale={sale}
+                  valute={valute}
                 />
               );
             })}

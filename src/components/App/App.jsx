@@ -23,8 +23,6 @@ function App() {
   const [valute, setValute] = useState("Dollar");
   const [openSubscribe, setSubscribe] = useState(false);
 
-  console.log(valute);
-
   const openSubscribePanel = () => {
     setSubscribe((prevState) => !prevState);
   };

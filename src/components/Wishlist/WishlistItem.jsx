@@ -1,26 +1,36 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
+
+/* HOOKS */
 
 import { useDispatch } from "react-redux";
 import { deleteProduct } from "../../redux/wishlistSlice";
 
+/* STYLE */
 import css from "./../NewArrivals/ArrivalsItem/ArrivalsItem.module.css";
 
+/* ICONS */
+
+import { AiOutlineDelete } from "react-icons/ai";
 import starEmpty from "./icons/StarEmpty.svg";
 import starSelect from "./icons/StarColor.svg";
 
-import { AiOutlineDelete } from "react-icons/ai";
-
-function WishlistItem({ data }) {
+function WishlistItem({ data, array, valute }) {
   const dispatch = useDispatch();
 
   const deleteLike = (id) => {
     dispatch(deleteProduct(id));
   };
 
-  console.log(data);
+  /* VALUTE */
 
-  const salePrice = data.price - data.price * (data.saleValue / 100);
+  const changeValute = (PRICE) => {
+    if (valute == "Dollar") {
+      return PRICE.toFixed(2);
+    } else return (PRICE * 0.876).toFixed(2);
+  };
+
+  /* BODY */
+
   return (
     <div className={css.product_tile}>
       <div className={css.product_image_tile}>
@@ -71,7 +81,8 @@ function WishlistItem({ data }) {
                 lineHeight: "1",
               }}
             >
-              ${salePrice.toFixed(2)}
+              <span className="valute">{valute == "Dollar" ? "$" : "€"}</span>
+              {(changeValute(data.price) * (data.saleValue / 100)).toFixed(2)}
             </span>
           )}
           <span
@@ -83,7 +94,8 @@ function WishlistItem({ data }) {
             }}
             className={css.product_price}
           >
-            ${data.price}
+            <span className="valute">{valute == "Dollar" ? "$" : "€"}</span>
+            {changeValute(data.price)}
           </span>
         </div>
       </div>

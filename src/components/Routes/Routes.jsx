@@ -62,26 +62,26 @@ function Router({ valute }) {
         {/* Page navigation */}
 
         {/* Women */}
-        <Route path="/women" element={<Women />} />
-        <Route path="/women/:id" element={<Product />} />
+        <Route path="/women" element={<Women valute={valute} />} />
+        <Route path="/women/:id" element={<Product valute={valute} />} />
         <Route path="/women/women_collection" element={<NewWomen />}></Route>
         {/* Men */}
-        <Route path="/men" element={<Men />} />
-        <Route path="/men/:id" element={<Product />}></Route>
+        <Route path="/men" element={<Men valute={valute} />} />
+        <Route path="/men/:id" element={<Product valute={valute} />}></Route>
         <Route path="/men/men_collection" element={<NewMen />}></Route>
         {/* Kids */}
-        <Route path="/kids" element={<Kids />} />
-        <Route path="/kids/:id" element={<Product />}></Route>
+        <Route path="/kids" element={<Kids valute={valute} />} />
+        <Route path="/kids/:id" element={<Product valute={valute} />}></Route>
 
         {/* Media */}
-        <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/wishlist" element={<Wishlist valute={valute} />} />
+        <Route path="/checkout" element={<Checkout valute={valute} />} />
 
         {/* E-Commerce */}
 
         <Route path="/goods" element={<Goods />}></Route>
 
-        <Route path="/sale" element={<Sale />} />
+        <Route path="/sale" element={<Sale valute={valute} />} />
         <Route path="/hot_sale" element={<Latest />} />
 
         {/* Not found page */}

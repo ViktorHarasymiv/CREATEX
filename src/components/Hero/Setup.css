@@ -1,5 +1,7 @@
 .hero_swiper {
   position: relative;
+
+  max-height: 700px;
   height: calc(100vh - 153px);
 }
 
@@ -91,7 +93,7 @@
 @media screen and (max-width: 1024.98px) {
   .hero_swiper .swiper-button-prev,
   .hero_swiper .swiper-button-next {
-    width: clamp(28px, 2rem, 48px) !important;
+    width: clamp(28px, 3rem, 48px) !important;
     height: clamp(28px, 5vh, 48px) !important;
   }
 
@@ -115,7 +117,7 @@
   .hero_swiper .swiper-button-prev,
   .hero_swiper .swiper-button-next {
     width: clamp(20px, 2.3rem, 48px) !important;
-    height: clamp(20px, 5.5vh, 48px) !important;
+    height: clamp(20px, 4.8vh, 48px) !important;
   }
 
   .hero_swiper .swiper-button-prev:after,
