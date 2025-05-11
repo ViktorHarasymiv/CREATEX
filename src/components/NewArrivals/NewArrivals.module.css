@@ -36,3 +36,9 @@
   text-decoration-skip-ink: none;
   color: var(--primary);
 }
+
+@media screen and (max-width: 767.98px) {
+  .new_arrivals_tile {
+    margin-top: 90px;
+  }
+}

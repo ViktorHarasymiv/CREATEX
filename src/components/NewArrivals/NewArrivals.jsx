@@ -41,12 +41,12 @@ function NewArrivals({ valute }) {
           modules={[Keyboard, Pagination]}
           className="new_arrivals_slider"
           breakpoints={{
-            420: { slidesPerView: 2 },
+            320: { slidesPerView: 1 },
+            540: { slidesPerView: 2 },
             768: { slidesPerView: 3 },
             1024: { slidesPerView: 4 },
             1280: { slidesPerView: 5 },
-            1480: { slidesPerView: 5 },
-            1680: { slidesPerView: 6 },
+            1700: { slidesPerView: 6 },
           }}
         >
           {products

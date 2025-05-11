@@ -162,7 +162,10 @@ function ProductCard({
               }}
             >
               <span className="valute">{valute == "Dollar" ? "$" : "€"}</span>
-              {(changeValute(price) * (saleValue / 100)).toFixed(2)}
+              {(
+                changeValute(price) -
+                changeValute(price) * (saleValue / 100)
+              ).toFixed(2)}
             </span>
           )}
           <span

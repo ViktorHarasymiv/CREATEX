@@ -61,15 +61,16 @@ function Product({ valute }) {
   const [selfItem, setSelfItem] = useState(null);
 
   const [tab, setTab] = useState("General info");
-  const [color, setColor] = useState("");
 
   const [isLiked, setIsLiked] = useState(false);
   const [inBasket, setInBasket] = useState(false);
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
 
+  /* PRODUCT STATE */
+  const [color, setColor] = useState("");
   const [size, setSize] = useState("");
-
+  const [disabled, setDisabled] = useState(true);
   const [count, setCount] = useState(1);
 
   // EFFECT
@@ -196,17 +197,6 @@ function Product({ valute }) {
     if (selfItem) {
       setInBasket(false);
       deleteItem();
-
-      // getToBasket(
-      //   selfItem.id,
-      //   selfItem.title,
-      //   selfItem.rating,
-      //   selfItem.price,
-      //   selfItem.sale,
-      //   selfItem.saleValue,
-      //   selfItem.image,
-      //   count
-      // );
     }
   }, [count, size]);
 
@@ -220,6 +210,22 @@ function Product({ valute }) {
     if (valute == "Dollar") {
       return PRICE.toFixed(2);
     } else return (PRICE * 0.876).toFixed(2);
+  };
+
+  /* ADD CHANGE */
+
+  const checkProps = () => {
+    if (color == "") {
+      return alert("Виберіть колір ");
+    }
+    if (size == "") {
+      return alert("Виберіть розмір ");
+    }
+
+    if (color && size != "") {
+      setDisabled(false);
+      return;
+    } else return setDisabled(true);
   };
 
   /* SWIPER */
@@ -542,7 +548,6 @@ function Product({ valute }) {
                           ) {
                             setInBasket(false);
                             deleteItem();
-                            return;
                           } else {
                             setInBasket(true);
                             getToBasket(

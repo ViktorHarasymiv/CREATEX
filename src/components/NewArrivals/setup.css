@@ -1,5 +1,6 @@
 .new_arrivals_slider {
-  padding-block: 5px 80px;
+  padding-inline: 5px;
+  padding-block: 5px 60px;
 }
 
 .new_arrivals_slider .swiper-pagination-bullet {

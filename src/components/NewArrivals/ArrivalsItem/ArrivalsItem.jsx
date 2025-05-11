@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 function ArrivalsItem({
   id,
   gender,
+  filter,
   title,
   image,
   alt,
@@ -89,9 +90,7 @@ function ArrivalsItem({
         </Link>
         <div className={css.top_info_panel}>
           <div className={css.sale_tile}>
-            {saleValue > 0 && (
-              <span className={css.sale_band}>-{saleValue}%</span>
-            )}
+            {filter == "New" && <span className={css.sale_band}>{filter}</span>}
           </div>
           <div className={css.rating_tile}>
             {[...Array(5)].map((_, index) => {

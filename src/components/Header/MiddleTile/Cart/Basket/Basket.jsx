@@ -23,10 +23,10 @@ function Modal({ overlay, content, closePage, valute }) {
     0
   );
 
-  const changeValute = () => {
+  const changeValute = (price) => {
     if (valute == "Dollar") {
-      return totalPrice.toFixed(2);
-    } else return (totalPrice * 0.876).toFixed(2);
+      return price.toFixed(2);
+    } else return (price * 0.876).toFixed(2);
   };
 
   return (
@@ -63,6 +63,10 @@ function Modal({ overlay, content, closePage, valute }) {
                     <span className={css.basket_product_size}>
                       Size: {item.size}
                     </span>
+                    <span className={css.basket_product_size}>
+                      Price:{" "}
+                      {(changeValute(item.price) * item.count).toFixed(2)}
+                    </span>
                   </div>
                 </div>
               </li>
@@ -76,7 +80,7 @@ function Modal({ overlay, content, closePage, valute }) {
               <span style={{ marginRight: "3px" }}>
                 {valute == "Dollar" ? "$" : "€"}
               </span>
-              <span>{changeValute()}</span>
+              <span>{changeValute(totalPrice)}</span>
             </b>
           </div>
           <Link onClick={closePage} to={"./checkout"}>
