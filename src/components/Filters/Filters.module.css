@@ -1,0 +1,186 @@
+.filters_wrapper {
+  max-width: 255px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* BUTTON */
+
+.filters_button {
+  margin-bottom: 32px;
+  padding-block: 14px;
+  width: 100%;
+
+  border: 1px solid var(--primary);
+
+  background: var(--primary);
+
+  border-radius: 4px;
+
+  text-wrap: nowrap;
+
+  transition-duration: var(--transition-duration);
+
+  box-shadow: rgba(44, 44, 44, 0.8) 0px 1px 2px 0px,
+    rgba(136, 136, 136, 0.15) 0px 1px 3px 1px;
+
+  color: var(--white);
+}
+.button_context {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 700;
+  font-size: clamp(12px, 2vw, 16px);
+  letter-spacing: 0.03em;
+
+  color: var(--white);
+}
+
+.filters_button:hover {
+  background-color: transparent;
+}
+
+.filters_button:hover .button_context {
+  color: var(--primary);
+}
+
+.category_filters {
+  overflow: auto;
+  height: 120px;
+}
+
+.filter_title {
+  font-family: var(--font-family) !important;
+}
+
+.category_filters::-webkit-scrollbar {
+  width: 2px;
+}
+.category_filters::-webkit-scrollbar-thumb {
+  background: var(--gray-400);
+}
+
+/* RADIO */
+
+.filter_radio_tile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2.5px;
+}
+
+.filter_radio_tile:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.label_filter_title {
+  font-size: 14px;
+  color: var(--gray-800);
+}
+
+.filter_radio_check {
+  z-index: 1;
+  position: relative !important;
+  display: block !important;
+  overflow: visible !important;
+
+  opacity: 1;
+}
+
+/* CHECKBOX */
+
+.subscribe_checkbox {
+  min-height: 16px;
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+}
+
+.checkbox_label {
+  display: inline-block;
+  margin-left: 23px;
+
+  font-family: var(--font-family);
+  font-size: clamp(10px, 2vw, 14px);
+  line-height: 1;
+  color: var(--gray-800);
+
+  text-align: end;
+}
+
+.custom_checkbox {
+  position: absolute;
+
+  top: 0;
+
+  width: 16px;
+  height: 16px;
+}
+
+.checkbox_input {
+  margin: 0;
+
+  position: absolute;
+
+  top: 0;
+
+  opacity: 0;
+
+  width: 10px;
+  height: 10px;
+}
+
+.primary_checkbox {
+  z-index: 1;
+
+  position: absolute;
+  top: 0;
+
+  background-color: var(--white);
+
+  border: 1px solid var(--primary);
+
+  border-radius: 4px;
+
+  overflow: hidden;
+
+  width: 100%;
+  height: 100%;
+}
+
+.checkbox_input:checked ~ .primary_checkbox {
+  background-color: var(--primary);
+}
+
+.primary_checkbox::after {
+  position: absolute;
+
+  content: "";
+
+  top: 56%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  background-image: url("../Subscribe/icons/check.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  width: 0px;
+  height: 0px;
+
+  transition-property: width;
+  transition-duration: var(--transition-duration);
+}
+
+.checkbox_input:checked ~ .primary_checkbox::after {
+  width: 8px;
+  height: 8px;
+}

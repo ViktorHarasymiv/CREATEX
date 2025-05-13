@@ -70,8 +70,12 @@ function Product({ valute }) {
   /* PRODUCT STATE */
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
-  const [disabled, setDisabled] = useState(true);
   const [count, setCount] = useState(1);
+
+  /* ERROR */
+
+  const [colorError, setColorError] = useState(false);
+  const [sizeError, setSizeError] = useState(false);
 
   // EFFECT
   useEffect(() => {
@@ -156,11 +160,12 @@ function Product({ valute }) {
   });
 
   function salePrice(price, sale) {
-    return price * count - price * count * (sale / 100).toFixed(2);
+    return price - price * (sale / 100);
   }
 
   const getToBasket = (
     id,
+    gender,
     title,
     rating,
     price,
@@ -175,6 +180,7 @@ function Product({ valute }) {
     dispatch(
       getInBasket({
         id,
+        gender,
         title,
         rating,
         price,
@@ -215,17 +221,24 @@ function Product({ valute }) {
   /* ADD CHANGE */
 
   const checkProps = () => {
-    if (color == "") {
-      return alert("Виберіть колір ");
-    }
-    if (size == "") {
-      return alert("Виберіть розмір ");
+    if (color.length === 0) {
+      setColorError(true);
+    } else {
+      setColorError(false);
     }
 
-    if (color && size != "") {
-      setDisabled(false);
-      return;
-    } else return setDisabled(true);
+    if (size.length === 0) {
+      setSizeError(true);
+    } else {
+      setSizeError(false);
+    }
+
+    if (color.length > 0 && size.length > 0) {
+      setColorError(false);
+      setSizeError(false);
+      setInBasket(true);
+      return true;
+    }
   };
 
   /* SWIPER */
@@ -438,6 +451,9 @@ function Product({ valute }) {
                         })}
                         <span className={css.color_text}>{color}</span>
                       </div>
+                      {colorError && (
+                        <span className="error_form--text">Оберіть колір</span>
+                      )}
                       <div className={css.size_select}>
                         {selfItem.sizeNumm ? (
                           <form className={css.sizeForm}>
@@ -494,6 +510,9 @@ function Product({ valute }) {
                           </FormControl>
                         )}
                       </div>
+                      {sizeError && (
+                        <span className="error_form--text">Оберіть розмір</span>
+                      )}
                     </div>
                     {/* E-COMMERCE */}
                     <div className={css.commerce_box}>
@@ -548,22 +567,25 @@ function Product({ valute }) {
                           ) {
                             setInBasket(false);
                             deleteItem();
-                          } else {
-                            setInBasket(true);
-                            getToBasket(
-                              selfItem.id,
-                              selfItem.title,
-                              selfItem.rating,
-                              selfItem.price,
-                              salePrice(selfItem.price, selfItem.saleValue),
-                              selfItem.sale,
-                              selfItem.saleValue,
-                              selfItem.image,
-                              count,
-                              color,
-                              size
-                            );
+                            return;
                           }
+                          if (checkProps() != true) {
+                            return;
+                          }
+                          getToBasket(
+                            selfItem.id,
+                            selfItem.gender,
+                            selfItem.title,
+                            selfItem.rating,
+                            selfItem.price,
+                            salePrice(selfItem.price, selfItem.saleValue),
+                            selfItem.sale,
+                            selfItem.saleValue,
+                            selfItem.image,
+                            count,
+                            color,
+                            size
+                          );
                         }}
                         className={css.add_to_cart_button}
                       >
@@ -575,7 +597,6 @@ function Product({ valute }) {
                         </span>
                       </button>
                       {/* ADD TO FAVORITES */}
-
                       <button
                         onClick={() => {
                           if (isLiked == true) {

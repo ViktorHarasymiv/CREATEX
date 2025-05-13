@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Suspense, lazy } from "react";
 
 import "./App.css";
@@ -22,16 +22,19 @@ const Header = lazy(() => import("./../Header/Header/Header"));
 function App() {
   const [valute, setValute] = useState("Dollar");
   const [openSubscribe, setSubscribe] = useState(false);
+  const [changeValue, setChangeValue] = useState("All");
 
   const openSubscribePanel = () => {
     setSubscribe((prevState) => !prevState);
   };
 
+  console.log(changeValue);
+
   // useEffect(() => {
   //   setTimeout(() => {
   //     setSubscribe(true);
   //     return;
-  //   }, 1000);
+  //   }, 2000);
   // }, []);
 
   return (
@@ -59,7 +62,11 @@ function App() {
             />
           }
         >
-          <Router valute={valute} />
+          <Router
+            valute={valute}
+            filter={changeValue}
+            setFilter={setChangeValue}
+          />
         </Suspense>
       }
     </>

@@ -27,7 +27,7 @@ const Account = lazy(() => import("../Account/Account"));
 const Sale = lazy(() => import("../Sale/Sale"));
 const Wishlist = lazy(() => import("../Wishlist/Wishlist"));
 
-function Router({ valute }) {
+function Router({ valute, filter, setFilter }) {
   document.title = "Createx | Home";
   const location = useLocation();
 
@@ -62,11 +62,21 @@ function Router({ valute }) {
         {/* Page navigation */}
 
         {/* Women */}
-        <Route path="/women" element={<Women valute={valute} />} />
+        <Route
+          path="/women"
+          element={
+            <Women valute={valute} filter={filter} setFilter={setFilter} />
+          }
+        />
         <Route path="/women/:id" element={<Product valute={valute} />} />
         <Route path="/women/women_collection" element={<NewWomen />}></Route>
         {/* Men */}
-        <Route path="/men" element={<Men valute={valute} />} />
+        <Route
+          path="/men"
+          element={
+            <Men valute={valute} filter={filter} setFilter={setFilter} />
+          }
+        />
         <Route path="/men/:id" element={<Product valute={valute} />}></Route>
         <Route path="/men/men_collection" element={<NewMen />}></Route>
         {/* Kids */}
@@ -81,7 +91,12 @@ function Router({ valute }) {
 
         <Route path="/goods" element={<Goods />}></Route>
 
-        <Route path="/sale" element={<Sale valute={valute} />} />
+        <Route
+          path="/sale"
+          element={
+            <Sale valute={valute} filter={filter} setFilter={setFilter} />
+          }
+        />
         <Route path="/hot_sale" element={<Latest />} />
 
         {/* Not found page */}

@@ -14,7 +14,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import starEmpty from "./icons/StarEmpty.svg";
 import starSelect from "./icons/StarColor.svg";
 
-function WishlistItem({ data, array, valute }) {
+function WishlistItem({ data, valute }) {
   const dispatch = useDispatch();
 
   const deleteLike = (id) => {
@@ -82,7 +82,10 @@ function WishlistItem({ data, array, valute }) {
               }}
             >
               <span className="valute">{valute == "Dollar" ? "$" : "€"}</span>
-              {(changeValute(data.price) * (data.saleValue / 100)).toFixed(2)}
+              {(
+                changeValute(data.price) -
+                changeValute(data.price) * (data.saleValue / 100)
+              ).toFixed(2)}
             </span>
           )}
           <span

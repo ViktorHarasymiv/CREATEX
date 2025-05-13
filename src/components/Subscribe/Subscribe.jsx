@@ -50,8 +50,8 @@ function Subscribe({ isSubscribe, openSubscribe }) {
               {["Women", "Men", "Girls", "Boys"].map((gender) => (
                 <div key={gender}>
                   <input
-                    type="radio"
                     id={gender}
+                    type="radio"
                     name="gender"
                     value={gender}
                   />

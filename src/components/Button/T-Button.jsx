@@ -1,5 +1,3 @@
-import React from "react";
-
 import css from "./Button.module.css";
 
 function T_Button({ children }) {

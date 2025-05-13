@@ -15,3 +15,11 @@ em {
 .css-w76bbz-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
   padding: 11px 16px !important;
 }
+
+.error_form--text {
+  font-family: var(--second-family);
+  font-size: 14px;
+  color: var(--danger);
+
+  font-weight: 300;
+}

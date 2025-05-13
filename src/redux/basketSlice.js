@@ -20,9 +20,20 @@ const basketSlice = createSlice({
         ),
       };
     },
+    setAmoutAction: (state, action) => {
+      return {
+        ...state,
+        basketArr: state.basketArr.map((item) =>
+          item.id === action.payload.id
+            ? { ...item, count: action.payload.count }
+            : item
+        ),
+      };
+    },
   },
 });
 
-export const { getInBasket, deleteFromBasket } = basketSlice.actions;
+export const { getInBasket, deleteFromBasket, setAmoutAction } =
+  basketSlice.actions;
 
 export default basketSlice.reducer;

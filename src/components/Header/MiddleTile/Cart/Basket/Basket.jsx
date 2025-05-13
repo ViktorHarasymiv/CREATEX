@@ -1,14 +1,19 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteFromBasket } from "../../../../../redux/basketSlice";
+import {
+  deleteFromBasket,
+  setAmoutAction,
+} from "../../../../../redux/basketSlice";
 import Button from "../../../../Button/Button";
 
 import css from "./Modal.module.css";
 
+import { BsPlusLg } from "react-icons/bs";
+import { PiMinus } from "react-icons/pi";
+
 import { IoMdClose } from "react-icons/io";
 import { AiOutlineDelete } from "react-icons/ai";
 import { MdOutlinePayments } from "react-icons/md";
-import { Link } from "react-router-dom";
 
 function Modal({ overlay, content, closePage, valute }) {
   const dispatch = useDispatch();
@@ -18,16 +23,25 @@ function Modal({ overlay, content, closePage, valute }) {
     dispatch(deleteFromBasket(id));
   };
 
+  const changeAmout = (id, number) => {
+    dispatch(setAmoutAction({ id, count: number }));
+  };
+
+  const changeValute = (price, sale, salePrice) => {
+    if (valute == "Dollar") {
+      return sale == true ? salePrice.toFixed(2) : price.toFixed(2);
+    } else
+      return sale == true
+        ? (salePrice * 0.876).toFixed(2)
+        : (price * 0.876).toFixed(2);
+  };
+
   const totalPrice = basket.reduce(
-    (sum, { price, salePrice }) => sum + (salePrice ? salePrice : price),
+    (sum, { price, sale, salePrice, count }) =>
+      sum + (sale == true ? salePrice * count : price * count),
     0
   );
-
-  const changeValute = (price) => {
-    if (valute == "Dollar") {
-      return price.toFixed(2);
-    } else return (price * 0.876).toFixed(2);
-  };
+  console.log(basket);
 
   return (
     <div style={overlay}>
@@ -48,7 +62,9 @@ function Modal({ overlay, content, closePage, valute }) {
                 />
                 <div className={css.basket_product_info_tile}>
                   <div className={css.basket_tile_top}>
-                    <h4>{item.title}</h4>
+                    <Link to={`/${item.gender}/${item.id}`}>
+                      <h4>{item.title}</h4>
+                    </Link>
                     <button
                       onClick={() => deleteItem(item.id)}
                       className={css.basket_delete_button}
@@ -65,8 +81,40 @@ function Modal({ overlay, content, closePage, valute }) {
                     </span>
                     <span className={css.basket_product_size}>
                       Price:{" "}
-                      {(changeValute(item.price) * item.count).toFixed(2)}
+                      {(
+                        changeValute(item.price, item.sale, item.salePrice) *
+                        item.count
+                      ).toFixed(2)}
                     </span>
+                  </div>
+                  <div className={css.basket_count_product}>
+                    <div className={css.count_price_buttons}>
+                      <button
+                        className={css.custom_count_button}
+                        onClick={() => {
+                          if (item.count >= 50) {
+                            return;
+                          } else {
+                            changeAmout(item.id, item.count + 1);
+                          }
+                        }}
+                      >
+                        <BsPlusLg className={css.amout_button} />
+                      </button>
+                      <span className={css.amout_value}>{item.count}</span>
+                      <button
+                        className={css.custom_count_button}
+                        onClick={() => {
+                          if (item.count <= 1) {
+                            return;
+                          } else {
+                            changeAmout(item.id, item.count - 1);
+                          }
+                        }}
+                      >
+                        <PiMinus className={css.amout_button} />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </li>
@@ -83,7 +131,11 @@ function Modal({ overlay, content, closePage, valute }) {
               <span>{changeValute(totalPrice)}</span>
             </b>
           </div>
-          <Link onClick={closePage} to={"./checkout"}>
+          <Link
+            onClick={closePage}
+            to={"./checkout"}
+            className={css.checkout_link}
+          >
             <Button>
               <MdOutlinePayments
                 style={{ marginRight: "9px", width: "22px", height: "22px" }}

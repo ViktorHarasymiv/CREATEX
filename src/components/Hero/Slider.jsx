@@ -8,6 +8,8 @@ import css from "./Slider.module.css";
 import Button from "../Button/Button";
 import Button_T from "../Button/T-Button";
 
+const style = 229;
+
 function Slider({
   id,
   name,
@@ -52,7 +54,7 @@ function Slider({
           <h4 className={css.motivational_text}>{motivational}</h4>
           <div className={css.buttons_tile}>
             <Button_T>Shop sale</Button_T>
-            <Button>
+            <Button width={style}>
               <Link to={name}>Shop the {name}</Link>
             </Button>
           </div>

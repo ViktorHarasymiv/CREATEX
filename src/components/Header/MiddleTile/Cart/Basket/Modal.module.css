@@ -1,6 +1,5 @@
 .cart_title_tile {
   padding-inline: 24px;
-
   padding-bottom: 24px;
 
   display: flex;
@@ -59,10 +58,20 @@
 /* PRODUCTS */
 
 .basket_product_tile {
-  padding: 16px 24px;
+  position: relative;
+
+  padding-block: 16px;
+  margin-inline: 24px;
 
   display: flex;
   gap: 16px;
+
+  transition: transform 0.1s ease-in;
+}
+
+.basket_product_tile:hover {
+  transform: scale(1.03);
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 
 .basket_product_tile:not(:last-child) {
@@ -99,4 +108,56 @@
 .basket_product_checked_info span {
   font-size: 12px;
   color: var(--gray-700);
+}
+
+.checkout_link {
+  display: flex;
+  justify-content: end;
+}
+
+/* AMOUT BUTTONS */
+
+.basket_count_product {
+  position: absolute;
+
+  right: 0;
+  bottom: 16px;
+}
+
+.count_price_buttons {
+  padding: 8px 10px;
+  display: flex;
+
+  border: var(--border-light-grey);
+}
+
+.custom_count_button {
+  width: 27px;
+  height: 27px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom_count_button {
+  background: transparent;
+}
+
+.amout_value {
+  margin-inline: 10px;
+}
+
+.amout_button {
+  font-size: 22px;
+
+  color: var(--gray-900);
+}
+
+.amout_button:hover {
+  color: var(--gray-700);
+}
+
+.amout_button:active {
+  font-size: 21px;
 }
