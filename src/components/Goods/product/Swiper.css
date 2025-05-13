@@ -26,7 +26,7 @@
   padding: 20px 2px;
 
   width: 100%;
-  min-height: 160px;
+  min-height: 140px;
   height: 100%;
 
   box-sizing: border-box;
@@ -93,7 +93,6 @@
     min-width: 104px;
   }
   .mySwiperThumbs .swiper-wrapper {
-    margin-block: 4px;
     flex-direction: column;
     row-gap: 20px;
   }
@@ -113,11 +112,13 @@
   }
   .mySwiperThumbs {
     padding-block: 5px;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-left: 0;
 
     min-width: 100%;
+    min-height: 90px;
   }
+
   .mySwiperThumbs .swiper-wrapper {
     margin-left: 2px;
     overflow: auto;
@@ -135,7 +136,7 @@
   }
 
   .mySwiperThumbs .swiper-slide {
-    min-height: 120px;
+    min-height: 70px;
   }
 
   .mySwiperThumbs .swiper-slide {

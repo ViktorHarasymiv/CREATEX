@@ -44,7 +44,18 @@ const filtersArray = [
   },
   {
     filterValue: "Color",
-    filterCategory: ["White", "Black", "Browm", "Blue", "Gray", "Green"],
+    filterCategory: [
+      "White",
+      "Dimgray",
+      "Beige",
+      "Dimgray",
+      "Royalblue",
+      "Black",
+      "Browm",
+      "Blue",
+      "Gray",
+      "Green",
+    ],
   },
   {
     filterValue: "Material",

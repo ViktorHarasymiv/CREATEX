@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Suspense, lazy } from "react";
+
+import { useLocation } from "react-router-dom";
 
 import "./App.css";
 
@@ -20,15 +22,20 @@ const override = {
 
 const Header = lazy(() => import("./../Header/Header/Header"));
 function App() {
+  const location = useLocation();
   const [valute, setValute] = useState("Dollar");
   const [openSubscribe, setSubscribe] = useState(false);
   const [changeValue, setChangeValue] = useState("All");
 
+  useEffect(() => {
+    setChangeValue("All");
+  }, [location]);
+
+  console.log(location);
+
   const openSubscribePanel = () => {
     setSubscribe((prevState) => !prevState);
   };
-
-  console.log(changeValue);
 
   // useEffect(() => {
   //   setTimeout(() => {

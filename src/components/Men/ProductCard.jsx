@@ -93,7 +93,7 @@ function ProductCard({
         </Link>
         <div className={css.top_info_panel}>
           <div className={css.sale_tile}>
-            {saleValue.length > 0 && (
+            {saleValue > 0 && (
               <span className={css.sale_band}>-{saleValue}%</span>
             )}
           </div>
