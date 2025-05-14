@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-
-import { useDispatch, useSelector } from "react-redux";
-
-import { BsCart2 } from "react-icons/bs";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import css from "./Cart.module.css";
 import Modal from "./Basket/Basket";
+
+import { BsCart2 } from "react-icons/bs";
 
 const overlay = {
   zIndex: "9999",
@@ -20,7 +19,7 @@ const overlay = {
 };
 
 const content = {
-  zIndex: "9999",
+  zIndex: "99991",
   display: "flex",
   flexDirection: "column",
 
@@ -45,9 +44,11 @@ function Card({ valute }) {
   const basketSize = useSelector((state) => state.basket.basketArr);
   const [openCart, setOpenCart] = useState(false);
 
-  const openModal = () => {
-    if (openCart) {
-      setOpenCart(false);
+  const openModal = (event) => {
+    if (event.target === event.currentTarget) {
+      if (openCart) {
+        setOpenCart(false);
+      }
     } else setOpenCart(true);
   };
 
@@ -62,6 +63,7 @@ function Card({ valute }) {
           overlay={overlay}
           content={content}
           closePage={openModal}
+          setOpen={setOpenCart}
           valute={valute}
         />
       )}

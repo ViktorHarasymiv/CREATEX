@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Suspense, lazy } from "react";
 
 import { useLocation } from "react-router-dom";
@@ -23,15 +24,42 @@ const override = {
 const Header = lazy(() => import("./../Header/Header/Header"));
 function App() {
   const location = useLocation();
-  const [valute, setValute] = useState("Dollar");
+  const [valute, setValute] = useState(() => {
+    const savedValute = window.localStorage.getItem("valute");
+
+    if (savedValute !== null) {
+      return JSON.parse(savedValute);
+    }
+    return "Dollar";
+  });
+
   const [openSubscribe, setSubscribe] = useState(false);
   const [changeValue, setChangeValue] = useState("All");
+  const [sliceValue, setSliceValue] = useState(6);
+
+  /* STORAGE */
+
+  useEffect(() => {
+    localStorage.setItem("valute", JSON.stringify(valute));
+  }, [valute]);
 
   useEffect(() => {
     setChangeValue("All");
   }, [location]);
 
-  console.log(location);
+  //
+
+  const SyncReduxWithLocalStorage = () => {
+    const dataArray = useSelector((state) => state.basket.basketArr);
+
+    useEffect(() => {
+      localStorage.setItem("reduxArray", JSON.stringify(dataArray));
+    }, [dataArray]);
+
+    return null;
+  };
+
+  SyncReduxWithLocalStorage();
 
   const openSubscribePanel = () => {
     setSubscribe((prevState) => !prevState);
@@ -73,6 +101,8 @@ function App() {
             valute={valute}
             filter={changeValue}
             setFilter={setChangeValue}
+            sliceValue={sliceValue}
+            setSliceValue={setSliceValue}
           />
         </Suspense>
       }

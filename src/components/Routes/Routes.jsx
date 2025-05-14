@@ -27,7 +27,7 @@ const Account = lazy(() => import("../Account/Account"));
 const Sale = lazy(() => import("../Sale/Sale"));
 const Wishlist = lazy(() => import("../Wishlist/Wishlist"));
 
-function Router({ valute, filter, setFilter }) {
+function Router({ valute, filter, setFilter, sliceValue, setSliceValue }) {
   document.title = "Createx | Home";
   const location = useLocation();
 
@@ -65,7 +65,13 @@ function Router({ valute, filter, setFilter }) {
         <Route
           path="/women"
           element={
-            <Women valute={valute} filter={filter} setFilter={setFilter} />
+            <Women
+              valute={valute}
+              filter={filter}
+              setFilter={setFilter}
+              sliceValue={sliceValue}
+              setSliceValue={setSliceValue}
+            />
           }
         />
         <Route path="/women/:id" element={<Product valute={valute} />} />
@@ -74,13 +80,30 @@ function Router({ valute, filter, setFilter }) {
         <Route
           path="/men"
           element={
-            <Men valute={valute} filter={filter} setFilter={setFilter} />
+            <Men
+              valute={valute}
+              filter={filter}
+              setFilter={setFilter}
+              sliceValue={sliceValue}
+              setSliceValue={setSliceValue}
+            />
           }
         />
         <Route path="/men/:id" element={<Product valute={valute} />}></Route>
         <Route path="/men/men_collection" element={<NewMen />}></Route>
         {/* Kids */}
-        <Route path="/kids" element={<Kids valute={valute} />} />
+        <Route
+          path="/kids"
+          element={
+            <Kids
+              valute={valute}
+              filter={filter}
+              setFilter={setFilter}
+              sliceValue={sliceValue}
+              setSliceValue={setSliceValue}
+            />
+          }
+        />
         <Route path="/kids/:id" element={<Product valute={valute} />}></Route>
 
         {/* Media */}
@@ -94,7 +117,13 @@ function Router({ valute, filter, setFilter }) {
         <Route
           path="/sale"
           element={
-            <Sale valute={valute} filter={filter} setFilter={setFilter} />
+            <Sale
+              valute={valute}
+              filter={filter}
+              setFilter={setFilter}
+              sliceValue={sliceValue}
+              setSliceValue={setSliceValue}
+            />
           }
         />
         <Route path="/hot_sale" element={<Latest />} />

@@ -1,13 +1,15 @@
 .image_slider {
   margin-right: 24px;
   width: 530px;
-  height: 730px;
+  height: 800px;
 
   display: flex;
   flex-direction: column;
 }
 
 .mySwiper2 {
+  overflow: hidden;
+
   width: 100%;
 
   min-height: 600px;
@@ -23,27 +25,25 @@
 }
 
 .mySwiperThumbs {
-  padding: 20px 2px;
+  padding: 3px;
+  margin-top: 17px;
 
   width: 100%;
-  min-height: 140px;
-  height: 100%;
-
-  box-sizing: border-box;
-}
-
-.mySwiperThumbs img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: fill;
 }
 
 .mySwiperThumbs .swiper-slide {
+  width: 80px !important;
   opacity: 0.7;
   border-radius: 5px;
+
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.mySwiperThumbs .swiper-slide img {
+  width: 100%;
+
+  object-fit: cover;
 }
 
 .mySwiperThumbs .swiper-slide-thumb-active {

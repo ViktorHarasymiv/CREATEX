@@ -8,6 +8,7 @@
 }
 
 .product_page {
+  margin-bottom: 80px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(auto, 1fr);

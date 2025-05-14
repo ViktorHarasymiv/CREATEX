@@ -7,7 +7,7 @@ import ProductCard from "./ProductCard";
 import Filters from "../Filters/Filters";
 import Sort from "../SortModule/Sort";
 
-function Sale({ valute, filter, setFilter }) {
+function Sale({ valute, filter, setFilter, sliceValue, setSliceValue }) {
   const products = useSelector((state) => state.goods.items);
   return (
     <>
@@ -16,7 +16,11 @@ function Sale({ valute, filter, setFilter }) {
         <div className="product_wrapper">
           <Filters data={products} setFilter={setFilter} />
           <div className={style.sort_module_wrapper}>
-            <Sort setFilter={setFilter}></Sort>
+            <Sort
+              setFilter={setFilter}
+              sliceValue={sliceValue}
+              setSliceValue={setSliceValue}
+            ></Sort>
             <div className="product_page">
               {products
                 .filter(
@@ -31,6 +35,7 @@ function Sale({ valute, filter, setFilter }) {
                         sale.filter == filter
                       : sale)
                 )
+                .slice(0, sliceValue)
                 .map((saleItems) => {
                   const {
                     id,

@@ -8,7 +8,7 @@ import ProductCard from "./ProductCard";
 import Filters from "../Filters/Filters";
 import Sort from "../SortModule/Sort";
 
-function Men({ valute, filter, setFilter }) {
+function Men({ valute, filter, setFilter, sliceValue, setSliceValue }) {
   const products = useSelector((state) => state.goods.items);
 
   return (
@@ -18,7 +18,11 @@ function Men({ valute, filter, setFilter }) {
         <div className="product_wrapper">
           <Filters data={products} setFilter={setFilter} />
           <div className={style.sort_module_wrapper}>
-            <Sort setFilter={setFilter}></Sort>
+            <Sort
+              setFilter={setFilter}
+              sliceValue={sliceValue}
+              setSliceValue={setSliceValue}
+            ></Sort>
             <div className="product_page">
               {products
                 .filter(
@@ -33,6 +37,7 @@ function Men({ valute, filter, setFilter }) {
                         men.filter == filter
                       : men)
                 )
+                .slice(0, sliceValue)
                 .map((MensItems) => {
                   const {
                     id,

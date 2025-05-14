@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -15,7 +16,7 @@ import { IoMdClose } from "react-icons/io";
 import { AiOutlineDelete } from "react-icons/ai";
 import { MdOutlinePayments } from "react-icons/md";
 
-function Modal({ overlay, content, closePage, valute }) {
+function Modal({ overlay, content, closePage, setOpen, valute }) {
   const dispatch = useDispatch();
   const basket = useSelector((state) => state.basket.basketArr);
 
@@ -41,14 +42,34 @@ function Modal({ overlay, content, closePage, valute }) {
       sum + (sale == true ? salePrice * count : price * count),
     0
   );
-  console.log(basket);
+
+  /* CLOSE*/
+
+  const openModal = (event) => {
+    if (event.target === event.currentTarget) {
+      setOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [openModal]);
+
+  // BODY
 
   return (
-    <div style={overlay}>
+    <div onClick={openModal} style={overlay}>
       <div style={content}>
         <div className={css.cart_title_tile}>
           <span className={css.cart_title}>Your cart ({basket.length})</span>
-          <IoMdClose onClick={closePage} className={css.close_icon} />
+          <IoMdClose onClick={openModal} className={css.close_icon} />
         </div>
         <ul className={css.cart_items_tile}>
           {basket.map((item) => {
@@ -63,7 +84,7 @@ function Modal({ overlay, content, closePage, valute }) {
                 <div className={css.basket_product_info_tile}>
                   <div className={css.basket_tile_top}>
                     <Link to={`/${item.gender}/${item.id}`}>
-                      <h4>{item.title}</h4>
+                      <h4 onClick={openModal}>{item.title}</h4>
                     </Link>
                     <button
                       onClick={() => deleteItem(item.id)}

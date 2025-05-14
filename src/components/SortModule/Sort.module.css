@@ -18,3 +18,13 @@
   border: 1px solid var(--gray-400) !important;
   border-radius: 4px !important;
 }
+
+.sort_show_tile {
+  display: flex;
+  gap: 60px;
+}
+
+.show_input::-webkit-inner-spin-button,
+.show_input::-webkit-outer-spin-button {
+  -webkit-appearance: initial;
+}

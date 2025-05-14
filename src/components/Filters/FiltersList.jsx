@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-import FiltersOptions from "./FiltersOptions";
 import css from "./Filters.module.css";
 
 import Accordion from "@mui/material/Accordion";
@@ -23,8 +22,11 @@ const filtersArray = [
       "Shorts",
       "Jeans",
       "Boots",
-      "Bag",
     ],
+  },
+  {
+    filterValue: "Accessories",
+    filterCategory: ["Cap", "Clock", "Earrings", "Sunglasses", "Bag"],
   },
   {
     filterValue: "Size",
@@ -34,6 +36,10 @@ const filtersArray = [
       "38",
       "39",
       "40",
+      "41",
+      "42",
+      "43",
+      "44",
       "XS",
       "S",
       "M",
@@ -48,7 +54,6 @@ const filtersArray = [
       "White",
       "Dimgray",
       "Beige",
-      "Dimgray",
       "Royalblue",
       "Black",
       "Browm",
@@ -56,14 +61,6 @@ const filtersArray = [
       "Gray",
       "Green",
     ],
-  },
-  {
-    filterValue: "Material",
-    filterCategory: ["Later"],
-  },
-  {
-    filterValue: "Brand",
-    filterCategory: ["Later"],
   },
   {
     filterValue: "Price",
@@ -79,10 +76,10 @@ const filtersArray = [
 ];
 
 function FiltersList({ setFilter }) {
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(1);
 
   const handleClick = () => {
-    setExpanded((prev) => !prev);
+    setExpanded(2);
   };
 
   return (
@@ -130,7 +127,7 @@ function FiltersList({ setFilter }) {
         <Accordion style={{ boxShadow: "none" }}>
           <AccordionSummary
             onClick={handleClick}
-            expandIcon={expanded ? <HiOutlineMinus /> : <HiOutlinePlus />}
+            expandIcon={expanded == 2 ? <HiOutlineMinus /> : <HiOutlinePlus />}
             aria-controls="panel2-content"
             id="panel2-header"
           >
@@ -204,7 +201,8 @@ function FiltersList({ setFilter }) {
           </AccordionDetails>
         </Accordion>
       </li>
-      {/* <li className={css.filter_options}>
+
+      <li className={css.filter_options}>
         <Accordion style={{ boxShadow: "none" }}>
           <AccordionSummary
             onClick={handleClick}
@@ -243,6 +241,7 @@ function FiltersList({ setFilter }) {
           </AccordionDetails>
         </Accordion>
       </li>
+
       <li className={css.filter_options}>
         <Accordion style={{ boxShadow: "none" }}>
           <AccordionSummary
@@ -272,6 +271,7 @@ function FiltersList({ setFilter }) {
           </AccordionDetails>
         </Accordion>
       </li>
+      {/*
       <li className={css.filter_options}>
         <Accordion style={{ boxShadow: "none" }}>
           <AccordionSummary

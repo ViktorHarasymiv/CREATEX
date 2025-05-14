@@ -11,14 +11,8 @@ import ProductCard from "./ProductCard";
 import Filters from "../Filters/Filters";
 import Sort from "../SortModule/Sort";
 
-function Women({ valute, filter, setFilter }) {
+function Women({ valute, filter, setFilter, sliceValue, setSliceValue }) {
   const products = useSelector((state) => state.goods.items);
-
-  const filteredWomenArray = () => {
-    return products.filter(
-      (women) => women.gender == "women" && women.category == fiteredList
-    );
-  };
 
   return (
     <>
@@ -27,7 +21,11 @@ function Women({ valute, filter, setFilter }) {
         <div className="product_wrapper">
           <Filters data={products} setFilter={setFilter} />
           <div className={style.sort_module_wrapper}>
-            <Sort setFilter={setFilter}></Sort>
+            <Sort
+              setFilter={setFilter}
+              sliceValue={sliceValue}
+              setSliceValue={setSliceValue}
+            ></Sort>
             <div className="product_page">
               {products
                 .filter(
@@ -42,6 +40,7 @@ function Women({ valute, filter, setFilter }) {
                         women.filter == filter
                       : women)
                 )
+                .slice(0, sliceValue)
                 .map((womenItems) => {
                   const {
                     id,
@@ -72,6 +71,11 @@ function Women({ valute, filter, setFilter }) {
                   );
                 })}
             </div>
+            <Sort
+              setFilter={setFilter}
+              sliceValue={sliceValue}
+              setSliceValue={setSliceValue}
+            ></Sort>
           </div>
         </div>
       </div>

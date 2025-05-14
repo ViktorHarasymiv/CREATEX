@@ -283,7 +283,10 @@
   max-height: 44px;
   height: 100%;
 
+  display: flex;
+  align-items: center;
   border: var(--border-light-grey);
+  border-radius: 4px;
 }
 
 .product_count_input {
@@ -296,7 +299,7 @@
   position: absolute;
 
   top: 50%;
-  right: 16px;
+  right: 5px;
 
   transform: translateY(-50%);
 }
