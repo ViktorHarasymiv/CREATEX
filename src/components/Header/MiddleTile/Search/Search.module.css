@@ -71,8 +71,8 @@
 
   top: 44px;
 
-  width: clamp(160px, 25vw, 380px);
-  max-height: 600px;
+  width: clamp(160px, 57vw, 380px);
+  max-height: 400px;
 
   border-radius: 5px;
 
@@ -114,6 +114,8 @@
 }
 
 .filteredSearch_image {
+  width: clamp(50px, 57vw, 70px);
+  height: clamp(70px, 40vh, 90px);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .filteredSearch_info_product {

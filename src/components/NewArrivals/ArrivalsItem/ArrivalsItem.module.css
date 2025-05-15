@@ -14,16 +14,19 @@
 
 .product_image_tile {
   display: flex;
+  align-items: center;
   justify-content: center;
 
   height: 320px;
+
   position: relative;
 
-  background-color: var(--gray-100);
+  background-color: var(--gray-200);
   transition-duration: var(--transition-duration);
 }
 
 .product_image_tile img {
+  max-height: 320px;
   object-fit: cover;
 }
 

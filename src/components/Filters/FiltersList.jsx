@@ -83,7 +83,7 @@ function FiltersList({ setFilter }) {
   };
 
   return (
-    <ul>
+    <ul className={css.filters_list}>
       <li className={css.filter_options}>
         <Accordion defaultExpanded style={{ boxShadow: "none" }}>
           <AccordionSummary

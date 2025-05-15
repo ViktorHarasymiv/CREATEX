@@ -20,7 +20,7 @@ function Women({ valute, filter, setFilter, sliceValue, setSliceValue }) {
       <div className="container">
         <div className="product_wrapper">
           <Filters data={products} setFilter={setFilter} />
-          <div className={style.sort_module_wrapper}>
+          <div className="product_wrapper-sort">
             <Sort
               setFilter={setFilter}
               sliceValue={sliceValue}

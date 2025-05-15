@@ -27,6 +27,12 @@ function Search({ valute }) {
     }
   };
 
+  const handleOnBlur = (event) => {
+    const form = event.target.closest("form");
+    setInputValue("");
+    form.reset();
+  };
+
   return (
     <div className={css.search_header}>
       <form
@@ -35,6 +41,7 @@ function Search({ valute }) {
           event.preventDefault();
         }}
         onKeyDown={handleKeyDown}
+        onBlur={handleOnBlur}
         className={css.input_tile}
       >
         <input
