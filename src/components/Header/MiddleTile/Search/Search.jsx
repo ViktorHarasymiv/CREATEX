@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { useSelector } from "react-redux";
 
 import css from "./Search.module.css";
@@ -9,6 +9,7 @@ import { CiSearch } from "react-icons/ci";
 
 function Search({ valute }) {
   const product = useSelector((state) => state.goods.items);
+  const [openSearch, setOpenSearch] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
   const myRef = useRef(null);
@@ -20,17 +21,16 @@ function Search({ valute }) {
   const handleKeyDown = (event) => {
     const form = event.target.closest("form");
     if (event.key === "Escape") {
-      setInputValue("");
+      setInputValue(null);
+      setOpenSearch(false);
       form.reset();
     } else {
-      setInputValue("");
+      setInputValue(null);
     }
   };
 
-  const handleOnBlur = (event) => {
-    const form = event.target.closest("form");
-    setInputValue("");
-    form.reset();
+  const handleOnBlur = () => {
+    setOpenSearch((prev) => !prev);
   };
 
   return (
@@ -41,7 +41,7 @@ function Search({ valute }) {
           event.preventDefault();
         }}
         onKeyDown={handleKeyDown}
-        onBlur={handleOnBlur}
+        onClick={handleOnBlur}
         className={css.input_tile}
       >
         <input
@@ -54,7 +54,7 @@ function Search({ valute }) {
           <CiSearch className={css.search_icon} />
         </button>
       </form>
-      {inputValue.length > 0 && (
+      {openSearch > 0 && (
         <SearchTile
           DATA={product}
           value={inputValue}
@@ -62,6 +62,7 @@ function Search({ valute }) {
           input={myRef}
           setInputValue={setInputValue}
           close={handleKeyDown}
+          autoClose={handleOnBlur}
         />
       )}
     </div>

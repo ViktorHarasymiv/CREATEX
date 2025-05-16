@@ -22,10 +22,10 @@ function Navigation() {
         Men
       </NavLink>
       <NavLink to="/girls" className={buildLinkClass("/girls")}>
-        Girls
+        Girl
       </NavLink>
       <NavLink to="/boys" className={buildLinkClass("/boys")}>
-        Boys
+        Boy
       </NavLink>
       <NavLink to="/sale" className={buildLinkClass("/sale")}>
         Sale

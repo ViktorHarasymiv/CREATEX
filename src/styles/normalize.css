@@ -301,6 +301,7 @@ input[type="number"]::-webkit-outer-spin-button {
 /* Для Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+  color: #cfcfcf;
 }
 
 p,

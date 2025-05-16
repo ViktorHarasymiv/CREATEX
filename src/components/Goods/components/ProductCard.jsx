@@ -3,13 +3,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct, deleteProduct } from "../../redux/wishlistSlice";
+import { addProduct, deleteProduct } from "../../../redux/wishlistSlice";
 
-import "../../styles/productCard.css";
-import css from "./../NewArrivals/ArrivalsItem/ArrivalsItem.module.css";
+import "../../../styles/productCard.css";
+import css from "../../NewArrivals/ArrivalsItem/ArrivalsItem.module.css";
 
-import starEmpty from "../../icons/StarEmpty.svg";
-import starSelect from "../../icons/StarColor.svg";
+import starEmpty from "../../../icons/StarEmpty.svg";
+import starSelect from "../../../icons/StarColor.svg";
 
 import { CiHeart } from "react-icons/ci";
 import { IoMdHeart } from "react-icons/io";
@@ -18,6 +18,7 @@ function ProductCard({
   id,
   gender,
   title,
+  category,
   image,
   alt,
   ratingStart,

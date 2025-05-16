@@ -20,7 +20,6 @@
 
 .mySwiper2 img {
   width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 
@@ -48,6 +47,10 @@
 
 .mySwiperThumbs .swiper-slide-thumb-active {
   opacity: 1;
+}
+
+.mySwiperThumbs .swiper-slide {
+  height: auto !important;
 }
 
 /* ARROW */
@@ -131,22 +134,15 @@
 @media screen and (max-width: 499.98px) {
   .mySwiperThumbs {
     margin-top: 20px;
-
-    height: 75px;
   }
 
   .mySwiperThumbs .swiper-slide {
-    min-height: 70px;
-  }
-
-  .mySwiperThumbs .swiper-slide {
+    margin: 3px;
     min-width: 60px;
-    max-height: 70px;
-    height: 70px;
   }
 
   .mySwiperThumbs img {
-    min-width: 60px !important;
+    min-width: auto !important;
   }
   .mySwiper2 {
     min-height: auto;

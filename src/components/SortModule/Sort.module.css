@@ -3,6 +3,8 @@
 
   display: flex;
   flex-grow: 1;
+
+  align-self: stretch;
 }
 .sort_tile {
   display: flex;

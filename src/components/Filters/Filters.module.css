@@ -189,7 +189,7 @@
 
 @media screen and (max-width: 767.98px) {
   .filters_wrapper {
-    z-index: 9999;
+    z-index: 999;
     position: absolute;
     right: 20px;
 

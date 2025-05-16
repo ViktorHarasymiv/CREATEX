@@ -1,5 +1,5 @@
 .button_primary {
-  max-width: 229px;
+  max-width: 404px;
   width: 100%;
 
   border: 1px solid var(--primary);
@@ -30,13 +30,13 @@
   color: var(--white);
 }
 
-.button_primary:hover {
+.button_primary:active {
   color: var(--primary);
 
   background: transparent;
 }
 
-.button_primary:hover .button_context {
+.button_primary:active .button_context {
   color: var(--primary);
 }
 
@@ -59,7 +59,7 @@
     rgba(136, 136, 136, 0.15) 0px 1px 3px 1px;
 }
 
-.button_transparent:hover {
+.button_transparent:active {
   background: var(--primary);
   border-color: transparent;
 }
@@ -77,7 +77,7 @@
   color: var(--primary);
 }
 
-.button_transparent:hover .button_context_t {
+.button_transparent:active .button_context_t {
   color: var(--white);
 }
 
@@ -85,5 +85,24 @@
   .button_primary,
   .button_transparent {
     max-width: 100%;
+  }
+}
+
+@media (hover: hover) {
+  .button_primary:hover {
+    color: var(--primary);
+
+    background: transparent;
+  }
+
+  .button_primary:hover .button_context {
+    color: var(--primary);
+  }
+  .button_transparent:hover {
+    background: var(--primary);
+    border-color: transparent;
+  }
+  .button_transparent:hover .button_context_t {
+    color: var(--white);
   }
 }

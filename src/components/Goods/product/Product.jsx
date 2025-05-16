@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -48,6 +48,8 @@ import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 function Product({ valute }) {
   // REDUX
   const product = useSelector((state) => state.goods.items);
+  const kidsProduct = useSelector((state) => state.goods.kids);
+
   const wishlistArray = useSelector((state) => state.wishlist.products);
   const basket = useSelector((state) => state.basket.basketArr);
 
@@ -78,14 +80,35 @@ function Product({ valute }) {
   const [sizeError, setSizeError] = useState(false);
 
   // EFFECT
+
+  useEffect(() => {
+    if (selfItem) {
+      setInBasket(false);
+      deleteItem();
+    }
+  }, [count, size]);
+
+  useEffect(() => {
+    setThumbsSwiper(null);
+  }, [tab]);
+
+  useEffect(() => {
+    setColorError(false);
+  }, [color]);
+
+  useEffect(() => {
+    setSizeError(false);
+  }, [size]);
+
   useEffect(() => {
     const fetchProduct = () => {
       return new Promise((resolve, reject) => {
-        if (product.length === 0) {
+        if (product.length === 0 || kidsProduct.length === 0) {
           reject("Список продуктів порожній");
         } else {
           const foundItem = product.find((item) => item.id == param.id);
-          resolve(foundItem);
+          const foundItemKids = kidsProduct.find((item) => item.id == param.id);
+          resolve(foundItem || foundItemKids);
         }
       });
     };
@@ -98,7 +121,7 @@ function Product({ valute }) {
         setSelfItem(foundItem);
       })
       .catch((error) => console.error("Помилка:", error));
-  }, [param.id, product]);
+  }, [param.id, product, kidsProduct]);
 
   // TABS
   const tabs_list = ["General info", "Product details", "Reviews"];
@@ -199,13 +222,6 @@ function Product({ valute }) {
     dispatch(deleteFromBasket(selfItem.id));
   };
 
-  useEffect(() => {
-    if (selfItem) {
-      setInBasket(false);
-      deleteItem();
-    }
-  }, [count, size]);
-
   // Count price
 
   const handleChange = (event) => {
@@ -244,10 +260,6 @@ function Product({ valute }) {
   /* SWIPER */
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-
-  useEffect(() => {
-    setThumbsSwiper(null);
-  }, [tab]);
 
   return (
     <>
@@ -293,7 +305,10 @@ function Product({ valute }) {
                       {selfItem.image && selfItem.image.length > 0 ? (
                         selfItem.image.map((image, index) => (
                           <SwiperSlide key={index}>
-                            <img src={`/images/goods/${image}`} />
+                            <img
+                              src={`/images/goods/${image}`}
+                              alt={`Product ${index}`}
+                            />
                           </SwiperSlide>
                         ))
                       ) : (
@@ -449,11 +464,15 @@ function Product({ valute }) {
                             </div>
                           );
                         })}
-                        <span className={css.color_text}>{color}</span>
+                        <span className={css.color_text}>
+                          {color}
+                          {colorError && (
+                            <span className="error_form--text">
+                              Choose a color
+                            </span>
+                          )}
+                        </span>
                       </div>
-                      {colorError && (
-                        <span className="error_form--text">Оберіть колір</span>
-                      )}
                       <div className={css.size_select}>
                         {selfItem.sizeNumm ? (
                           <form className={css.sizeForm}>
@@ -486,7 +505,12 @@ function Product({ valute }) {
                             className="form_size_tile"
                           >
                             <FormHelperText className={css.label}>
-                              Size
+                              <span style={{ marginRight: "16px" }}>Size</span>
+                              {sizeError && (
+                                <span className="error_form--text">
+                                  Choose a size
+                                </span>
+                              )}
                             </FormHelperText>
                             <Select
                               className={css.select_size_tile}
@@ -510,9 +534,6 @@ function Product({ valute }) {
                           </FormControl>
                         )}
                       </div>
-                      {sizeError && (
-                        <span className="error_form--text">Оберіть розмір</span>
-                      )}
                     </div>
                     {/* E-COMMERCE */}
                     <div className={css.commerce_box}>

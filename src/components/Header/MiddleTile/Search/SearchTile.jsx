@@ -5,7 +5,7 @@ import style from "../../../NewArrivals/ArrivalsItem/ArrivalsItem.module.css";
 import css from "./Search.module.css";
 import { IoIosClose } from "react-icons/io";
 
-function SearchTile({ DATA, value, valute, input, setInputValue }) {
+function SearchTile({ DATA, value, valute, autoClose }) {
   const salePrice = (price, saleValue) => {
     return changeValute(price) - changeValute(price) * (saleValue / 100);
   };
@@ -19,8 +19,7 @@ function SearchTile({ DATA, value, valute, input, setInputValue }) {
     <div className={css.search_tile}>
       <IoIosClose
         onClick={() => {
-          setInputValue("");
-          input.current[0].value = "";
+          autoClose();
         }}
         className={css.close_modal_search}
       />
@@ -29,6 +28,7 @@ function SearchTile({ DATA, value, valute, input, setInputValue }) {
         DATA.filter((item) => item.title.toLowerCase().includes(value)).map(
           (filteredSearch) => (
             <Link
+              onClick={autoClose}
               key={filteredSearch.id}
               to={`/${filteredSearch.gender}/${filteredSearch.id}`}
               className={css.filteredSearch_link}

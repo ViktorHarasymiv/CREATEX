@@ -17,11 +17,11 @@ const New = lazy(() => import("../New/New"));
 const Men = lazy(() => import("../Men/Men"));
 const Kids = lazy(() => import("../Kids/Kids"));
 
-const Goods = lazy(() => import("../Goods/Goods"));
+const Goods = lazy(() => import("../Goods/components/Goods"));
 
 import Product from "../Goods/product/Product";
-import NewMen from "../New/NewMen";
-import NewWomen from "../New/NewWomen";
+import Boys from "../Kids/Boys";
+import Girls from "../Kids/Girls";
 
 const Account = lazy(() => import("../Account/Account"));
 const Sale = lazy(() => import("../Sale/Sale"));
@@ -75,7 +75,6 @@ function Router({ valute, filter, setFilter, sliceValue, setSliceValue }) {
           }
         />
         <Route path="/women/:id" element={<Product valute={valute} />} />
-        <Route path="/women/women_collection" element={<NewWomen />}></Route>
         {/* Men */}
         <Route
           path="/men"
@@ -90,7 +89,6 @@ function Router({ valute, filter, setFilter, sliceValue, setSliceValue }) {
           }
         />
         <Route path="/men/:id" element={<Product valute={valute} />}></Route>
-        <Route path="/men/men_collection" element={<NewMen />}></Route>
         {/* Kids */}
         <Route
           path="/kids"
@@ -105,6 +103,33 @@ function Router({ valute, filter, setFilter, sliceValue, setSliceValue }) {
           }
         />
         <Route path="/kids/:id" element={<Product valute={valute} />}></Route>
+        <Route
+          path="/boys"
+          element={
+            <Boys
+              valute={valute}
+              filter={filter}
+              setFilter={setFilter}
+              sliceValue={sliceValue}
+              setSliceValue={setSliceValue}
+            />
+          }
+        />
+        <Route path="/boys/:id" element={<Product valute={valute} />}></Route>
+
+        <Route
+          path="/girls"
+          element={
+            <Girls
+              valute={valute}
+              filter={filter}
+              setFilter={setFilter}
+              sliceValue={sliceValue}
+              setSliceValue={setSliceValue}
+            />
+          }
+        />
+        <Route path="/girls/:id" element={<Product valute={valute} />}></Route>
 
         {/* Media */}
         <Route path="/wishlist" element={<Wishlist valute={valute} />} />

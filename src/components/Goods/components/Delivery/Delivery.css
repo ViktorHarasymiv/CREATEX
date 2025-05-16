@@ -100,6 +100,13 @@
   padding: 0 0 0 18px !important;
 }
 
+@media screen and (max-width: 767.98px) {
+  .accordion_return--list,
+  .css-1lj39kh-MuiAccordionDetails-root {
+    padding: 0 !important;
+  }
+}
+
 .accordion_return--list {
   padding-top: 12px !important;
   padding-left: 20px !important;

@@ -5,10 +5,10 @@
 .wishlist_list {
   padding-block: 32px 80px;
 
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: stretch;
-  gap: 60px 30px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(220px, 285px));
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
 }
 
 .no_data_image {
