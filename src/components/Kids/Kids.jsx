@@ -4,7 +4,7 @@ import style from "./../SortModule/Sort.module.css";
 
 import HistoryBar from "../HistoryBar/HistoryBar";
 
-import ProductCard from "./ProductCard";
+import ProductCard from "../Goods/components/ProductCard";
 import Filters from "../Filters/Filters";
 import Sort from "../SortModule/Sort";
 
