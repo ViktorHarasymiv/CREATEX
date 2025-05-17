@@ -76,12 +76,12 @@
   color: var(--primary);
 }
 
-.self_product_tabs_button:hover {
+.self_product_tabs_button:active {
   color: var(--gray-300);
   background-color: var(--primary);
 }
 
-.self_product_tabs_button:hover span {
+.self_product_tabs_button:active span {
   color: var(--gray-300);
 }
 
@@ -198,9 +198,6 @@
 
 /* SIZE FORM */
 
-.size_select {
-}
-
 .sizeForm {
   display: flex;
   gap: 8px;
@@ -217,7 +214,7 @@
   align-items: center;
 }
 
-.size_item_label:hover {
+.size_item_label:active {
   border: 1px solid var(--primary);
 }
 
@@ -318,7 +315,7 @@
   width: 28px;
 }
 
-.custom_count_button:hover {
+.custom_count_button:active {
   transform: scale(1.2);
 }
 
@@ -388,7 +385,7 @@
   fill: var(--primary);
 }
 
-.favourite_button:hover {
+.favourite_button:active {
   box-shadow: var(--button-shadow);
 
   background-color: var(--primary);
@@ -396,8 +393,8 @@
   border-color: transparent;
 }
 
-.favourite_button:hover span,
-.favourite_button:hover svg {
+.favourite_button:active span,
+.favourite_button:active svg {
   color: var(--white);
 
   stroke: var(--white);
@@ -433,18 +430,18 @@
 
 /* HOVER BUTTON */
 
-.add_to_cart_button:hover {
+.add_to_cart_button:active {
   border: 1px solid var(--primary);
   background-color: transparent;
 
   box-shadow: var(--button-shadow);
 }
 
-.add_to_cart_button:hover span {
+.add_to_cart_button:active span {
   color: var(--primary);
 }
 
-.add_to_cart_button:hover svg {
+.add_to_cart_button:active svg {
   fill: var(--primary);
   stroke: var(--primary);
 }
@@ -496,5 +493,58 @@
   }
   .selfItem_article {
     text-wrap: nowrap;
+  }
+}
+
+@media (hover: hover) {
+  /* HOVER BUTTON */
+
+  .self_product_tabs_button:hover {
+    color: var(--gray-300);
+    background-color: var(--primary);
+  }
+
+  .self_product_tabs_button:hover span {
+    color: var(--gray-300);
+  }
+
+  .size_item_label:hover {
+    border: 1px solid var(--primary);
+  }
+
+  .add_to_cart_button:hover {
+    border: 1px solid var(--primary);
+    background-color: transparent;
+
+    box-shadow: var(--button-shadow);
+  }
+
+  .add_to_cart_button:hover span {
+    color: var(--primary);
+  }
+
+  .add_to_cart_button:hover svg {
+    fill: var(--primary);
+    stroke: var(--primary);
+  }
+
+  .custom_count_button:hover {
+    transform: scale(1.2);
+  }
+
+  .favourite_button:hover {
+    box-shadow: var(--button-shadow);
+
+    background-color: var(--primary);
+
+    border-color: transparent;
+  }
+
+  .favourite_button:hover span,
+  .favourite_button:hover svg {
+    color: var(--white);
+
+    stroke: var(--white);
+    fill: var(--white);
   }
 }

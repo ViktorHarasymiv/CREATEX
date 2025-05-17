@@ -10,6 +10,7 @@ import Router from "../Routes/Routes";
 
 import PuffLoader from "react-spinners/PuffLoader";
 import Subscribe from "../Subscribe/Subscribe";
+import SubscribePage from "../Subscribe/SubscribePage";
 
 /* Setup for spiner */
 const override = {
@@ -36,6 +37,7 @@ function App() {
   const [openSubscribe, setSubscribe] = useState(false);
   const [changeValue, setChangeValue] = useState("All");
   const [sliceValue, setSliceValue] = useState(6);
+  console.log(changeValue);
 
   /* STORAGE */
 
@@ -106,6 +108,7 @@ function App() {
           />
         </Suspense>
       }
+      <SubscribePage />
     </>
   );
 }

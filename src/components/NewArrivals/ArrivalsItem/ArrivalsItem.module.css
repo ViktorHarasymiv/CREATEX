@@ -1,14 +1,11 @@
-.product_tile {
-}
-
 .product_slide {
   margin-right: 0px !important;
 }
 
 .product_image_tile {
-  height: 360px;
-
   position: relative;
+
+  height: clamp(15rem, 10.87vw + 8.554rem, 21.25rem);
 
   background-color: var(--gray-100);
   transition-duration: var(--transition-duration);
@@ -129,6 +126,7 @@
 @media screen and (max-width: 539.98px) {
   .product_tile {
     margin: 0 auto;
+
     max-width: 320px;
   }
 }

@@ -196,3 +196,9 @@
   flex-direction: column;
   gap: 4px;
 }
+
+.subscribe_page {
+  display: flex;
+
+  background-color: var(--gray-200);
+}

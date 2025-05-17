@@ -194,7 +194,8 @@ td {
 /**
    Чиним баг задержки смены цвета при взаимодействии с svg-элементами
   */
-svg * {
+svg {
+  color: inherit;
   transition-property: fill, stroke;
 }
 
@@ -301,7 +302,6 @@ input[type="number"]::-webkit-outer-spin-button {
 /* Для Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
-  color: #cfcfcf;
 }
 
 p,

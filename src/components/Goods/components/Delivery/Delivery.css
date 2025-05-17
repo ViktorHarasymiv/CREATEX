@@ -95,8 +95,11 @@
   letter-spacing: 0.08em;
 }
 
-.accordion_return--list,
 .css-1lj39kh-MuiAccordionDetails-root {
+  padding: 0 !important;
+}
+
+.accordion_return--list .css-1lj39kh-MuiAccordionDetails-root {
   padding: 0 0 0 18px !important;
 }
 

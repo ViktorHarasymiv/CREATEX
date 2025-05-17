@@ -14,7 +14,7 @@ import Select from "@mui/material/Select";
 
 const sortArray = ["Popular", "New", "Interesting", "Sale", "Hot"];
 
-function Sort({ setFilter, sliceValue, setSliceValue }) {
+function Sort({ data, setFilter, sliceValue, setSliceValue }) {
   const [sort, setSort] = useState("");
 
   return (
@@ -43,37 +43,42 @@ function Sort({ setFilter, sliceValue, setSliceValue }) {
             </Select>
           </FormControl>
         </div>
-        <div className={css.sort_tile}>
-          <h4>Show</h4>
-          {/* COUNT PRICE */}
-          <div className={style.product_count_price} style={{ width: "80px" }}>
-            <span style={{ marginLeft: "23px" }}>{sliceValue}</span>
+        {data > 6 && (
+          <div className={css.sort_tile}>
+            <h4>Show</h4>
+            {/* COUNT PRICE */}
+            <div
+              className={style.product_count_price}
+              style={{ width: "80px" }}
+            >
+              <span style={{ marginLeft: "23px" }}>{sliceValue}</span>
 
-            <div className={style.count_price_buttons}>
-              <button
-                className={style.custom_count_button}
-                onClick={() => {
-                  if (sliceValue >= 21) {
-                    return;
-                  }
-                  setSliceValue(sliceValue + 3);
-                }}
-              >
-                <TiArrowSortedUp />
-              </button>
-              <button
-                className={style.custom_count_button}
-                onClick={() => {
-                  if (sliceValue <= 6) {
-                    return;
-                  } else setSliceValue(sliceValue - 3);
-                }}
-              >
-                <TiArrowSortedDown />
-              </button>
+              <div className={style.count_price_buttons}>
+                <button
+                  className={style.custom_count_button}
+                  onClick={() => {
+                    if (sliceValue >= 21) {
+                      return;
+                    }
+                    setSliceValue(sliceValue + 3);
+                  }}
+                >
+                  <TiArrowSortedUp />
+                </button>
+                <button
+                  className={style.custom_count_button}
+                  onClick={() => {
+                    if (sliceValue <= 6) {
+                      return;
+                    } else setSliceValue(sliceValue - 3);
+                  }}
+                >
+                  <TiArrowSortedDown />
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

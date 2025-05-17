@@ -2,8 +2,6 @@
   margin-bottom: 32px;
 
   display: flex;
-  flex-grow: 1;
-
   align-self: stretch;
 }
 .sort_tile {

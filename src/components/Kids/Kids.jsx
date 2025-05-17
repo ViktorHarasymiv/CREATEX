@@ -39,7 +39,8 @@ export default function Kids({
                         kids.subCategory == filter ||
                         kids.sizeNumm.includes(filter) ||
                         kids.color.includes(filter) ||
-                        kids.filter == filter
+                        kids.filter == filter ||
+                        (kids.price > filter[0] && kids.price < filter[1])
                       : kids)
                 )
                 .slice(0, sliceValue)
