@@ -159,13 +159,15 @@ function ArrivalsItem({
           <span
             style={{
               textDecoration: sale ? "line-through" : "none",
-              fontSize: sale ? "16px" : "24",
+              fontSize: sale ? "16px" : "18px",
               color: sale ? "var(--gray-700)" : "var(--gray-900)",
               fontWeight: sale ? "400" : "900",
             }}
             className={css.product_price}
           >
-            {valute == "Dollar" ? "$" : "€"}
+            <span style={{ marginRight: "5px" }}>
+              {valute == "Dollar" ? "$" : "€"}
+            </span>
             {changeValute()}
           </span>
         </div>

@@ -1,10 +1,10 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 import clsx from "clsx";
 
 import css from "./Navigation.module.css";
+import { useEffect } from "react";
 
 function Navigation() {
   const location = useLocation();
@@ -12,6 +12,10 @@ function Navigation() {
   const buildLinkClass = (localPath) => {
     return clsx(css.middle_link, location.pathname === localPath && css.active);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <nav className={css.middle_tile_nav}>

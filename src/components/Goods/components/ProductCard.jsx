@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct, deleteProduct } from "../../../redux/wishlistSlice";
 
-import "../../../styles/productCard.css";
+import "./productCard.css";
 import css from "../../NewArrivals/ArrivalsItem/ArrivalsItem.module.css";
 
 import starEmpty from "../../../icons/StarEmpty.svg";
@@ -18,7 +18,6 @@ function ProductCard({
   id,
   gender,
   title,
-  category,
   image,
   alt,
   ratingStart,

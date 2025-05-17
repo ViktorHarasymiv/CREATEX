@@ -59,7 +59,6 @@ function Modal({ overlay, content, closePage, setOpen, valute }) {
     };
 
     document.addEventListener("keydown", handleKeyDown);
-    document.body.style.height = "100vh";
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
 

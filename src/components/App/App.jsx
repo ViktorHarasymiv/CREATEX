@@ -37,7 +37,6 @@ function App() {
   const [openSubscribe, setSubscribe] = useState(false);
   const [changeValue, setChangeValue] = useState("All");
   const [sliceValue, setSliceValue] = useState(6);
-  console.log(changeValue);
 
   /* STORAGE */
 
@@ -48,6 +47,10 @@ function App() {
   useEffect(() => {
     setChangeValue("All");
   }, [location]);
+
+  // HERO OFSET
+
+  const [heroOffset, setHeroOffset] = useState(0);
 
   //
 
@@ -86,6 +89,7 @@ function App() {
         openSubscribe={openSubscribePanel}
         setValute={setValute}
         valute={valute}
+        heroOffset={heroOffset}
       />
       {
         <Suspense
@@ -105,6 +109,7 @@ function App() {
             setFilter={setChangeValue}
             sliceValue={sliceValue}
             setSliceValue={setSliceValue}
+            setHeroOffset={setHeroOffset}
           />
         </Suspense>
       }

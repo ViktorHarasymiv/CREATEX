@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+import clsx from "clsx";
 
 import css from "./MiddleTile.module.css";
+import "./scrolled.css";
 
 import Logo from "./Logo/Logo";
 import Navigation from "./Navigation/Navigation";
@@ -11,9 +14,33 @@ import Card from "./Cart/Cart";
 import Line from "./Line/Line";
 import ButtonBurger from "../../Mobile/ButtonBurger/ButtonBurger";
 
-function MiddleTile({ active, windowWidth, valute }) {
+function MiddleTile({ active, windowWidth, valute, heroOffset }) {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className={css.middle_tile_wrapper}>
+    <div
+      // className={
+      //   scrollY <= heroOffset
+      //     ? css.middle_tile_wrapper
+      //     : css.middle_tile_wrapper_scrolled
+      // }
+      className={clsx(
+        "middle_tile_wrapper",
+        scrollY >= heroOffset && "scrolled"
+      )}
+    >
       <div className="container">
         <div className={css.middle_tile}>
           <Logo />

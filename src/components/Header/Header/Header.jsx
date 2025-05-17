@@ -6,7 +6,7 @@ import UnderTile from "../UnderTile/UnderTile";
 
 import css from "./Header.module.css";
 
-function Header({ openSubscribe, setValute, valute }) {
+function Header({ openSubscribe, setValute, valute, heroOffset }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -38,6 +38,7 @@ function Header({ openSubscribe, setValute, valute }) {
         active={mobileMenu}
         windowWidth={windowWidth}
         valute={valute}
+        heroOffset={heroOffset}
       />
       <UnderTile openSubscribe={openSubscribe} />
     </header>

@@ -27,7 +27,14 @@ const Account = lazy(() => import("../Account/Account"));
 const Sale = lazy(() => import("../Sale/Sale"));
 const Wishlist = lazy(() => import("../Wishlist/Wishlist"));
 
-function Router({ valute, filter, setFilter, sliceValue, setSliceValue }) {
+function Router({
+  valute,
+  filter,
+  setFilter,
+  sliceValue,
+  setSliceValue,
+  setHeroOffset,
+}) {
   document.title = "Createx | Home";
   const location = useLocation();
 
@@ -49,7 +56,10 @@ function Router({ valute, filter, setFilter, sliceValue, setSliceValue }) {
     <>
       <Routes>
         {/* Home */}
-        <Route path="/" element={<Home valute={valute} />} />
+        <Route
+          path="/"
+          element={<Home valute={valute} setHeroOffset={setHeroOffset} />}
+        />
 
         {/* Components navigation */}
 

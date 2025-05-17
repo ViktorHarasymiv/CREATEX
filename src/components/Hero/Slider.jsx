@@ -25,21 +25,9 @@ function Slider({
   return (
     <div className={css.slider_tile}>
       <div className={css.wrapper_background}>
-        {/* {video ? (
-          <ReactPlayer
-            loop={true}
-            playing={true}
-            muted={true}
-            url={windowWidth > 599.98 ? video : videoMobile}
-            width="100vw"
-            height="100vh"
-            className={css.image_background}
-          />
-        ) : ( */}
         <img
           src={`images/slider/${image}`}
           alt={image}
-          width="100%"
           className={css.image_background}
         />
         {/* )} */}

@@ -1,9 +1,3 @@
-.middle_tile_wrapper {
-  padding-block: 20px;
-  display: flex;
-  justify-content: center;
-}
-
 .middle_tile {
   width: 100%;
   display: flex;

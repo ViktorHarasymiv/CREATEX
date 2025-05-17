@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 
 // Import Swiper React components
@@ -17,12 +17,24 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper/modules";
 import Slider from "./Slider";
 
-function Hero() {
+function Hero({ setHeroOffset }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const [mobileMenu, setMobileMenu] = useState(false);
 
   const slider = useSelector((state) => state.slider.items);
+
+  // OFFSET
+
+  const elementRef = useRef(null);
+
+  useEffect(() => {
+    if (elementRef.current) {
+      const rect = elementRef.current.getBoundingClientRect();
+      const heroHeight = rect.height.toFixed(2);
+      setHeroOffset(heroHeight);
+    }
+  }, []);
 
   const pagination = {
     clickable: true,
@@ -53,11 +65,11 @@ function Hero() {
 
   return (
     <Swiper
+      ref={elementRef}
       pagination={pagination}
       navigation={true}
       modules={[Pagination, Navigation]}
       className="hero_swiper"
-      style={{ maxHeight: "100%" }}
     >
       {slider.map(
         ({

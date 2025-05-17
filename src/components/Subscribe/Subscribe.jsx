@@ -70,7 +70,6 @@ function Subscribe({ isSubscribe, openSubscribe }) {
                 placeholder="Your working email"
                 pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
                 maxLength={30}
-                autoFocus
                 required
               />
               <Button type="submit" className={css.subscribe_button}>

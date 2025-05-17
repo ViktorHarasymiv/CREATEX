@@ -1,7 +1,6 @@
 .hero_swiper {
   position: relative;
 
-  max-height: 700px;
   height: calc(100vh - 153px);
 }
 
