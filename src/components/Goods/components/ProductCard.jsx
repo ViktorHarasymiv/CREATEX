@@ -111,24 +111,31 @@ function ProductCard({
             })}
           </div>
         </div>
-        <div className={css.favorite_tile}>
-          {wishlistID.find((itemID) => itemID == id) ? (
-            <button
-              onClick={() => deleteLike(id)}
-              className={css.favorite_button}
-            >
-              <IoMdHeart style={{ fill: "red" }} />
-            </button>
-          ) : (
-            <button
-              onClick={() =>
-                getLike(id, title, rating, price, sale, saleValue, image)
-              }
-              className={css.favorite_button}
-            >
-              <CiHeart onClick={() => setIsLiked(true)} />
-            </button>
-          )}
+        <div
+          onClick={() =>
+            wishlistID.some((itemID) => itemID == id)
+              ? deleteLike(id)
+              : getLike(id, title, rating, price, sale, saleValue, image)
+          }
+          className={css.favorite_tile}
+        >
+          <button className={css.favorite_button}>
+            {wishlistID.find((itemID) => itemID == id) ? (
+              <IoMdHeart
+                style={{
+                  fill: wishlistID.find((itemID) => itemID == id)
+                    ? "red"
+                    : "var(--primary)",
+                }}
+              />
+            ) : (
+              <CiHeart
+                style={{
+                  fill: "var(--primary)",
+                }}
+              ></CiHeart>
+            )}
+          </button>
         </div>
       </div>
       <div className={css.product_info}>

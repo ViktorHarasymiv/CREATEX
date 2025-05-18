@@ -6,8 +6,8 @@ export default function FilterButton({ click, showState }) {
   return (
     <button onClick={click} className={css.filters_button}>
       <span className={css.button_context}>
-        <TbFilterSearch style={{ marginRight: "14px" }} />
-        {showState ? "Hide filters" : "Show filters"}
+        <TbFilterSearch className={css.filters_button_icon} />
+        {showState ? "Hide filters" : ""}
       </span>
     </button>
   );

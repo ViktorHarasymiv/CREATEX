@@ -5,7 +5,7 @@ import FilterButton from "./FilterButton";
 import FiltersList from "./FiltersList";
 
 export default function Filters({ setFilter }) {
-  const [showFilter, setShowFilter] = useState(true);
+  const [showFilter, setShowFilter] = useState(false);
 
   const show = () => {
     setShowFilter((prev) => !prev);
@@ -14,7 +14,9 @@ export default function Filters({ setFilter }) {
   return (
     <div className={css.filters_wrapper}>
       <FilterButton click={show} showState={showFilter} />
-      {showFilter && <FiltersList setFilter={setFilter} />}
+      {showFilter && (
+        <FiltersList setFilter={setFilter} showFilter={showFilter} />
+      )}
     </div>
   );
 }

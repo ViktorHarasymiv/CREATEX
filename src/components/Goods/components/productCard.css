@@ -19,7 +19,7 @@
   margin-bottom: 80px;
 
   display: grid;
-  grid-template-columns: repeat(3, minmax(220px, 260px));
+  grid-template-columns: repeat(3, minmax(220px, 285px));
   grid-column-gap: 25px;
   grid-row-gap: 40px;
 }

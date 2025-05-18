@@ -38,7 +38,7 @@ function MiddleTile({ active, windowWidth, valute, heroOffset }) {
       // }
       className={clsx(
         "middle_tile_wrapper",
-        scrollY >= heroOffset && "scrolled"
+        scrollY > heroOffset && "scrolled"
       )}
     >
       <div className="container">
