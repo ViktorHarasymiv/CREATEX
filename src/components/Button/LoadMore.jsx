@@ -6,9 +6,9 @@ export default function LoadMore({ sliceValue, setSliceValue, context }) {
       setSliceValue(6);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      setTimeout(() => {
-        window.scrollBy({ top: 500, behavior: "smooth" });
-      }, 700);
+      //   setTimeout(() => {
+      //     window.scrollBy({ top: 200, behavior: "smooth" });
+      //   }, 700);
 
       setSliceValue(sliceValue + 3);
     }

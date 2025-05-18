@@ -25,7 +25,6 @@ export default function FiltersOptions({ item }) {
             {item.filterValue}
           </Typography>
         </AccordionSummary>
-
         <AccordionDetails>
           <li className={css.filter_options}>
             <ul className={css.category_filters}>

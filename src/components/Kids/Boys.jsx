@@ -74,11 +74,6 @@ export default function Kids({
                   );
                 })}
             </div>
-            <Sort
-              setFilter={setFilter}
-              sliceValue={sliceValue}
-              setSliceValue={setSliceValue}
-            ></Sort>
           </div>
         </div>
       </div>

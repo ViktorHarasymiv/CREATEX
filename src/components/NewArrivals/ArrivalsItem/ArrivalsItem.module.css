@@ -9,7 +9,6 @@
 
 .product_image_tile {
   position: relative;
-
   height: clamp(15rem, 10.87vw + 8.554rem, 21.25rem);
 
   background-color: var(--gray-200);
@@ -131,6 +130,12 @@
   }
 }
 
+@media screen and (max-width: 1089.98px) {
+  .product_image_tile {
+    height: clamp(15rem, 15vw + 15rem, 26rem);
+  }
+}
+
 @media screen and (max-width: 777.98px) {
   .product_image_tile {
     height: clamp(15rem, 15vw + 15rem, 26rem);
@@ -148,10 +153,6 @@
   }
   .product_image_tile {
     height: clamp(15rem, 15vw + 15rem, 22rem);
-  }
-
-  .product_image_tile img {
-    object-fit: contain;
   }
 
   .top_info_panel {

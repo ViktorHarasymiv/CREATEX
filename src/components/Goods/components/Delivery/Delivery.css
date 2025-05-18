@@ -35,6 +35,10 @@
   background-color: var(--gray-300) !important;
 }
 
+.css-1808mag-MuiPaper-root-MuiAccordion-root {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
 .accordion_delivery--title_tile {
   position: relative;
 }

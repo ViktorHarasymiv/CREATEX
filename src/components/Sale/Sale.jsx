@@ -6,6 +6,7 @@ import HistoryBar from "../HistoryBar/HistoryBar";
 import ProductCard from "../Goods/components/ProductCard";
 import Filters from "../Filters/Filters";
 import Sort from "../SortModule/Sort";
+import LoadMore from "../Button/LoadMore";
 
 function Sale({ valute, filter, setFilter, sliceValue, setSliceValue }) {
   const products = useSelector((state) => state.goods.items);
@@ -87,40 +88,18 @@ function Sale({ valute, filter, setFilter, sliceValue, setSliceValue }) {
                     />
                   );
                 })}
-                {filteredKidsSale.slice(0, sliceValue).map((saleItems) => {
-                  const {
-                    id,
-                    gender,
-                    title,
-                    category,
-                    image,
-                    alt,
-                    rating,
-                    saleValue,
-                    price,
-                    sale,
-                  } = saleItems;
-
-                  return (
-                    <ProductCard
-                      key={id}
-                      id={id}
-                      gender={gender}
-                      title={title}
-                      category={category}
-                      image={image}
-                      alt={alt}
-                      ratingStart={rating}
-                      saleValue={saleValue}
-                      price={price}
-                      sale={sale}
-                      valute={valute}
-                    />
-                  );
-                })}
               </div>
             ) : (
               <h4>No products found, please enter another value</h4>
+            )}
+            {saleArray.length > 6 && (
+              <LoadMore
+                sliceValue={sliceValue}
+                setSliceValue={setSliceValue}
+                context={
+                  sliceValue >= saleArray.length ? "Hide All" : "Load More"
+                }
+              />
             )}
           </div>
         </div>

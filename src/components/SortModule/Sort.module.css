@@ -4,10 +4,14 @@
   display: flex;
   align-self: stretch;
 }
-.sort_tile {
+.sort_tile,
+.sort_tile_page {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.sort_tile_page {
 }
 
 .select_size_tile {
@@ -28,4 +32,19 @@
 .show_input::-webkit-inner-spin-button,
 .show_input::-webkit-outer-spin-button {
   -webkit-appearance: initial;
+}
+
+@media screen and (max-width: 767.98px) {
+  .sort_tile {
+    align-items: start;
+    flex-direction: column;
+
+    gap: 6px;
+  }
+  .sort_tile h4 {
+    font-size: 0.8em;
+  }
+  .sort_tile_page {
+    display: none;
+  }
 }

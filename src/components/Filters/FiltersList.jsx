@@ -284,7 +284,7 @@ function FiltersList({ setFilter }) {
 
           <AccordionDetails>
             <div className={css.category_filters_range}>
-              <Box className={css.range_tile} sx={{ width: "180px" }}>
+              <Box className={css.range_tile} sx={{ width: "140px" }}>
                 <Slider
                   getAriaLabel={() => "Minimum distance"}
                   value={value1}
