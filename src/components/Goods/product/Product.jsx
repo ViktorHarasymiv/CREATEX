@@ -475,30 +475,41 @@ function Product({ valute }) {
                       </div>
                       <div className={css.size_select}>
                         {selfItem.sizeNumm ? (
-                          <form className={css.sizeForm}>
-                            {selfItem.sizeNumm.map((item, index) => {
-                              return (
-                                <label
-                                  key={index}
-                                  className={
-                                    size == item
-                                      ? css.size_item_label_active
-                                      : css.size_item_label
-                                  }
+                          <>
+                            <form className={css.sizeForm}>
+                              {selfItem.sizeNumm.map((item, index) => {
+                                return (
+                                  <label
+                                    key={index}
+                                    className={
+                                      size == item
+                                        ? css.size_item_label_active
+                                        : css.size_item_label
+                                    }
+                                  >
+                                    <span className={css.size_number}>
+                                      {item}
+                                    </span>
+
+                                    <input
+                                      type="radio"
+                                      name="size"
+                                      value={item}
+                                      onChange={handleChange}
+                                    />
+                                  </label>
+                                );
+                              })}
+                              {sizeError && (
+                                <span
+                                  style={{ marginLeft: "10px" }}
+                                  className="error_form--text"
                                 >
-                                  <span className={css.size_number}>
-                                    {item}
-                                  </span>
-                                  <input
-                                    type="radio"
-                                    name="size"
-                                    value={item}
-                                    onChange={handleChange}
-                                  />
-                                </label>
-                              );
-                            })}
-                          </form>
+                                  Choose a size
+                                </span>
+                              )}
+                            </form>
+                          </>
                         ) : (
                           <FormControl
                             sx={{ m: 1, minWidth: 120 }}

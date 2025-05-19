@@ -1,16 +1,4 @@
-/* .css-rvoa5x-MuiTypography-root-MuiDialogTitle-root {
-  padding-bottom: 5px !important;
-
-  font-weight: 900 !important;
-  line-height: 130% !important;
-
-  color: var(--gray-900) !important;
+.css-kw13he-MuiDialogContent-root {
+  padding-inline: 0 !important;
+  overflow-x: none;
 }
-
-.css-ujudvl-MuiTypography-root-MuiDialogContentText-root {
-  padding-bottom: 25px !important;
-
-  font-size: clamp(10px, 2vw, 16px) !important;
-
-  color: var(--gray-700) !important;
-} */

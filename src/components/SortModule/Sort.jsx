@@ -11,15 +11,17 @@ import { TiArrowSortedDown } from "react-icons/ti";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import Filters from "../Filters/Filters";
 
 const sortArray = ["Popular", "New", "Interesting", "Sale", "Hot"];
 
-function Sort({ data, setFilter, sliceValue, setSliceValue }) {
+function Sort({ data, setFilter, sliceValue, setSliceValue, array }) {
   const [sort, setSort] = useState("");
 
   return (
     <div className={css.sort_module_tile}>
       <div className={css.sort_show_tile}>
+        <Filters array={array} setFilter={setFilter} />
         <div className={css.sort_tile}>
           <h4>Sort by</h4>
           <FormControl sx={{ m: 1, minWidth: 120 }} className="form_size_tile">

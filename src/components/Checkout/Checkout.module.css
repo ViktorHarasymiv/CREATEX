@@ -1,0 +1,97 @@
+/* Wrapper */
+
+.checkout_wrapper {
+  width: 100%;
+  display: flex;
+  gap: 105px;
+}
+
+/* Title */
+
+.checkout_title_tile {
+  padding-block: 32px;
+
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.checkout_title {
+  font-size: 46px;
+
+  line-height: 130%;
+  color: var(--gray-900);
+}
+
+.checkout_back_link {
+  font-weight: 700;
+  font-size: 16px;
+
+  line-height: 160%;
+
+  text-decoration: underline;
+
+  color: var(--primary);
+}
+
+/* Sign tile */
+
+.checkout_sign_link_tile {
+  margin-bottom: 32px;
+  padding: 16px 20px;
+
+  display: flex;
+
+  align-items: center;
+
+  border: 1px solid rgba(23, 105, 106, 0.25);
+  border-radius: 4px;
+
+  background: rgba(23, 105, 106, 0.06);
+}
+
+.checkout_sign_in_logo {
+  margin-right: 12px;
+}
+
+.checkout_sign_link_title {
+  line-height: 160%;
+  color: var(--primary);
+}
+
+/*  */
+
+.checkout_product_tile {
+  flex: 1 1 70%;
+}
+
+.checkout_total_tile {
+  flex: 1 1 30%;
+}
+
+/* Order tile */
+
+.checkout_order_tile {
+  padding-block: 32px;
+
+  border-top: 1px solid var(--gray-300);
+}
+
+.checkout_item_title {
+  margin-bottom: 24px;
+}
+
+.checkout_item_wrapper {
+  padding-block: 24px;
+  background: var(--gray-200);
+
+  border-radius: 4px;
+}
+
+/* MEDIA */
+
+@media screen and (max-width: 767.98px) {
+  .checkout_title_tile {
+    padding-block: 16px;
+  }
+}

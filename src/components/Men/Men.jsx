@@ -30,7 +30,6 @@ function Men({ valute, filter, setFilter, sliceValue, setSliceValue }) {
       <HistoryBar></HistoryBar>
       <div className="container">
         <div className="product_wrapper">
-          <Filters data={products} setFilter={setFilter} />
           <div className="product_wrapper-sort">
             <Sort
               data={filteredMen.length}

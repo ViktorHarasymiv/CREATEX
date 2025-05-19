@@ -3,7 +3,7 @@
 }
 
 .filters_button {
-  margin-bottom: 32px;
+  width: 90px;
   height: 44px;
 
   border: 1px solid var(--primary);
@@ -111,8 +111,6 @@
   font-size: clamp(10px, 2vw, 12px);
   line-height: 1;
   color: var(--gray-800);
-
-  text-align: end;
 }
 
 .custom_checkbox {
@@ -186,14 +184,25 @@
 }
 
 .filters_list {
+  z-index: 9999;
+
+  position: absolute;
+
   width: 160px;
   transform-origin: left center;
 
+  background-color: rgba(255, 255, 255, 0.8) !important;
+
+  backdrop-filter: blur(2px);
+
   animation-name: showFilter;
-  animation-duration: 1.5s;
+  animation-duration: 0.6s;
   animation-iteration-count: 1;
 
   transition: transform cubic-bezier(0.215, 0.61, 0.355, 1);
+
+  padding: 20px 30px;
+  width: 320px;
 }
 
 @keyframes showFilter {
@@ -227,25 +236,26 @@
 
 @media screen and (max-width: 1089.98px) {
   .filters_wrapper {
-    max-width: 190px;
-
     z-index: 999;
 
     position: absolute;
-    right: 40px;
-    top: 42px;
+    right: 0;
+    top: 32px;
   }
 
   .filters_button {
-    height: 35px;
+    width: 85px;
+    height: 44px;
 
     box-shadow: none;
   }
 
   .filters_list {
-    transform: translate(-130px);
-    width: 300px;
+    padding: 20px 30px;
+    transform: translate(-230px);
+    width: 320px;
 
+    padding: 20px 30px;
     animation: none;
   }
 
@@ -254,24 +264,15 @@
   }
 }
 
-@media screen and (max-width: 1089.98px) {
+@media screen and (max-width: 767.98px) {
   .filters_wrapper {
-    max-width: 140px;
+    z-index: 999;
 
-    right: 0;
+    position: absolute;
+    top: 41px;
   }
 
   .filters_list {
-    padding: 20px 30px;
-    width: 320px;
-
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(2px);
-
-    transform: translate(-180px);
-  }
-
-  .filters_button {
-    height: 41px;
+    transform: translate(-240px);
   }
 }

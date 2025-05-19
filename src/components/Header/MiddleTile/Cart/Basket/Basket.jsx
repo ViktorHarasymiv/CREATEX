@@ -157,8 +157,10 @@ function Modal({ overlay, content, closePage, setOpen, valute }) {
             </b>
           </div>
           <Link
-            onClick={closePage}
-            to={"./checkout"}
+            onClick={() => {
+              closePage();
+            }}
+            to={"/checkout"}
             className={css.checkout_link}
           >
             <Button>
