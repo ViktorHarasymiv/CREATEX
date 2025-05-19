@@ -61,8 +61,6 @@ function Modal({ overlay, content, closePage, setOpen, valute }) {
     document.addEventListener("keydown", handleKeyDown);
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
-
-      document.body.style.height = "auto";
     };
   }, [openModal]);
 

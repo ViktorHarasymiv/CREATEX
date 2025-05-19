@@ -86,6 +86,9 @@
   background: var(--gray-200);
 
   border-radius: 4px;
+
+  display: flex;
+  flex-direction: column;
 }
 
 /* MEDIA */
