@@ -1,10 +1,15 @@
-import React, { useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import html2pdf from "html2pdf.js";
 
 import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 
+import {
+  updateOrder,
+  updateAddress,
+  updatePromo,
+} from "../../redux/orderSlice";
 import { deleteFromBasket, setAmoutAction } from "../../redux/basketSlice";
 
 import css from "./Checkout.module.css";
@@ -14,16 +19,33 @@ import { BsPlusLg } from "react-icons/bs";
 import { PiMinus } from "react-icons/pi";
 
 import { AiOutlineDelete } from "react-icons/ai";
-import { MdOutlinePayments } from "react-icons/md";
 
 import Sign_In from "./icons/Person.png";
 
 import HistoryBar from "../HistoryBar/HistoryBar";
-import PdfGenerator from "./MyOrder";
 
-function Checkout({ overlay, content, closePage, setOpen, valute }) {
+function Checkout({ valute }) {
   const dispatch = useDispatch();
+
+  /* SLICE */
+
   const basket = useSelector((state) => state.basket.basketArr);
+  const faktureFile = useSelector((state) => state.order.fakture);
+  const PROMO = useSelector((state) => state.order.promo);
+  const shippingMethod = useSelector((state) => state.order.shippingMethod);
+
+  const isFirstRender = useRef(true);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
+    if (basket.length > 0) {
+      dispatch(updateOrder({ ...basket }));
+    }
+  }, [basket]);
 
   const contentRef = useRef();
 
@@ -63,11 +85,51 @@ function Checkout({ overlay, content, closePage, setOpen, valute }) {
     0
   );
 
-  const openModal = (event) => {
-    if (event.target === event.currentTarget) {
-      setOpen(false);
+  /* SHIPPING */
+
+  const [address, setAddrees] = useState(null);
+
+  /* ADDRESS */
+  useEffect(() => {
+    if (address == null) {
+      return;
+    } else {
+      dispatch(updateAddress(address));
     }
+  }, [address]);
+
+  /* PROMO */
+  let promoName = "";
+
+  const [promoValue, setPromoValue] = useState(null);
+  const [promo, setPromo] = useState(null);
+
+  const promoChacked = () => {
+    {
+      PROMO.map((item) => {
+        if (item.name == promo) {
+          setPromoValue(item.value);
+        }
+      });
+    }
+    return;
   };
+
+  const priceWithPromo = promoValue
+    ? (
+        changeValute(totalPrice) -
+        (changeValute(totalPrice) * promoValue) / 100
+      ).toFixed(2)
+    : changeValute(totalPrice);
+
+  useEffect(() => {
+    if (promo == null) {
+      return;
+    } else {
+      promoChacked();
+      dispatch(updatePromo(promo));
+    }
+  }, [promo]);
 
   return (
     <>
@@ -115,7 +177,7 @@ function Checkout({ overlay, content, closePage, setOpen, valute }) {
                         <div className={style.basket_product_info_tile}>
                           <div className={style.basket_tile_top}>
                             <Link to={`/${item.gender}/${item.id}`}>
-                              <h4 onClick={openModal}>{item.title}</h4>
+                              <h4>{item.title}</h4>
                             </Link>
                             <button
                               onClick={() => deleteItem(item.id)}
@@ -177,21 +239,57 @@ function Checkout({ overlay, content, closePage, setOpen, valute }) {
                       </li>
                     );
                   })}
-                  <li>
-                    <h4>Subtotal : </h4>
+                  <li className={css.checkout_subtotal_price}>
+                    <h4>
+                      Subtotal : {valute == "Dollar" ? "$" : "€"}
+                      {changeValute(totalPrice)}
+                    </h4>
                   </li>
                 </ul>
-                <div className={css.checkout_subtotal_title}></div>
               </div>
               {/* Address */}
               <div className={css.checkout_item_tile}>
                 <h3 className={css.checkout_item_title}>
-                  2. Shipping & Billing Address
+                  2. Shipping & Billing Address{" "}
                 </h3>
+                <ul className={css.checkout_item_wrapper}>
+                  <li>
+                    <button
+                      onClick={() => {
+                        setAddrees({
+                          name: "Viktor",
+                          surname: "Harasymiv",
+                          telephone: "+48962982155",
+                        });
+                      }}
+                    >
+                      Set address
+                    </button>
+                  </li>
+                </ul>
               </div>
               {/* Shipping */}
               <div className={css.checkout_item_tile}>
                 <h3 className={css.checkout_item_title}>3. Shipping Method</h3>
+                <div>
+                  {shippingMethod.map(({ title, data, costs }, index) => {
+                    return (
+                      <div key={index} className={css.checkout_shipping_change}>
+                        <div className={css.checkout_shipping_radio_tile}>
+                          <input
+                            id={title}
+                            type="radio"
+                            name="method"
+                            value={title}
+                            className={css.radio_primary}
+                          />
+                          <label htmlFor={title}>{title}</label>
+                        </div>
+                        <p>{data}</p>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
               {/* Payment */}
               <div className={css.checkout_item_tile}>
@@ -200,7 +298,81 @@ function Checkout({ overlay, content, closePage, setOpen, valute }) {
             </div>
             <button onClick={generatePDF}>Завантажити PDF</button>
           </div>
-          <div className={css.checkout_total_tile}>123</div>
+          <div className={css.checkout_total_tile}>
+            <div className={css.checkout_promo_tile}>
+              <h4 className={css.checkout_promo_title}>Apply a promo code</h4>
+              <form
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  setPromoValue(null);
+                  setPromo(promoName);
+                  event.target.reset();
+                }}
+              >
+                <label htmlFor="promo" className={css.checkout_promo_label}>
+                  <input
+                    onChange={(event) => {
+                      promoName = event.target.value;
+                    }}
+                    id="promo"
+                    name="promo"
+                    type="text"
+                    placeholder="Enter promo code"
+                    className={css.checkout_promo_input}
+                  />
+                  <button>Apply</button>
+                </label>
+              </form>
+            </div>
+            <div className={css.checkout_summary_tile}>
+              <h2 className={css.checkout_summary_title}>Order totals</h2>
+              <div className={css.checkout_summary_price_tile}>
+                <p>
+                  <b className={css.checkout_summary_options}>
+                    Order total:
+                    <span>
+                      {valute == "Dollar" ? "$" : "€"}
+                      {changeValute(totalPrice)}
+                    </span>
+                  </b>
+                </p>
+                <p className={css.checkout_summary_options}>
+                  Shipping costs:{" "}
+                  <span>
+                    <PiMinus></PiMinus>
+                  </span>
+                </p>
+                <p className={css.checkout_summary_options}>
+                  Promo:{" "}
+                  <span>
+                    {PROMO.find((item) => promo === item.name) ? (
+                      promo
+                    ) : (
+                      <PiMinus />
+                    )}
+                  </span>
+                </p>
+
+                <p className={css.checkout_summary_options}>
+                  Discount:
+                  <b>
+                    {PROMO.find((item) => promo === item.name) ? (
+                      ` - ${promoValue}%`
+                    ) : (
+                      <PiMinus />
+                    )}
+                  </b>
+                </p>
+              </div>
+              <div className={css.checkout_summary_total}>
+                <h2>Order total:</h2>
+                <h3>
+                  {valute == "Dollar" ? "$" : "€"}
+                  {priceWithPromo}
+                </h3>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

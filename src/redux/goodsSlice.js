@@ -681,6 +681,6 @@ const goodsSlice = createSlice({
   reducers: {},
 });
 
-export const { setAmoutAction } = goodsSlice.actions;
+// export const { setAmoutAction } = goodsSlice.actions;
 
 export default goodsSlice.reducer;
