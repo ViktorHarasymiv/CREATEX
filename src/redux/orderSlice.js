@@ -59,8 +59,8 @@ const orderSlice = createSlice({
       state.fakture = [...state.fakture, { items: [action.payload] }];
     },
 
-    updateAddress: (state, action) => {
-      state.fakture.push({ address: action.payload });
+    updateShipping: (state, action) => {
+      state.fakture.push({ shippingInfo: action.payload });
     },
     updatePromo: (state, action) => {
       state.fakture = [...state.fakture, { promo: [action.payload] }];
@@ -68,6 +68,6 @@ const orderSlice = createSlice({
   },
 });
 
-export const { updateOrder, updateAddress, updatePromo } = orderSlice.actions;
+export const { updateOrder, updateShipping, updatePromo } = orderSlice.actions;
 
 export default orderSlice.reducer;

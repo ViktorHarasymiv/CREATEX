@@ -53,10 +53,6 @@
   color: var(--gray-800);
 }
 
-.email_label span {
-  margin-bottom: 10px;
-}
-
 .subscribe_button {
   padding-inline: 20px !important;
   height: clamp(34px, 5vw, 52px) !important;

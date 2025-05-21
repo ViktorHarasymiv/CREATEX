@@ -25,7 +25,6 @@ const override = {
 const Header = lazy(() => import("./../Header/Header/Header"));
 function App() {
   const faktureFile = useSelector((state) => state.order.fakture);
-  console.log(faktureFile);
 
   const location = useLocation();
   const [valute, setValute] = useState(() => {

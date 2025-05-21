@@ -22,14 +22,14 @@
 .css-d551zc-MuiSvgIcon-root-MuiSelect-icon {
   position: static !important;
 }
-
+/* 
 .MuiOutlinedInput-notchedOutline {
   border: none !important;
-}
+} */
 
 .css-sc8y68-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused
   .MuiOutlinedInput-notchedOutline {
-  border: none !important;
+  border-color: var(--primary) !important;
 }
 
 .select_text {

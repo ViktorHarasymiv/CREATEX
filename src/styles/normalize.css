@@ -266,7 +266,10 @@ input[type="radio"]:checked + .radio_label {
   color: white;
 }
 
-input[type="email"] {
+input[type="name"],
+input[type="email"],
+input[type="number"],
+input[type="select"] {
   width: 100%;
 
   height: clamp(34px, 5vw, 52px) !important;
@@ -281,15 +284,18 @@ input[type="email"] {
   padding: 13px 7px;
 }
 
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="select"]:focus {
+  outline: 1.5px solid var(--primary);
+}
+
 input[type="email"]::placeholder {
   font-family: var(--font-family);
   font-size: clamp(12px, 2vw, 16px) !important;
   line-height: 160%;
   color: var(--gray-600);
-}
-
-input[type="email"]:focus {
-  outline: 1px solid var(--primary);
 }
 
 /* Для Chrome, Safari, Edge, Opera */

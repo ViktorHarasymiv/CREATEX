@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import html2pdf from "html2pdf.js";
 
-import "./PDF.css";
+import "./MyOrder.css";
 
 const PdfGenerator = () => {
   const contentRef = useRef();
