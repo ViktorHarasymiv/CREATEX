@@ -191,7 +191,7 @@
   width: 160px;
   transform-origin: left center;
 
-  background-color: rgba(255, 255, 255, 0.8) !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
 
   backdrop-filter: blur(2px);
 

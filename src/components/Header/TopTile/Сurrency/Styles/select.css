@@ -1,6 +1,3 @@
-.css-hs8t5g-MuiFormControl-root {
-  margin: 0 !important;
-}
 .css-si86to-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-si86to-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-si86to-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
   padding: 0 !important;
 
@@ -34,4 +31,8 @@
 
 .select_text {
   min-width: 55px !important;
+}
+
+.css-uxvpzc {
+  padding: 0px !important;
 }

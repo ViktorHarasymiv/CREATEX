@@ -4,7 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 import * as Yup from "yup";
 import { useId } from "react";
 
-import { updateShipping, deleteShipping } from "../../../redux/orderSlice";
+import {
+  updateShipping,
+  deleteShipping,
+  updateDelivery,
+} from "../../../redux/orderSlice";
 
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -205,6 +209,7 @@ export default function AddressForm() {
                     onChange={(event) => {
                       setCountry(event.target.value);
                     }}
+                    className={style.legend_form_select}
                   >
                     <MenuItem value="">
                       <em>Choose your country</em>
@@ -237,6 +242,7 @@ export default function AddressForm() {
                       setCity(event.target.value);
                     }}
                     disabled={country.length > 0 ? false : true}
+                    className={style.legend_form_select}
                   >
                     <MenuItem value="">
                       <em>

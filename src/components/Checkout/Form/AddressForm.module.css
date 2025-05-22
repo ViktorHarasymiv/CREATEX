@@ -17,6 +17,10 @@
   color: var(--gray-800);
 }
 
+.legend_form_select_tile {
+  margin: 0px !important;
+}
+
 .legend_form_input,
 .legend_form_select_tile {
   margin-top: 10px;
@@ -25,7 +29,11 @@
   border: 1px solid var(--gray-400);
   border-radius: 4px;
   width: 355px !important;
-  height: 52px !important;
+  min-height: 52px !important;
+}
+
+.legend_form_select {
+  height: 52px;
 }
 
 .error {

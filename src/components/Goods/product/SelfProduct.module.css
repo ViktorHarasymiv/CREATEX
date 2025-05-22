@@ -234,6 +234,8 @@
   font-size: 14px !important;
   line-height: 150%;
   color: var(--gray-600) !important;
+
+  margin: 0 !important;
 }
 
 .select_size_tile {

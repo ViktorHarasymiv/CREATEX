@@ -5,7 +5,11 @@ import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { updateOrder, updatePromo } from "../../redux/orderSlice";
+import {
+  updateOrder,
+  updatePromo,
+  updateDelivery,
+} from "../../redux/orderSlice";
 import { deleteFromBasket, setAmoutAction } from "../../redux/basketSlice";
 
 import css from "./Checkout.module.css";
@@ -24,6 +28,11 @@ import AddressForm from "./Form/AddressForm";
 function Checkout({ valute }) {
   const dispatch = useDispatch();
 
+  // STATE
+
+  const [shippCost, setShippCost] = useState(0);
+  const [shippTitle, setShippTitle] = useState("");
+
   /* SLICE */
 
   const basket = useSelector((state) => state.basket.basketArr);
@@ -39,7 +48,7 @@ function Checkout({ valute }) {
     }
 
     if (basket.length > 0) {
-      dispatch(updateOrder(...basket));
+      dispatch(updateOrder(basket));
     }
   }, [basket]);
 
@@ -97,10 +106,12 @@ function Checkout({ valute }) {
 
   const priceWithPromo = promoValue
     ? (
-        changeValute(totalPrice) -
-        (changeValute(totalPrice) * promoValue) / 100
+        changeValute(isNaN(shippCost) ? totalPrice : totalPrice + shippCost) -
+        (changeValute(isNaN(shippCost) ? totalPrice : totalPrice + shippCost) *
+          promoValue) /
+          100
       ).toFixed(2)
-    : changeValute(totalPrice);
+    : changeValute(isNaN(shippCost) ? totalPrice : totalPrice + shippCost);
 
   useEffect(() => {
     if (promo == null) {
@@ -124,6 +135,23 @@ function Checkout({ valute }) {
     }
     return;
   };
+
+  // Shipping Method
+
+  const changePrice = (price) => {
+    if (typeof price === "number") {
+      if (valute == "Euro") {
+        return (price * 0.876).toFixed(2);
+      } else return price.toFixed(2);
+    } else return price;
+  };
+
+  useEffect(() => {
+    if (shippCost == null || shippCost == 0) {
+      return;
+    }
+    dispatch(updateDelivery(shippTitle));
+  }, [shippCost]);
 
   return (
     <>
@@ -249,29 +277,52 @@ function Checkout({ valute }) {
                   </h3>
                   <AddressForm />
                 </div>
-                {/* Shipping */}
+                {/* Shipping Method */}
                 <div className={css.checkout_item_tile}>
                   <h3 className={css.checkout_item_title}>
                     3. Shipping Method
                   </h3>
-                  <div>
+                  <div className={css.checkout_shipping_radio_block}>
                     {shippingMethod.map(({ title, data, costs }, index) => {
                       return (
                         <div
                           key={index}
-                          className={css.checkout_shipping_change}
+                          className={css.checkout_shipping_radio_tile}
                         >
-                          <div className={css.checkout_shipping_radio_tile}>
+                          <label
+                            htmlFor={title}
+                            className={css.checkout_shipping_radio_label}
+                          >
                             <input
+                              onChange={(event) => {
+                                setShippCost(Number(event.target.value));
+                                setShippTitle(title);
+                              }}
                               id={title}
                               type="radio"
                               name="method"
-                              value={title}
+                              value={changePrice(costs)}
                               className={css.radio_primary}
                             />
-                            <label htmlFor={title}>{title}</label>
-                          </div>
-                          <p>{data}</p>
+                            <div
+                              className={
+                                css.checkout_shipping_radio_label_context
+                              }
+                            >
+                              <h4>{title}</h4>
+                              <p className={css.shhiping_info}>{data}</p>
+                            </div>
+                          </label>
+                          <p className={css.shhiping_info_price}>
+                            {typeof costs != "number"
+                              ? ""
+                              : valute == "Dollar"
+                              ? "$"
+                              : "€"}
+                            {typeof costs === "number"
+                              ? changePrice(costs)
+                              : costs}
+                          </p>
                         </div>
                       );
                     })}
@@ -322,9 +373,7 @@ function Checkout({ valute }) {
                   </button>
                 </label>
               </form>
-              {promo != null > 0 && (
-                <span className={css.promo_error}>{error}</span>
-              )}
+              {promo && <span className={css.promo_error}>{error}</span>}
             </div>
             <div className={css.checkout_summary_tile}>
               <h2 className={css.checkout_summary_title}>Сomputation :</h2>
@@ -340,19 +389,28 @@ function Checkout({ valute }) {
                 </p>
                 <p className={css.checkout_summary_options}>
                   Shipping costs :
-                  <span>
-                    <PiMinus></PiMinus>
-                  </span>
+                  <b>
+                    {isNaN(shippCost) || shippCost == 0
+                      ? ""
+                      : valute == "Dollar"
+                      ? "$"
+                      : "€"}
+                    {isNaN(shippCost) || shippCost == 0 ? (
+                      <PiMinus></PiMinus>
+                    ) : (
+                      changePrice(shippCost)
+                    )}
+                  </b>
                 </p>
                 <p className={css.checkout_summary_options}>
                   Promo :
-                  <span>
+                  <b>
                     {PROMO.find(({ name }) => promo === name) ? (
                       promo
                     ) : (
                       <PiMinus />
                     )}
-                  </span>
+                  </b>
                 </p>
 
                 <p className={css.checkout_summary_options}>

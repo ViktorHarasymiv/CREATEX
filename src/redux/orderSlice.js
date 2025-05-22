@@ -50,13 +50,13 @@ const orderSlice = createSlice({
   },
   reducers: {
     updateOrder: (state, action) => {
-      // state.fakture = state.fakture.filter(
-      //   (fakture) =>
-      //     Array.isArray(fakture.items) &&
-      //     !fakture.items.some((item) => item.id === action.payload.id)
-      // );
+      const index = state.fakture.findIndex((item) => item.items);
 
-      state.fakture = [...state.fakture, { items: [action.payload] }];
+      if (index !== -1) {
+        state.fakture[index].items = [action.payload];
+      } else {
+        state.fakture.push({ items: [action.payload] }); // Додаємо об'єкт, якщо його ще немає
+      }
     },
 
     updateShipping: (state, action) => {
@@ -70,10 +70,25 @@ const orderSlice = createSlice({
     updatePromo: (state, action) => {
       state.fakture = [...state.fakture, { promo: [action.payload] }];
     },
+
+    updateDelivery: (state, action) => {
+      const index = state.fakture.findIndex((item) => item.delivery);
+
+      if (index !== -1) {
+        state.fakture[index].delivery = [action.payload];
+      } else {
+        state.fakture.push({ delivery: [action.payload] }); // Додаємо об'єкт, якщо його ще немає
+      }
+    },
   },
 });
 
-export const { updateOrder, updateShipping, deleteShipping, updatePromo } =
-  orderSlice.actions;
+export const {
+  updateOrder,
+  updateShipping,
+  deleteShipping,
+  updatePromo,
+  updateDelivery,
+} = orderSlice.actions;
 
 export default orderSlice.reducer;

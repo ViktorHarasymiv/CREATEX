@@ -29,7 +29,7 @@ function Currency({ setValute, valute }) {
         >
           <MenuItem value={"Dollar"}>
             <img
-              style={{ width: "20px", height: "12px", marginRight: "5px" }}
+              style={{ width: "20px", height: "12px", marginRight: "7px" }}
               src={America}
               alt="America"
             />
@@ -37,7 +37,7 @@ function Currency({ setValute, valute }) {
           </MenuItem>
           <MenuItem value={"Euro"}>
             <img
-              style={{ width: "20px", height: "12px", marginRight: "5px" }}
+              style={{ width: "20px", height: "12px", marginRight: "7px" }}
               src={Europe}
               alt="Europe"
             />
