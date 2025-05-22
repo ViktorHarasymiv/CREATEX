@@ -4,13 +4,14 @@ import { useSelector, useDispatch } from "react-redux";
 import * as Yup from "yup";
 import { useId } from "react";
 
-import { updateShipping } from "../../../redux/orderSlice";
+import { updateShipping, deleteShipping } from "../../../redux/orderSlice";
 
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 import style from "./AddressForm.module.css";
+import checkbox from "../../Subscribe/Subscribe.module.css";
 
 const initialValues = {
   firstName: "",
@@ -39,6 +40,11 @@ const OrderFormSchema = Yup.object().shape({
     .min(9, "Phone must be at least 11 characters")
     .max(12, "Phone is too long")
     .required("Phone is required"),
+  address: Yup.string()
+    .min(2, "Address must be at least 2 characters")
+    .max(30, "Address name is too long")
+    .required("Address name is required"),
+  code: Yup.string().required("Postal code is required"),
 });
 
 export default function AddressForm() {
@@ -46,11 +52,14 @@ export default function AddressForm() {
 
   const fakture = useSelector((state) => state.order.fakture);
 
+  console.log(fakture);
+
   /* SHIPPING */
 
   const [address, setAddrees] = useState(null);
 
   /* ADDRESS */
+
   useEffect(() => {
     if (address == null) {
       return;
@@ -61,6 +70,7 @@ export default function AddressForm() {
   const fieldId = useId();
 
   const handleSubmit = (values, actions) => {
+    initialValues.firstName = values.firstName;
     values.country = country;
     values.city = city;
     setAddrees(values);
@@ -74,10 +84,25 @@ export default function AddressForm() {
     (item) => item.shippingInfo
   )?.shippingInfo;
 
-  // COUNTRY
+  // COUNTRY, CITY
 
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
+
+  const deleteFormInfo = () => {
+    if (shippingInfoItem) {
+      dispatch(deleteShipping());
+      setAgree(false);
+    }
+  };
+
+  // AGREE
+
+  const [agree, setAgree] = useState(false);
+
+  const handleChange = (event) => {
+    setAgree(event.target.checked);
+  };
 
   return (
     <>
@@ -89,7 +114,7 @@ export default function AddressForm() {
         >
           <Form>
             <fieldset className={style.legend_form_tile}>
-              <legend className={style.legend_form_label}>Client Info</legend>
+              <legend className="visually-hidden">Client Info</legend>
               {/* FIRST NAME */}
               <label
                 htmlFor={`${fieldId}-firstName`}
@@ -253,11 +278,11 @@ export default function AddressForm() {
                 htmlFor={`${fieldId}-code`}
                 className={style.legend_form_input_label}
               >
-                Phone
+                Postal code
                 <Field
-                  type="number"
+                  type="text"
                   name="code"
-                  placeholder="Your ZIP code"
+                  placeholder="Your postal code"
                   className={style.legend_form_input}
                 />
                 <ErrorMessage
@@ -267,27 +292,98 @@ export default function AddressForm() {
                 />
               </label>
             </fieldset>
-            <button type="submit">Save</button>
+            <div className={style.form_actions_button}>
+              <label
+                htmlFor={`${fieldId}-agree-checkbox`}
+                className={checkbox.subscribe_checkbox}
+              >
+                <span className={checkbox.checkbox_label}>
+                  I agree to receive communications from Createx Store.
+                </span>
+                <div className={checkbox.custom_checkbox}>
+                  <input
+                    onChange={handleChange}
+                    className={checkbox.checkbox_input}
+                    type="checkbox"
+                    id={`${fieldId}-agree-checkbox`}
+                    name={`${fieldId}-agree-checkbox`}
+                    defaultChecked={agree}
+                  />
+                  <div className={checkbox.primary_checkbox}></div>
+                </div>
+              </label>
+              <button
+                type="submit"
+                className={style.form_delete_button}
+                disabled={!agree}
+              >
+                Save
+              </button>
+            </div>
           </Form>
         </Formik>
       ) : (
         shippingInfoItem && (
-          <div className={style.shipping_info_succsess_tile}>
-            <div className={style.shipping_info_tile}>
-              Full name:
-              <span>{shippingInfoItem.firstName}</span>
-              <span>{shippingInfoItem.lastName}</span>
+          <>
+            <div className={style.shipping_info_succsess_tile}>
+              <div className={style.shipping_info_tile}>
+                <div>
+                  <h5>Full name:</h5>
+                  <p className={style.shipping_info_text}>
+                    <span>
+                      {shippingInfoItem.firstName} {""}{" "}
+                      {shippingInfoItem.lastName}
+                    </span>
+                  </p>
+                </div>
+                <div>
+                  <h5>E-mail:</h5>
+                  <p className={style.shipping_info_text}>
+                    <span>{shippingInfoItem.email}</span>
+                  </p>
+                </div>
+                <div>
+                  <h5>Telephone:</h5>
+                  <p className={style.shipping_info_text}>
+                    <span>{shippingInfoItem.phone}</span>
+                  </p>
+                </div>
+              </div>
+              <div className={style.shipping_info_tile}>
+                <div>
+                  <h5>Country:</h5>
+                  <p className={style.shipping_info_text}>
+                    <span>
+                      {shippingInfoItem.country
+                        ? shippingInfoItem.country
+                        : "-"}
+                    </span>
+                  </p>
+                </div>
+                <div>
+                  <h5>City:</h5>
+                  <p className={style.shipping_info_text}>
+                    <span>
+                      {shippingInfoItem.city ? shippingInfoItem.city : "-"} (
+                      {shippingInfoItem.code})
+                    </span>
+                  </p>
+                </div>
+                <div>
+                  <h5>Street:</h5>
+                  <p className={style.shipping_info_text}>
+                    <span>{shippingInfoItem.address}</span>
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={deleteFormInfo}
+                className={style.form_delete_button}
+              >
+                Delete
+              </button>
             </div>
-            <div className={style.shipping_info_tile}>
-              <span>Telephone: {shippingInfoItem.phone}</span>
-              <span>E-mail: {shippingInfoItem.email}</span>
-            </div>
-            <div className={style.shipping_info_tile}>
-              <span>Street: {shippingInfoItem.address}</span>
-              <span>Country: {shippingInfoItem.country}</span>
-              <span>City: {shippingInfoItem.city}</span>
-            </div>
-          </div>
+          </>
         )
       )}
     </>

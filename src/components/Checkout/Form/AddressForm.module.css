@@ -1,4 +1,5 @@
 .legend_form_tile {
+  margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -7,9 +8,15 @@
 }
 
 .legend_form_input_label {
+  position: relative;
+
   display: flex;
   flex-direction: column;
+
+  line-height: 160%;
+  color: var(--gray-800);
 }
+
 .legend_form_input,
 .legend_form_select_tile {
   margin-top: 10px;
@@ -21,8 +28,17 @@
   height: 52px !important;
 }
 
+.error {
+  position: absolute;
+  bottom: -23px;
+  margin-top: 10px;
+  margin-left: 8px;
+  font-size: 13px !important;
+  color: var(--danger) !important;
+}
+
 .shipping_info_succsess_tile {
-  padding: 20px 16px;
+  padding: 30px 16px;
   background-color: var(--gray-200);
   width: 100%;
 
@@ -33,9 +49,53 @@
 .shipping_info_tile {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 15px;
+
+  flex: 1 1 50%;
 }
 
 .shipping_info_tile {
   font-size: 18px;
+}
+
+.shipping_info_text {
+  display: flex;
+  align-items: center;
+}
+
+.shipping_info_text span {
+  font-style: italic;
+
+  font-size: 15px;
+}
+
+.form_delete_button {
+  height: 100%;
+  display: inline-flex;
+  align-self: end;
+  align-items: center;
+
+  background-color: var(--primary);
+
+  color: var(--white);
+
+  font-weight: 700;
+
+  border-radius: 4px;
+
+  padding: 6px 14px;
+}
+
+.form_delete_button:disabled {
+  opacity: 0.5;
+}
+
+.form_actions_button {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form_delete_button:active {
+  color: var(--primary);
+  background-color: var(--gray-200);
 }

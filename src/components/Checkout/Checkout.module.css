@@ -125,6 +125,7 @@
 .checkout_promo_label {
   position: relative;
 }
+
 .checkout_promo_label button {
   max-width: 152px;
   min-height: 49px;
@@ -207,6 +208,12 @@
 
 .checkout_summary_options:not(:last-child) {
   margin-bottom: 4px;
+}
+
+.promo_error {
+  margin: 10px 0px 0px 10px;
+  font-weight: 700;
+  color: var(--primary);
 }
 
 /* SHIPPING */

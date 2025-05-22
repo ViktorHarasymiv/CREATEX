@@ -81,7 +81,7 @@
 
   display: flex;
 
-  align-items: center;
+  align-items: end;
 }
 
 .checkbox_label {
@@ -98,8 +98,6 @@
 
 .custom_checkbox {
   position: absolute;
-
-  top: 0;
 
   width: 16px;
   height: 16px;

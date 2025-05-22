@@ -47,3 +47,17 @@
   --button-shadow: rgba(20, 39, 15, 0.25) 0px 2px 5px -1px,
     rgba(20, 39, 15, 0.25) 0px 1px 3px -1px;
 }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
