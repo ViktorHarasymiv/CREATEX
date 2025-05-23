@@ -1,5 +1,5 @@
 #pdf-content {
-  font-family: "Courier New", Courier, monospace;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   word-spacing: normal;
   letter-spacing: normal;
   line-height: 2.5;
@@ -18,19 +18,27 @@ h3 {
 
 .fakture_wrapper {
   margin: 80px;
-  width: 100%;
 
-  padding: 50px 30px;
+  width: 90%;
+
+  padding: 30px 30px 60px 30px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+
 .fakture_content {
+  height: 1045px;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .fakture_content--data {
-  margin-bottom: 32px;
+  font-size: 12px;
+  margin-bottom: 80px;
 }
 
 .fakture_title {
+  font-size: 24px;
   text-decoration: underline;
 }
 
@@ -70,16 +78,86 @@ h3 {
 /* TABLE */
 
 .fakture_table {
-  margin: 80px 0px;
+  flex-shrink: 1;
+  margin: 80px 0px 40px;
   width: 100%;
 
-  background-color: var(--gray-200);
+  background-color: var(--gray-300);
 }
 
 .fakture_table--body {
-  background-color: var(--gray-200);
+  background-color: var(--gray-300);
+}
+
+th {
+  text-align: center;
+
+  border-right: 1px solid #fff;
 }
 
 .fakture_table--body td {
+  border-top: 1px solid #fff;
+
+  border-right: 1px solid #fff;
+  font-size: 12px;
   text-align: center;
+}
+
+.fakture_summary {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+
+  flex-grow: 1;
+}
+
+.fakture_total_price {
+  font-size: 25px;
+  text-decoration: underline;
+
+  margin-bottom: 70px;
+}
+
+.signature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 13px;
+}
+
+.fakture_signature {
+  padding-inline: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fakture_table--summary {
+  padding: 10px 20px;
+
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+
+  gap: 60px;
+
+  background-color: var(--gray-300);
+}
+
+.fakture_details {
+  line-height: 1.5;
+  display: flex;
+  gap: 60px;
+}
+
+.fakture_details-block {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.fakture_details-block span {
+  font-size: 12px;
 }

@@ -7,6 +7,7 @@ import {
   updatePromo,
   updateDelivery,
   updatePayMehod,
+  updateOtherValues,
 } from "../../redux/orderSlice";
 
 import { deleteFromBasket, setAmoutAction } from "../../redux/basketSlice";
@@ -49,7 +50,7 @@ function Checkout({ valute }) {
     }
 
     if (basket.length > 0) {
-      dispatch(updateOrder(basket));
+      dispatch(updateOrder([...basket]));
     }
   }, [basket]);
 
@@ -149,6 +150,14 @@ function Checkout({ valute }) {
     }
     dispatch(updatePayMehod(pay));
   }, [pay]);
+
+  function updateFakture() {
+    dispatch(
+      updateOtherValues([
+        [promoValue, +priceWithPromo, totalPrice, [shippCost, shippTitle]],
+      ])
+    );
+  }
 
   return (
     <>
@@ -468,6 +477,7 @@ function Checkout({ valute }) {
             </div>
             <Link to={"/checkout/order"}>
               <button
+                onClick={updateFakture}
                 disabled={fakture.length < 1}
                 className={css.form_complete_button}
               >

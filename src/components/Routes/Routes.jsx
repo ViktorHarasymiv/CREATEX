@@ -145,7 +145,7 @@ function Router({
         {/* Media */}
         <Route path="/wishlist" element={<Wishlist valute={valute} />} />
         <Route path="/checkout" element={<Checkout valute={valute} />} />
-        <Route path="/checkout/:id" element={<Order />} />
+        <Route path="/checkout/:id" element={<Order valute={valute} />} />
 
         {/* E-Commerce */}
 

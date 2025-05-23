@@ -29,7 +29,7 @@ const orderSlice = createSlice({
       {
         title: "Pick up from store",
         data: `Pick up on${addDays(data, 1).toLocaleDateString()} from 12:00`,
-        costs: "Free",
+        costs: 0,
       },
       {
         title: "UPS Ground Shipping",
@@ -109,6 +109,10 @@ const orderSlice = createSlice({
         state.fakture.push({ payMethod: [action.payload] });
       }
     },
+
+    updateOtherValues: (state, action) => {
+      state.fakture = [...state.fakture, { values: action.payload }];
+    },
   },
 });
 
@@ -119,6 +123,7 @@ export const {
   updatePromo,
   updateDelivery,
   updatePayMehod,
+  updateOtherValues,
 } = orderSlice.actions;
 
 export default orderSlice.reducer;

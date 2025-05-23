@@ -7,11 +7,13 @@ import { useSelector } from "react-redux";
 
 import Logo from "../../Header/MiddleTile/icons/logo.png";
 
-const PdfGenerator = () => {
+const PdfGenerator = ({ valute }) => {
   const contentRef = useRef();
 
   // DATA
   const fakture = useSelector((state) => state.order.fakture);
+
+  const VAT = 0.2;
 
   console.log(fakture);
 
@@ -29,6 +31,12 @@ const PdfGenerator = () => {
       .save();
   };
 
+  const changeValute = (price) => {
+    if (valute == "Dollar") {
+      return price.toFixed(2);
+    } else return (price * 0.876).toFixed(2);
+  };
+
   const randomNumbers = Array.from({ length: 1 }, () =>
     Math.floor(1000 + Math.random() * 9000)
   );
@@ -40,6 +48,10 @@ const PdfGenerator = () => {
   }.${currentDate.getFullYear()}`;
 
   const currentTime = new Date().toLocaleTimeString();
+
+  const shippSumm = fakture
+    .find((item) => Array.isArray(item.values))
+    ?.values.map((element) => element[3][0]);
 
   return (
     <>
@@ -92,9 +104,15 @@ const PdfGenerator = () => {
                 <thead>
                   <tr>
                     <th>№</th>
-                    <th>Назва товару</th>
-                    <th>Ціна (грн)</th>
-                    <th>Кількість</th>
+                    <th>Product name</th>
+                    <th>Parameters</th>
+
+                    <th>
+                      Price per product ( {valute == "Dollar" ? "$" : "€"})
+                    </th>
+                    <th>Price brutto ( {valute == "Dollar" ? "$" : "€"})</th>
+                    <th>Price netto ( {valute == "Dollar" ? "$" : "€"})</th>
+                    <th>Amount</th>
                   </tr>
                 </thead>
                 <tbody className="fakture_table--body">
@@ -105,34 +123,155 @@ const PdfGenerator = () => {
                         <tr key={index}>
                           <td>{index + 1}</td>
                           <td>{element.title}</td>
-                          <td>{element.price}</td>
+                          <td>
+                            <span>Color: {element.color}</span>
+                            <br />
+                            <span>Size: {element.size}</span>
+                          </td>
+                          <td>{changeValute(element.price)}</td>
+                          <td>{changeValute(element.price * element.count)}</td>
+                          <td>
+                            {changeValute(
+                              element.price * element.count -
+                                element.price * element.count * VAT
+                            )}
+                          </td>
                           <td>{element.count}</td>
                         </tr>
                       ))}
                 </tbody>
               </table>
-              {/* ShippingInfo */}
-              {fakture.length > 0 &&
-                fakture
-                  .find((item) => Array.isArray(item.shippingInfo))
-                  ?.shippingInfo.map((element, index) => (
-                    <p key={index}>{element.firstName}</p>
-                  ))}
-              {/* Delivery */}
-              {fakture.length > 0 &&
-                fakture
-                  .find((item) => Array.isArray(item.delivery))
-                  ?.delivery.map((element, index) => (
-                    <p key={index}>{element}</p>
-                  ))}
+
+              <div className="fakture_table--summary">
+                <div className="fakture_details">
+                  <p className="fakture_details-block">
+                    <span>Promo code :</span>
+                    {fakture.length > 0
+                      ? fakture
+                          .find((item) => Array.isArray(item.promo))
+                          ?.promo.map((element, index) => (
+                            <span key={index}>{element}</span>
+                          ))
+                      : "-"}
+                  </p>
+                  <p className="fakture_details-block">
+                    <span>Sale value :</span>
+                    {fakture.length > 0
+                      ? fakture
+                          .find((item) => Array.isArray(item.values))
+                          ?.values.map((element, index) => (
+                            <span key={index}>
+                              {element[0] != null ? element[0] + "%" : "-"}{" "}
+                            </span>
+                          ))
+                      : "-"}
+                  </p>
+                  <p className="fakture_details-block">
+                    <span>Sale sum : </span>
+                    <span>
+                      {fakture.length > 0
+                        ? fakture
+                            .find((item) => Array.isArray(item.values))
+                            ?.values.map((element, index) => (
+                              <span key={index}>
+                                {element[0] !== null
+                                  ? changeValute(
+                                      element[2] - (element[1] - shippSumm[0])
+                                    )
+                                  : "-"}{" "}
+                              </span>
+                            ))
+                        : "-"}
+                    </span>
+                  </p>
+
+                  <p className="fakture_details-block">
+                    <span>Delivery : </span>
+                    <span>
+                      {fakture.length > 0 &&
+                        fakture
+                          .find((item) => Array.isArray(item.delivery))
+                          ?.delivery.map((element, index) => (
+                            <p key={index}>{element}</p>
+                          ))}{" "}
+                      ({changeValute(+shippSumm)}
+                      {valute == "Dollar" ? "$" : "€"})
+                    </span>
+                  </p>
+                </div>
+                <div className="fakture_details">
+                  <p className="fakture_details-block">
+                    <span>Tax :</span>
+
+                    <span>{VAT * 100}%</span>
+                  </p>
+                  <p className="fakture_details-block">
+                    <span>Brutto : </span>
+                    <span>
+                      {fakture.length > 0
+                        ? fakture
+                            .find((item) => Array.isArray(item.values))
+                            ?.values.map((element, index) => (
+                              <span key={index}>
+                                {changeValute(+element[2])}{" "}
+                                {valute == "Dollar" ? "$" : "€"}
+                              </span>
+                            ))
+                        : "-"}
+                    </span>
+                  </p>
+                  <p className="fakture_details-block">
+                    <span>Netto : </span>
+                    <span>
+                      {fakture.length > 0
+                        ? fakture
+                            .find((item) => Array.isArray(item.values))
+                            ?.values.map((element, index) => (
+                              <span key={index}>
+                                {changeValute(element[2] - element[2] * VAT)}{" "}
+                                {valute == "Dollar" ? "$" : "€"}
+                              </span>
+                            ))
+                        : "-"}
+                    </span>
+                  </p>
+                </div>
+              </div>
 
               {/* Payment Method */}
+
               {fakture.length > 0 &&
                 fakture
                   .find((item) => Array.isArray(item.payMethod))
                   ?.payMethod.map((element, index) => (
-                    <p key={index}>{element}</p>
+                    <span style={{ marginLeft: "30px" }} key={index}>
+                      Pay method : {element}
+                    </span>
                   ))}
+
+              <div className="fakture_summary">
+                {fakture.length > 0 &&
+                  fakture
+                    .find((item) => Array.isArray(item.values))
+                    ?.values.map((element, index) => (
+                      <h3 className="fakture_total_price" key={index}>
+                        To be paid : {changeValute(element[1])}
+                        {valute == "Dollar" ? "$" : "€"}
+                      </h3>
+                    ))}
+              </div>
+              <div className="fakture_signature">
+                <div className="seller_signature signature">
+                  <span>CREATEX CO.</span>
+                  <span>_______________________________</span>
+                  <p>Seller's signature</p>
+                </div>
+                <div className="buyer_signature signature">
+                  <span style={{ opacity: "0" }}>...</span>
+                  <span>_______________________________</span>
+                  <p>Recipient's signature</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -81,7 +81,6 @@ export default function AddressForm() {
   const shippingInfoItem = fakture.find(
     (item) => item.shippingInfo
   )?.shippingInfo;
-  console.log(shippingInfoItem);
 
   // COUNTRY, CITY
 
