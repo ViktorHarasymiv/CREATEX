@@ -1,0 +1,85 @@
+#pdf-content {
+  font-family: "Courier New", Courier, monospace;
+  word-spacing: normal;
+  letter-spacing: normal;
+  line-height: 2.5;
+}
+
+h1,
+h2,
+h3 {
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* FAKTURE */
+
+/* TITLE */
+
+.fakture_wrapper {
+  margin: 80px;
+  width: 100%;
+
+  padding: 50px 30px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.fakture_content {
+}
+
+.fakture_content--data {
+  margin-bottom: 32px;
+}
+
+.fakture_title {
+  text-decoration: underline;
+}
+
+.fakture_content--title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.info_firm--title_tile {
+  flex: 1 1 50%;
+}
+
+.second_info_tile {
+  margin-left: 300px;
+}
+.fakture_content--info_firm {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info_firm--title {
+  margin: 0px;
+
+  line-height: 1.5;
+}
+
+.info_firm {
+  display: flex;
+  flex-direction: column;
+}
+
+.info_firm span {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* TABLE */
+
+.fakture_table {
+  margin: 80px 0px;
+  width: 100%;
+
+  background-color: var(--gray-200);
+}
+
+.fakture_table--body {
+  background-color: var(--gray-200);
+}
+
+.fakture_table--body td {
+  text-align: center;
+}

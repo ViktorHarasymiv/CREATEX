@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import "./Delivery.css";
 
@@ -14,9 +14,9 @@ import { FaFacebookF } from "react-icons/fa6";
 import { BsTwitterX } from "react-icons/bs";
 import { TfiInstagram } from "react-icons/tfi";
 
-import VISA from "./images/visa.png";
-import MASTERCARD from "./images/master-card.png";
-import PAYPAL from "./images/pay-pal.png";
+import VISA from "../../../../../public/icons/visa.png";
+import MASTERCARD from "../../../../../public/icons/master-card.png";
+import PAYPAL from "../../../../../public/icons/pay-pal.png";
 
 function Delivery() {
   const deliveryOptions = [

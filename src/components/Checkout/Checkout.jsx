@@ -1,15 +1,14 @@
 import { useState, useRef, useEffect } from "react";
-import html2pdf from "html2pdf.js";
-
 import { Link } from "react-router-dom";
-
 import { useDispatch, useSelector } from "react-redux";
 
 import {
   updateOrder,
   updatePromo,
   updateDelivery,
+  updatePayMehod,
 } from "../../redux/orderSlice";
+
 import { deleteFromBasket, setAmoutAction } from "../../redux/basketSlice";
 
 import css from "./Checkout.module.css";
@@ -36,8 +35,10 @@ function Checkout({ valute }) {
   /* SLICE */
 
   const basket = useSelector((state) => state.basket.basketArr);
+  const fakture = useSelector((state) => state.order.fakture);
   const PROMO = useSelector((state) => state.order.promo);
   const shippingMethod = useSelector((state) => state.order.shippingMethod);
+  const paymantMethod = useSelector((state) => state.order.paymantMethod);
 
   const isFirstRender = useRef(true);
 
@@ -51,21 +52,6 @@ function Checkout({ valute }) {
       dispatch(updateOrder(basket));
     }
   }, [basket]);
-
-  const contentRef = useRef();
-
-  const generatePDF = () => {
-    html2pdf()
-      .set({
-        margin: [10, 10, 10, 10],
-        filename: "styled-document.pdf",
-        image: { type: "jpeg", quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-      })
-      .from(contentRef.current)
-      .save();
-  };
 
   const deleteItem = (id) => {
     dispatch(deleteFromBasket(id));
@@ -153,6 +139,17 @@ function Checkout({ valute }) {
     dispatch(updateDelivery(shippTitle));
   }, [shippCost]);
 
+  // PAY METHOD
+
+  const [pay, setPay] = useState(null);
+
+  useEffect(() => {
+    if (pay == null) {
+      return;
+    }
+    dispatch(updatePayMehod(pay));
+  }, [pay]);
+
   return (
     <>
       <HistoryBar></HistoryBar>
@@ -187,7 +184,7 @@ function Checkout({ valute }) {
                 {/* Item */}
                 <div className={css.checkout_item_tile}>
                   <h3 className={css.checkout_item_title}>1. Item Review</h3>
-                  <ul ref={contentRef} className={css.checkout_item_wrapper}>
+                  <ul className={css.checkout_item_wrapper}>
                     {basket.map((item) => {
                       return (
                         <li key={item.id} className={style.basket_product_tile}>
@@ -331,9 +328,46 @@ function Checkout({ valute }) {
                 {/* Payment */}
                 <div className={css.checkout_item_tile}>
                   <h3 className={css.checkout_item_title}>4. Payment Method</h3>
+                  <div className={css.checkout_shipping_payment_block}>
+                    {paymantMethod.map(({ title, icon }, index) => {
+                      return (
+                        <div
+                          key={index}
+                          className={css.checkout_shipping_payment_tile}
+                        >
+                          <label
+                            htmlFor={title}
+                            className={css.checkout_shipping_radio_label}
+                          >
+                            <input
+                              onChange={(event) => {
+                                setPay(event.target.value);
+                              }}
+                              id={title}
+                              type="radio"
+                              name="pay"
+                              value={title}
+                              className={css.radio_primary}
+                            />
+                            <h4>{title}</h4>
+                          </label>
+                          <div className={css.checkout_shipping_payment_icons}>
+                            {Object.values(icon).map((ico, index) => {
+                              return (
+                                <img
+                                  key={index}
+                                  src={`/icons${ico}`}
+                                  alt="Credit card"
+                                />
+                              );
+                            })}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
-              <button onClick={generatePDF}>Завантажити PDF</button>
             </div>
           ) : (
             <h2 style={{ textDecoration: "underline", paddingBlock: 150 }}>
@@ -376,7 +410,7 @@ function Checkout({ valute }) {
               {promo && <span className={css.promo_error}>{error}</span>}
             </div>
             <div className={css.checkout_summary_tile}>
-              <h2 className={css.checkout_summary_title}>Сomputation :</h2>
+              <h2 className={css.checkout_summary_title}>Computation :</h2>
               <div className={css.checkout_summary_price_tile}>
                 <p>
                   <b className={css.checkout_summary_options}>
@@ -432,6 +466,14 @@ function Checkout({ valute }) {
                 </h3>
               </div>
             </div>
+            <Link to={"/checkout/order"}>
+              <button
+                disabled={fakture.length < 1}
+                className={css.form_complete_button}
+              >
+                Complete order
+              </button>
+            </Link>
           </div>
         </div>
       </div>

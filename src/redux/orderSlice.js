@@ -47,26 +47,45 @@ const orderSlice = createSlice({
         costs: 15.0,
       },
     ],
+    paymantMethod: [
+      {
+        title: "Credit card",
+        icon: {
+          master: "/master-card.png",
+          visa: "/visa.png",
+        },
+      },
+      {
+        title: "PayPal",
+        icon: { payPal: "/pay-pal.png" },
+      },
+      {
+        title: "Cash on delivery",
+        icon: {},
+      },
+    ],
   },
   reducers: {
     updateOrder: (state, action) => {
       const index = state.fakture.findIndex((item) => item.items);
 
       if (index !== -1) {
-        state.fakture[index].items = [action.payload];
+        state.fakture[index].items = action.payload;
       } else {
-        state.fakture.push({ items: [action.payload] }); // Додаємо об'єкт, якщо його ще немає
+        state.fakture.push({ items: action.payload });
       }
     },
 
     updateShipping: (state, action) => {
-      state.fakture.push({ shippingInfo: action.payload });
+      state.fakture.push({ shippingInfo: [action.payload] });
     },
+
     deleteShipping: (state, action) => {
       state.fakture = state.fakture.filter(
         (item) => item.shippingInfo == action.payload
       );
     },
+
     updatePromo: (state, action) => {
       state.fakture = [...state.fakture, { promo: [action.payload] }];
     },
@@ -77,7 +96,17 @@ const orderSlice = createSlice({
       if (index !== -1) {
         state.fakture[index].delivery = [action.payload];
       } else {
-        state.fakture.push({ delivery: [action.payload] }); // Додаємо об'єкт, якщо його ще немає
+        state.fakture.push({ delivery: [action.payload] });
+      }
+    },
+
+    updatePayMehod: (state, action) => {
+      const index = state.fakture.findIndex((item) => item.payMethod);
+
+      if (index !== -1) {
+        state.fakture[index].payMethod = [action.payload];
+      } else {
+        state.fakture.push({ payMethod: [action.payload] });
       }
     },
   },
@@ -89,6 +118,7 @@ export const {
   deleteShipping,
   updatePromo,
   updateDelivery,
+  updatePayMehod,
 } = orderSlice.actions;
 
 export default orderSlice.reducer;

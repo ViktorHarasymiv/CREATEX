@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 
 import NotFound from "../NotFound/NotFound";
 import Checkout from "../Checkout/Checkout";
+import Order from "../Checkout/MyOrder/Order";
 import Latest from "../Latest/Latest";
 
 const Home = lazy(() => import("../Home/Home"));
@@ -144,6 +145,7 @@ function Router({
         {/* Media */}
         <Route path="/wishlist" element={<Wishlist valute={valute} />} />
         <Route path="/checkout" element={<Checkout valute={valute} />} />
+        <Route path="/checkout/:id" element={<Order />} />
 
         {/* E-Commerce */}
 

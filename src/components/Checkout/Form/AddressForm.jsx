@@ -4,11 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as Yup from "yup";
 import { useId } from "react";
 
-import {
-  updateShipping,
-  deleteShipping,
-  updateDelivery,
-} from "../../../redux/orderSlice";
+import { updateShipping, deleteShipping } from "../../../redux/orderSlice";
 
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -56,8 +52,6 @@ export default function AddressForm() {
 
   const fakture = useSelector((state) => state.order.fakture);
 
-  console.log(fakture);
-
   /* SHIPPING */
 
   const [address, setAddrees] = useState(null);
@@ -87,6 +81,7 @@ export default function AddressForm() {
   const shippingInfoItem = fakture.find(
     (item) => item.shippingInfo
   )?.shippingInfo;
+  console.log(shippingInfoItem);
 
   // COUNTRY, CITY
 
@@ -337,21 +332,21 @@ export default function AddressForm() {
                   <h5>Full name:</h5>
                   <p className={style.shipping_info_text}>
                     <span>
-                      {shippingInfoItem.firstName} {""}{" "}
-                      {shippingInfoItem.lastName}
+                      {address.firstName}
+                      {address.lastName}
                     </span>
                   </p>
                 </div>
                 <div>
                   <h5>E-mail:</h5>
                   <p className={style.shipping_info_text}>
-                    <span>{shippingInfoItem.email}</span>
+                    <span>{address.email}</span>
                   </p>
                 </div>
                 <div>
                   <h5>Telephone:</h5>
                   <p className={style.shipping_info_text}>
-                    <span>{shippingInfoItem.phone}</span>
+                    <span>{address.phone}</span>
                   </p>
                 </div>
               </div>
@@ -359,26 +354,21 @@ export default function AddressForm() {
                 <div>
                   <h5>Country:</h5>
                   <p className={style.shipping_info_text}>
-                    <span>
-                      {shippingInfoItem.country
-                        ? shippingInfoItem.country
-                        : "-"}
-                    </span>
+                    <span>{address.country ? address.country : "-"}</span>
                   </p>
                 </div>
                 <div>
                   <h5>City:</h5>
                   <p className={style.shipping_info_text}>
                     <span>
-                      {shippingInfoItem.city ? shippingInfoItem.city : "-"} (
-                      {shippingInfoItem.code})
+                      {address.city ? address.city : "-"} ({address.code})
                     </span>
                   </p>
                 </div>
                 <div>
                   <h5>Street:</h5>
                   <p className={style.shipping_info_text}>
-                    <span>{shippingInfoItem.address}</span>
+                    <span>{address.address}</span>
                   </p>
                 </div>
               </div>

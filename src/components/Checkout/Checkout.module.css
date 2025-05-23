@@ -155,13 +155,37 @@
   font-weight: 700;
 }
 
-.checkout_promo_label button:active {
+.form_complete_button {
+  margin-top: 24px;
+  width: 100%;
+  height: 49px;
+
+  background-color: var(--primary);
+
+  border-radius: 4px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--white);
+
+  font-weight: 700;
+}
+
+.checkout_promo_label button:active,
+.form_complete_button:active {
   background-color: var(--gray-200);
   color: var(--primary);
 
   transform: scale(0.98);
 
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.checkout_promo_label button:disabled,
+.form_complete_button:disabled {
+  opacity: 0.5;
 }
 
 .checkout_promo_input {
@@ -259,6 +283,41 @@
   position: relative !important;
   display: block !important;
   overflow: visible !important;
+}
+
+/* PAYMENT */
+
+.checkout_shipping_payment_block {
+  max-width: fit-content;
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+.checkout_shipping_payment_tile {
+  padding: 24px;
+
+  display: flex;
+  gap: 22px;
+
+  border: var(--border-light-grey);
+  border-radius: 4px;
+
+  box-shadow: 0 4px 4px -4px rgba(30, 33, 44, 0.03),
+    0 12px 10px -6px rgba(154, 156, 165, 0.04),
+    0 30px 24px -10px rgba(154, 156, 165, 0.05),
+    0 80px 80px -20px rgba(154, 156, 165, 0.08);
+}
+
+.checkout_shipping_payment_icons {
+  display: flex;
+  gap: 12px;
+}
+
+.checkout_shipping_payment_icons img {
+  width: 48px;
+  height: 26px;
 }
 
 /* MEDIA */
