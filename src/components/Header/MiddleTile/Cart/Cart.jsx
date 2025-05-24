@@ -17,7 +17,6 @@ const overlay = {
 
   backgroundColor: "rgba(0, 0, 0, 0.7)",
 };
-
 const content = {
   zIndex: "99991",
   display: "flex",

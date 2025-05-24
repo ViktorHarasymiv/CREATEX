@@ -19,14 +19,9 @@
 .css-d551zc-MuiSvgIcon-root-MuiSelect-icon {
   position: static !important;
 }
-/* 
+
 .MuiOutlinedInput-notchedOutline {
   border: none !important;
-} */
-
-.css-sc8y68-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused
-  .MuiOutlinedInput-notchedOutline {
-  border-color: var(--primary) !important;
 }
 
 .select_text {
@@ -34,5 +29,5 @@
 }
 
 .css-uxvpzc {
-  padding: 0px !important;
+  padding: 0px 14px !important;
 }

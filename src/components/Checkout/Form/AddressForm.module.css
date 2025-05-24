@@ -33,6 +33,7 @@
 }
 
 .legend_form_select {
+  border: 1px solid var(--gray-400);
   height: 52px;
 }
 

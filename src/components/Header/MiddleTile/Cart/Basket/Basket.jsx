@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -18,6 +18,7 @@ import { MdOutlinePayments } from "react-icons/md";
 
 function Modal({ overlay, content, closePage, setOpen, valute }) {
   const dispatch = useDispatch();
+
   const basket = useSelector((state) => state.basket.basketArr);
 
   const deleteItem = (id) => {

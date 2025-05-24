@@ -157,14 +157,15 @@ function Checkout({ valute }) {
         [promoValue, +priceWithPromo, totalPrice, [shippCost, shippTitle]],
       ])
     );
+    localStorage.clear();
   }
 
   return (
     <>
       <HistoryBar></HistoryBar>
       <div className="container">
-        <div className={css.checkout_wrapper}>
-          {basket.length > 0 ? (
+        {basket.length > 0 ? (
+          <div className={css.checkout_wrapper}>
             <div className={css.checkout_product_tile}>
               <div className={css.checkout_title_tile}>
                 <h2 className={css.checkout_title}>Checkout</h2>
@@ -378,114 +379,119 @@ function Checkout({ valute }) {
                 </div>
               </div>
             </div>
-          ) : (
-            <h2 style={{ textDecoration: "underline", paddingBlock: 150 }}>
-              <Link to={"/"}>
-                Your shop cart is empty, please back to shopping
-              </Link>
-            </h2>
-          )}
-          <div className={css.checkout_total_tile}>
-            <div className={css.checkout_promo_tile}>
-              <h4 className={css.checkout_promo_title}>Apply a promo code</h4>
-              <form
-                onSubmit={(event) => {
-                  event.preventDefault();
-                  setPromo(promoName);
-                  errorPromo();
-                  event.target.reset();
-                }}
-              >
-                <label htmlFor="promo" className={css.checkout_promo_label}>
-                  <input
-                    onChange={(event) => {
-                      promoName = event.target.value;
-                    }}
-                    id="promo"
-                    name="promo"
-                    type="text"
-                    placeholder="Enter promo code"
-                    disabled={PROMO.find((item) => promo == item.name) && true}
-                    className={css.checkout_promo_input}
-                  />
-                  <button
-                    type="submit"
-                    disabled={PROMO.find((item) => promo == item.name) && true}
-                  >
-                    Apply
-                  </button>
-                </label>
-              </form>
-              {promo && <span className={css.promo_error}>{error}</span>}
-            </div>
-            <div className={css.checkout_summary_tile}>
-              <h2 className={css.checkout_summary_title}>Computation :</h2>
-              <div className={css.checkout_summary_price_tile}>
-                <p>
-                  <b className={css.checkout_summary_options}>
-                    Order :
-                    <span>
-                      {valute == "Dollar" ? "$" : "€"}
-                      {changeValute(totalPrice)}
-                    </span>
-                  </b>
-                </p>
-                <p className={css.checkout_summary_options}>
-                  Shipping costs :
-                  <b>
-                    {isNaN(shippCost) || shippCost == 0
-                      ? ""
-                      : valute == "Dollar"
-                      ? "$"
-                      : "€"}
-                    {isNaN(shippCost) || shippCost == 0 ? (
-                      <PiMinus></PiMinus>
-                    ) : (
-                      changePrice(shippCost)
-                    )}
-                  </b>
-                </p>
-                <p className={css.checkout_summary_options}>
-                  Promo :
-                  <b>
-                    {PROMO.find(({ name }) => promo === name) ? (
-                      promo
-                    ) : (
-                      <PiMinus />
-                    )}
-                  </b>
-                </p>
 
-                <p className={css.checkout_summary_options}>
-                  Discount:
-                  <b>
-                    {PROMO.find((item) => promo === item.name) ? (
-                      ` - ${promoValue}%`
-                    ) : (
-                      <PiMinus />
-                    )}
-                  </b>
-                </p>
+            <div className={css.checkout_total_tile}>
+              <div className={css.checkout_promo_tile}>
+                <h4 className={css.checkout_promo_title}>Apply a promo code</h4>
+                <form
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    setPromo(promoName);
+                    errorPromo();
+                    event.target.reset();
+                  }}
+                >
+                  <label htmlFor="promo" className={css.checkout_promo_label}>
+                    <input
+                      onChange={(event) => {
+                        promoName = event.target.value;
+                      }}
+                      id="promo"
+                      name="promo"
+                      type="text"
+                      placeholder="Enter promo code"
+                      disabled={
+                        PROMO.find((item) => promo == item.name) && true
+                      }
+                      className={css.checkout_promo_input}
+                    />
+                    <button
+                      type="submit"
+                      disabled={
+                        PROMO.find((item) => promo == item.name) && true
+                      }
+                    >
+                      Apply
+                    </button>
+                  </label>
+                </form>
+                {promo && <span className={css.promo_error}>{error}</span>}
               </div>
-              <div className={css.checkout_summary_total}>
-                <h2>Orders total:</h2>
-                <h3>
-                  {valute == "Dollar" ? "$" : "€"}
-                  {priceWithPromo}
-                </h3>
+              <div className={css.checkout_summary_tile}>
+                <h2 className={css.checkout_summary_title}>Computation :</h2>
+                <div className={css.checkout_summary_price_tile}>
+                  <p>
+                    <b className={css.checkout_summary_options}>
+                      Order :
+                      <span>
+                        {valute == "Dollar" ? "$" : "€"}
+                        {changeValute(totalPrice)}
+                      </span>
+                    </b>
+                  </p>
+                  <p className={css.checkout_summary_options}>
+                    Shipping costs :
+                    <b>
+                      {isNaN(shippCost) || shippCost == 0
+                        ? ""
+                        : valute == "Dollar"
+                        ? "$"
+                        : "€"}
+                      {isNaN(shippCost) || shippCost == 0 ? (
+                        <PiMinus></PiMinus>
+                      ) : (
+                        changePrice(shippCost)
+                      )}
+                    </b>
+                  </p>
+                  <p className={css.checkout_summary_options}>
+                    Promo :
+                    <b>
+                      {PROMO.find(({ name }) => promo === name) ? (
+                        promo
+                      ) : (
+                        <PiMinus />
+                      )}
+                    </b>
+                  </p>
+
+                  <p className={css.checkout_summary_options}>
+                    Discount:
+                    <b>
+                      {PROMO.find((item) => promo === item.name) ? (
+                        ` - ${promoValue}%`
+                      ) : (
+                        <PiMinus />
+                      )}
+                    </b>
+                  </p>
+                </div>
+                <div className={css.checkout_summary_total}>
+                  <h2>Orders total:</h2>
+                  <h3>
+                    {valute == "Dollar" ? "$" : "€"}
+                    {priceWithPromo}
+                  </h3>
+                </div>
               </div>
+              <Link to={"/checkout/order"}>
+                <button
+                  onClick={updateFakture}
+                  disabled={fakture.length < 4}
+                  className={css.form_complete_button}
+                >
+                  Complete order
+                </button>
+              </Link>
             </div>
-            <Link to={"/checkout/order"}>
-              <button
-                onClick={updateFakture}
-                disabled={fakture.length < 1}
-                className={css.form_complete_button}
-              >
-                Complete order
-              </button>
-            </Link>
           </div>
-        </div>
+        ) : (
+          <h2 style={{ textDecoration: "underline", paddingBlock: 150 }}>
+            <Link to={"/"}>
+              Your shop cart is empty, please back to shopping
+            </Link>
+          </h2>
+        )}
       </div>
     </>
   );
