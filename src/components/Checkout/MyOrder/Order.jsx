@@ -48,15 +48,9 @@ const PdfGenerator = ({ valute }) => {
 
   const currentTime = new Date().toLocaleTimeString();
 
-  const shippSumm = fakture
-    .find((item) => Array.isArray(item.values))
-    ?.values.map((element) => element[3][0]);
-
   const promValue = fakture
     .find((item) => Array.isArray(item.values))
     ?.values.map((element) => element[0]);
-
-  console.log(+promValue);
 
   return (
     <>
@@ -184,7 +178,8 @@ const PdfGenerator = ({ valute }) => {
                               <span key={index}>
                                 {element[0] !== null
                                   ? changeValute(
-                                      element[2] - (element[1] - shippSumm[0])
+                                      element[1] -
+                                        element[1] * (1 - element[0] / 100)
                                     )
                                   : "-"}
                               </span>
@@ -195,16 +190,12 @@ const PdfGenerator = ({ valute }) => {
                   {/* Delivery */}
                   <p className="fakture_details-block">
                     <span>Delivery</span>
-                    <span>
-                      {fakture.length > 0 &&
-                        fakture
-                          .find((item) => Array.isArray(item.delivery))
-                          ?.delivery.map((element, index) => (
-                            <p key={index}>{element}</p>
-                          ))}
-                      ({changeValute(+shippSumm)}
-                      {valute == "Dollar" ? "$" : "€"})
-                    </span>
+                    {fakture.length > 0 &&
+                      fakture
+                        .find((item) => Array.isArray(item.values))
+                        ?.values.map((element, index) => (
+                          <span key={index}>{element[2][1]}</span>
+                        ))}
                   </p>
                 </div>
                 <div className="fakture_details secound_details_tile">
@@ -221,7 +212,7 @@ const PdfGenerator = ({ valute }) => {
                             .find((item) => Array.isArray(item.values))
                             ?.values.map((element, index) => (
                               <span key={index}>
-                                {changeValute(+element[2])}
+                                {changeValute(+element[1])}
                                 {valute == "Dollar" ? "$" : "€"}
                               </span>
                             ))
@@ -230,44 +221,52 @@ const PdfGenerator = ({ valute }) => {
                   </p>
                   <p className="fakture_details-block">
                     <span>Netto</span>
-                    <span>
-                      {fakture.length > 0
-                        ? fakture
-                            .find((item) => Array.isArray(item.values))
-                            ?.values.map((element, index) => (
-                              <span key={index}>
-                                {changeValute(element[2] - element[2] * VAT)}
-                                {valute == "Dollar" ? "$" : "€"}
-                              </span>
-                            ))
-                        : "-"}
-                    </span>
+                    {fakture.length > 0
+                      ? fakture
+                          .find((item) => Array.isArray(item.values))
+                          ?.values.map((element, index) => (
+                            <span key={index}>
+                              {changeValute(element[1] - element[1] * VAT)}
+                              {valute == "Dollar" ? "$" : "€"}
+                            </span>
+                          ))
+                      : "-"}
                   </p>
                 </div>
               </div>
 
               {/* Payment Method */}
+              {fakture.length > 0 && (
+                <>
+                  {fakture
+                    .find((item) => Array.isArray(item.payMethod))
+                    ?.payMethod.map((element, index) => (
+                      <span style={{ marginLeft: "30px" }} key={index}>
+                        Pay method: {element}
+                      </span>
+                    ))}
 
-              {fakture.length > 0 &&
-                fakture
-                  .find((item) => Array.isArray(item.payMethod))
-                  ?.payMethod.map((element, index) => (
-                    <span style={{ marginLeft: "30px" }} key={index}>
-                      Pay method: {element}
-                    </span>
-                  ))}
-
+                  {fakture
+                    .find((item) => Array.isArray(item.values))
+                    ?.values.map((element, index) => (
+                      <span key={index}>
+                        {element[2][1]} {changeValute(element[2][0])}
+                        {valute === "Dollar" ? "$" : "€"}
+                      </span>
+                    ))}
+                </>
+              )}
               <div className="fakture_summary">
                 {fakture.length > 0 &&
                   fakture
                     .find((item) => Array.isArray(item.values))
                     ?.values.map((element, index) => (
                       <h3 className="fakture_total_price" key={index}>
-                        To be paid :{" "}
+                        To be paid :
                         {changeValute(
-                          (element[2] + +shippSumm) * (1 - +promValue / 100)
+                          element[1] * (1 - element[0] / 100) + element[2][0]
                         )}
-                        {valute == "Dollar" ? "$" : "€"}
+                        {valute === "Dollar" ? "$" : "€"}
                       </h3>
                     ))}
               </div>

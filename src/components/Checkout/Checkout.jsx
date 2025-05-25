@@ -153,9 +153,7 @@ function Checkout({ valute }) {
 
   function updateFakture() {
     dispatch(
-      updateOtherValues([
-        [promoValue, +priceWithPromo, totalPrice, [shippCost, shippTitle]],
-      ])
+      updateOtherValues([[promoValue, totalPrice, [shippCost, shippTitle]]])
     );
     localStorage.clear();
   }

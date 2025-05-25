@@ -6,7 +6,8 @@
 
 .prom_slider {
   text-align: center;
-  font-size: clamp(8px, 2vw, 12px);
+  font-size: 10px;
+  letter-spacing: 0.05em;
   color: var(--white);
 
   padding-block: 5px !important;

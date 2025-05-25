@@ -62,7 +62,7 @@ function Sort({ data, setFilter, sliceValue, setSliceValue, array }) {
                     if (sliceValue >= 21) {
                       return;
                     }
-                    setSliceValue(sliceValue + 4);
+                    setSliceValue(sliceValue + 3);
                   }}
                 >
                   <TiArrowSortedUp />
@@ -72,7 +72,7 @@ function Sort({ data, setFilter, sliceValue, setSliceValue, array }) {
                   onClick={() => {
                     if (sliceValue <= 6) {
                       return;
-                    } else setSliceValue(sliceValue - 4);
+                    } else setSliceValue(sliceValue - 3);
                   }}
                 >
                   <TiArrowSortedDown />

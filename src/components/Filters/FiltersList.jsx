@@ -97,7 +97,7 @@ function FiltersList({ setFilter }) {
     setExpanded(2);
   };
 
-  const [value1, setValue1] = useState([0, 599]);
+  const [value1, setValue1] = useState([0, 499]);
 
   const handleChange1 = (event, newValue, activeThumb) => {
     if (activeThumb === 0) {
@@ -284,7 +284,12 @@ function FiltersList({ setFilter }) {
 
           <AccordionDetails>
             <div className={css.category_filters_range}>
-              <Box className={css.range_tile} sx={{ width: "140px" }}>
+              <div className={css.range_value_tile}>
+                <p>{value1[0]}</p>
+                <span>-</span>
+                <p>{value1[1]}</p>
+              </div>
+              <Box className={css.range_tile} sx={{ width: "160px" }}>
                 <Slider
                   getAriaLabel={() => "Minimum distance"}
                   value={value1}
