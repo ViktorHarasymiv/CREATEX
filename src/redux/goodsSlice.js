@@ -666,6 +666,34 @@ const goodsSlice = createSlice({
           },
         ],
       },
+      {
+        id: 183260026,
+        filter: "New",
+        gender: "women",
+        image: ["26.avif"],
+        alt: "Kolczyki kółka 2 pary",
+        title: "Kolczyki kółka 2 pary",
+        category: "Accessories",
+        subCategory: "Earrings",
+        size: ["XS", "S", "M", "L", "XL"],
+        sizeNumm: ["36", "37", "38", "39", "40"],
+        color: ["Gold", "White", "Brown"],
+        favorite: false,
+        rating: 5,
+        sale: false,
+        saleValue: 0,
+        price: 77.15,
+        reviews: [
+          {
+            name: "admin",
+            comment: "very nice product...",
+          },
+          {
+            name: "any user",
+            comment: "I recommend...",
+          },
+        ],
+      },
     ],
     kids: [
       {

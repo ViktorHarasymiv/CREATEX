@@ -10,7 +10,8 @@
 
   display: flex;
   flex-wrap: wrap;
-  gap: 150px;
+  column-gap: 150px;
+  row-gap: 60px;
 }
 
 .footer_navigation_list {
@@ -71,4 +72,11 @@
 
 .footer_copyright_content {
   padding-block: 24px;
+}
+
+@media screen and (max-width: 767.98px) {
+  .footer_navigation {
+    justify-content: space-around;
+    gap: 40px;
+  }
 }
