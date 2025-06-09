@@ -54,6 +54,10 @@ function Checkout({ valute }) {
     }
   }, [basket]);
 
+  console.log(basket);
+
+  console.log(fakture);
+
   const deleteItem = (id) => {
     dispatch(deleteFromBasket(id));
   };
@@ -133,12 +137,12 @@ function Checkout({ valute }) {
     } else return price;
   };
 
-  useEffect(() => {
-    if (shippCost == null || shippCost == 0) {
-      return;
-    }
-    dispatch(updateDelivery(shippTitle));
-  }, [shippCost]);
+  // useEffect(() => {
+  //   if (shippCost == null || shippCost == 0) {
+  //     return;
+  //   }
+  //   dispatch(updateDelivery(shippTitle));
+  // }, [shippCost]);
 
   // PAY METHOD
 
@@ -475,7 +479,7 @@ function Checkout({ valute }) {
               <Link to={"/checkout/order"}>
                 <button
                   onClick={updateFakture}
-                  disabled={fakture.length < 4}
+                  disabled={fakture.length < 3}
                   className={css.form_complete_button}
                 >
                   Complete order

@@ -46,8 +46,8 @@ h1 {
   width: 100%;
 
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
 }
 @media screen and (max-width: 477.98px) {
   .container {

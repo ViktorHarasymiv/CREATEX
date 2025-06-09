@@ -13,6 +13,8 @@ export default function SubscribePage() {
     checkbox: "",
   });
 
+  console.log(formData);
+
   return (
     <div className={css.subscribe_page}>
       <div className="container">
@@ -44,12 +46,15 @@ export default function SubscribePage() {
                   {["Women", "Men", "Girls", "Boys"].map((gender) => (
                     <div key={gender}>
                       <input
-                        id="gender"
+                        id={`subscribe-${gender}`}
                         type="radio"
-                        name="gender2"
+                        name="gender"
                         value={gender}
                       />
-                      <label className="radio_label" htmlFor="gender">
+                      <label
+                        className="radio_label"
+                        htmlFor={`subscribe-${gender}`}
+                      >
                         {gender}
                       </label>
                     </div>

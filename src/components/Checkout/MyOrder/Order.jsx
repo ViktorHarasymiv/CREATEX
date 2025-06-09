@@ -6,6 +6,8 @@ import "./Order.css";
 import { useSelector } from "react-redux";
 
 import Logo from "../../Header/MiddleTile/icons/logo.png";
+import Button from "../../Button/Button";
+import { Link } from "react-router-dom";
 
 const PdfGenerator = ({ valute }) => {
   const contentRef = useRef();
@@ -55,6 +57,19 @@ const PdfGenerator = ({ valute }) => {
   return (
     <>
       <div className="container">
+        <div className="actions_tile">
+          <div className="actions_btn_tile">
+            <Link to={"/checkout"} className="fakture_btn">
+              Back to checkout
+            </Link>
+
+            <Link className="fakture_btn">End session</Link>
+          </div>
+
+          <button onClick={generatePDF} className="fakture_btn">
+            Download
+          </button>
+        </div>
         <div className="fakture_wrapper">
           <div id="pdf-content" className="pdf-content " ref={contentRef}>
             <div className="fakture_content">
@@ -286,7 +301,6 @@ const PdfGenerator = ({ valute }) => {
           </div>
         </div>
       </div>
-      <button onClick={generatePDF}>Завантажити PDF</button>
     </>
   );
 };

@@ -11,14 +11,16 @@ function TopTile({ active, setValute, valute }) {
   return (
     <div className={css.top_tile_wrapper}>
       <div className="container">
-        {!active && (
-          <>
-            <Phone />
-            <Navigation />
-          </>
-        )}
-        <Currency setValute={setValute} valute={valute} />
-        <Authorization />
+        <div className={css.top_tile}>
+          {!active && (
+            <>
+              <Phone />
+              <Navigation />
+            </>
+          )}
+          <Currency setValute={setValute} valute={valute} />
+          <Authorization />
+        </div>
       </div>
     </div>
   );

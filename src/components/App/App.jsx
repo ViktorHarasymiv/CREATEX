@@ -11,6 +11,7 @@ import Router from "../Routes/Routes";
 import PuffLoader from "react-spinners/PuffLoader";
 import Subscribe from "../Subscribe/Subscribe";
 import SubscribePage from "../Subscribe/SubscribePage";
+import Footer from "../Footer/Footer";
 
 /* Setup for spiner */
 const override = {
@@ -114,6 +115,7 @@ function App() {
         </Suspense>
       }
       <SubscribePage />
+      <Footer />
     </>
   );
 }

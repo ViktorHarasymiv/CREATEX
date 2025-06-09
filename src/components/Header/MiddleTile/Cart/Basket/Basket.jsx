@@ -155,20 +155,22 @@ function Modal({ overlay, content, closePage, setOpen, valute }) {
               <span>{changeValute(totalPrice)}</span>
             </b>
           </div>
-          <Link
-            onClick={() => {
-              closePage();
-            }}
-            to={"/checkout"}
-            className={css.checkout_link}
-          >
-            <Button>
-              <MdOutlinePayments
-                style={{ marginRight: "9px", width: "22px", height: "22px" }}
-              />
-              Checkout
-            </Button>
-          </Link>
+          {basket.length > 0 && (
+            <Link
+              onClick={() => {
+                closePage();
+              }}
+              to={"/checkout"}
+              className={css.checkout_link}
+            >
+              <Button>
+                <MdOutlinePayments
+                  style={{ marginRight: "9px", width: "22px", height: "22px" }}
+                />
+                Checkout
+              </Button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

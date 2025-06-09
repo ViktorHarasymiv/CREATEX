@@ -14,6 +14,36 @@ h3 {
 
 /* FAKTURE */
 
+.actions_tile {
+  width: 100%;
+
+  font-size: 15px;
+  margin-top: 20px;
+
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.actions_btn_tile {
+  display: flex;
+  gap: 30px;
+}
+
+.fakture_btn {
+  font-weight: 700;
+  color: var(--gray-800);
+
+  border-bottom: 0.01em solid var(--primary);
+  background-color: transparent;
+}
+
+.fakture_btn:active {
+  color: var(--danger);
+
+  border-color: var(--danger);
+}
+
 /* TITLE */
 
 .fakture_wrapper {

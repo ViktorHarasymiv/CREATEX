@@ -1,14 +1,16 @@
 .top_tile_wrapper {
   padding-block: 11px 12px;
 
+  background-color: var(--gray-900);
+
+  color: rgba(255, 255, 255, 0.6);
+
+  font-size: 14px;
+}
+
+.top_tile {
   width: 100%;
 
   display: flex;
   justify-content: space-between;
-  align-items: center;
-
-  background-color: var(--gray-900);
-  color: rgba(255, 255, 255, 0.6);
-
-  font-size: 14px;
 }

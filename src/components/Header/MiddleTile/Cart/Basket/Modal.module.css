@@ -1,4 +1,5 @@
 .cart_title_tile {
+  z-index: 99999;
   padding-inline: 24px;
   padding-bottom: 24px;
 
@@ -11,6 +12,7 @@
 
 .close_icon {
   cursor: pointer;
+
   stroke-width: 0.5px;
 
   width: 24px;
@@ -18,13 +20,13 @@
 
   transition-duration: var(--transition-duration);
 }
-
-.close_icon:hover {
+/* 
+.close_icon:active {
   transform: scale(1.1);
 
   fill: var(--primary);
   stroke: var(--primary);
-}
+} */
 
 .cart_items_tile {
   overflow: scroll;
