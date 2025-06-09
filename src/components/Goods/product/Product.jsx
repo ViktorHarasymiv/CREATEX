@@ -323,7 +323,7 @@ function Product({ valute }) {
                       onSwiper={(swiper) => {
                         setThumbsSwiper(swiper);
                       }}
-                      spaceBetween={20}
+                      spaceBetween={10}
                       slidesPerView={5}
                       freeMode={true}
                       modules={[FreeMode, Navigation, Thumbs]}

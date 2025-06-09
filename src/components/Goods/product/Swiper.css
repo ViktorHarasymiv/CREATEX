@@ -135,10 +135,12 @@
   .mySwiperThumbs {
     margin-top: 20px;
   }
-
   .mySwiperThumbs .swiper-slide {
     margin: 3px;
-    min-width: 60px;
+    min-width: 70px;
+
+    width: 70px !important;
+    height: 90px !important;
   }
 
   .mySwiperThumbs img {
