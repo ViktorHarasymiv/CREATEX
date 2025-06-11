@@ -95,8 +95,13 @@
   width: 100vw;
   height: 100vh;
 
-  object-position: top;
+  object-position: 30%;
   object-fit: cover;
+}
+
+.hero_link_button {
+  max-width: 229px;
+  width: 100%;
 }
 
 @media screen and (max-width: 1024.98px) {

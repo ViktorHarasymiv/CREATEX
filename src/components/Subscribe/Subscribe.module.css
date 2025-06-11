@@ -55,7 +55,7 @@
 
 .subscribe_button {
   padding-inline: 20px !important;
-  height: clamp(34px, 5vw, 52px) !important;
+  height: 52px !important;
 
   position: absolute !important;
 

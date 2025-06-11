@@ -42,9 +42,9 @@ function Slider({
           <h4 className={css.motivational_text}>{motivational}</h4>
           <div className={css.buttons_tile}>
             <Button_T>Shop sale</Button_T>
-            <Button width={style}>
-              <Link to={name}>Shop the {name}</Link>
-            </Button>
+            <Link className={css.hero_link_button} to={name}>
+              <Button width={style}>Shop the {name}</Button>
+            </Link>
           </div>
         </div>
       </div>

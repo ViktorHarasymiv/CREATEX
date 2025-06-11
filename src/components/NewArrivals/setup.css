@@ -26,3 +26,10 @@
 .new_arrivals_slider .swiper-pagination-bullet {
   height: 3px !important;
 }
+
+@media screen and (max-width: 767.98px) {
+  .new_arrivals_slider .swiper-pagination-bullet {
+    width: 10px;
+    height: 2px !important;
+  }
+}

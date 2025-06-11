@@ -3,14 +3,14 @@ import css from "./Button.module.css";
 export default function LoadMore({ sliceValue, setSliceValue, context }) {
   const handleScroll = () => {
     if (context === "Hide All") {
-      setSliceValue(6);
+      setSliceValue(8);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       //   setTimeout(() => {
       //     window.scrollBy({ top: 200, behavior: "smooth" });
       //   }, 700);
 
-      setSliceValue(sliceValue + 3);
+      setSliceValue(sliceValue + 4);
     }
   };
 

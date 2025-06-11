@@ -8,10 +8,15 @@ import X from "./media/Twitter.png";
 import YT from "./media/YouTube.png";
 import P from "./media/pinterest.png";
 
+import heartIco from "./media/heart.png";
+
 import AppStore from "./media/app-store.png";
 import GoogleStore from "./media/google-play.png";
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <div className={css.footer_component}>
       <div className="container">
@@ -127,7 +132,23 @@ export default function Footer() {
       </div>
       <div className={css.footer_copyright}>
         <div className="container">
-          <div className={css.footer_copyright_content}>footer_copyright</div>
+          <div className={css.footer_copyright_content}>
+            <div className={css.footer_copyright_text}>
+              &copy; All rights reserved. Made with{" "}
+              <img
+                className={css.footer_copyright_heart_ico}
+                src={heartIco}
+                alt="Heart"
+              />
+              by Createx Studio
+            </div>
+            <div
+              onClick={scrollToTop}
+              className={css.footer_copyright_to_top_link}
+            >
+              Go to top
+            </div>
+          </div>
         </div>
       </div>
     </div>

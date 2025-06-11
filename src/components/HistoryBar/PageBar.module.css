@@ -1,5 +1,6 @@
 .history_bar {
   padding-block: 18px;
+
   width: 100%;
   background-color: #e5e8ed;
 
@@ -9,25 +10,26 @@
 .history_list {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 4px;
+
+  text-transform: capitalize;
 }
 
-.history_item {
-  position: relative;
+.history_list li {
+  display: flex;
+  align-items: center;
 }
 
-.history_item:not(:last-child)::after {
-  position: absolute;
-
-  content: "";
-
-  top: 0;
-  left: 20px;
-
-  background: url("icons/Right-chevron.svg") no-repeat;
+.arrow_ico {
+  display: inline-block;
 
   width: 16px;
   height: 16px;
+}
+
+.history_link_list {
+  display: flex;
+  align-items: center;
 }
 
 .history_link {

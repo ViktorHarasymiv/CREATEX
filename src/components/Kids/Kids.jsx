@@ -22,7 +22,6 @@ export default function Kids({
       <HistoryBar></HistoryBar>
       <div className="container">
         <div className="product_wrapper">
-          <Filters data={products} setFilter={setFilter} />
           <div className="product_wrapper-sort">
             <Sort
               setFilter={setFilter}
@@ -74,11 +73,6 @@ export default function Kids({
                   );
                 })}
             </div>
-            <Sort
-              setFilter={setFilter}
-              sliceValue={sliceValue}
-              setSliceValue={setSliceValue}
-            ></Sort>
           </div>
         </div>
       </div>

@@ -184,6 +184,7 @@
 }
 
 .filters_list {
+  margin-top: 10px;
   z-index: 9999;
 
   position: absolute;
@@ -203,6 +204,11 @@
 
   padding: 20px 30px;
   width: 320px;
+
+  border: 1px solid var(--gray-400);
+
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 @keyframes showFilter {

@@ -45,7 +45,7 @@ function Sort({ data, setFilter, sliceValue, setSliceValue, array }) {
             </Select>
           </FormControl>
         </div>
-        {data > 6 && (
+        {data > 8 && (
           <div className={css.sort_tile_page}>
             <h4>Show</h4>
             {/* COUNT PRICE */}
@@ -59,10 +59,10 @@ function Sort({ data, setFilter, sliceValue, setSliceValue, array }) {
                 <button
                   className={style.custom_count_button}
                   onClick={() => {
-                    if (sliceValue >= 21) {
+                    if (sliceValue >= 22) {
                       return;
                     }
-                    setSliceValue(sliceValue + 3);
+                    setSliceValue(sliceValue + 4);
                   }}
                 >
                   <TiArrowSortedUp />
@@ -70,9 +70,9 @@ function Sort({ data, setFilter, sliceValue, setSliceValue, array }) {
                 <button
                   className={style.custom_count_button}
                   onClick={() => {
-                    if (sliceValue <= 6) {
+                    if (sliceValue <= 8) {
                       return;
-                    } else setSliceValue(sliceValue - 3);
+                    } else setSliceValue(sliceValue - 4);
                   }}
                 >
                   <TiArrowSortedDown />

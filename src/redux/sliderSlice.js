@@ -7,7 +7,7 @@ const sliderSlice = createSlice({
       {
         id: crypto.randomUUID(),
         name: "men",
-        image: "men.avif",
+        image: "men.jpg",
         video:
           "https://image.hm.com/content/dam/global_campaigns/season_01/men/start-page-assets/w15/video/MS21E4-15A-CLEAN-16x9.mp4",
         videoMobile:
@@ -20,7 +20,7 @@ const sliderSlice = createSlice({
       {
         id: crypto.randomUUID(),
         name: "women",
-        image: "women.avif",
+        image: "women.jpg",
         // video:
         //   "https://image.hm.com/content/dam/global_campaigns/season_01/women/startpage-assets/wk15/1011B-startpage-women-wk15-16x9.mp4",
         // videoMobile:

@@ -4,16 +4,13 @@
 
   border: 1px solid var(--primary);
 
-  background: var(--primary);
+  background: rgba(23, 105, 106, 0.85);
 
   border-radius: 4px;
 
   text-wrap: nowrap;
 
   transition-duration: var(--transition-duration);
-
-  box-shadow: rgba(44, 44, 44, 0.8) 0px 1px 2px 0px,
-    rgba(136, 136, 136, 0.15) 0px 1px 3px 1px;
 }
 
 .button_context {
@@ -51,12 +48,7 @@
   border: 1px solid var(--primary);
   border-radius: 4px;
 
-  backdrop-filter: blur(2px);
-
   transition-duration: var(--transition-duration);
-
-  box-shadow: rgba(44, 44, 44, 0.8) 0px 1px 2px 0px,
-    rgba(136, 136, 136, 0.15) 0px 1px 3px 1px;
 }
 
 .button_transparent:active {
@@ -90,14 +82,9 @@
 
 @media (hover: hover) {
   .button_primary:hover {
-    color: var(--primary);
-
-    background: transparent;
+    background: rgba(23, 105, 106, 1);
   }
 
-  .button_primary:hover .button_context {
-    color: var(--primary);
-  }
   .button_transparent:hover {
     background: var(--primary);
     border-color: transparent;

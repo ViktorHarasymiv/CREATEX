@@ -11,12 +11,8 @@
   gap: 16px;
 }
 
-.sort_tile_page {
-}
-
 .select_size_tile {
   padding: 0 !important;
-  width: 170px !important;
   height: 44px !important;
 
   border-radius: 4px !important;

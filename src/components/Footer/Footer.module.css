@@ -72,6 +72,32 @@
 
 .footer_copyright_content {
   padding-block: 24px;
+
+  display: flex;
+  justify-content: space-between;
+
+  font-size: clamp(0.6rem, 2vw, 1rem);
+}
+
+.footer_copyright_heart_ico {
+  display: inline-block;
+
+  padding-inline: 4px;
+}
+
+.footer_copyright_to_top_link {
+  cursor: pointer;
+
+  font-weight: 700;
+  color: var(--gray-700);
+}
+
+@media (hover: hover) {
+  .footer_copyright_to_top_link:hover {
+    color: var(--white);
+
+    transition-duration: var(--transition-duration);
+  }
 }
 
 @media screen and (max-width: 767.98px) {

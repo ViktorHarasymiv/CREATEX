@@ -11,7 +11,7 @@
   /* Color */
 
   --white: #fff;
-  --primary: #17696a;
+  --primary: rgb(23, 105, 106);
   --success: #03cea4;
   --danger: rgb(255, 66, 66);
   --warning: #f89828;

@@ -26,9 +26,11 @@
 
 @keyframes showFilter {
   0% {
-    height: 40px;
+    transform: scaleY(0.7);
+    transform-origin: top;
   }
   100% {
-    height: 78px;
+    transform: scaleY(1);
+    transform-origin: top;
   }
 }
