@@ -1,9 +1,12 @@
 .css-sc8y68-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
   font-family: var(--font-family) !important;
+
   font-style: normal !important;
+
   font-weight: 400;
   font-size: 14px !important;
   line-height: 150%;
+
   color: var(--gray-800) !important;
 }
 

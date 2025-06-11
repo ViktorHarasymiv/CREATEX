@@ -13,8 +13,6 @@
 .css-sc8y68-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
   justify-content: space-between;
   flex-grow: 0 !important;
-
-  border: 1px solid var(--gray-400);
 }
 
 .MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiSelect-icon.MuiSelect-iconOutlined.css-lohd6h-MuiSvgIcon-root-MuiSelect-icon,

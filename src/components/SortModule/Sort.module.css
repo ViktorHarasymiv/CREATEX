@@ -16,9 +16,13 @@
   height: 44px !important;
 
   border-radius: 4px !important;
+
+  border: 1px solid var(--gray-400);
 }
 
 .sort_show_tile {
+  max-height: 44px;
+
   display: flex;
   flex-wrap: wrap;
   gap: 60px;

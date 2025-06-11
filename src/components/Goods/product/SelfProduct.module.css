@@ -236,6 +236,8 @@
   color: var(--gray-600) !important;
 
   margin: 0 !important;
+
+  border: 1px solid var(--gray-400);
 }
 
 .select_size_tile {
@@ -315,6 +317,8 @@
 
 .custom_count_button svg {
   width: 28px;
+
+  fill: var(--gray-900);
 }
 
 .custom_count_button:active {

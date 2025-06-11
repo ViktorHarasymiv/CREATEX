@@ -107,7 +107,6 @@
 @media screen and (max-width: 1024.98px) {
   .slider_content_tile {
     margin: 50px auto;
-    width: 100vw;
     height: 60vh;
   }
 
@@ -129,6 +128,10 @@
     flex-wrap: wrap;
 
     gap: 20px;
+  }
+  .hero_link_button {
+    max-width: 100%;
+    width: 100%;
   }
 }
 
