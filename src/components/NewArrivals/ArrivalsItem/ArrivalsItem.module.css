@@ -155,6 +155,10 @@
     height: clamp(10rem, 65vw, 16rem);
   }
 
+  .product_tile .product_image_tile {
+    height: 350px;
+  }
+
   .top_info_panel {
     padding-inline: 8px;
     top: 8px;

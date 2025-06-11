@@ -21,7 +21,7 @@
 }
 
 .sort_show_tile {
-  max-height: 44px;
+  max-height: 70px;
 
   display: flex;
   flex-wrap: wrap;

@@ -4,7 +4,7 @@
 
   position: fixed;
 
-  width: 80%;
+  width: 100vw;
   height: 100vh;
 
   right: 0;
@@ -17,13 +17,13 @@
 
 @keyframes loadMenu {
   0% {
-    width: 0%;
+    width: 0vw;
     transform: translateX(105%);
     opacity: 0.7;
   }
 
   100% {
-    width: 80%;
+    width: 100vw;
     transform: translateX(0);
     opacity: 1;
   }
