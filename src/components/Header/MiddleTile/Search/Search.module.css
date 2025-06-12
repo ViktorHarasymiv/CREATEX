@@ -86,15 +86,17 @@
 }
 
 .close_modal_search {
-  position: sticky;
+  cursor: pointer;
 
-  top: 0;
-
-  font-size: 24px;
   align-self: end;
 
+  font-size: 24px;
   min-width: 24px;
   min-height: 24px;
+}
+
+.close_modal_search:hover {
+  transform: scale(1.2);
 }
 
 .filteredSearch_link {
@@ -114,8 +116,8 @@
 }
 
 .filteredSearch_image {
-  width: clamp(50px, 57vw, 70px);
-  height: clamp(70px, 40vh, 90px);
+  width: clamp(50px, 57vw, 78px);
+  height: clamp(70px, 40vh, 95px);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .filteredSearch_info_product {

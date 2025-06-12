@@ -1,5 +1,6 @@
 import React from "react";
 
+import { CgClose } from "react-icons/cg";
 import css from "./Modal.module.css";
 
 import Navigation from "./Navigation";
@@ -20,7 +21,9 @@ function Modal({ setOpen }) {
   return (
     <div style={overlay}>
       <div className={css.content}>
-        <button onClick={setOpen}>xx</button>
+        <button onClick={setOpen} className={css.modal_nav_close}>
+          <CgClose />
+        </button>
         <Navigation setOpen={setOpen}></Navigation>
       </div>
     </div>

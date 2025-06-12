@@ -16,6 +16,8 @@ function Search({ valute }) {
 
   const handleChange = (event) => {
     setInputValue(event.target.value.trim().toLowerCase());
+
+    setOpenSearch(true);
   };
 
   const handleKeyDown = (event) => {
@@ -41,7 +43,6 @@ function Search({ valute }) {
           event.preventDefault();
         }}
         onKeyDown={handleKeyDown}
-        onClick={handleOnBlur}
         className={css.input_tile}
       >
         <input
