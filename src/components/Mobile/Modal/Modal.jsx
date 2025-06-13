@@ -1,9 +1,9 @@
-import React from "react";
-
+import Search from "../../Header/MiddleTile/Search/Search";
 import { CgClose } from "react-icons/cg";
 import css from "./Modal.module.css";
 
 import Navigation from "./Navigation";
+import User from "./User/User";
 
 const overlay = {
   zIndex: "9999",
@@ -24,6 +24,10 @@ function Modal({ setOpen }) {
         <button onClick={setOpen} className={css.modal_nav_close}>
           <CgClose />
         </button>
+        <div className={css.user_function_panel}>
+          <User />
+          <Search></Search>
+        </div>
         <Navigation setOpen={setOpen}></Navigation>
       </div>
     </div>

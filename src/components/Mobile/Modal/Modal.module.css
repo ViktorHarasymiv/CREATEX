@@ -1,8 +1,12 @@
 .content {
   z-index: 9999;
 
-  padding: 24px 34px;
-  display: block;
+  padding-block: 44px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 24px;
 
   position: fixed;
 
@@ -11,10 +15,28 @@
 
   right: 0;
 
-  background-color: rgba(244, 245, 246, 0.9);
+  background-color: rgba(255, 255, 255, 0.8);
+
+  backdrop-filter: blur(2px);
 
   animation-name: loadMenu;
   animation-duration: 1.3s;
+
+  overflow: hidden;
+}
+
+.user_function_panel {
+  margin: 0px auto 50px;
+  padding-bottom: 30px;
+  max-width: 90%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 30px;
+
+  border-bottom: 1px solid var(--white);
 }
 
 .modal_nav_close {
@@ -47,8 +69,60 @@
 
   100% {
     width: 100vw;
+    opacity: 1;
     transform: translateX(0);
   }
+}
+
+.modal_navi_link {
+  position: relative;
+  max-width: 80%;
+
+  font-weight: 700;
+  color: var(--gray-900);
+
+  background-color: var(--white);
+
+  padding: 16px 24px;
+
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+
+  opacity: 0.7;
+  transform: transform 0.3s easy;
+}
+
+.modal_navi_link.active,
+.modal_navi_link:active {
+  color: var(--danger);
+
+  opacity: 1;
+  transform: scale(1.07);
+
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.modal_navi_link.active::after,
+.modal_navi_link.active::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  transform: rotate(-45deg);
+
+  width: 15px;
+  height: 15px;
+
+  background-color: var(--white);
+}
+
+.modal_navi_link.active::after {
+  top: -7px;
+}
+.modal_navi_link.active::before {
+  bottom: -7px;
 }
 
 /* NAVIGATION PANEL  */

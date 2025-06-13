@@ -45,7 +45,7 @@ function MiddleTile({ active, windowWidth, valute, heroOffset }) {
         <div className={css.middle_tile}>
           <Logo />
           {!active && <Navigation />}
-          {windowWidth > 599.98 && <Search valute={valute} />}
+          {windowWidth > 1024.98 && <Search valute={valute} />}
           <div className={css.user_commerce}>
             <Favorite />
             <Line />

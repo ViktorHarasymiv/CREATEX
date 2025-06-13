@@ -16,6 +16,10 @@
   border-radius: 4px;
 }
 
+.search_input:focus-visible {
+  outline: 2px solid var(--primary);
+}
+
 .search_input::placeholder {
   font-size: clamp(0.875rem, 0.8153rem + 0.2581vw, 1rem);
   color: var(--gray-600);
@@ -51,12 +55,6 @@
 
 .search_icon:hover {
   transform: scale(1.1);
-}
-
-@media screen and (max-width: 1024.98px) {
-  .search_input {
-    width: clamp(160px, 35vw, 380px);
-  }
 }
 
 /* SEARCH TILE */
@@ -120,6 +118,7 @@
   height: clamp(70px, 40vh, 95px);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
 .filteredSearch_info_product {
   display: flex;
   flex-direction: column;
@@ -145,4 +144,28 @@
 .filteredSearch_gender {
   font-size: 13px;
   text-transform: capitalize;
+}
+
+/* MEDIA */
+
+@media screen and (max-width: 1024.98px) {
+  .search_input {
+    width: clamp(160px, 35vw, 380px);
+  }
+  .search_header {
+    width: 100%;
+  }
+
+  .input_tile,
+  .search_input {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .search_tile {
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 100%;
+  }
 }

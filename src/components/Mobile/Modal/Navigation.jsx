@@ -10,8 +10,8 @@ function Navigation({ setOpen }) {
 
   const buildLinkClass = (localPath) => {
     return clsx(
-      style.middle_link,
-      location.pathname === localPath && style.active
+      css.modal_navi_link,
+      location.pathname === localPath && css.active
     );
   };
   return (
