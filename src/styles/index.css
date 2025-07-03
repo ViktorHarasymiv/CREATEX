@@ -61,3 +61,16 @@
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+.accent_link {
+  color: var(--primary);
+  text-wrap: nowrap;
+}
+
+.accent_link:hover {
+  text-decoration: underline;
+}
+
+.lock {
+  overflow: hidden;
+}

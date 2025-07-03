@@ -13,8 +13,6 @@ export default function SubscribePage() {
     checkbox: "",
   });
 
-  console.log(formData);
-
   return (
     <div className={css.subscribe_page}>
       <div className="container">
@@ -75,19 +73,19 @@ export default function SubscribePage() {
                     Subscribe
                   </Button>
                 </label>
-                <label htmlFor="checkbox" className={css.subscribe_checkbox}>
-                  <span className={css.checkbox_label}>
+                <label htmlFor="checkbox" className="subscribe_checkbox">
+                  <span className="checkbox_label">
                     I agree to receive communications from Createx Store.
                   </span>
-                  <div className={css.custom_checkbox}>
+                  <div className="custom_checkbox">
                     <input
-                      className={css.checkbox_input}
+                      className="checkbox_input"
                       type="checkbox"
                       id="checkbox"
                       name="checkbox"
                       defaultChecked={true}
                     />
-                    <div className={css.primary_checkbox}></div>
+                    <div className="primary_checkbox"></div>
                   </div>
                 </label>
               </div>

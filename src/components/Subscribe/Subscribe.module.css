@@ -73,103 +73,19 @@
   border-radius: 0px 4px 4px 0px !important;
 }
 
-/* CHECKBOX */
-
-.subscribe_checkbox {
-  min-height: 16px;
-  position: relative;
-
-  display: flex;
-
-  align-items: end;
-}
-
-.checkbox_label {
-  display: inline-block;
-  margin-left: 23px;
-
-  font-family: var(--font-family);
-  font-size: clamp(10px, 2vw, 14px);
-  line-height: 1;
-  color: var(--gray-800);
-
-  text-align: end;
-}
-
-.custom_checkbox {
-  position: absolute;
-
-  width: 16px;
-  height: 16px;
-}
-
-.checkbox_input {
-  margin: 0;
-
-  position: absolute;
-
-  top: 0;
-
-  opacity: 0;
-
-  width: 10px;
-  height: 10px;
-}
-
-.primary_checkbox {
-  z-index: 1;
-
-  position: absolute;
-  top: 0;
-
-  background-color: var(--white);
-
-  border: 1px solid var(--primary);
-
-  border-radius: 4px;
-
-  overflow: hidden;
-
-  width: 100%;
-  height: 100%;
-}
-
-.checkbox_input:checked ~ .primary_checkbox {
-  background-color: var(--primary);
-}
-
-.primary_checkbox::after {
-  position: absolute;
-
-  content: "";
-
-  top: 56%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-
-  background-image: url("./icons/check.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-
-  width: 0px;
-  height: 0px;
-
-  transition-property: width;
-  transition-duration: var(--transition-duration);
-}
-
-.checkbox_input:checked ~ .primary_checkbox::after {
-  width: 8px;
-  height: 8px;
-}
-
 .success_info {
   font-family: var(--font-family);
   font-weight: 500 !important;
 
   letter-spacing: 0.2;
   font-size: clamp(12px, 2vw, 16px);
+}
+
+.success_about_text {
+  text-align: center;
+
+  font-family: var(--font-family);
+  font-weight: 400;
 }
 
 .success_title {
@@ -187,12 +103,18 @@
   color: var(--primary) !important;
 }
 
+.success_dialog_tile {
+  margin: 0 auto;
+}
+
 .success_info_tile {
   padding: 20px 25px;
 
   display: flex;
   flex-direction: column;
   gap: 4px;
+
+  background-color: #fff !important;
 }
 
 .subscribe_page {

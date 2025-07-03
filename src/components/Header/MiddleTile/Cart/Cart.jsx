@@ -46,9 +46,13 @@ function Card({ valute }) {
   const openModal = (event) => {
     if (event.target === event.currentTarget) {
       if (openCart) {
+        document.querySelector("html").classList.remove("lock");
         setOpenCart(false);
       }
-    } else setOpenCart(true);
+    } else {
+      document.querySelector("html").classList.add("lock");
+      setOpenCart(true);
+    }
   };
 
   return (

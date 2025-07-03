@@ -9,8 +9,8 @@ import Delivery from "../components/Delivery/Delivery";
 
 import { BsCart2 } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
-import starEmpty from "../../../icons/StarEmpty.svg";
-import starSelect from "../../../icons/StarColor.svg";
+import starEmpty from "../../../../public/icons/StarEmpty.svg";
+import starSelect from "../../../../public/icons/StarColor.svg";
 
 import css from "./SelfProduct.module.css";
 import "./mui.css";

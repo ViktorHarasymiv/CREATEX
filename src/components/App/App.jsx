@@ -5,6 +5,7 @@ import { Suspense, lazy } from "react";
 import { useLocation } from "react-router-dom";
 
 import "./App.css";
+import "../../styles/checkbox.css";
 
 import Router from "../Routes/Routes";
 
@@ -70,6 +71,10 @@ function App() {
   const openSubscribePanel = () => {
     setSubscribe((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    scrollTo(0, 0);
+  }, [location]);
 
   // useEffect(() => {
   //   setTimeout(() => {

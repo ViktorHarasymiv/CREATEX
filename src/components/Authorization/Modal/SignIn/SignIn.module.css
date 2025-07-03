@@ -1,0 +1,17 @@
+.form_change_modal {
+  margin-bottom: 24px;
+
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: var(--gray-800);
+}
+
+.accent {
+  color: var(--primary);
+}
+
+.accent:hover {
+  text-decoration: underline;
+}

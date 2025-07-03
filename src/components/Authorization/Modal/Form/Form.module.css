@@ -1,0 +1,102 @@
+.formSettup {
+  padding-bottom: 24px;
+}
+
+.form_label {
+  display: block;
+
+  margin-bottom: 20px;
+}
+
+.form_label span {
+  margin-bottom: 8px;
+}
+
+.modal_form_input {
+  max-height: 44px;
+}
+
+.auth_media_tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-top: 1px solid var(--gray-300);
+}
+
+.auth_media_block {
+  padding-top: 24px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.auth_media_list {
+  display: flex;
+  gap: 12px;
+}
+
+.media_item {
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+
+  background-color: var(--gray-300);
+}
+
+.media_item:hover {
+  border: 1px solid var(--gray-600);
+  background-color: rgba(23, 105, 106, 0.2);
+
+  transition-duration: var(--transition-duration);
+}
+
+.auth_media_title {
+  color: var(--gray-700);
+}
+
+.input_wrapper {
+  position: relative;
+}
+
+.password_hide_icon {
+  position: absolute;
+
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.user_change_btns {
+  margin-bottom: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error_message {
+  position: absolute;
+  font-size: 12px;
+
+  color: var(--danger);
+}
+
+@media screen and (max-width: 767.98px) {
+  .auth_media_block {
+    padding-top: 18px;
+  }
+  .user_change_btns {
+    margin-bottom: 18px;
+  }
+}

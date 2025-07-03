@@ -48,6 +48,7 @@ function Modal({ overlay, content, closePage, setOpen, valute }) {
 
   const openModal = (event) => {
     if (event.target === event.currentTarget) {
+      document.querySelector("html").classList.remove("lock");
       setOpen(false);
     }
   };
@@ -55,6 +56,7 @@ function Modal({ overlay, content, closePage, setOpen, valute }) {
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
+        document.querySelector("html").classList.remove("lock");
         setOpen(false);
       }
     };

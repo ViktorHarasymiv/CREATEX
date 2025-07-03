@@ -5,8 +5,8 @@ import { addProduct, deleteProduct } from "../../../redux/wishlistSlice";
 
 import { CiHeart } from "react-icons/ci";
 import { IoMdHeart } from "react-icons/io";
-import starEmpty from "../../../icons/StarEmpty.svg";
-import starSelect from "../../../icons/StarColor.svg";
+import starEmpty from "../../../../public/icons/StarEmpty.svg";
+import starSelect from "../../../../public/icons/StarColor.svg";
 
 import css from "./ArrivalsItem.module.css";
 import { Link } from "react-router-dom";

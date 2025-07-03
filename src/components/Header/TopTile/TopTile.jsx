@@ -5,7 +5,7 @@ import css from "./TopTile.module.css";
 import Phone from "./Phone/Phone";
 import Navigation from "./Navigation/Navigation";
 import Currency from "./Сurrency/Сurrency";
-import Authorization from "./Authorization/Authorization";
+import Authorization from "../../Authorization/Authorization";
 
 function TopTile({ active, setValute, valute }) {
   return (
