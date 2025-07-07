@@ -32,7 +32,7 @@ export default function Kids({
               {products
                 .filter(
                   (kids) =>
-                    kids.gender == "boys" &&
+                    kids.gender == "boy" &&
                     (filter != "All"
                       ? kids.category == filter ||
                         kids.subCategory == filter ||

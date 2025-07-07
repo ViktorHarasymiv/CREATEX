@@ -6,7 +6,7 @@ import { IoMdClose } from "react-icons/io";
 import LoggedWithMedia from "../Form/LoggedWithMedia";
 import SignInForm from "../Form/SignInForm";
 
-function SignIn({ overlay, content, closePage, openSignUp }) {
+function SignIn({ closePage, openSignUp }) {
   useEffect(() => {
     const handleEsc = (event) => {
       if (event.key === "Escape") {
@@ -34,7 +34,7 @@ function SignIn({ overlay, content, closePage, openSignUp }) {
             registration.
           </p>
         </div>
-        <SignInForm />
+        <SignInForm close={closePage} />
         <div className={css.form_change_modal}>
           <span>Don't have an account?</span>{" "}
           <button type="button" onClick={openSignUp} className={css.accent}>

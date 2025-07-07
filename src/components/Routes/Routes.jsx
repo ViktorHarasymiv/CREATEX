@@ -1,6 +1,10 @@
 import { lazy, useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
+// REDUX STORE
+
+import { useSelector } from "react-redux";
+
 import NotFound from "../NotFound/NotFound";
 import Checkout from "../Checkout/Checkout";
 import Order from "../Checkout/MyOrder/Order";
@@ -24,7 +28,21 @@ import Product from "../Goods/product/Product";
 import Boys from "../Kids/Boys";
 import Girls from "../Kids/Girls";
 
-const Account = lazy(() => import("../Account/Account"));
+/* CMS COMPONENTS */
+
+const CMS = lazy(() => import("../Authorization/CMS/CMS"));
+import SetProduct from "../Authorization/CMS/components/SetProduct/SetProduct";
+
+/* ACCOUNT COMPONENTS */
+
+const Account = lazy(() => import("../Authorization/Account/Account"));
+
+import MyProfile from "../Authorization/CMS/components/MyProfile";
+import MyOrder from "../Authorization/Account/components/MyOrder";
+import MyWishlist from "../Authorization/CMS/components/MyWishlist";
+import MyViewed from "../Authorization/CMS/components/MyViewed";
+import MyReviews from "../Authorization/CMS/components/MyReviews";
+
 const Sale = lazy(() => import("../Sale/Sale"));
 const Wishlist = lazy(() => import("../Wishlist/Wishlist"));
 
@@ -38,6 +56,8 @@ function Router({
 }) {
   document.title = "Createx | Home";
   const location = useLocation();
+  const isLogged = useSelector((state) => state.account.isLogged);
+  const loggedUser = useSelector((state) => state.account.loggedUser);
 
   const [title, setTitle] = useState("Createx | Home");
 
@@ -68,7 +88,6 @@ function Router({
         <Route path="/track" element={<Track />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/contacts" element={<Contacts />} />
-        <Route path="/account" element={<Account />} />
 
         {/* Page navigation */}
 
@@ -143,6 +162,26 @@ function Router({
         <Route path="/girls/:id" element={<Product valute={valute} />}></Route>
 
         {/* Media */}
+        {isLogged && (
+          <Route path="/account" element={<Account />}>
+            <Route path="profile" element={<MyProfile />} />
+            <Route path="orders" element={<MyOrder />} />
+            <Route path="wishlist" element={<MyWishlist />} />
+            <Route path="viewed" element={<MyViewed />} />
+            <Route path="reviews" element={<MyReviews />} />
+          </Route>
+        )}
+        {loggedUser.info.persone.role === "admin" && (
+          <>
+            <Route path="/admin" element={<CMS />}>
+              <Route path="profile" element={<MyProfile />} />
+              <Route path="addProduct" element={<SetProduct />} />
+              <Route path="wishlist" element={<MyWishlist />} />
+              <Route path="viewed" element={<MyViewed />} />
+              <Route path="reviews" element={<MyReviews />} />
+            </Route>
+          </>
+        )}
         <Route path="/wishlist" element={<Wishlist valute={valute} />} />
         <Route path="/checkout" element={<Checkout valute={valute} />} />
         <Route path="/checkout/:id" element={<Order valute={valute} />} />

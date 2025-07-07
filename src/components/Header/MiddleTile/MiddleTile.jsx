@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-
+import { useEffect, useState } from "react";
 import clsx from "clsx";
 
 import css from "./MiddleTile.module.css";

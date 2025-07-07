@@ -1,4 +1,4 @@
-.css-sc8y68-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+/* .css-sc8y68-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
   font-family: var(--font-family) !important;
 
   font-style: normal !important;
@@ -10,14 +10,13 @@
   color: var(--gray-800) !important;
 }
 
-em {
-  font-style: normal !important;
-  letter-spacing: 0.05em;
-}
-
 .css-w76bbz-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
   padding: 11px 16px !important;
 }
+
+.css-hs8t5g-MuiFormControl-root {
+  margin: 0 !important;
+} */
 
 .error_form--text {
   font-family: var(--second-family);
@@ -25,8 +24,4 @@ em {
   color: var(--danger);
 
   font-weight: 300;
-}
-
-.css-hs8t5g-MuiFormControl-root {
-  margin: 0 !important;
 }

@@ -75,11 +75,7 @@ function ProductCard({
     <div key={id} className="product_card">
       <div className={css.product_image_tile}>
         <Link to={`/${gender}/${id}`}>
-          <img
-            className={css.product_image}
-            src={`images/goods/${image[0]}`}
-            alt={alt}
-          />
+          <img className={css.product_image} src={image[0]} alt={alt} />
         </Link>
 
         <div className={css.top_info_panel}>

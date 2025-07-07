@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./authorization.css";
@@ -10,8 +9,6 @@ import SignUp from "./Modal/SignUp/SignUp";
 import { MdOutlineAccountCircle } from "react-icons/md";
 
 function Authorization() {
-  // const location = useLocation();
-
   const [signIn, setSignIn] = useState(false);
   const [signUp, setSignUp] = useState(false);
 

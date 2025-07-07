@@ -34,7 +34,7 @@ function SignUp({ closePage, openSignIn }) {
             over your orders.
           </p>
         </div>
-        <SignUpForm />
+        <SignUpForm close={closePage} />
         <div className={css.form_change_modal}>
           <span>Already have an account?</span>{" "}
           <button type="button" onClick={openSignIn} className={css.accent}>

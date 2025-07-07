@@ -82,7 +82,7 @@ function ArrivalsItem({
         <Link to={`/${gender}/${id}`}>
           <img
             className={css.product_image}
-            src={`images/goods/${image[0]}`}
+            src={image[0]}
             alt={alt}
             width={285}
             style={{ backgroundColor: "#f8f8f8" }}

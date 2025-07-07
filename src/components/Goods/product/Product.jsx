@@ -305,10 +305,7 @@ function Product({ valute }) {
                       {selfItem.image && selfItem.image.length > 0 ? (
                         selfItem.image.map((image, index) => (
                           <SwiperSlide key={index}>
-                            <img
-                              src={`/images/goods/${image}`}
-                              alt={`Product ${index}`}
-                            />
+                            <img src={image} alt={`Product ${index}`} />
                           </SwiperSlide>
                         ))
                       ) : (
@@ -332,10 +329,7 @@ function Product({ valute }) {
                       {selfItem.image && selfItem.image.length > 0 ? (
                         selfItem.image.map((image, index) => (
                           <SwiperSlide key={index} style={{ width: "104px" }}>
-                            <img
-                              src={`/images/goods/${image}`}
-                              alt={`Product ${index}`}
-                            />
+                            <img src={image} alt={`Product ${index}`} />
                           </SwiperSlide>
                         ))
                       ) : (

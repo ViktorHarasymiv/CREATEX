@@ -4,11 +4,14 @@ import { useState } from "react";
 
 // FORM SETTUP
 import { useId } from "react";
+
+// FORMIK
+
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 // REDUX STORE
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getProfile } from "../../../../redux/accountSlice";
 
 // STYLE AND ICONS
@@ -46,7 +49,7 @@ const validationSchema = Yup.object().shape({
     .required("Підтвердження паролю обов'язкове"),
 });
 
-export default function SignUpForm() {
+export default function SignUpForm({ close }) {
   const dispatch = useDispatch();
   const fieldId = useId();
 
@@ -55,15 +58,14 @@ export default function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false);
 
   // CONST
-
   const profile = useSelector((state) => state.account.profile);
-
   const maxHeight = 44;
 
   const initialValues = {
     fullname: "",
     email: "",
     password: "",
+    confirmPassword: "",
     acceptConfig: false,
   };
 
@@ -74,8 +76,19 @@ export default function SignUpForm() {
   };
 
   const handleSubmit = (values, actions) => {
-    dispatch(getProfile(values));
-    actions.resetForm();
+    const matchedUser = profile.find((user) => user.email === values.email);
+
+    if (matchedUser) {
+      if (matchedUser.email === values.email) {
+        actions.setErrors({
+          email: "Email already exists",
+        });
+      }
+    } else {
+      dispatch(getProfile(values));
+      close();
+      actions.resetForm();
+    }
   };
 
   return (
@@ -90,7 +103,7 @@ export default function SignUpForm() {
             <legend>Sign Up form</legend>
             {/* fullname */}
             <label htmlFor={`${fieldId}-fullname`} className={css.form_label}>
-              <span>Name</span>
+              <span>Full Name</span>
               <div className={css.input_wrapper}>
                 <Field
                   type="text"
@@ -212,7 +225,9 @@ export default function SignUpForm() {
               className="checkbox_label"
             >
               <div className="custom_checkbox">
-                <span className="accept_text">Remember me</span>
+                <span className="accept_text">
+                  I accept the Terms of Use & Private Policy.
+                </span>
                 <Field
                   type="checkbox"
                   name="acceptConfig"

@@ -15,6 +15,7 @@ import SubscribePage from "../Subscribe/SubscribePage";
 import Footer from "../Footer/Footer";
 
 /* Setup for spiner */
+
 const override = {
   display: "block",
 
@@ -54,7 +55,7 @@ function App() {
 
   const [heroOffset, setHeroOffset] = useState(0);
 
-  //
+  // BASKET
 
   const SyncReduxWithLocalStorage = () => {
     const dataArray = useSelector((state) => state.basket.basketArr);
@@ -66,7 +67,46 @@ function App() {
     return null;
   };
 
+  // PROFILE
+
+  const syncProfileArrayWithLocaleStorage = () => {
+    const profile = useSelector((state) => state.account.profile);
+
+    useEffect(() => {
+      localStorage.setItem("profileArray", JSON.stringify(profile));
+    }, [profile]);
+
+    return null;
+  };
+
+  // LOGGED
+
+  const isLoggedUser = () => {
+    const loggedUser = useSelector((state) => state.account.isLogged);
+
+    useEffect(() => {
+      localStorage.setItem("isLogged", JSON.stringify(loggedUser));
+    }, [loggedUser]);
+
+    return null;
+  };
+
+  // CURRENT USER
+
+  const currentUser = () => {
+    const currentUser = useSelector((state) => state.account.loggedUser);
+
+    useEffect(() => {
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
+    }, [currentUser]);
+
+    return null;
+  };
+
+  syncProfileArrayWithLocaleStorage();
   SyncReduxWithLocalStorage();
+  isLoggedUser();
+  currentUser();
 
   const openSubscribePanel = () => {
     setSubscribe((prevState) => !prevState);

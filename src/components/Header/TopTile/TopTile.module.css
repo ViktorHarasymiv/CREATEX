@@ -14,3 +14,50 @@
   display: flex;
   justify-content: space-between;
 }
+
+/* AUTH */
+
+.auth_content_tile {
+  display: flex;
+  gap: 15px;
+}
+.auth_welcome_text {
+  margin-right: 5px;
+}
+
+.auth_user_tile {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth_user_tile:not(:last-child)::after {
+  content: "";
+  position: absolute;
+
+  top: 50%;
+  right: -7.5px;
+
+  transform: translateY(-50%);
+  display: block;
+
+  width: 1px;
+  height: 70%;
+
+  background-color: var(--gray-600);
+}
+
+.sign_out_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: inherit;
+}
+
+.auth_user_tile:hover,
+.sign_out_button:hover {
+  text-decoration: underline;
+}
