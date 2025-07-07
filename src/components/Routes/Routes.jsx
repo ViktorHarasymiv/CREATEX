@@ -171,7 +171,7 @@ function Router({
             <Route path="reviews" element={<MyReviews />} />
           </Route>
         )}
-        {loggedUser.info.persone.role === "admin" && (
+        {loggedUser?.info?.persone?.role === "admin" && (
           <>
             <Route path="/admin" element={<CMS />}>
               <Route path="profile" element={<MyProfile />} />
