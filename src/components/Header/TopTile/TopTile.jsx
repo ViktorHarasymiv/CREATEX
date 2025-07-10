@@ -15,6 +15,7 @@ import Phone from "./Phone/Phone";
 import Navigation from "./Navigation/Navigation";
 import Currency from "./Сurrency/Сurrency";
 import Authorization from "../../Authorization/Authorization";
+import { useEffect } from "react";
 
 function TopTile({ active, setValute, valute }) {
   const navigate = useNavigate();
@@ -23,18 +24,26 @@ function TopTile({ active, setValute, valute }) {
   const isLogged = useSelector((state) => state.account.isLogged);
   const loggedUser = useSelector((state) => state.account.loggedUser);
 
+  useEffect(() => {
+    if (!isLogged) {
+      navigate("/");
+    }
+  }, [isLogged]);
+
   const logOut = () => {
+    setTimeout(() => {
+      dispatch(getLogged(false));
+      dispatch(
+        setUserInfo({
+          persone: { fullname: "", password: "", role: "" },
+          contacts: { email: "" },
+          logged: false,
+          loggedTime: "",
+          political: false,
+        })
+      );
+    }, 400);
     navigate("/");
-    dispatch(getLogged(false));
-    dispatch(
-      setUserInfo({
-        persone: { fullname: "", password: "", role: "" },
-        contacts: { email: "" },
-        logged: false,
-        loggedTime: "",
-        political: false,
-      })
-    );
   };
 
   return (

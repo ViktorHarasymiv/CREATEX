@@ -31,17 +31,22 @@ import Girls from "../Kids/Girls";
 /* CMS COMPONENTS */
 
 const CMS = lazy(() => import("../Authorization/CMS/CMS"));
-import SetProduct from "../Authorization/CMS/components/SetProduct/SetProduct";
+import UsersProfile from "../Authorization/CMS/components/Registered/UsersProfile";
+import SetGoods from "../Authorization/CMS/components/SetGoods/SetGoods";
+import SetHeroSlider from "../Authorization/CMS/components/SetHeroSlider/SetHeroSlider";
+import SetBlog from "../Authorization/CMS/components/SetBlog/SetBlog";
 
+SetBlog;
 /* ACCOUNT COMPONENTS */
 
 const Account = lazy(() => import("../Authorization/Account/Account"));
 
 import MyProfile from "../Authorization/CMS/components/MyProfile";
 import MyOrder from "../Authorization/Account/components/MyOrder";
-import MyWishlist from "../Authorization/CMS/components/MyWishlist";
+import MyWishlist from "../Authorization/Account/components/MyWishlist";
 import MyViewed from "../Authorization/CMS/components/MyViewed";
 import MyReviews from "../Authorization/CMS/components/MyReviews";
+import Root from "../Authorization/CMS/components/Root/Root";
 
 const Sale = lazy(() => import("../Sale/Sale"));
 const Wishlist = lazy(() => import("../Wishlist/Wishlist"));
@@ -175,10 +180,12 @@ function Router({
           <>
             <Route path="/admin" element={<CMS />}>
               <Route path="profile" element={<MyProfile />} />
-              <Route path="addProduct" element={<SetProduct />} />
-              <Route path="wishlist" element={<MyWishlist />} />
-              <Route path="viewed" element={<MyViewed />} />
-              <Route path="reviews" element={<MyReviews />} />
+
+              <Route path="root" element={<Root />} />
+              <Route path="users" element={<UsersProfile />} />
+              <Route path="setGoods" element={<SetGoods />} />
+              <Route path="setHero" element={<SetHeroSlider />} />
+              <Route path="setBlog" element={<SetBlog />} />
             </Route>
           </>
         )}

@@ -72,30 +72,18 @@ function Hero({ setHeroOffset }) {
       className="hero_swiper"
     >
       {slider.map(
-        ({
-          id,
-          name,
-          image,
-          video,
-          videoMobile,
-          PR,
-          title,
-          year,
-          motivational,
-        }) => {
+        ({ id, name, url, image, relations, title, data, motivation }) => {
           return (
             <SwiperSlide>
               <Slider
                 id={id}
                 name={name}
+                url={url}
                 image={image}
-                video={video}
-                videoMobile={videoMobile}
-                PR={PR}
+                relations={relations}
                 title={title}
-                year={year}
-                motivational={motivational}
-                windowWidth={windowWidth}
+                data={data}
+                motivation={motivation}
               />
             </SwiperSlide>
           );

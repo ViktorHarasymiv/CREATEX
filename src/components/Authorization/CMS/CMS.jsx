@@ -11,6 +11,9 @@ import css from "./CMS.module.css";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getLogged, setUserInfo } from "../../../redux/accountSlice";
+
+// COMPONENT
+
 import NavPanel from "./components/NavPanel";
 
 export default function CMS() {
@@ -25,7 +28,14 @@ export default function CMS() {
     <div>
       <HistoryBar></HistoryBar>
       <div className="container">
-        <NavPanel />
+        <div className={css.wrapper}>
+          <div className={css.admin_page}>
+            <h3 className={css.admin_text}>
+              Hello, admin, have a good and productive day!
+            </h3>
+          </div>
+          <NavPanel />
+        </div>
       </div>
     </div>
   );

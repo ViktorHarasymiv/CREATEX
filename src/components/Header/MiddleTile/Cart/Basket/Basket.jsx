@@ -44,7 +44,7 @@ function Modal({ overlay, content, closePage, setOpen, valute }) {
     0
   );
 
-  /* CLOSE*/
+  // CLOSE
 
   const openModal = (event) => {
     if (event.target === event.currentTarget) {
@@ -81,7 +81,7 @@ function Modal({ overlay, content, closePage, setOpen, valute }) {
             return (
               <li key={item.id} className={css.basket_product_tile}>
                 <img
-                  src={`/images/goods/${item.image[0]}`}
+                  src={item.image[0]}
                   alt={item.title}
                   width={80}
                   height={80}

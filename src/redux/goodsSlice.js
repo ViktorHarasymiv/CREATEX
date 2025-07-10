@@ -733,19 +733,17 @@ const goodsSlice = createSlice({
           },
         ],
       },
-    ],
-    kids: [
       {
         id: 283260000,
         filter: "New",
-        gender: "girl",
+        gender: "kids",
         image: [
           "/images/goods/kids/girl-1.avif",
           "/images/goods/kids/dropGirl1-1.avif",
         ],
         alt: "Komplet 2-częściowy top i spodnie",
         title: "Komplet 2-częściowy top i spodnie",
-        category: "Kids",
+        category: "boy",
         subCategory: "Summer",
         size: "",
         sizeNumm: ["92", "98", "104", "110"],
@@ -759,14 +757,14 @@ const goodsSlice = createSlice({
       {
         id: 283260001,
         filter: "Sale",
-        gender: "boy",
+        gender: "kids",
         image: [
           "/images/goods/kids/boy-1.jpg",
           "/images/goods/kids/dropBoy1-1.avif",
         ],
         alt: "Dzianinowy komplet",
         title: "Dzianinowy komplet 2-częściowy",
-        category: "Kids",
+        category: "girl",
         subCategory: "Summer",
         size: ["92", "98", "104", "110"],
         sizeNumm: "",
@@ -786,9 +784,15 @@ const goodsSlice = createSlice({
         items: [...state.items, action.payload],
       };
     },
+    deleteGood: (state, action) => {
+      return {
+        ...state,
+        items: state.items.filter((user) => user.id !== action.payload),
+      };
+    },
   },
 });
 
-export const { setNewProduct } = goodsSlice.actions;
+export const { setNewProduct, deleteGood } = goodsSlice.actions;
 
 export default goodsSlice.reducer;

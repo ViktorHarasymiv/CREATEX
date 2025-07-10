@@ -50,6 +50,12 @@ const accountSlice = createSlice({
         profile: [...state.profile, action.payload],
       };
     },
+    deleteProfile: (state, action) => {
+      return {
+        ...state,
+        profile: state.profile.filter((user) => user.email !== action.payload),
+      };
+    },
     getLogged: (state, action) => {
       return {
         ...state,
@@ -84,6 +90,7 @@ const accountSlice = createSlice({
   },
 });
 
-export const { getProfile, getLogged, setUserInfo } = accountSlice.actions;
+export const { getProfile, deleteProfile, getLogged, setUserInfo } =
+  accountSlice.actions;
 
 export default accountSlice.reducer;

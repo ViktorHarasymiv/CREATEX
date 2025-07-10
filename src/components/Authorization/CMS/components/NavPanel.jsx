@@ -1,10 +1,4 @@
-import {
-  NavLink,
-  Outlet,
-  useLocation,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import css from "./NavPanel.module.css";
 import clsx from "clsx";
@@ -12,11 +6,12 @@ import clsx from "clsx";
 // ICONS
 
 import { FaRegUser } from "react-icons/fa";
+import { IoSettingsOutline } from "react-icons/io5";
 import { RiShoppingCartLine } from "react-icons/ri";
-import { FiHeart } from "react-icons/fi";
-import { TbEyeSearch } from "react-icons/tb";
-import { FaRegStar } from "react-icons/fa";
+import { LuUsers } from "react-icons/lu";
+import { TfiLayoutSliderAlt } from "react-icons/tfi";
 import { PiSignOutBold } from "react-icons/pi";
+import { SiWikibooks } from "react-icons/si";
 
 // REDUX STORE
 
@@ -32,21 +27,26 @@ export default function NavPanel() {
   // CONST
 
   const loggedUser = useSelector((state) => state.account.loggedUser);
+  const USERS = useSelector((state) => state.account.profile);
+  const goods = useSelector((state) => state.goods.items);
+  const sliders = useSelector((state) => state.slider.items);
 
   // FUNCTION
 
   const logOut = () => {
+    setTimeout(() => {
+      dispatch(
+        setUserInfo({
+          persone: { fullname: "", password: "", role: "" },
+          contacts: { email: "" },
+          logged: false,
+          loggedTime: "",
+          political: false,
+        })
+      );
+      dispatch(getLogged(false));
+    }, 400);
     navigate("/");
-    dispatch(getLogged(false));
-    dispatch(
-      setUserInfo({
-        persone: { fullname: "", password: "", role: "" },
-        contacts: { email: "" },
-        logged: false,
-        loggedTime: "",
-        political: false,
-      })
-    );
   };
 
   const buildLinkClass = (localPath) => {
@@ -60,13 +60,16 @@ export default function NavPanel() {
     <div className={css.account_page_wrapper}>
       <nav className={css.account_panel_navigation}>
         <div className={css.account_user_content_wrapper}>
-          <h3 className={css.account_user_fullname}>
-            {loggedUser.info.persone.fullname}
-          </h3>
+          <NavLink to={"/admin"} className={css.userNameLink}>
+            <h3 className={css.account_user_fullname}>
+              {loggedUser.info.persone.fullname}
+            </h3>
+          </NavLink>
           <span className={css.account_user_email}>
             {loggedUser.info.contacts.email}
           </span>
         </div>
+        {/* Profile */}
         <NavLink
           to={"profile"}
           state={location.state}
@@ -75,38 +78,61 @@ export default function NavPanel() {
           <FaRegUser className={css.ico} />
           My Profile
         </NavLink>
+        {/* Registered */}
         <NavLink
-          to={"addProduct"}
+          to={"users"}
           state={location.state}
-          className={buildLinkClass("/addProduct")}
+          className={buildLinkClass("/users")}
         >
-          <RiShoppingCartLine className={css.ico} />
-          Add product
+          <span className={css.span_container}>
+            <LuUsers className={css.ico} />
+            Registered
+          </span>
+          <div className={css.account_amount_badge}>{USERS.length}</div>
         </NavLink>
+        {/* Add product */}
         <NavLink
-          to={"wishlist"}
+          to={"setGoods"}
           state={location.state}
-          className={buildLinkClass("/wishlist")}
+          className={buildLinkClass("/setGoods")}
         >
-          <FiHeart className={css.ico} />
-          Wishlist
+          <span className={css.span_container}>
+            <RiShoppingCartLine className={css.ico} />
+            Goods
+          </span>
+          <div className={css.account_amount_badge}>{goods.length}</div>
         </NavLink>
+        {/* Hero slider */}
         <NavLink
-          to={"viewed"}
+          to={"setHero"}
           state={location.state}
-          className={buildLinkClass("/viewed")}
+          className={buildLinkClass("/setHero")}
         >
-          <TbEyeSearch className={css.ico} />
-          Recently viewed
+          <span className={css.span_container}>
+            <TfiLayoutSliderAlt className={css.ico} />
+            Hero slider
+          </span>
+          <div className={css.account_amount_badge}>{sliders.length}</div>
         </NavLink>
+        {/* Blog */}
         <NavLink
-          to={"reviews"}
+          to={"setBlog"}
           state={location.state}
-          className={buildLinkClass("/reviews")}
+          className={buildLinkClass("/setBlog")}
         >
-          <FaRegStar className={css.ico} />
-          My reviews
+          <SiWikibooks className={css.ico} />
+          Blog
         </NavLink>
+        {/* Root */}
+        <NavLink
+          to={"root"}
+          state={location.state}
+          className={buildLinkClass("/root")}
+        >
+          <IoSettingsOutline className={css.ico} />
+          Root
+        </NavLink>
+        {/* SIGN OUT */}
         <button type="button" onClick={logOut} className={css.panel_link}>
           <PiSignOutBold className={css.ico} />
           Sign out

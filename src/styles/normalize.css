@@ -276,7 +276,7 @@ input[type="select"] {
   border: none;
   outline: 1px solid var(--gray-400);
 
-  font-size: clamp(10px, 2vw, 16px) !important;
+  font-size: clamp(10px, 2vw, 16px);
 
   border-radius: 4px;
   background: var(--white);
@@ -302,7 +302,7 @@ input[type="number"]::placeholder,
 input[type="select"]::placeholder,
 em {
   font-family: var(--font-family);
-  font-size: clamp(12px, 2vw, 16px) !important;
+  font-size: clamp(12px, 1.6vw, 15px) !important;
   line-height: 160%;
   color: var(--gray-600);
 }

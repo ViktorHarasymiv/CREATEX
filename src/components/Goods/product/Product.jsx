@@ -48,7 +48,6 @@ import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 function Product({ valute }) {
   // REDUX
   const product = useSelector((state) => state.goods.items);
-  const kidsProduct = useSelector((state) => state.goods.kids);
 
   const wishlistArray = useSelector((state) => state.wishlist.products);
   const basket = useSelector((state) => state.basket.basketArr);
@@ -103,12 +102,11 @@ function Product({ valute }) {
   useEffect(() => {
     const fetchProduct = () => {
       return new Promise((resolve, reject) => {
-        if (product.length === 0 || kidsProduct.length === 0) {
+        if (product.length === 0) {
           reject("Список продуктів порожній");
         } else {
           const foundItem = product.find((item) => item.id == param.id);
-          const foundItemKids = kidsProduct.find((item) => item.id == param.id);
-          resolve(foundItem || foundItemKids);
+          resolve(foundItem);
         }
       });
     };
@@ -121,7 +119,7 @@ function Product({ valute }) {
         setSelfItem(foundItem);
       })
       .catch((error) => console.error("Помилка:", error));
-  }, [param.id, product, kidsProduct]);
+  }, [param.id, product]);
 
   // TABS
   const tabs_list = ["General info", "Product details", "Reviews"];

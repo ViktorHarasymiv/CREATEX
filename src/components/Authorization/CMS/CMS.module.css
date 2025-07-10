@@ -1,4 +1,20 @@
 .cms_wrapper {
   display: flex;
-  gap: 135px;
+  row-gap: 135px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin_page {
+}
+
+.admin_text {
+  padding-block: 25px;
+
+  font-size: clamp(1.3rem, 1rem + 1vw, 1.8rem);
+  color: var(--gray-800);
+  text-decoration: underline;
 }

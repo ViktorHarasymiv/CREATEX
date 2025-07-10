@@ -1,14 +1,14 @@
 .account_page_wrapper {
-  padding-block: 40px 180px;
+  padding-block: 20px 80px;
   display: flex;
 
-  gap: 135px;
+  gap: 90px;
 }
 
 .account_panel_navigation {
   max-width: 285px;
   width: 100%;
-  max-height: 398px;
+  max-height: 450px;
 
   display: flex;
   flex-direction: column;
@@ -32,6 +32,34 @@
 
   font-size: 16px;
   line-height: 160%;
+}
+
+.span_container {
+  display: flex;
+  align-items: center;
+
+  flex-grow: 1;
+}
+
+.account_amount_badge {
+  width: 23px;
+  height: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--warning);
+
+  font-weight: 900;
+  font-size: 13px;
+  color: var(--white);
+
+  border-radius: 4px;
+}
+
+.userNameLink:hover {
+  text-decoration: underline;
 }
 
 .ico {

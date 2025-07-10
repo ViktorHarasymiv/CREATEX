@@ -1,0 +1,104 @@
+.form_column {
+  margin-bottom: 40px;
+
+  display: flex;
+  column-gap: 20px;
+  row-gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* TABS */
+
+.tabs_buttons {
+  display: flex;
+  margin-bottom: 14px;
+  gap: 30px;
+}
+
+.tabs_button {
+  padding: 15px 25px;
+  text-transform: uppercase;
+
+  border: 1.5px solid var(--primary);
+}
+
+.active {
+  padding: 15px 25px;
+
+  text-transform: uppercase;
+
+  background-color: var(--primary);
+  color: var(--white);
+
+  border: 1.5px solid var(--primary);
+}
+
+/* FORM */
+
+.form_title {
+  opacity: 1;
+
+  font-size: 34px;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  border-bottom: 1px solid var(--gray-800);
+
+  margin-bottom: 50px;
+}
+
+.form_label {
+  font-size: 15px;
+}
+
+.getSlidersWrapper {
+  width: 750px;
+}
+
+.getSliderItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.sliderDeleteBtn {
+  margin-bottom: 10px;
+
+  display: flex;
+  align-items: center;
+
+  align-self: flex-end;
+
+  color: var(--danger);
+}
+
+.ico {
+  margin-right: 5px;
+}
+
+.sliderDeleteBtn:hover {
+  color: var(--warning);
+}
+
+.getSliderName {
+  text-transform: capitalize;
+}
+
+.input_wrapper {
+  width: 350px;
+}
+
+.modal_form_input {
+  outline: none !important;
+
+  border-radius: 0px !important;
+  border-bottom: 1px solid var(--gray-600) !important;
+}
+
+.modal_form_input::placeholder {
+  font-size: 11px !important;
+}
+
+.error_message {
+  font-size: 13px;
+  color: var(--danger);
+}
