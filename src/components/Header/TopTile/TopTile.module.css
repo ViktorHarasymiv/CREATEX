@@ -61,3 +61,13 @@
 .sign_out_button:hover {
   text-decoration: underline;
 }
+
+@media screen and (max-width: 767.98px) {
+  .top_tile_wrapper {
+    padding-block: 8px;
+  }
+
+  .auth_content_tile {
+    font-size: 12px;
+  }
+}

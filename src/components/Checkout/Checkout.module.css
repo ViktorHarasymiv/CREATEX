@@ -212,12 +212,12 @@
   border-bottom: var(--border-light-grey);
 }
 
-.checkout_summary_price_tile,
+.checkout_summary_valute_tile,
 .checkout_summary_total {
   padding: 16px 24px;
 }
 
-.checkout_summary_price_tile {
+.checkout_summary_valute_tile {
   display: flex;
   flex-direction: column;
 }

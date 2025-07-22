@@ -1,4 +1,4 @@
-import React from "react";
+import css from "./Line.module.css";
 
 function Line() {
   return (
@@ -8,7 +8,7 @@ function Line() {
       height="22"
       viewBox="0 0 1 22"
       fill="none"
-      style={{ marginInline: "20px" }}
+      className={css.line_style}
     >
       <line
         x1="0.5"

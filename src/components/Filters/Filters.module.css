@@ -1,9 +1,6 @@
 /* BUTTON */
-.filters_wrapper {
-}
-
 .filters_button {
-  width: 90px;
+  max-width: 140px;
   height: 44px;
 
   border: 1px solid var(--primary);
@@ -26,7 +23,7 @@
   padding-inline: 10px;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space;
   align-items: center;
 
   font-weight: 700;
@@ -167,7 +164,7 @@
 
   transform: translate(-50%, -50%);
 
-  background-image: url("../Subscribe/icons/check.svg");
+  background-image: url("../../../public/icons/check.svg");
   background-repeat: no-repeat;
   background-size: contain;
 
@@ -185,7 +182,7 @@
 
 .filters_list {
   margin-top: 10px;
-  z-index: 9999;
+  z-index: 1;
 
   position: absolute;
 
@@ -260,14 +257,6 @@
 }
 
 @media screen and (max-width: 1089.98px) {
-  .filters_wrapper {
-    z-index: 999;
-
-    position: absolute;
-    right: 0;
-    top: 32px;
-  }
-
   .filters_button {
     width: 85px;
     height: 44px;
@@ -282,22 +271,11 @@
 
     padding: 20px 30px;
     animation: none;
+
+    transform: translateX(0);
   }
 
   .sort_tile {
     display: none;
-  }
-}
-
-@media screen and (max-width: 767.98px) {
-  .filters_wrapper {
-    z-index: 999;
-
-    position: absolute;
-    top: 41px;
-  }
-
-  .filters_list {
-    transform: translate(-240px);
   }
 }

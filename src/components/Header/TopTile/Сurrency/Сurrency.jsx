@@ -16,7 +16,7 @@ function Currency({ setValute, valute }) {
   };
 
   return (
-    <div className={css.price_tile}>
+    <div className={css.valute_tile}>
       <FormControl
         className={css.custom_select_tile}
         sx={{ m: 1 }}

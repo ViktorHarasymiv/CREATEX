@@ -421,7 +421,7 @@ function Checkout({ valute }) {
               </div>
               <div className={css.checkout_summary_tile}>
                 <h2 className={css.checkout_summary_title}>Computation :</h2>
-                <div className={css.checkout_summary_price_tile}>
+                <div className={css.checkout_summary_valute_tile}>
                   <p>
                     <b className={css.checkout_summary_options}>
                       Order :

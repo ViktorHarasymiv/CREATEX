@@ -1,8 +1,9 @@
 .sort_module_tile {
   margin-bottom: 32px;
 
+  width: 100%;
+
   display: flex;
-  align-self: stretch;
 }
 .sort_tile,
 .sort_tile_page {
@@ -21,9 +22,11 @@
 }
 
 .sort_show_tile {
+  width: 100%;
   max-height: 70px;
 
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   gap: 60px;
 }
@@ -33,17 +36,25 @@
   -webkit-appearance: initial;
 }
 
+.sort_list {
+  z-index: 2;
+}
+
 @media screen and (max-width: 767.98px) {
   .sort_tile {
-    align-items: start;
-    flex-direction: column;
-
-    gap: 6px;
+    align-items: center;
+    gap: 8px;
   }
   .sort_tile h4 {
     font-size: 0.8em;
   }
   .sort_tile_page {
     display: none;
+  }
+
+  .select_size_tile {
+    border: none;
+    border-bottom: 1px solid var(--gray-400);
+    border-radius: 0px !important;
   }
 }

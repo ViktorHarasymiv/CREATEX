@@ -47,7 +47,7 @@ function SearchTile({ DATA, value, valute, autoClose }) {
                       {filteredSearch.gender}
                     </span>
                   </div>
-                  <div className={style.price_tile}>
+                  <div className={style.valute_tile}>
                     {filteredSearch.sale && (
                       <span
                         style={{

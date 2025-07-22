@@ -195,6 +195,8 @@ td {
 svg {
   color: inherit;
   transition-property: fill, stroke;
+
+  width: 100%;
 }
 
 /**
@@ -332,11 +334,6 @@ fieldset {
 
 legend {
   opacity: 0;
-}
-
-svg {
-  width: 100%;
-  height: 100%;
 }
 
 /* Для всього документа */

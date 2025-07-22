@@ -110,7 +110,7 @@
   color: var(--gray-800);
 }
 
-.price_tile {
+.valute_tile {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -141,7 +141,7 @@
   .product_image_tile {
     height: clamp(15rem, 15vw + 15rem, 26rem);
   }
-  .price_tile > span {
+  .valute_tile > span {
     font-size: 16px !important;
   }
 }
@@ -168,7 +168,7 @@
     right: 8px;
     bottom: 8px;
   }
-  .price_tile > span {
+  .valute_tile > span {
     font-size: 13px !important;
   }
 }

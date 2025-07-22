@@ -143,7 +143,7 @@ function ArrivalsItem({
       </div>
       <div className={css.product_info}>
         <h3 className={css.product_title}>{title}</h3>
-        <div className={css.price_tile}>
+        <div className={css.valute_tile}>
           {sale && (
             <span
               style={{

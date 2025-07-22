@@ -8,7 +8,7 @@ export default function FilterButton({ click, showState }) {
       <span className={css.button_context}>
         <TbFilterSearch className={css.filters_button_icon} />
         <span style={{ marginLeft: "10px" }}>
-          {showState ? "Hide" : "Show"}
+          {showState ? "Hide filters" : "Filters"}
         </span>
       </span>
     </button>

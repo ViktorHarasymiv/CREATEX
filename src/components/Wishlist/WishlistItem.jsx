@@ -73,7 +73,7 @@ function WishlistItem({ data, valute }) {
       </div>
       <div className={css.product_info}>
         <h3 className={css.product_title}>{data.title}</h3>
-        <div className={css.price_tile}>
+        <div className={css.valute_tile}>
           {data.sale && (
             <span
               style={{

@@ -24,7 +24,7 @@ function Sort({ data, setFilter, setPage, sliceValue, setSliceValue, array }) {
         <Filters array={array} setFilter={setFilter} />
         <div className={css.sort_tile}>
           <h4>Sort by</h4>
-          <FormControl sx={{ m: 1, minWidth: 120 }} className="form_size_tile">
+          <FormControl sx={{ m: 1, minWidth: 120 }} className={css.sort_list}>
             <Select
               className={css.select_size_tile}
               value={sort ? sort : "All"}
@@ -44,46 +44,46 @@ function Sort({ data, setFilter, setPage, sliceValue, setSliceValue, array }) {
               ))}
             </Select>
           </FormControl>
-        </div>
-        {data > 8 && (
-          <div className={css.sort_tile_page}>
-            <h4>Show</h4>
-            {/* COUNT PRICE */}
-            <div
-              className={style.product_count_price}
-              style={{ width: "80px" }}
-            >
-              <span style={{ marginLeft: "23px" }}>{sliceValue}</span>
+          {data > 8 && (
+            <div className={css.sort_tile_page}>
+              <h4>Show</h4>
+              {/* COUNT PRICE */}
+              <div
+                className={style.product_count_price}
+                style={{ width: "80px" }}
+              >
+                <span style={{ marginLeft: "23px" }}>{sliceValue}</span>
 
-              <div className={style.count_price_buttons}>
-                <button
-                  className={style.custom_count_button}
-                  onClick={() => {
-                    if (sliceValue >= 22) {
-                      return;
-                    }
-                    setSliceValue(sliceValue + 8);
-                  }}
-                >
-                  <TiArrowSortedUp />
-                </button>
-                <button
-                  className={style.custom_count_button}
-                  onClick={() => {
-                    if (sliceValue <= 8) {
-                      return;
-                    } else {
-                      setPage(0);
-                      setSliceValue(sliceValue - 8);
-                    }
-                  }}
-                >
-                  <TiArrowSortedDown />
-                </button>
+                <div className={style.count_price_buttons}>
+                  <button
+                    className={style.custom_count_button}
+                    onClick={() => {
+                      if (sliceValue >= 22) {
+                        return;
+                      }
+                      setSliceValue(sliceValue + 8);
+                    }}
+                  >
+                    <TiArrowSortedUp />
+                  </button>
+                  <button
+                    className={style.custom_count_button}
+                    onClick={() => {
+                      if (sliceValue <= 8) {
+                        return;
+                      } else {
+                        setPage(0);
+                        setSliceValue(sliceValue - 8);
+                      }
+                    }}
+                  >
+                    <TiArrowSortedDown />
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

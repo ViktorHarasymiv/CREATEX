@@ -341,7 +341,7 @@ function Product({ valute }) {
                   </div>
                   <div className={css.product_info}>
                     <div className={css.product_info_top}>
-                      <div className={style.price_tile}>
+                      <div className={style.valute_tile}>
                         <div>
                           {selfItem.sale && (
                             <span

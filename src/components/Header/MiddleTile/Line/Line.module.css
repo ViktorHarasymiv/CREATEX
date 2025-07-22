@@ -1,0 +1,9 @@
+.line_style {
+  margin-inline: 20px;
+}
+
+@media screen and (max-width: 767.98px) {
+  .line_style {
+    margin-inline: 10px;
+  }
+}
