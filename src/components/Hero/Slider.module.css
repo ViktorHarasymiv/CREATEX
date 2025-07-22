@@ -84,7 +84,6 @@
   width: 100vw;
   height: 100vh;
 
-  object-position: 30%;
   object-fit: cover;
 }
 
@@ -96,7 +95,7 @@
 @media screen and (max-width: 1024.98px) {
   .slider_content_tile {
     margin: 50px auto;
-    height: 60vh;
+    height: 55dvh;
   }
 
   .motivational_text {

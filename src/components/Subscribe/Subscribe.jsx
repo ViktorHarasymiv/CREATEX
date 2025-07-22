@@ -44,7 +44,7 @@ function Subscribe({ isSubscribe, openSubscribe }) {
       >
         <div className={css.success_tile}>
           <h2 className={css.subscribe_title}>Subscribe for updates</h2>
-          <DialogContent>
+          <DialogContent className={css.subscribe_content_wrapper}>
             <h3 className={css.subscribe_sub_title}>
               Subscribe for exclusive early sale access and new arrivals.
             </h3>
@@ -83,7 +83,9 @@ function Subscribe({ isSubscribe, openSubscribe }) {
               className="subscribe_checkbox"
             >
               <span className="checkbox_label">
-                I agree to receive communications from Createx Store.
+                <span className="accept_text">
+                  I agree to receive communications from Createx Store.
+                </span>
               </span>
               <div className="custom_checkbox">
                 <input

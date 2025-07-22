@@ -8,6 +8,14 @@
   margin-bottom: 20px;
 }
 
+@media screen and (max-width: 767.98px) {
+  .form_label {
+    display: block;
+
+    margin-bottom: 10px;
+  }
+}
+
 .form_label span {
   margin-bottom: 8px;
 }

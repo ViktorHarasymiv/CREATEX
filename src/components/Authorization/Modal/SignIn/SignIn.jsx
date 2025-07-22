@@ -6,11 +6,11 @@ import { IoMdClose } from "react-icons/io";
 import LoggedWithMedia from "../Form/LoggedWithMedia";
 import SignInForm from "../Form/SignInForm";
 
-function SignIn({ closePage, openSignUp }) {
+function SignIn({ close, switchSignUp }) {
   useEffect(() => {
     const handleEsc = (event) => {
       if (event.key === "Escape") {
-        closePage();
+        close();
       }
     };
 
@@ -20,11 +20,11 @@ function SignIn({ closePage, openSignUp }) {
     return () => {
       window.removeEventListener("keydown", handleEsc);
     };
-  }, [closePage]);
+  }, [close]);
   return (
     <div className="overlay">
       <div className="override">
-        <button onClick={closePage} className="auth_form--close-button">
+        <button onClick={close} className="auth_form--close-button">
           <IoMdClose />
         </button>
         <div className="auth_title--tile">
@@ -34,10 +34,10 @@ function SignIn({ closePage, openSignUp }) {
             registration.
           </p>
         </div>
-        <SignInForm close={closePage} />
+        <SignInForm close={close} />
         <div className={css.form_change_modal}>
           <span>Don't have an account?</span>{" "}
-          <button type="button" onClick={openSignUp} className={css.accent}>
+          <button type="button" onClick={switchSignUp} className={css.accent}>
             Sign up
           </button>
         </div>

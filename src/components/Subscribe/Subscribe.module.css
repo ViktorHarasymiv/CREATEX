@@ -1,3 +1,6 @@
+.success_form {
+}
+
 .radio_tile {
   margin-bottom: 30px;
   display: flex;
@@ -10,8 +13,17 @@
   scrollbar-width: none;
 }
 
+.subscribe_content_wrapper {
+  padding: 20px 5px !important;
+}
+
 .success_tile {
-  padding: 30px 40px;
+  margin: 0 auto;
+
+  padding: 15px 45px;
+
+  max-width: 600px !important;
+  width: 100%;
 }
 
 .subscribe_title {
@@ -55,7 +67,7 @@
 
 .subscribe_button {
   padding-inline: 20px !important;
-  height: 52px !important;
+  height: 44px !important;
 
   position: absolute !important;
 
@@ -141,6 +153,8 @@
   .success_tile {
     position: relative;
     z-index: 4;
+
+    padding-inline: 15px;
   }
   .subscribe_image {
     z-index: 1;

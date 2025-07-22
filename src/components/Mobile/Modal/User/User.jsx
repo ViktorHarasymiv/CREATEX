@@ -15,7 +15,7 @@ import Avatar from "./icons/avatar.svg";
 
 import css from "./User.module.css";
 
-export default function User({ onClick }) {
+export default function User({ onClick, switchSignIn, switchSignUp }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLogged = useSelector((state) => state.account.isLogged);
@@ -38,37 +38,38 @@ export default function User({ onClick }) {
   };
 
   return (
-    <>
+    <div className={css.user_panel}>
       {isLogged == false ? (
-        <Authorization />
+        <Authorization
+          switchSignUp={switchSignUp}
+          switchSignIn={switchSignIn}
+        />
       ) : (
-        <div className={css.user_panel}>
-          <div className={css.user_wrapper}>
-            <img src={Avatar} alt="" className={css.user_avatar} />
-            <div className={css.user_actions}>
-              <NavLink
-                to={
-                  loggedUser.info.persone.role == "user" ? "/account" : "/admin"
-                }
-                className={css.auth_user_tile}
-              >
-                <span onClick={onClick} className={css.auth_welcome_text}>
-                  Welcome,
-                </span>
-                {loggedUser?.info?.persone?.fullname}
-              </NavLink>
-              <button
-                type="button"
-                onClick={logOut}
-                className={css.sign_out_button}
-              >
-                Sign out
-                <CiLogout width={8} height={8} />
-              </button>
-            </div>
+        <div className={css.user_wrapper}>
+          <img src={Avatar} alt="" className={css.user_avatar} />
+          <div className={css.user_actions}>
+            <NavLink
+              to={
+                loggedUser.info.persone.role == "user" ? "/account" : "/admin"
+              }
+              className={css.auth_user_tile}
+            >
+              <span onClick={onClick} className={css.auth_welcome_text}>
+                Welcome,
+              </span>
+              {loggedUser?.info?.persone?.fullname}
+            </NavLink>
+            <button
+              type="button"
+              onClick={logOut}
+              className={css.sign_out_button}
+            >
+              Sign out
+              <CiLogout width={8} height={8} />
+            </button>
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

@@ -13,7 +13,14 @@ import Card from "./Cart/Cart";
 import Line from "./Line/Line";
 import ButtonBurger from "../../Mobile/ButtonBurger/ButtonBurger";
 
-function MiddleTile({ active, windowWidth, valute, heroOffset }) {
+function MiddleTile({
+  active,
+  windowWidth,
+  valute,
+  heroOffset,
+  switchSignIn,
+  switchSignUp,
+}) {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -50,7 +57,12 @@ function MiddleTile({ active, windowWidth, valute, heroOffset }) {
             <Line />
             <Card valute={valute} />
           </div>
-          {active && <ButtonBurger />}
+          {active && (
+            <ButtonBurger
+              switchSignIn={switchSignIn}
+              switchSignUp={switchSignUp}
+            />
+          )}
         </div>
       </div>
     </div>

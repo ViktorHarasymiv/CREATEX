@@ -17,7 +17,7 @@ import Currency from "./Сurrency/Сurrency";
 import Authorization from "../../Authorization/Authorization";
 import { useEffect } from "react";
 
-function TopTile({ active, setValute, valute }) {
+function TopTile({ active, setValute, valute, switchSignUp, switchSignIn }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.account.profile);
@@ -58,7 +58,10 @@ function TopTile({ active, setValute, valute }) {
           )}
           <Currency setValute={setValute} valute={valute} />
           {isLogged == false ? (
-            <Authorization />
+            <Authorization
+              switchSignUp={switchSignUp}
+              switchSignIn={switchSignIn}
+            />
           ) : (
             <div className={css.auth_content_tile}>
               <NavLink

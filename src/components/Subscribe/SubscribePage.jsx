@@ -75,7 +75,9 @@ export default function SubscribePage() {
                 </label>
                 <label htmlFor="checkbox" className="subscribe_checkbox">
                   <span className="checkbox_label">
-                    I agree to receive communications from Createx Store.
+                    <span className="accept_text">
+                      I agree to receive communications from Createx Store.
+                    </span>
                   </span>
                   <div className="custom_checkbox">
                     <input

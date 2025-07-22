@@ -6,7 +6,14 @@ import UnderTile from "../UnderTile/UnderTile";
 
 import css from "./Header.module.css";
 
-function Header({ openSubscribe, setValute, valute, heroOffset }) {
+function Header({
+  switchSignIn,
+  switchSignUp,
+  openSubscribe,
+  setValute,
+  valute,
+  heroOffset,
+}) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -33,12 +40,20 @@ function Header({ openSubscribe, setValute, valute, heroOffset }) {
 
   return (
     <header className={css.header_component}>
-      <TopTile active={mobileMenu} setValute={setValute} valute={valute} />
+      <TopTile
+        active={mobileMenu}
+        setValute={setValute}
+        valute={valute}
+        switchSignIn={switchSignIn}
+        switchSignUp={switchSignUp}
+      />
       <MiddleTile
         active={mobileMenu}
         windowWidth={windowWidth}
         valute={valute}
         heroOffset={heroOffset}
+        switchSignIn={switchSignIn}
+        switchSignUp={switchSignUp}
       />
       <UnderTile openSubscribe={openSubscribe} />
     </header>

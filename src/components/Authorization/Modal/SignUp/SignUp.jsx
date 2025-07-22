@@ -5,11 +5,11 @@ import css from "./SignUp.module.css";
 import SignUpForm from "../Form/SignUpForm";
 import LoggedWithMedia from "../Form/LoggedWithMedia";
 
-function SignUp({ closePage, openSignIn }) {
+function SignUp({ close, switchSignIn }) {
   useEffect(() => {
     const handleEsc = (event) => {
       if (event.key === "Escape") {
-        closePage();
+        close();
       }
     };
 
@@ -19,12 +19,12 @@ function SignUp({ closePage, openSignIn }) {
     return () => {
       window.removeEventListener("keydown", handleEsc);
     };
-  }, [closePage]);
+  }, [close]);
 
   return (
     <div className="overlay">
       <div className="override">
-        <button onClick={closePage} className="auth_form--close-button">
+        <button onClick={close} className="auth_form--close-button">
           <IoMdClose />
         </button>
         <div className="auth_title--tile">
@@ -34,10 +34,10 @@ function SignUp({ closePage, openSignIn }) {
             over your orders.
           </p>
         </div>
-        <SignUpForm close={closePage} />
+        <SignUpForm close={close} />
         <div className={css.form_change_modal}>
           <span>Already have an account?</span>{" "}
-          <button type="button" onClick={openSignIn} className={css.accent}>
+          <button type="button" onClick={switchSignIn} className={css.accent}>
             Sign in
           </button>
         </div>

@@ -14,6 +14,9 @@ import Subscribe from "../Subscribe/Subscribe";
 import SubscribePage from "../Subscribe/SubscribePage";
 import Footer from "../Footer/Footer";
 
+import SignIn from "../Authorization/Modal/SignIn/SignIn";
+import SignUp from "../Authorization/Modal/SignUp/SignUp";
+
 /* Setup for spiner */
 
 const override = {
@@ -40,6 +43,11 @@ function App() {
   const [openSubscribe, setSubscribe] = useState(false);
   const [changeValue, setChangeValue] = useState("All");
   const [sliceValue, setSliceValue] = useState(8);
+
+  // AUTH MODAL
+
+  const [signIn, setSignIn] = useState(false);
+  const [signUp, setSignUp] = useState(false);
 
   /* STORAGE */
 
@@ -123,6 +131,32 @@ function App() {
   //   }, 2000);
   // }, []);
 
+  // AUTH
+
+  const openModalPageSignIn = () => {
+    if (signIn != true) {
+      document.querySelector("html").classList.add("lock");
+      setSignIn(true);
+      setSignUp(false);
+    } else {
+      document.querySelector("html").classList.remove("lock");
+      setSignIn(false);
+    }
+  };
+
+  const openModalPageRegistration = () => {
+    if (signUp != true) {
+      document.querySelector("html").classList.add("lock");
+      setSignUp(true);
+      setSignIn(false);
+    } else {
+      document.querySelector("html").classList.remove("lock");
+      setSignUp(false);
+    }
+  };
+
+  console.log(signIn);
+
   return (
     <>
       {openSubscribe && (
@@ -132,6 +166,8 @@ function App() {
         />
       )}
       <Header
+        switchSignIn={openModalPageSignIn}
+        switchSignUp={openModalPageRegistration}
         openSubscribe={openSubscribePanel}
         setValute={setValute}
         valute={valute}
@@ -161,6 +197,21 @@ function App() {
       }
       <SubscribePage />
       <Footer />
+
+      {/* MODAL */}
+
+      {signIn && (
+        <SignIn
+          switchSignUp={openModalPageRegistration}
+          close={openModalPageSignIn}
+        />
+      )}
+      {signUp && (
+        <SignUp
+          switchSignIn={openModalPageSignIn}
+          close={openModalPageRegistration}
+        />
+      )}
     </>
   );
 }

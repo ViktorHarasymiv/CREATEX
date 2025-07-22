@@ -280,7 +280,7 @@ input[type="password"],
 input[type="select"] {
   width: 100%;
 
-  height: clamp(34px, 7vh, 52px) !important;
+  height: clamp(34px, 8vh, 44px) !important;
   border: none;
   outline: 1px solid var(--gray-400);
 

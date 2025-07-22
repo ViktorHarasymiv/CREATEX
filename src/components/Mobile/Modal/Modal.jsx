@@ -17,7 +17,7 @@ const overlay = {
   backgroundColor: "rgba(0, 0, 0, 0.7)",
 };
 
-function Modal({ setOpen }) {
+function Modal({ setOpen, switchSignIn, switchSignUp }) {
   return (
     <div style={overlay}>
       <div className={css.content}>
@@ -26,7 +26,11 @@ function Modal({ setOpen }) {
             <CgClose />
           </button>
           <div className={css.user_function_panel}>
-            <User onClick={setOpen} />
+            <User
+              onClick={setOpen}
+              switchSignIn={switchSignIn}
+              switchSignUp={switchSignUp}
+            />
             <Search />
           </div>
           <Navigation setOpen={setOpen}></Navigation>

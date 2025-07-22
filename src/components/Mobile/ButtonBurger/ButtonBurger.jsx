@@ -5,7 +5,7 @@ import css from "./Burger.module.css";
 
 import clsx from "clsx";
 
-function ButtonBurger() {
+function ButtonBurger({ switchSignIn, switchSignUp }) {
   const [activeMenu, setActiveMenu] = useState(false);
 
   const buildLinkClass = () => {
@@ -25,7 +25,13 @@ function ButtonBurger() {
         <span></span>
         <span></span>
       </div>
-      {activeMenu && <Modal setOpen={setOpen} />}
+      {activeMenu && (
+        <Modal
+          setOpen={setOpen}
+          switchSignIn={switchSignIn}
+          switchSignUp={switchSignUp}
+        />
+      )}
     </>
   );
 }

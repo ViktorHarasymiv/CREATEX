@@ -4,6 +4,8 @@ import style from "../../../NewArrivals/ArrivalsItem/ArrivalsItem.module.css";
 import css from "./Search.module.css";
 import { IoIosClose } from "react-icons/io";
 
+import ICO from "../../../../../public/images/goods/drop21-1.avif";
+
 function SearchTile({ DATA, value, valute, autoClose }) {
   const salePrice = (price, saleValue) => {
     return changeValute(price) - changeValute(price) * (saleValue / 100);
@@ -23,18 +25,14 @@ function SearchTile({ DATA, value, valute, autoClose }) {
           0 ? (
           DATA.filter((item) => item.title.toLowerCase().includes(value)).map(
             (filteredSearch) => (
-              <li>
+              <li key={filteredSearch.id}>
                 <Link
                   onClick={autoClose}
-                  key={filteredSearch.id}
                   to={`/${filteredSearch.gender}/${filteredSearch.id}`}
                   className={css.filteredSearch_link}
                 >
                   <div className={css.filteredSearch_product}>
-                    <img
-                      src={filteredSearch.image[0]}
-                      className={css.filteredSearch_image}
-                    />
+                    <img src={ICO} className={css.filteredSearch_image} />
                     <div className={css.filteredSearch_info_product}>
                       <div className={css.filteredSearch_about_product}>
                         <h5 className={css.search_title}>
