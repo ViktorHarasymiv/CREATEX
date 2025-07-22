@@ -1,7 +1,7 @@
 .hero_swiper {
   position: relative;
 
-  height: calc(100dvh - 136px);
+  height: calc(100dvh - var(--max-header-height));
 }
 
 .hero_swiper .swiper-horizontal > .swiper-pagination-bullets,

@@ -71,9 +71,7 @@
   overflow: auto;
   position: absolute;
 
-  top: 44px;
-
-  width: clamp(160px, 57vw, 380px);
+  top: 54px;
 
   max-height: 440px;
 
@@ -106,6 +104,10 @@
   display: -webkit-inline-box;
 
   gap: 20px;
+}
+
+.filteredSearch_link {
+  width: 100%;
 }
 
 .filteredSearch_link:not(:last-child) {
@@ -168,6 +170,6 @@
     left: 50%;
     transform: translateX(-50%);
 
-    width: 100%;
+    width: 75dvw;
   }
 }

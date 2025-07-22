@@ -9,7 +9,7 @@ import Authorization from "../../../Authorization/Authorization";
 
 // ICONS
 
-import signOutIco from "../../../../../public/icons/auth/SignOut.png";
+import { CiLogout } from "react-icons/ci";
 
 import Avatar from "./icons/avatar.svg";
 
@@ -38,32 +38,37 @@ export default function User({ onClick }) {
   };
 
   return (
-    <div className={css.user_panel}>
-      {" "}
+    <>
       {isLogged == false ? (
         <Authorization />
       ) : (
-        <>
-          <NavLink
-            to={loggedUser.info.persone.role == "user" ? "/account" : "/admin"}
-            className={css.auth_user_tile}
-          >
+        <div className={css.user_panel}>
+          <div className={css.user_wrapper}>
             <img src={Avatar} alt="" className={css.user_avatar} />
-            <span onClick={onClick} className={css.auth_welcome_text}>
-              Welcome,
-            </span>
-            {loggedUser?.info?.persone?.fullname}
-          </NavLink>
-          <button
-            type="button"
-            onClick={logOut}
-            className={css.sign_out_button}
-          >
-            Sign out
-            <img src={signOutIco} alt="signOutIco" width={15} height={15} />
-          </button>
-        </>
+            <div className={css.user_actions}>
+              <NavLink
+                to={
+                  loggedUser.info.persone.role == "user" ? "/account" : "/admin"
+                }
+                className={css.auth_user_tile}
+              >
+                <span onClick={onClick} className={css.auth_welcome_text}>
+                  Welcome,
+                </span>
+                {loggedUser?.info?.persone?.fullname}
+              </NavLink>
+              <button
+                type="button"
+                onClick={logOut}
+                className={css.sign_out_button}
+              >
+                Sign out
+                <CiLogout width={8} height={8} />
+              </button>
+            </div>
+          </div>
+        </div>
       )}
-    </div>
+    </>
   );
 }

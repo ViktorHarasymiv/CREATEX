@@ -21,13 +21,13 @@ function Modal({ setOpen }) {
   return (
     <div style={overlay}>
       <div className={css.content}>
-        <div className="container">
+        <div className={css.mobile_menu_wrapper}>
           <button onClick={setOpen} className={css.modal_nav_close}>
             <CgClose />
           </button>
           <div className={css.user_function_panel}>
             <User onClick={setOpen} />
-            <Search></Search>
+            <Search />
           </div>
           <Navigation setOpen={setOpen}></Navigation>
         </div>
