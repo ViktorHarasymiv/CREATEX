@@ -21,6 +21,7 @@ function Search({ valute }) {
   };
 
   const handleKeyDown = (event) => {
+    event.stopPropagation();
     const form = event.target.closest("form");
     if (event.key === "Escape") {
       setInputValue("");
@@ -32,6 +33,7 @@ function Search({ valute }) {
   };
 
   const handleOnBlur = () => {
+    setInputValue("");
     setOpenSearch((prev) => !prev);
   };
 
@@ -55,7 +57,7 @@ function Search({ valute }) {
           <CiSearch className={css.search_icon} />
         </button>
       </form>
-      {inputValue.length > 0 && openSearch == true && (
+      {openSearch == true && (
         <SearchTile
           DATA={product}
           value={inputValue}

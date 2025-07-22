@@ -23,12 +23,11 @@
 
 .sort_show_tile {
   width: 100%;
-  max-height: 70px;
+  max-height: 44px;
 
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 60px;
 }
 
 .show_input::-webkit-inner-spin-button,
@@ -42,8 +41,8 @@
 
 @media screen and (max-width: 767.98px) {
   .sort_tile {
-    align-items: center;
-    gap: 8px;
+    align-items: end;
+    gap: 14px;
   }
   .sort_tile h4 {
     font-size: 0.8em;

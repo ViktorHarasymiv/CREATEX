@@ -125,6 +125,9 @@
 }
 
 @media screen and (max-width: 599.98px) {
+  .slider_content_tile {
+    margin-block: 20px;
+  }
   .hero_title {
     margin-right: 0px;
   }

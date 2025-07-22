@@ -97,6 +97,7 @@ select,
 button {
   font: inherit;
   background-color: transparent;
+  color: inherit;
 }
 
 html {
@@ -151,6 +152,7 @@ button,
 label {
   cursor: pointer;
 }
+
 button {
   outline: none;
   border: none;
@@ -196,7 +198,11 @@ svg {
   color: inherit;
   transition-property: fill, stroke;
 
+  max-width: 24px;
+  max-height: 24px;
+
   width: 100%;
+  height: 100%;
 }
 
 /**
