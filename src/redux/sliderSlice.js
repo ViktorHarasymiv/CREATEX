@@ -8,7 +8,7 @@ const sliderSlice = createSlice({
         id: crypto.randomUUID(),
         name: "menwear",
         url: "men",
-        image: "../images/slider/men.avif",
+        image: "../images/slider/men.jpg",
         relations: "New autumn collection",
         title: "Men collection",
         data: "2025",

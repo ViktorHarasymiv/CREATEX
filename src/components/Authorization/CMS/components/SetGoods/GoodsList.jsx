@@ -7,6 +7,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import css from "./SetProduct.module.css";
 
 import clsx from "clsx";
+import { Link } from "react-router-dom";
 
 export default function GoodsList() {
   const dispatch = useDispatch();
@@ -38,18 +39,28 @@ export default function GoodsList() {
       <div className={css.goodsWrapper}>
         {goods
           .filter((item) => item.gender === tabIndex)
-          .map((item) => (
+          .map((item, index) => (
             <div key={item.id} className={css.goodsItemTile}>
-              <div className={css.content}>
-                <img src={item.image[0]} alt="" width={120} height={150} />
+              <Link
+                to={`/${item.gender}/${item.id}`}
+                className={css.goodsContent}
+              >
+                <span>{index + 1}</span>
+                <img
+                  src={item.image[0]}
+                  alt={item.alt}
+                  width={70}
+                  height={80}
+                  className={css.goodsImage}
+                />
                 {item.title}
-              </div>
+              </Link>
               <button
                 onClick={() => hundleDelete(item.id)}
                 className={css.delete_button}
               >
                 <AiOutlineDelete className={css.delete_ico} />
-                Delete account
+                Delete
               </button>
             </div>
           ))}

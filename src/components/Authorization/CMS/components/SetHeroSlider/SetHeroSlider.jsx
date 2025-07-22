@@ -21,6 +21,10 @@ export default function SetHeroSlider() {
     dispatch(deleteSlider(title));
   };
 
+  const buildLinkClass = (index) => {
+    return clsx(css.tabs_button, tab === index && css.active);
+  };
+
   return (
     <div className={css.setSliderWrapper}>
       <div className={css.tabs_buttons}>
@@ -28,7 +32,7 @@ export default function SetHeroSlider() {
           onClick={() => {
             setTab(1);
           }}
-          className={tab == 1 ? css.active : css.tabs_button}
+          className={buildLinkClass(1)}
         >
           Slider
         </button>
@@ -36,7 +40,7 @@ export default function SetHeroSlider() {
           onClick={() => {
             setTab(2);
           }}
-          className={tab == 2 ? css.active : css.tabs_button}
+          className={buildLinkClass(2)}
         >
           ADD SLIDE
         </button>

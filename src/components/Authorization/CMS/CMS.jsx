@@ -25,7 +25,7 @@ export default function CMS() {
   const loggedUser = useSelector((state) => state.account.loggedUser);
 
   return (
-    <div>
+    <main className="main">
       <HistoryBar></HistoryBar>
       <div className="container">
         <div className={css.wrapper}>
@@ -37,6 +37,6 @@ export default function CMS() {
           <NavPanel />
         </div>
       </div>
-    </div>
+    </main>
   );
 }

@@ -6,9 +6,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { setNewProduct } from "../../../../../redux/goodsSlice";
 
 // FORM SETTUP
+import { useId } from "react";
+import clsx from "clsx";
 import css from "./SetProduct.module.css";
 import style from "../SetHeroSlider/SetSlider.module.css";
-import { useId } from "react";
 
 // FORMIK
 
@@ -18,6 +19,7 @@ import Button from "../../../../Button/Button";
 
 import MuiSelect from "./MuiSelect";
 import GoodsList from "./GoodsList";
+import MuiSizeChacked from "./MuiSizeChacked";
 
 // VALIDATION SCHEMA
 
@@ -39,6 +41,8 @@ export default function SetGoods() {
   // CONST
 
   const goods = useSelector((state) => state.goods.items);
+
+  console.log(goods);
 
   const randomId = Math.floor(Math.random() * 9999) + 9;
 
@@ -81,6 +85,10 @@ export default function SetGoods() {
     actions.resetForm();
   };
 
+  const buildLinkClass = (index) => {
+    return clsx(style.tabs_button, tab === index && style.active);
+  };
+
   return (
     <div className={css.page_wrapper}>
       <div className={style.tabs_buttons}>
@@ -88,7 +96,7 @@ export default function SetGoods() {
           onClick={() => {
             setTab(1);
           }}
-          className={tab == 1 ? style.active : style.tabs_button}
+          className={buildLinkClass(1)}
         >
           All goods
         </button>
@@ -96,7 +104,7 @@ export default function SetGoods() {
           onClick={() => {
             setTab(2);
           }}
-          className={tab == 2 ? style.active : style.tabs_button}
+          className={buildLinkClass(2)}
         >
           Add goods
         </button>
@@ -323,6 +331,9 @@ export default function SetGoods() {
                       ]}
                     />
                   </label>
+
+                  {/* Size */}
+                  <MuiSizeChacked name="sizeNumm" />
                 </div>
               </fieldset>
               <Button>Save</Button>

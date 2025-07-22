@@ -5,17 +5,30 @@ import style from "./../SortModule/Sort.module.css";
 import HistoryBar from "../HistoryBar/HistoryBar";
 
 import ProductCard from "../Goods/components/ProductCard";
-import Filters from "../Filters/Filters";
 import Sort from "../SortModule/Sort";
 
 export default function Kids({
   valute,
-  filter,
   setFilter,
+  filter,
   sliceValue,
   setSliceValue,
 }) {
-  const products = useSelector((state) => state.goods.kids);
+  const products = useSelector((state) => state.goods.items);
+
+  const boysGoods = products.filter(
+    (boy) =>
+      boy.category === "boy" &&
+      (filter != "All"
+        ? boy.category == filter ||
+          boy.subCategory == filter ||
+          boy.sizeNumm.includes(filter) ||
+          boy.size.includes(filter) ||
+          boy.color.includes(filter) ||
+          boy.filter == filter ||
+          (boy.price > filter[0] && boy.price < filter[1])
+        : boy)
+  );
 
   return (
     <main>
@@ -29,49 +42,35 @@ export default function Kids({
               setSliceValue={setSliceValue}
             ></Sort>
             <div className="product_page">
-              {products
-                .filter(
-                  (kids) =>
-                    kids.gender == "boy" &&
-                    (filter != "All"
-                      ? kids.category == filter ||
-                        kids.subCategory == filter ||
-                        kids.sizeNumm.includes(filter) ||
-                        kids.color.includes(filter) ||
-                        kids.filter == filter ||
-                        (kids.price > filter[0] && kids.price < filter[1])
-                      : kids)
-                )
-                .slice(0, sliceValue)
-                .map((kidsItem) => {
-                  const {
-                    id,
-                    gender,
-                    title,
-                    image,
-                    alt,
-                    rating,
-                    saleValue,
-                    price,
-                    sale,
-                  } = kidsItem;
+              {boysGoods.slice(0, sliceValue).map((boys) => {
+                const {
+                  id,
+                  gender,
+                  title,
+                  image,
+                  alt,
+                  rating,
+                  saleValue,
+                  price,
+                  sale,
+                } = boys;
 
-                  return (
-                    <ProductCard
-                      key={id}
-                      id={id}
-                      gender={gender}
-                      title={title}
-                      image={image}
-                      alt={alt}
-                      ratingStart={rating}
-                      saleValue={saleValue}
-                      price={price}
-                      sale={sale}
-                      valute={valute}
-                    />
-                  );
-                })}
+                return (
+                  <ProductCard
+                    key={id}
+                    id={id}
+                    gender={gender}
+                    title={title}
+                    image={image}
+                    alt={alt}
+                    ratingStart={rating}
+                    saleValue={saleValue}
+                    price={price}
+                    sale={sale}
+                    valute={valute}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>

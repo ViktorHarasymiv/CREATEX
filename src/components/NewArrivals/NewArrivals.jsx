@@ -31,7 +31,7 @@ function NewArrivals({ valute }) {
       <div className={css.new_arrivals_product_tile}>
         <Swiper
           slidesPerView={1}
-          spaceBetween={30}
+          spaceBetween={20}
           keyboard={{
             enabled: true,
           }}
@@ -50,7 +50,8 @@ function NewArrivals({ valute }) {
           }}
         >
           {products
-            .filter((product) => product.filter === "New") // Використовуємо властивість new
+            .filter((product) => product.filter === "New")
+            .reverse()
             .map((filteredProduct) => {
               const {
                 id,

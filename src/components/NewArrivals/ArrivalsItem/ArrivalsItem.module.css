@@ -11,7 +11,7 @@
   position: relative;
   height: clamp(15rem, 10.87vw + 12.554rem, 22rem);
 
-  background-color: var(--gray-100);
+  background-color: var(--gray-200);
   transition-duration: var(--transition-duration);
 }
 
@@ -109,6 +109,7 @@
   line-height: 150%;
   color: var(--gray-800);
 }
+
 .price_tile {
   display: flex;
   align-items: center;
@@ -132,7 +133,7 @@
 
 @media screen and (max-width: 1089.98px) {
   .product_image_tile {
-    height: clamp(15rem, 15vw + 15rem, 26rem);
+    height: clamp(15rem, 15vw + 11rem, 26rem);
   }
 }
 
@@ -141,7 +142,7 @@
     height: clamp(15rem, 15vw + 15rem, 26rem);
   }
   .price_tile > span {
-    font-size: 14px !important;
+    font-size: 16px !important;
   }
 }
 

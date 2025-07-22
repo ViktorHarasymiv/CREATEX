@@ -114,7 +114,7 @@ function App() {
 
   useEffect(() => {
     scrollTo(0, 0);
-  }, [location]);
+  }, [location, sliceValue]);
 
   // useEffect(() => {
   //   setTimeout(() => {

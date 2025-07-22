@@ -11,26 +11,22 @@
 
 .tabs_buttons {
   display: flex;
-  margin-bottom: 14px;
   gap: 30px;
+
+  margin-bottom: 25px;
 }
 
 .tabs_button {
-  padding: 15px 25px;
+  padding: 8px 15px;
+  font-size: 12px;
   text-transform: uppercase;
 
   border: 1.5px solid var(--primary);
 }
 
 .active {
-  padding: 15px 25px;
-
-  text-transform: uppercase;
-
   background-color: var(--primary);
   color: var(--white);
-
-  border: 1.5px solid var(--primary);
 }
 
 /* FORM */

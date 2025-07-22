@@ -48,6 +48,9 @@
     rgba(20, 39, 15, 0.25) 0px 1px 3px -1px;
 }
 
+.main {
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

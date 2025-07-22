@@ -1,22 +1,22 @@
+import React, { useEffect, useState } from "react";
+import ReactPaginate from "react-paginate";
 import { useSelector } from "react-redux";
-
 import style from "./../SortModule/Sort.module.css";
 
 import HistoryBar from "../HistoryBar/HistoryBar";
 import ProductCard from "../Goods/components/ProductCard";
-import Filters from "../Filters/Filters";
 import Sort from "../SortModule/Sort";
 import LoadMore from "../Button/LoadMore";
+import Pagination from "../Pagination/Pagination";
 
 function Sale({ valute, filter, setFilter, sliceValue, setSliceValue }) {
   const products = useSelector((state) => state.goods.items);
 
-  const kidsGoods = useSelector((state) => state.goods.kids);
-
   // PRODUCT SALE DATA
+
   const filteredSale = products.filter(
     (sale) =>
-      sale.filter == "Sale" &&
+      sale.filter === "Sale" &&
       (filter != "All"
         ? sale.category == filter ||
           sale.subCategory == filter ||
@@ -28,21 +28,7 @@ function Sale({ valute, filter, setFilter, sliceValue, setSliceValue }) {
         : sale)
   );
 
-  const filteredKidsSale = kidsGoods.filter(
-    (kids) =>
-      kids.filter == "Sale" &&
-      (filter != "All"
-        ? kids.category == filter ||
-          kids.subCategory == filter ||
-          kids.sizeNumm.includes(filter) ||
-          kids.size.includes(filter) ||
-          kids.color.includes(filter) ||
-          kids.filter == filter ||
-          (kids.price > filter[0] && kids.price < filter[1])
-        : kids)
-  );
-
-  const saleArray = [...filteredSale, ...filteredKidsSale];
+  const [page, setPage] = useState(0);
 
   return (
     <>
@@ -51,14 +37,14 @@ function Sale({ valute, filter, setFilter, sliceValue, setSliceValue }) {
         <div className="product_wrapper">
           <div className="product_wrapper-sort">
             <Sort
-              data={saleArray.length}
+              data={filteredSale.length}
               setFilter={setFilter}
               sliceValue={sliceValue}
               setSliceValue={setSliceValue}
             ></Sort>
-            {saleArray.length > 0 ? (
+            {filteredSale.length > 0 ? (
               <div className="product_page">
-                {saleArray.slice(0, sliceValue).map((saleItems) => {
+                {filteredSale.slice(page, sliceValue).map((saleItems) => {
                   const {
                     id,
                     gender,
@@ -91,13 +77,22 @@ function Sale({ valute, filter, setFilter, sliceValue, setSliceValue }) {
             ) : (
               <h4>No products found, please enter another value</h4>
             )}
-            {saleArray.length > 6 && (
-              <LoadMore
+            {filteredSale.length > 8 && (
+              // <LoadMore
+              //   sliceValue={sliceValue}
+              //   setSliceValue={setSliceValue}
+              //   context={
+              //     sliceValue >= filteredSale.length ? "Hide All" : "Load More"
+              //   }
+              // />
+              <Pagination
+                data={filteredSale}
+                totalPages={filteredSale.length / 8}
+                page={page}
+                setPage={setPage}
                 sliceValue={sliceValue}
                 setSliceValue={setSliceValue}
-                context={
-                  sliceValue >= saleArray.length ? "Hide All" : "Load More"
-                }
+                onPageChanges={setSliceValue}
               />
             )}
           </div>

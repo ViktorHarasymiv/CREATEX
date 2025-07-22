@@ -20,11 +20,28 @@
   margin-bottom: 7px;
 }
 
+.modal_form_input {
+  outline: none !important;
+
+  border-radius: 0px !important;
+  border-bottom: 1px solid var(--gray-600) !important;
+}
+
+.modal_form_input::placeholder {
+  font-size: 11px !important;
+}
+
+.error_message {
+  font-size: 13px;
+  color: var(--danger);
+}
+
 .mui_select {
   max-height: 54px;
-  border: 1px solid var(--gray-400) !important;
+  border: none !important;
+  border-bottom: 1px solid var(--gray-600) !important;
 
-  border-radius: 4px;
+  border-radius: 0px !important;
 }
 
 .images_wrapper {
@@ -34,14 +51,19 @@
 }
 
 .goodsTabsList {
+  margin-bottom: 15px;
   display: flex;
 
   gap: 40px;
 
-  border-bottom: 1px solid var(--gray-400);
+  border-bottom: 1.5px solid var(--gray-400);
 }
 
 .goodsCategotyTabs {
+  overflow: hidden;
+
+  cursor: pointer;
+  position: relative;
   padding-block: 10px;
   width: 100%;
 
@@ -50,30 +72,89 @@
   font-weight: 700;
 
   text-align: center;
+
+  transition: all 0.2s ease-in;
 }
 
-.active {
-  border-bottom: 1.5px solid var(--primary);
+.goodsCategotyTabs::after {
+  position: absolute;
+
+  content: "";
+
+  bottom: -1px;
+  left: 0;
+
+  background-color: var(--primary);
+
+  width: 100%;
+  height: 2px;
+
+  transform: translateX(-100%);
+  transition: all 0.2s ease-in;
+}
+
+.goodsCategotyTabs:last-child::after {
+  transform: translateX(100%);
+}
+
+.goodsCategotyTabs:nth-child(even)::after {
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 0;
+}
+
+.goodsCategotyTabs.active:nth-child(even)::after {
+  width: 100%;
+}
+
+.goodsCategotyTabs.active::after {
+  transform: translateX(0);
 }
 
 .goodsWrapper {
-  overflow: scroll;
-  max-height: 80vh;
+  height: 480px;
+
+  overflow-y: scroll;
 
   display: flex;
   flex-direction: column;
-  gap: 15px;
 }
 
 .goodsItemTile {
-  padding-block: 20px;
+  padding-block: 10px;
+
   display: flex;
   justify-content: space-between;
 
   border-bottom: 1px solid var(--gray-400);
+
+  transition: 0.2s ease-in;
 }
 
-.content {
+.goodsItemTile:hover {
+  transform: scale(1.003);
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+
+.goodsContent {
   display: flex;
+
+  align-items: center;
   gap: 30px;
+}
+
+.goodsImage {
+  object-fit: cover;
+}
+
+.delete_button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  color: var(--danger);
+}
+
+.delete_button:hover {
+  color: var(--warning);
 }

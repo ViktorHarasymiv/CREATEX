@@ -22,7 +22,7 @@ const New = lazy(() => import("../New/New"));
 const Men = lazy(() => import("../Men/Men"));
 const Kids = lazy(() => import("../Kids/Kids"));
 
-const Goods = lazy(() => import("../Goods/components/Goods"));
+// const Goods = lazy(() => import("../Goods/components/Goods"));
 
 import Product from "../Goods/product/Product";
 import Boys from "../Kids/Boys";
@@ -195,7 +195,7 @@ function Router({
 
         {/* E-Commerce */}
 
-        <Route path="/goods" element={<Goods />}></Route>
+        {/* <Route path="/goods" element={<Goods />}></Route> */}
 
         <Route
           path="/sale"

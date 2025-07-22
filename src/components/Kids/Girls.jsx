@@ -15,7 +15,7 @@ export default function Kids({
   sliceValue,
   setSliceValue,
 }) {
-  const products = useSelector((state) => state.goods.kids);
+  const products = useSelector((state) => state.goods.items);
 
   return (
     <main>
@@ -32,7 +32,7 @@ export default function Kids({
               {products
                 .filter(
                   (kids) =>
-                    kids.gender == "girl" &&
+                    kids.category == "girl" &&
                     (filter != "All"
                       ? kids.category == filter ||
                         kids.subCategory == filter ||
