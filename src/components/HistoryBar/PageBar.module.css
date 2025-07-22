@@ -1,10 +1,8 @@
 .history_bar {
-  padding-block: 18px;
+  padding-block: 10px;
 
   width: 100%;
   background-color: #e5e8ed;
-
-  font-size: 14px;
 }
 
 .history_list {

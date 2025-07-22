@@ -35,7 +35,7 @@ function SearchTile({ DATA, value, valute, autoClose }) {
             >
               <div className={css.filteredSearch_product}>
                 <img
-                  src={`./../images/goods/${filteredSearch.image[0]}`}
+                  src={filteredSearch.image[0]}
                   width={100}
                   height={120}
                   className={css.filteredSearch_image}

@@ -17,7 +17,7 @@ function PageBar() {
         <ul className={css.history_list}>
           <li className={css.history_item}>
             <Link to="/">
-              <img src={Home} alt="Home" />
+              <img src={Home} alt="Home" width={16} height={16} />
             </Link>
           </li>
           <li className={css.history_item}>

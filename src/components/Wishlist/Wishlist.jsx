@@ -17,11 +17,7 @@ function Wishlist({ valute }) {
           <ul className={css.wishlist_list}>
             {wishlistArray.map((item) => (
               <li key={item.id}>
-                <WishlistItem
-                  data={item}
-                  array={wishlistArray}
-                  valute={valute}
-                />
+                <WishlistItem data={item} valute={valute} />
               </li>
             ))}
           </ul>

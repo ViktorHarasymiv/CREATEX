@@ -12,8 +12,9 @@
   padding-inline: 30px;
   padding-block: 40px;
 
-  max-width: 80%;
-  height: 500px;
+  max-width: 90dvw;
+
+  height: 55dvh;
 
   display: flex;
   flex-direction: column;

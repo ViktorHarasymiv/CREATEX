@@ -15,7 +15,7 @@ import Filters from "../Filters/Filters";
 
 const sortArray = ["Popular", "New", "Interesting", "Sale", "Hot"];
 
-function Sort({ data, setFilter, sliceValue, setSliceValue, array }) {
+function Sort({ data, setFilter, setPage, sliceValue, setSliceValue, array }) {
   const [sort, setSort] = useState("");
 
   return (
@@ -62,7 +62,7 @@ function Sort({ data, setFilter, sliceValue, setSliceValue, array }) {
                     if (sliceValue >= 22) {
                       return;
                     }
-                    setSliceValue(sliceValue + 4);
+                    setSliceValue(sliceValue + 8);
                   }}
                 >
                   <TiArrowSortedUp />
@@ -72,7 +72,10 @@ function Sort({ data, setFilter, sliceValue, setSliceValue, array }) {
                   onClick={() => {
                     if (sliceValue <= 8) {
                       return;
-                    } else setSliceValue(sliceValue - 4);
+                    } else {
+                      setPage(0);
+                      setSliceValue(sliceValue - 8);
+                    }
                   }}
                 >
                   <TiArrowSortedDown />

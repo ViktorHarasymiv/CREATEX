@@ -18,6 +18,7 @@ function Favorite() {
       location.pathname === localPath && css.active
     );
   };
+
   return (
     <NavLink to={"/wishlist"} className={css.favorite_tile}>
       <CiHeart className={buildLinkClass("/wishlist")} />

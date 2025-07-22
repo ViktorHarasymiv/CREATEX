@@ -29,6 +29,7 @@ function Sale({ valute, filter, setFilter, sliceValue, setSliceValue }) {
   );
 
   const [page, setPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
   return (
     <>
@@ -39,6 +40,7 @@ function Sale({ valute, filter, setFilter, sliceValue, setSliceValue }) {
             <Sort
               data={filteredSale.length}
               setFilter={setFilter}
+              setPage={setPage}
               sliceValue={sliceValue}
               setSliceValue={setSliceValue}
             ></Sort>
@@ -90,6 +92,8 @@ function Sale({ valute, filter, setFilter, sliceValue, setSliceValue }) {
                 totalPages={filteredSale.length / 8}
                 page={page}
                 setPage={setPage}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
                 sliceValue={sliceValue}
                 setSliceValue={setSliceValue}
                 onPageChanges={setSliceValue}

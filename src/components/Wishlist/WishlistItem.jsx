@@ -31,13 +31,15 @@ function WishlistItem({ data, valute }) {
 
   /* BODY */
 
+  console.log(data);
+
   return (
     <div className={css.product_tile}>
       <div className={css.product_image_tile}>
         <Link to={`/${data.gender}/${data.id}`}>
           <img
             className={css.product_image}
-            src={`images/goods/${data.image[0]}`}
+            src={data.image[0]}
             alt={data.alt}
           />
         </Link>

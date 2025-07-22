@@ -69,6 +69,8 @@ function Modal({ overlay, content, closePage, setOpen, valute }) {
 
   // BODY
 
+  console.log(basket);
+
   return (
     <div onClick={openModal} style={overlay}>
       <div style={content}>
