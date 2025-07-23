@@ -20,7 +20,7 @@ function Sale({ valute, filter, setFilter, sliceValue, setSliceValue }) {
       (filter != "All"
         ? sale.category == filter ||
           sale.subCategory == filter ||
-          sale.sizeNumm.includes(filter) ||
+          sale.numeric.includes(filter) ||
           sale.size.includes(filter) ||
           sale.color.includes(filter) ||
           sale.filter == filter ||

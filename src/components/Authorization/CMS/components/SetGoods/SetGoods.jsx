@@ -20,6 +20,7 @@ import Button from "../../../../Button/Button";
 import MuiSelect from "./MuiSelect";
 import GoodsList from "./GoodsList";
 import MuiSizeChacked from "./MuiSizeChacked";
+import MuiColorsChecked from "./MuiColorsChecked";
 
 // VALIDATION SCHEMA
 
@@ -38,6 +39,9 @@ export default function SetGoods({ switcher, content }) {
 
   const [tab, setTab] = useState(1);
 
+  const [numeric, setNumeric] = useState(true);
+  const [letter, setLetter] = useState(false);
+
   // CONST
 
   const randomId = Math.floor(Math.random() * 9999) + 9;
@@ -52,14 +56,13 @@ export default function SetGoods({ switcher, content }) {
     subCategory: "",
     alt: "",
     image: ["", "", ""],
-    size: [],
-    sizeNumm: [],
+    price: "",
+    size: null,
+    numeric: null,
     color: [],
-    favorite: null,
     rating: null,
-    sale: null,
-    saleValue: null,
-    price: null,
+    sale: "",
+    saleValue: "",
   };
 
   const handleSubmit = (values, actions) => {
@@ -76,6 +79,69 @@ export default function SetGoods({ switcher, content }) {
   const buildLinkClass = (index) => {
     return clsx(style.tabs_button, tab === index && style.active);
   };
+
+  const numericValue = [
+    "32",
+    "33",
+    "34",
+    "35",
+    "36",
+    "37",
+    "38",
+    "39",
+    "40",
+    "41",
+    "42",
+    "43",
+    "44",
+    "45",
+  ];
+  const lettetValue = ["XS", "S", "M", "L", "XL", "2XL", "3XL"];
+
+  const colors = [
+    "#AEC6CF", // ніжно-блакитний
+    "#FFDAB9", // персиковий
+    "#E6E6FA", // лаванда
+    "#FFFACD", // лимонно-кремовий
+    "#D8BFD8", // блідо-фіолетовий
+    "#FADADD", // рожевий baby pink
+    "#B0E0E6", // блідо-бірюзовий
+    "#F5DEB3", // пісочний
+    "#E0FFFF", // світло-cyan
+    "#E3F9FD", // небесно-блакитний
+    "#FFE4E1", // блідо-рожевий
+    "#F0FFF0", // м'ятний
+    "#FBE7C6", // кремовий
+    "#C1E1C1", // пастель зелений
+    "#D6AEDD", // ніжний бузок
+    "#F8F4FF", // ghost lavender
+    "#FFF5EE", // seashell
+    "#EFD6AC", // блідо-карамельний
+    "#D7E3FC", // пастельний блакитний
+    "#FAE1DD", // ніжна рожева пудра
+    "#fff",
+    "#000",
+    "#0D1B2A", // темно-синій індиго
+    "#1B263B", // глибокий navy
+    "#2C3E50", // темно-синій з сірим відтінком
+    "#3E4E50", // сірий з синім вкрапленням
+    "#4B3F2F", // темно-коричневий дерев'яний
+    "#5C4033", // палений коричневий
+    "#2F1B0C", // еспресо
+    "#1C1C1C", // майже чорний
+    "#2E2E2E", // антрацит
+    "#3C3C3C", // темно-сірий
+    "#121212", // глибокий чорний
+    "#1F1F1F", // smoky black
+    "#292929", // гранітний сірий
+    "#444444", // сталевий сірий
+    "#223843", // темний бірюзово-синій
+    "#151E3D", // midnight blue
+    "#2B2B2B", // графіт
+    "#313639", // вугільний сірий
+    "#404040", // neutral charcoal
+    "#181818", // глибокий монохромний
+  ];
 
   return (
     <div className={css.page_wrapper}>
@@ -317,9 +383,71 @@ export default function SetGoods({ switcher, content }) {
                       ]}
                     />
                   </label>
+                  <div className={css.checkbox_size_values}>
+                    {/* Numeric values */}
 
-                  {/* Size */}
-                  <MuiSizeChacked name="sizeNumm" />
+                    {!letter && (
+                      <label
+                        htmlFor="numeric_label"
+                        className="subscribe_checkbox"
+                      >
+                        <span className="checkbox_label">
+                          <span
+                            className="accept_text"
+                            style={{ color: "var(--gray-800)" }}
+                          >
+                            Numeric value
+                          </span>
+                        </span>
+                        <div className="custom_checkbox">
+                          <input
+                            type="checkbox"
+                            name="numeric_label"
+                            id="numeric_label"
+                            className="checkbox_input"
+                            checked={numeric}
+                            onClick={() => setNumeric((prev) => !prev)}
+                          />
+                          <div className="primary_checkbox"></div>
+                        </div>
+                      </label>
+                    )}
+                    {/* Letter values */}
+                    {!numeric && (
+                      <label htmlFor="letter" className="subscribe_checkbox">
+                        <span className="checkbox_label">
+                          <span
+                            className="accept_text"
+                            style={{ color: "var(--gray-800)" }}
+                          >
+                            Letter values
+                          </span>
+                        </span>
+                        <div className="custom_checkbox">
+                          <input
+                            type="checkbox"
+                            id="letter"
+                            name="letter"
+                            className="checkbox_input"
+                            checked={letter}
+                            onClick={() => setLetter((prev) => !prev)}
+                          />
+                          <div className="primary_checkbox"></div>
+                        </div>
+                      </label>
+                    )}
+                  </div>
+                  {numeric && (
+                    <MuiSizeChacked
+                      name="numeric"
+                      valuesSize={[...numericValue]}
+                    />
+                  )}
+                  {letter && (
+                    <MuiSizeChacked name="size" valuesSize={[...lettetValue]} />
+                  )}
+                  {/* Colors value */}
+                  <MuiColorsChecked name="color" valuesSize={[...colors]} />
                 </div>
               </fieldset>
               <Button>Save</Button>

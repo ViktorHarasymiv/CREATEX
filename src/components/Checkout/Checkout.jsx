@@ -201,7 +201,7 @@ function Checkout({ valute }) {
                       return (
                         <li key={item.id} className={style.basket_product_tile}>
                           <img
-                            src={`/images/goods/${item.image[0]}`}
+                            src={item.image[0]}
                             alt={item.title}
                             width={80}
                             height={80}

@@ -11,7 +11,14 @@ function Slider({ url, image, relations, title, data, motivation }) {
   return (
     <div className={css.slider_tile}>
       <div className={css.wrapper_background}>
-        <img src={image} alt={image} className={css.image_background} />
+        <img
+          src={image}
+          alt={image}
+          className={css.image_background}
+          width="100%"
+          height="100%"
+          loading="lazy"
+        />
         {/* )} */}
       </div>
       <div className="container">

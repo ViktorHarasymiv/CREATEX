@@ -22,7 +22,7 @@ export default function Kids({
       (filter != "All"
         ? boy.category == filter ||
           boy.subCategory == filter ||
-          boy.sizeNumm.includes(filter) ||
+          boy.numeric.includes(filter) ||
           boy.size.includes(filter) ||
           boy.color.includes(filter) ||
           boy.filter == filter ||

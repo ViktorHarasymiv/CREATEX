@@ -155,6 +155,11 @@
   color: var(--warning);
 }
 
+.checkbox_size_values {
+  display: flex;
+  gap: 15px;
+}
+
 @media screen and (max-width: 1024.98px) {
   .formSettup {
     flex-wrap: wrap;

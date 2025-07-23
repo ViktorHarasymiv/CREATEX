@@ -177,7 +177,7 @@ function App() {
         document.querySelector("html").classList.remove("lock");
         setSuccessful(false);
         return;
-      }, 2000);
+      }, 2500);
   }
 
   return (

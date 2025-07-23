@@ -38,6 +38,8 @@
 
   text-wrap: nowrap;
   line-height: 1;
+
+  color: var(--white);
 }
 
 .custom_checkbox {

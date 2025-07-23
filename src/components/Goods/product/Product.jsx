@@ -466,10 +466,10 @@ function Product({ valute }) {
                         </span>
                       </div>
                       <div className={css.size_select}>
-                        {selfItem.sizeNumm ? (
+                        {selfItem.numeric ? (
                           <>
                             <form className={css.sizeForm}>
-                              {selfItem.sizeNumm.map((item, index) => {
+                              {selfItem.numeric.map((item, index) => {
                                 return (
                                   <label
                                     key={index}

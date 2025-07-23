@@ -36,7 +36,7 @@ export default function Kids({
                     (filter != "All"
                       ? kids.category == filter ||
                         kids.subCategory == filter ||
-                        kids.sizeNumm.includes(filter) ||
+                        kids.numeric.includes(filter) ||
                         kids.color.includes(filter) ||
                         kids.filter == filter ||
                         (kids.price > filter[0] && kids.price < filter[1])

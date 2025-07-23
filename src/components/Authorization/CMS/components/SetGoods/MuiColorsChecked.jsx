@@ -67,17 +67,17 @@ Tag.propTypes = {
   onDelete: PropTypes.func.isRequired,
 };
 
-const StyledTag = styled(Tag)(({ theme }) => ({
+const StyledTag = styled(Tag)(({ theme, label }) => ({
   display: "flex",
   alignItems: "center",
   height: "22px",
   margin: "2px",
   fontSize: "11px",
-  backgroundColor: "var(--primary)",
+  backgroundColor: `${label}`,
   color: "var(--white)",
   borderRadius: "2px",
   boxSizing: "content-box",
-  padding: "0 0 0 10px",
+  padding: "8px 10px",
   outline: 0,
   overflow: "hidden",
   ...theme.applyStyles("dark", {
@@ -170,15 +170,13 @@ export default function MuiSizeChacked({ name, valuesSize }) {
     options: valuesSize,
     value: values[name],
     onChange: (_, ...newValue) => setFieldValue(name, ...newValue),
-    getOptionLabel: (option) => option.number,
+    getOptionLabel: (option) => option.string,
   });
 
   return (
     <Root>
       <div {...getRootProps()}>
-        <Label {...getInputLabelProps()}>
-          Size ({name == "size" ? "letter" : name})
-        </Label>
+        <Label {...getInputLabelProps()}>Color</Label>
         <InputWrapper ref={setAnchorEl} className={focused ? "focused" : ""}>
           {value.map((option, index) => {
             const { key, ...tagProps } = getTagProps({ index });
@@ -196,7 +194,13 @@ export default function MuiSizeChacked({ name, valuesSize }) {
           {groupedOptions.map((option, index) => {
             const { key, ...optionProps } = getOptionProps({ option, index });
             return (
-              <li key={key} {...optionProps}>
+              <li
+                key={key}
+                {...optionProps}
+                style={{
+                  backgroundColor: `${option}`,
+                }}
+              >
                 <span>{option}</span>
                 <CheckIcon fontSize="small" />
               </li>
