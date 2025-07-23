@@ -19,68 +19,66 @@ function SearchTile({ DATA, value, valute, autoClose }) {
   return (
     <div className={css.search_tile}>
       <IoIosClose onClick={autoClose} className={css.close_modal_search} />
-      <ul>
+      <ul className={css.search_list}>
         {value != "" &&
         DATA.filter((item) => item.title.toLowerCase().includes(value)).length >
           0 ? (
           DATA.filter((item) => item.title.toLowerCase().includes(value)).map(
             (filteredSearch) => (
-              <li key={filteredSearch.id}>
-                <>
-                  <img src={ICO} />
-                  <Link
-                    onClick={autoClose}
-                    to={`/${filteredSearch.gender}/${filteredSearch.id}`}
-                    className={css.filteredSearch_link}
-                  >
-                    <div className={css.filteredSearch_product}>
-                      <div className={css.filteredSearch_info_product}>
-                        <div className={css.filteredSearch_about_product}>
-                          <h5 className={css.search_title}>
-                            {filteredSearch.title}
-                          </h5>
-                          <span className={css.filteredSearch_gender}>
-                            {filteredSearch.gender}
-                          </span>
-                        </div>
-                        <div className={style.valute_tile}>
-                          {filteredSearch.sale && (
-                            <span
-                              style={{
-                                color: "var(--danger)",
-                                fontWeight: "700",
-                                fontSize: "20px",
-                                lineHeight: "1",
-                              }}
-                            >
-                              {valute == "Dollar" ? "$" : "€"}
-                              {salePrice(
-                                filteredSearch.price,
-                                filteredSearch.saleValue
-                              ).toFixed(2)}
-                            </span>
-                          )}
+              <li key={filteredSearch.id} className={css.search_item}>
+                <img src={filteredSearch.image[0]} width={70} height={90} />
+                <Link
+                  onClick={autoClose}
+                  to={`/${filteredSearch.gender}/${filteredSearch.id}`}
+                  className={css.filteredSearch_link}
+                >
+                  <div className={css.filteredSearch_product}>
+                    <div className={css.filteredSearch_info_product}>
+                      <div className={css.filteredSearch_about_product}>
+                        <h5 className={css.search_title}>
+                          {filteredSearch.title}
+                        </h5>
+                        <span className={css.filteredSearch_gender}>
+                          {filteredSearch.gender}
+                        </span>
+                      </div>
+                      <div className={style.valute_tile}>
+                        {filteredSearch.sale && (
                           <span
                             style={{
-                              textDecoration: filteredSearch.sale
-                                ? "line-through"
-                                : "none",
-                              fontSize: filteredSearch.sale ? "14px" : "16px",
-                              color: filteredSearch.sale
-                                ? "var(--gray-700)"
-                                : "var(--gray-900)",
-                              fontWeight: filteredSearch.sale ? "400" : "900",
+                              color: "var(--danger)",
+                              fontWeight: "700",
+                              fontSize: "14px",
+                              lineHeight: "1.5",
                             }}
-                            className={style.product_price}
                           >
                             {valute == "Dollar" ? "$" : "€"}
-                            {changeValute(filteredSearch.price)}
+                            {salePrice(
+                              filteredSearch.price,
+                              filteredSearch.saleValue
+                            ).toFixed(2)}
                           </span>
-                        </div>
+                        )}
+                        <span
+                          style={{
+                            textDecoration: filteredSearch.sale
+                              ? "line-through"
+                              : "none",
+                            fontSize: filteredSearch.sale ? "12px" : "14px",
+                            color: filteredSearch.sale
+                              ? "var(--gray-700)"
+                              : "var(--gray-900)",
+                            fontWeight: filteredSearch.sale ? "400" : "400",
+                          }}
+                          className={style.product_price}
+                        >
+                          {valute == "Dollar" ? "$" : "€"}
+                          {changeValute(filteredSearch.price)}
+                        </span>
                       </div>
                     </div>
-                  </Link>
-                </>
+                  </div>
+                </Link>
               </li>
             )
           )

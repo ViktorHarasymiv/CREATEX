@@ -40,10 +40,16 @@ export default function User({ onClick, switchSignIn, switchSignUp }) {
   return (
     <div className={css.user_panel}>
       {isLogged == false ? (
-        <Authorization
-          switchSignUp={switchSignUp}
-          switchSignIn={switchSignIn}
-        />
+        <h4>
+          Welcome, please{" "}
+          <span onClick={switchSignIn} className={css.auth_action}>
+            Log In{" "}
+          </span>{" "}
+          or{" "}
+          <span onClick={switchSignUp} className={css.auth_action}>
+            Sign Up
+          </span>
+        </h4>
       ) : (
         <div className={css.user_wrapper}>
           <img src={Avatar} alt="" className={css.user_avatar} />

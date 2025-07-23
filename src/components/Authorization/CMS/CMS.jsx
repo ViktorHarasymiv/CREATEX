@@ -16,7 +16,7 @@ import { getLogged, setUserInfo } from "../../../redux/accountSlice";
 
 import NavPanel from "./components/NavPanel";
 
-export default function CMS() {
+export default function CMS({ content, switcher }) {
   const dispatch = useDispatch();
 
   // CONST
@@ -34,7 +34,7 @@ export default function CMS() {
               Hello, admin, have a good and productive day!
             </h3>
           </div>
-          <NavPanel />
+          <NavPanel content={content} switcher={switcher} />
         </div>
       </div>
     </main>

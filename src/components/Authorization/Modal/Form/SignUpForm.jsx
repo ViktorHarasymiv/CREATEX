@@ -17,7 +17,8 @@ import { getProfile } from "../../../../redux/accountSlice";
 // STYLE AND ICONS
 
 import css from "./Form.module.css";
-import EyeIco from "./icons/Eye.png";
+import { PiEyeClosed } from "react-icons/pi";
+import { PiEyeLight } from "react-icons/pi";
 import Button from "../../../Button/Button";
 
 // VALIDATION SCHEMA
@@ -49,13 +50,14 @@ const validationSchema = Yup.object().shape({
     .required("Підтвердження паролю обов'язкове"),
 });
 
-export default function SignUpForm({ close }) {
+export default function SignUpForm({ close, switchSuccess, changeContent }) {
   const dispatch = useDispatch();
   const fieldId = useId();
 
   // STATE
 
   const [showPassword, setShowPassword] = useState(false);
+  const [showOpenEge, setOpenEge] = useState(false);
 
   // CONST
   const profile = useSelector((state) => state.account.profile);
@@ -72,6 +74,7 @@ export default function SignUpForm({ close }) {
   // FUNCTION
 
   const togglePassword = () => {
+    setOpenEge((prev) => !prev);
     setShowPassword((prev) => !prev);
   };
 
@@ -85,6 +88,8 @@ export default function SignUpForm({ close }) {
         });
       }
     } else {
+      switchSuccess(true);
+      changeContent(`Registration was successful`);
       dispatch(getProfile(values));
       close();
       actions.resetForm();
@@ -126,7 +131,7 @@ export default function SignUpForm({ close }) {
                 className={css.error_message}
               />
             </label>
-            {/* email */}
+            {/* Email */}
             <label htmlFor={`${fieldId}-email`} className={css.form_label}>
               <span>Email</span>
               <div className={css.input_wrapper}>
@@ -166,15 +171,19 @@ export default function SignUpForm({ close }) {
                   }}
                   placeholder="Your password"
                 />
-                <img
-                  onMouseEnter={togglePassword}
-                  onMouseLeave={togglePassword}
-                  className={css.password_hide_icon}
-                  src={EyeIco}
-                  alt="Show password"
-                  width={16}
-                  height={16}
-                />
+                {showOpenEge != true ? (
+                  <PiEyeClosed
+                    onMouseEnter={togglePassword}
+                    onMouseLeave={togglePassword}
+                    className={css.password_hide_icon}
+                  ></PiEyeClosed>
+                ) : (
+                  <PiEyeLight
+                    PiEyeLight
+                    onMouseLeave={togglePassword}
+                    className={css.password_hide_icon}
+                  ></PiEyeLight>
+                )}
               </div>
               <ErrorMessage
                 name="password"
@@ -203,15 +212,19 @@ export default function SignUpForm({ close }) {
                   placeholder="Password confirmation"
                   required
                 />
-                <img
-                  onMouseEnter={togglePassword}
-                  onMouseLeave={togglePassword}
-                  className={css.password_hide_icon}
-                  src={EyeIco}
-                  alt="Show password"
-                  width={16}
-                  height={16}
-                />
+                {showOpenEge != true ? (
+                  <PiEyeClosed
+                    onMouseEnter={togglePassword}
+                    onMouseLeave={togglePassword}
+                    className={css.password_hide_icon}
+                  ></PiEyeClosed>
+                ) : (
+                  <PiEyeLight
+                    PiEyeLight
+                    onMouseLeave={togglePassword}
+                    className={css.password_hide_icon}
+                  ></PiEyeLight>
+                )}
               </div>
               <ErrorMessage
                 name="confirmPassword"

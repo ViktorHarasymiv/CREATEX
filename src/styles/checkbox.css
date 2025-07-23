@@ -18,7 +18,7 @@
 
   font-family: var(--font-family);
   font-size: clamp(10px, 2vw, 14px);
-  color: var(--gray-800);
+  color: var(--white);
 
   text-align: end;
 }
@@ -35,7 +35,9 @@
 
 .accept_text {
   margin-left: 26px;
+
   text-wrap: nowrap;
+  line-height: 1;
 }
 
 .custom_checkbox {

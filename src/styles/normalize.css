@@ -287,7 +287,7 @@ input[type="select"] {
   font-size: clamp(10px, 2vw, 16px);
 
   border-radius: 4px;
-  background: var(--white);
+  background: transparent;
 
   padding: 13px 7px;
 }
@@ -307,12 +307,13 @@ input[type="select"]:focus {
 input[type="email"]::placeholder,
 input[type="text"]::placeholder,
 input[type="number"]::placeholder,
+input[type="password"]::placeholder,
 input[type="select"]::placeholder,
 em {
   font-family: var(--font-family);
   font-size: clamp(12px, 1.6vw, 15px) !important;
   line-height: 160%;
-  color: var(--gray-600);
+  color: var(--gray-800);
 }
 
 /* Для Chrome, Safari, Edge, Opera */

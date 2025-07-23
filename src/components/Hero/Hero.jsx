@@ -4,8 +4,6 @@ import { useSelector } from "react-redux";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import css from "./Hero.module.css";
-
 import "./Setup.css";
 
 // Import Swiper styles
@@ -71,24 +69,21 @@ function Hero({ setHeroOffset }) {
       modules={[Pagination, Navigation]}
       className="hero_swiper"
     >
-      {slider.map(
-        ({ id, name, url, image, relations, title, data, motivation }) => {
-          return (
-            <SwiperSlide>
-              <Slider
-                id={id}
-                name={name}
-                url={url}
-                image={image}
-                relations={relations}
-                title={title}
-                data={data}
-                motivation={motivation}
-              />
-            </SwiperSlide>
-          );
-        }
-      )}
+      {slider.map(({ id, url, image, relations, title, data, motivation }) => {
+        return (
+          <SwiperSlide>
+            <Slider
+              id={id}
+              url={url}
+              image={image}
+              relations={relations}
+              title={title}
+              data={data}
+              motivation={motivation}
+            />
+          </SwiperSlide>
+        );
+      })}
     </Swiper>
   );
 }

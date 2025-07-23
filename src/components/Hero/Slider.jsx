@@ -1,7 +1,4 @@
-import React from "react";
-import { data, Link } from "react-router-dom";
-
-import ReactPlayer from "react-player";
+import { Link } from "react-router-dom";
 
 import css from "./Slider.module.css";
 
@@ -10,7 +7,7 @@ import Button_T from "../Button/T-Button";
 
 const style = 229;
 
-function Slider({ name, url, image, relations, title, data, motivation }) {
+function Slider({ url, image, relations, title, data, motivation }) {
   return (
     <div className={css.slider_tile}>
       <div className={css.wrapper_background}>

@@ -16,6 +16,7 @@ import Footer from "../Footer/Footer";
 
 import SignIn from "../Authorization/Modal/SignIn/SignIn";
 import SignUp from "../Authorization/Modal/SignUp/SignUp";
+import Successful from "../successfulPage/successfulPage";
 
 /* Setup for spiner */
 
@@ -43,6 +44,9 @@ function App() {
   const [openSubscribe, setSubscribe] = useState(false);
   const [changeValue, setChangeValue] = useState("All");
   const [sliceValue, setSliceValue] = useState(8);
+
+  const [successful, setSuccessful] = useState(false);
+  const [sContent, setScontent] = useState("");
 
   // AUTH MODAL
 
@@ -120,6 +124,8 @@ function App() {
     setSubscribe((prevState) => !prevState);
   };
 
+  // EFFECTS
+
   useEffect(() => {
     scrollTo(0, 0);
   }, [location]);
@@ -155,7 +161,24 @@ function App() {
     }
   };
 
-  console.log(signIn);
+  const successfulOpen = () => {
+    if (successful != true) {
+      document.querySelector("html").classList.add("lock");
+      setSuccessful(true);
+    } else {
+      document.querySelector("html").classList.remove("lock");
+      setSuccessful(false);
+    }
+  };
+
+  {
+    successful &&
+      setTimeout(() => {
+        document.querySelector("html").classList.remove("lock");
+        setSuccessful(false);
+        return;
+      }, 2000);
+  }
 
   return (
     <>
@@ -192,6 +215,8 @@ function App() {
             sliceValue={sliceValue}
             setSliceValue={setSliceValue}
             setHeroOffset={setHeroOffset}
+            switcher={successfulOpen}
+            content={setScontent}
           />
         </Suspense>
       }
@@ -204,14 +229,20 @@ function App() {
         <SignIn
           switchSignUp={openModalPageRegistration}
           close={openModalPageSignIn}
+          switchSuccess={successfulOpen}
+          changeContent={setScontent}
         />
       )}
       {signUp && (
         <SignUp
           switchSignIn={openModalPageSignIn}
           close={openModalPageRegistration}
+          switchSuccess={successfulOpen}
+          changeContent={setScontent}
         />
       )}
+
+      {successful && <Successful switch={successfulOpen} content={sContent} />}
     </>
   );
 }

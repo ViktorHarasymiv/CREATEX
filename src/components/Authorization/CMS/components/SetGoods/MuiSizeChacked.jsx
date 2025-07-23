@@ -10,7 +10,7 @@ import { autocompleteClasses } from "@mui/material/Autocomplete";
 import css from "./SetProduct.module.css";
 
 const Root = styled("div")(({ theme }) => ({
-  width: "300px",
+  width: "100%",
   color: "var(--gray-800)",
   fontSize: "16px",
   ...theme.applyStyles("dark", {
@@ -25,7 +25,6 @@ const Label = styled("label")`
 `;
 
 const InputWrapper = styled("div")(({ theme }) => ({
-  padding: "18px",
   borderBottom: "1px solid var(--gray-600)",
   backgroundColor: "#fff",
   display: "flex",
@@ -37,7 +36,7 @@ const InputWrapper = styled("div")(({ theme }) => ({
   "& input": {
     backgroundColor: "#fff",
     color: "rgba(0,0,0,.85)",
-    height: "30px",
+    height: "44px",
     boxSizing: "border-box",
     padding: "4px 6px",
     width: "0",

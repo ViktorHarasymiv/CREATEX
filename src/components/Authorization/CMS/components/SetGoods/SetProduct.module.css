@@ -16,10 +16,6 @@
   gap: 20px;
 }
 
-.form_label {
-  margin-bottom: 7px;
-}
-
 .modal_form_input {
   outline: none !important;
 
@@ -37,7 +33,7 @@
 }
 
 .mui_select {
-  max-height: 54px;
+  max-height: 44px;
   border: none !important;
   border-bottom: 1px solid var(--gray-600) !important;
 
@@ -47,7 +43,7 @@
 .images_wrapper {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
 }
 
 .goodsTabsList {
@@ -157,4 +153,10 @@
 
 .delete_button:hover {
   color: var(--warning);
+}
+
+@media screen and (max-width: 1024.98px) {
+  .formSettup {
+    flex-wrap: wrap;
+  }
 }

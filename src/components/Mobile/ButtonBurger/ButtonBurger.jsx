@@ -15,7 +15,11 @@ function ButtonBurger({ switchSignIn, switchSignUp }) {
   const setOpen = () => {
     if (activeMenu) {
       setActiveMenu(false);
-    } else setActiveMenu(true);
+      document.querySelector("html").classList.remove("lock");
+    } else {
+      document.querySelector("html").classList.add("lock");
+      setActiveMenu(true);
+    }
   };
 
   return (

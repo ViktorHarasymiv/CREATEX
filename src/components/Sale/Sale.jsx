@@ -80,24 +80,24 @@ function Sale({ valute, filter, setFilter, sliceValue, setSliceValue }) {
               <h4>No products found, please enter another value</h4>
             )}
             {filteredSale.length > 8 && (
-              // <LoadMore
-              //   sliceValue={sliceValue}
-              //   setSliceValue={setSliceValue}
-              //   context={
-              //     sliceValue >= filteredSale.length ? "Hide All" : "Load More"
-              //   }
-              // />
-              <Pagination
-                data={filteredSale}
-                totalPages={filteredSale.length / 8}
-                page={page}
-                setPage={setPage}
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
+              <LoadMore
                 sliceValue={sliceValue}
                 setSliceValue={setSliceValue}
-                onPageChanges={setSliceValue}
+                context={
+                  sliceValue >= filteredSale.length ? "Hide All" : "Load More"
+                }
               />
+              // <Pagination
+              //   data={filteredSale}
+              //   totalPages={filteredSale.length / 8}
+              //   page={page}
+              //   setPage={setPage}
+              //   currentPage={currentPage}
+              //   setCurrentPage={setCurrentPage}
+              //   sliceValue={sliceValue}
+              //   setSliceValue={setSliceValue}
+              //   onPageChanges={setSliceValue}
+              // />
             )}
           </div>
         </div>

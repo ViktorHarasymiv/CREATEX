@@ -58,6 +58,8 @@ function Router({
   sliceValue,
   setSliceValue,
   setHeroOffset,
+  switcher,
+  content,
 }) {
   document.title = "Createx | Home";
   const location = useLocation();
@@ -178,12 +180,18 @@ function Router({
         )}
         {loggedUser?.info?.persone?.role === "admin" && (
           <>
-            <Route path="/admin" element={<CMS />}>
+            <Route
+              path="/admin"
+              element={<CMS switcher={switcher} content={content} />}
+            >
               <Route path="profile" element={<MyProfile />} />
 
               <Route path="root" element={<Root />} />
               <Route path="users" element={<UsersProfile />} />
-              <Route path="setGoods" element={<SetGoods />} />
+              <Route
+                path="setGoods"
+                element={<SetGoods switcher={switcher} content={content} />}
+              />
               <Route path="setHero" element={<SetHeroSlider />} />
               <Route path="setBlog" element={<SetBlog />} />
             </Route>

@@ -19,7 +19,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getLogged, setUserInfo } from "../../../../redux/accountSlice";
 
-export default function NavPanel() {
+export default function NavPanel({ switcher, content }) {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();

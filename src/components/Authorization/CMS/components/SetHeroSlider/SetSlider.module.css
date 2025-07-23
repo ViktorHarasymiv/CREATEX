@@ -60,9 +60,8 @@
   margin-bottom: 10px;
 
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-
-  align-self: flex-end;
 
   color: var(--danger);
 }

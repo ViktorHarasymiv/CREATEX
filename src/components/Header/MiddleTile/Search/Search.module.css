@@ -58,32 +58,7 @@
   transform: scale(1.1);
 }
 
-/* SEARCH TILE */
-
-.search_tile {
-  border-bottom: 20px solid var(--white);
-  border-top: 20px solid var(--white);
-
-  padding: 0 15px;
-
-  z-index: 2;
-
-  overflow: auto;
-  position: absolute;
-
-  top: 54px;
-
-  max-height: 440px;
-
-  border-radius: 5px;
-
-  background-color: rgba(255, 255, 255, 1);
-
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
-  display: flex;
-  flex-direction: column;
-}
+/* CLOSE */
 
 .close_modal_search {
   position: absolute;
@@ -96,18 +71,50 @@
   transform: scale(1.2);
 }
 
-.filteredSearch_product {
+/* SEARCH TILE */
+
+.search_tile {
+  border-bottom: 10px solid var(--white);
+  border-top: 10px solid var(--white);
+
+  border-radius: 4px;
+
+  padding: 0 15px;
+
+  z-index: 2;
+
+  overflow: auto;
+  position: absolute;
+
+  top: 64px;
+
   width: 100%;
+  max-height: 440px;
 
-  padding-block: 20px;
+  background-color: var(--white);
 
-  display: -webkit-inline-box;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
-.filteredSearch_link {
-  width: 100%;
+.search_list {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.search_item {
+  display: flex;
+
+  gap: 12px;
+}
+
+.filteredSearch_product {
+  display: flex;
+  justify-content: space-between;
 }
 
 .filteredSearch_link:not(:last-child) {
@@ -170,6 +177,6 @@
     left: 50%;
     transform: translateX(-50%);
 
-    width: 75dvw;
+    width: 81dvw;
   }
 }

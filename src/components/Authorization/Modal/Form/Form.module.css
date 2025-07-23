@@ -1,19 +1,17 @@
 .formSettup {
   padding-bottom: 24px;
+
+  color: var(--white) !important;
+}
+
+.formSettup input::placeholder {
+  color: var(--white);
 }
 
 .form_label {
   display: block;
 
   margin-bottom: 20px;
-}
-
-@media screen and (max-width: 767.98px) {
-  .form_label {
-    display: block;
-
-    margin-bottom: 10px;
-  }
 }
 
 .form_label span {
@@ -69,7 +67,7 @@
 }
 
 .auth_media_title {
-  color: var(--gray-700);
+  color: var(--white);
 }
 
 .input_wrapper {
@@ -83,6 +81,9 @@
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
+
+  width: 18px;
+  height: 18px;
 }
 
 .user_change_btns {
@@ -101,6 +102,11 @@
 }
 
 @media screen and (max-width: 767.98px) {
+  .form_label {
+    display: block;
+
+    margin-bottom: 10px;
+  }
   .auth_media_block {
     padding-top: 18px;
   }

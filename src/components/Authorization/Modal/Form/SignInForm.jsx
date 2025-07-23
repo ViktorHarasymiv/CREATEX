@@ -17,12 +17,13 @@ import { getLogged, setUserInfo } from "../../../../redux/accountSlice";
 import css from "./Form.module.css";
 
 // MEDIA
-import EyeIco from "./icons/Eye.png";
+import { PiEyeClosed } from "react-icons/pi";
+import { PiEyeLight } from "react-icons/pi";
 import Button from "../../../Button/Button";
 
 // BODY
 
-export default function SignInForm({ close }) {
+export default function SignInForm({ close, switchSuccess, changeContent }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -34,6 +35,7 @@ export default function SignInForm({ close }) {
   // STATE
 
   const [showPassword, setShowPassword] = useState(false);
+  const [showOpenEge, setOpenEge] = useState(false);
 
   // CONST
 
@@ -80,6 +82,7 @@ export default function SignInForm({ close }) {
     String(now.getMinutes()).padStart(2, "0");
 
   const togglePassword = () => {
+    setOpenEge((prev) => !prev);
     setShowPassword((prev) => !prev);
   };
 
@@ -89,6 +92,8 @@ export default function SignInForm({ close }) {
     );
 
     if (values.email === "admin@mail.com" && values.password === "Admin@123") {
+      switchSuccess(true);
+      changeContent("Hello Admin");
       dispatch(getLogged(true));
       close();
       dispatch(
@@ -103,6 +108,8 @@ export default function SignInForm({ close }) {
     }
 
     if (matchedUser) {
+      switchSuccess(true);
+      changeContent(`Welcome, ${matchedUser.fullname}`);
       dispatch(getLogged(true));
       dispatch(
         setUserInfo({
@@ -135,7 +142,7 @@ export default function SignInForm({ close }) {
     >
       <Form className={css.formSettup}>
         <fieldset>
-          <legend>Sign Up form</legend>
+          <legend>Sign In Form</legend>
 
           <label htmlFor={`${fieldId}-email`} className={css.form_label}>
             <span>Email</span>
@@ -166,15 +173,19 @@ export default function SignInForm({ close }) {
                 id={`${fieldId}-password`}
                 className={css.modal_form_input}
               />
-              <img
-                onMouseEnter={togglePassword}
-                onMouseLeave={togglePassword}
-                className={css.password_hide_icon}
-                src={EyeIco}
-                alt="Show password"
-                width={16}
-                height={16}
-              />
+              {showOpenEge != true ? (
+                <PiEyeClosed
+                  onMouseEnter={togglePassword}
+                  onMouseLeave={togglePassword}
+                  className={css.password_hide_icon}
+                ></PiEyeClosed>
+              ) : (
+                <PiEyeLight
+                  PiEyeLight
+                  onMouseLeave={togglePassword}
+                  className={css.password_hide_icon}
+                ></PiEyeLight>
+              )}
             </div>
             <ErrorMessage
               name="password"
@@ -204,7 +215,7 @@ export default function SignInForm({ close }) {
             </a>
           </div>
           <Button type={"submit"} height={maxHeight}>
-            Sign up
+            Sign in
           </Button>
         </fieldset>
       </Form>

@@ -16,11 +16,11 @@ const sliderSlice = createSlice({
       },
       {
         id: crypto.randomUUID(),
-        name: "womenwear",
+        name: "women wear",
         url: "women",
         image: "../images/slider/women.jpg",
         relations: "New collection",
-        title: "Womenswear",
+        title: "Women wear",
         data: "2025",
         motivation:
           "Dress with purpose. Wear with confidence. Shine wherever you go",

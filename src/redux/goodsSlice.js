@@ -735,7 +735,7 @@ const goodsSlice = createSlice({
       },
       {
         id: 283260000,
-        filter: "New",
+        filter: "Popular",
         gender: "kids",
         image: [
           "/images/goods/kids/girl-1.avif",

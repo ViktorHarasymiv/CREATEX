@@ -21,7 +21,11 @@ function Sort({ data, setFilter, setPage, sliceValue, setSliceValue, array }) {
   return (
     <div className={css.sort_module_tile}>
       <div className={css.sort_show_tile}>
-        <Filters array={array} setFilter={setFilter} />
+        <Filters
+          array={array}
+          setFilter={setFilter}
+          className={css.fixScrool}
+        />
         <div className={css.sort_tile}>
           <h4>Sort by</h4>
           <FormControl sx={{ m: 1, minWidth: 120 }} className={css.sort_list}>

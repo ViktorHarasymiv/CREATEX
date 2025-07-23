@@ -78,8 +78,8 @@ function ArrivalsItem({
 
   return (
     <div className={css.product_tile}>
-      <div className={css.product_image_tile}>
-        <Link to={`/${gender}/${id}`}>
+      <Link to={`/${gender}/${id}`}>
+        <div className={css.product_image_tile}>
           <img
             className={css.product_image}
             src={image[0]}
@@ -87,91 +87,93 @@ function ArrivalsItem({
             width={285}
             style={{ backgroundColor: "#f8f8f8" }}
           />
-        </Link>
-        <div className={css.top_info_panel}>
-          <div className={css.sale_tile}>
-            {filter == "New" && <span className={css.sale_band}>{filter}</span>}
+          <div className={css.top_info_panel}>
+            <div className={css.sale_tile}>
+              {filter == "New" && (
+                <span className={css.sale_band}>{filter}</span>
+              )}
+            </div>
+            <div className={css.rating_tile}>
+              {[...Array(5)].map((_, index) => {
+                const currentRating = index + 1;
+                return (
+                  <span key={index}>
+                    <img
+                      src={
+                        currentRating <= (hover || rating || ratingState)
+                          ? starSelect
+                          : starEmpty
+                      }
+                      alt=""
+                      width={14}
+                      height={14}
+                      onClick={() => setRating(currentRating)}
+                      onMouseEnter={() => setHover(currentRating)}
+                      onMouseLeave={() => setHover(0)}
+                    />
+                  </span>
+                );
+              })}
+            </div>
           </div>
-          <div className={css.rating_tile}>
-            {[...Array(5)].map((_, index) => {
-              const currentRating = index + 1;
-              return (
-                <span key={index}>
-                  <img
-                    src={
-                      currentRating <= (hover || rating || ratingState)
-                        ? starSelect
-                        : starEmpty
-                    }
-                    alt=""
-                    width={14}
-                    height={14}
-                    onClick={() => setRating(currentRating)}
-                    onMouseEnter={() => setHover(currentRating)}
-                    onMouseLeave={() => setHover(0)}
-                  />
-                </span>
-              );
-            })}
+          <div className={css.favorite_tile}>
+            {wishlistID.find((itemID) => itemID == id) ? (
+              <button onClick={deleteLike} className={css.favorite_button}>
+                <IoMdHeart style={{ fill: "red" }} />
+              </button>
+            ) : (
+              <button
+                onClick={() =>
+                  getLike(
+                    id,
+                    title,
+                    gender,
+                    rating,
+                    price,
+                    sale,
+                    saleValue,
+                    image
+                  )
+                }
+                className={css.favorite_button}
+              >
+                <CiHeart onClick={() => setIsLiked(true)} />
+              </button>
+            )}
           </div>
         </div>
-        <div className={css.favorite_tile}>
-          {wishlistID.find((itemID) => itemID == id) ? (
-            <button onClick={deleteLike} className={css.favorite_button}>
-              <IoMdHeart style={{ fill: "red" }} />
-            </button>
-          ) : (
-            <button
-              onClick={() =>
-                getLike(
-                  id,
-                  title,
-                  gender,
-                  rating,
-                  price,
-                  sale,
-                  saleValue,
-                  image
-                )
-              }
-              className={css.favorite_button}
-            >
-              <CiHeart onClick={() => setIsLiked(true)} />
-            </button>
-          )}
-        </div>
-      </div>
-      <div className={css.product_info}>
-        <h3 className={css.product_title}>{title}</h3>
-        <div className={css.valute_tile}>
-          {sale && (
+        <div className={css.product_info}>
+          <h3 className={css.product_title}>{title}</h3>
+          <div className={css.valute_tile}>
+            {sale && (
+              <span
+                style={{
+                  color: "var(--danger)",
+                  fontWeight: "700",
+                  fontSize: "24px",
+                  lineHeight: "1",
+                }}
+              >
+                ${salePrice.toFixed(2)}
+              </span>
+            )}
             <span
               style={{
-                color: "var(--danger)",
-                fontWeight: "700",
-                fontSize: "24px",
-                lineHeight: "1",
+                textDecoration: sale ? "line-through" : "none",
+                fontSize: sale ? "16px" : "18px",
+                color: sale ? "var(--gray-700)" : "var(--gray-900)",
+                fontWeight: sale ? "400" : "900",
               }}
+              className={css.product_price}
             >
-              ${salePrice.toFixed(2)}
+              <span style={{ marginRight: "5px" }}>
+                {valute == "Dollar" ? "$" : "€"}
+              </span>
+              {changeValute()}
             </span>
-          )}
-          <span
-            style={{
-              textDecoration: sale ? "line-through" : "none",
-              fontSize: sale ? "16px" : "18px",
-              color: sale ? "var(--gray-700)" : "var(--gray-900)",
-              fontWeight: sale ? "400" : "900",
-            }}
-            className={css.product_price}
-          >
-            <span style={{ marginRight: "5px" }}>
-              {valute == "Dollar" ? "$" : "€"}
-            </span>
-            {changeValute()}
-          </span>
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }

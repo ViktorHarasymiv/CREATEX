@@ -30,7 +30,7 @@ const validationSchema = Yup.object().shape({
     .required("Назва товару обов'язкова"),
 });
 
-export default function SetGoods() {
+export default function SetGoods({ switcher, content }) {
   const dispatch = useDispatch();
   const fieldId = useId();
 
@@ -40,10 +40,6 @@ export default function SetGoods() {
 
   // CONST
 
-  const goods = useSelector((state) => state.goods.items);
-
-  console.log(goods);
-
   const randomId = Math.floor(Math.random() * 9999) + 9;
 
   const initialValues = {
@@ -51,6 +47,7 @@ export default function SetGoods() {
     filter: "",
     gender: "",
     title: "",
+    alt: "",
     category: "",
     subCategory: "",
     alt: "",
@@ -71,17 +68,8 @@ export default function SetGoods() {
         ...values,
       })
     );
-    // const matchedUser = profile.find((user) => user.email === values.email);
-    // if (matchedUser) {
-    //   if (matchedUser.email === values.email) {
-    //     actions.setErrors({
-    //       email: "Email already exists",
-    //     });
-    //   }
-    // } else {
-    //   dispatch(getProfile(values));
-    //   close();
-    // }
+    switcher(true);
+    content("The product has been added");
     actions.resetForm();
   };
 
@@ -148,13 +136,13 @@ export default function SetGoods() {
                     />
                   </label>
                   {/* ALT TEXT */}
-                  <label htmlFor={`${fieldId}-alt-text`}>
+                  <label htmlFor={`${fieldId}-alt`}>
                     <span className={css.form_label}>Alt text</span>
                     <div className={css.input_wrapper}>
                       <Field
                         type="text"
-                        name="alt-text"
-                        id={`${fieldId}-alt-text`}
+                        name="alt"
+                        id={`${fieldId}-alt`}
                         className={css.modal_form_input}
                         style={{
                           outline:
@@ -162,12 +150,12 @@ export default function SetGoods() {
                               ? "2px solid red"
                               : "",
                         }}
-                        placeholder="Product alt text"
+                        placeholder="Alt text"
                         required
                       />
                     </div>
                     <ErrorMessage
-                      name="alt-text"
+                      name="alt"
                       component="span"
                       className={css.error_message}
                     />
@@ -230,36 +218,34 @@ export default function SetGoods() {
                   {/* IMAGE */}
                   <FieldArray name="image">
                     {
-                      <>
-                        <div className={css.images_wrapper}>
-                          {values.image.map((img, index) => (
-                            <div key={index} className={css.input_wrapper}>
-                              <label>
-                                <span className={css.form_label}>{`${
-                                  index == 0 ? "Title image" : "Details image"
-                                }`}</span>
-                              </label>
-                              <Field
-                                type="text"
-                                name={`image[${index}]`}
-                                id={`${fieldId}-image-${index}`}
-                                className={css.modal_form_input}
-                                placeholder={"URL for image"}
-                                required
-                                style={{
-                                  outline:
-                                    errors.image &&
-                                    errors.image[index] &&
-                                    touched.image &&
-                                    touched.image[index]
-                                      ? "2px solid red"
-                                      : "",
-                                }}
-                              />
-                            </div>
-                          ))}
-                        </div>
-                      </>
+                      <div className={css.images_wrapper}>
+                        {values.image.map((img, index) => (
+                          <div key={index} className={css.input_wrapper}>
+                            <label>
+                              <span className={css.form_label}>{`${
+                                index == 0 ? "Title image" : "Details image"
+                              }`}</span>
+                            </label>
+                            <Field
+                              type="text"
+                              name={`image[${index}]`}
+                              id={`${fieldId}-image-${index}`}
+                              className={css.modal_form_input}
+                              placeholder={"URL for image"}
+                              required
+                              style={{
+                                outline:
+                                  errors.image &&
+                                  errors.image[index] &&
+                                  touched.image &&
+                                  touched.image[index]
+                                    ? "2px solid red"
+                                    : "",
+                              }}
+                            />
+                          </div>
+                        ))}
+                      </div>
                     }
                   </FieldArray>
                   {/* PRICE */}

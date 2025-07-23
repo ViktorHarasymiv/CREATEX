@@ -2,7 +2,7 @@
   padding-block: 20px 80px;
   display: flex;
 
-  gap: 90px;
+  gap: 50px;
 }
 
 .account_panel_navigation {
@@ -22,11 +22,11 @@
   border-radius: 4px;
   border: 1px solid var(--gray-300);
 }
-
 .panel_link {
   display: flex;
 
   align-items: center;
+  gap: 12px;
   padding: 12px 20px;
   border-top: 1px solid var(--gray-300);
 
@@ -105,4 +105,38 @@
 .active {
   background-color: var(--primary);
   color: var(--white);
+}
+
+@media screen and (max-width: 767.98px) {
+  .account_panel_navigation {
+    overflow: auto;
+    flex-direction: row;
+
+    max-width: 100%;
+    width: 100%;
+    max-height: 100%;
+  }
+
+  .account_page_wrapper {
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .panel_link {
+    padding-inline: 18px;
+    padding-block: 0;
+
+    font-size: 12px;
+  }
+
+  .account_user_fullname {
+    font-size: 14px;
+  }
+
+  .account_user_content_wrapper {
+    padding: 0;
+
+    padding-inline: 10px;
+  }
 }
