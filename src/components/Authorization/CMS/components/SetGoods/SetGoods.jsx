@@ -54,7 +54,6 @@ export default function SetGoods({ switcher, content }) {
     alt: "",
     category: "",
     subCategory: "",
-    alt: "",
     image: ["", "", ""],
     price: "",
     size: null,
