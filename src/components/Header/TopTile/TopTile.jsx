@@ -24,11 +24,11 @@ function TopTile({ active, setValute, valute, switchSignUp, switchSignIn }) {
   const isLogged = useSelector((state) => state.account.isLogged);
   const loggedUser = useSelector((state) => state.account.loggedUser);
 
-  useEffect(() => {
-    if (!isLogged) {
-      navigate("/");
-    }
-  }, [isLogged]);
+  // useEffect(() => {
+  //   if (!isLogged) {
+  //     navigate("/");
+  //   }
+  // }, [isLogged]);
 
   const logOut = () => {
     setTimeout(() => {

@@ -1,3 +1,7 @@
+.product_card {
+  position: relative;
+}
+
 .product_slide {
   margin-right: 0px !important;
 }
@@ -22,23 +26,13 @@
   object-fit: cover;
 }
 
-.top_info_panel {
-  position: absolute;
-
-  width: 100%;
-  padding-inline: 16px;
-  top: 16px;
-
-  display: flex;
-  justify-content: space-between;
-}
-
 .product_image_tile:hover {
   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
     rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
   transform: scale(1.02);
 }
 
+/* - */
 .sale_band {
   display: inline-block;
   padding: 1.5px 8px;
@@ -161,10 +155,6 @@
     height: 350px;
   }
 
-  .top_info_panel {
-    padding-inline: 8px;
-    top: 8px;
-  }
   .favorite_tile {
     right: 8px;
     bottom: 8px;

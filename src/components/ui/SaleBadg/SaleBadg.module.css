@@ -1,0 +1,23 @@
+.sale_band {
+  z-index: 2;
+
+  position: absolute;
+
+  top: 16px;
+  left: 16px;
+
+  padding: 1.5px 8px;
+
+  max-width: 54px;
+
+  background: var(--danger);
+
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 160%;
+
+  color: var(--white);
+
+  border-radius: 4px;
+}

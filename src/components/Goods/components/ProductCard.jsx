@@ -8,11 +8,10 @@ import { addProduct, deleteProduct } from "../../../redux/wishlistSlice";
 import "./productCard.css";
 import css from "../../NewArrivals/ArrivalsItem/ArrivalsItem.module.css";
 
-import starEmpty from "../../../../public/icons/StarEmpty.svg";
-import starSelect from "../../../../public/icons/StarColor.svg";
-
 import { CiHeart } from "react-icons/ci";
 import { IoMdHeart } from "react-icons/io";
+import SaleBadg from "../../ui/SaleBadg/SaleBadg";
+import Rating from "../../ui/Rating/Rating";
 
 function ProductCard({
   id,
@@ -27,11 +26,12 @@ function ProductCard({
   valute,
 }) {
   // STATE
-  const [isLiked, setIsLiked] = useState(false);
+
   const [rating, setRating] = useState(ratingStart || 0);
-  const [hover, setHover] = useState(0);
+  const [isLiked, setIsLiked] = useState(false);
 
   // STORE
+
   const wishlistArray = useSelector((state) => state.wishlist.products);
   const dispatch = useDispatch();
 
@@ -72,41 +72,13 @@ function ProductCard({
   /* BODY */
 
   return (
-    <div key={id} className="product_card">
+    <div key={id} className={css.product_card}>
+      {sale && <SaleBadg value={saleValue} />}
+      <Rating value={ratingStart} rating={rating} setRating={setRating} />
       <div className={css.product_image_tile}>
         <Link to={`/${gender}/${id}`}>
           <img className={css.product_image} src={image[0]} alt={alt} />
         </Link>
-
-        <div className={css.top_info_panel}>
-          <div className={css.sale_tile}>
-            {saleValue > 0 && (
-              <span className={css.sale_band}>-{saleValue}%</span>
-            )}
-          </div>
-          <div className={css.rating_tile}>
-            {[...Array(5)].map((_, index) => {
-              const currentRating = index + 1;
-              return (
-                <span key={index}>
-                  <img
-                    src={
-                      currentRating <= (hover || rating || ratingStart)
-                        ? starSelect
-                        : starEmpty
-                    }
-                    alt=""
-                    width={14}
-                    height={14}
-                    onClick={() => setRating(currentRating)}
-                    onMouseEnter={() => setHover(currentRating)}
-                    onMouseLeave={() => setHover(0)}
-                  />
-                </span>
-              );
-            })}
-          </div>
-        </div>
         <div
           onClick={() =>
             wishlistID.some((itemID) => itemID == id)

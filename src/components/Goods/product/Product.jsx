@@ -44,6 +44,11 @@ import "./Swiper.css";
 
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import Details from "./Tabs/Details/Details";
+import SelfGoodCard from "../SelfGoodCard/SelfGoodCard";
+import ConfigPrice from "../../ui/configPrice";
+import { PriceWithSale } from "../../../utils/configPrice";
+import SizeCheckBox from "../../ui/SizeCheckBox/SizeCheckBox";
 
 function Product({ valute }) {
   // REDUX
@@ -122,6 +127,7 @@ function Product({ valute }) {
   }, [param.id, product]);
 
   // TABS
+
   const tabs_list = ["General info", "Product details", "Reviews"];
 
   const buildLinkClass = (index) => {
@@ -176,15 +182,16 @@ function Product({ valute }) {
 
   // ADD TO BASKET
 
-  const basketID = basket.map((item) => {
+  const inCart = basket.map((item) => {
     return item.id;
   });
 
-  function salePrice(price, sale) {
-    return price - price * (sale / 100);
-  }
+  const checkInCart = (goodId) => {
+    if (inCart.find((itemId) => itemId == goodId)) return true;
+    else return false;
+  };
 
-  const getToBasket = (
+  const setInCart = (
     id,
     gender,
     title,
@@ -220,16 +227,35 @@ function Product({ valute }) {
     dispatch(deleteFromBasket(selfItem.id));
   };
 
+  const addToBasket = () => {
+    if (inCart.find((itemId) => itemId == selfItem.id)) {
+      setInBasket(false);
+      deleteItem();
+      return;
+    }
+    if (checkProps() != true) {
+      return;
+    } else
+      setInCart(
+        selfItem.id,
+        selfItem.gender,
+        selfItem.title,
+        selfItem.rating,
+        selfItem.price,
+        PriceWithSale(selfItem.price, selfItem.saleValue),
+        selfItem.sale,
+        selfItem.saleValue,
+        selfItem.image,
+        count,
+        color,
+        size
+      );
+  };
+
   // Count price
 
   const handleChange = (event) => {
     setSize(event.target.value);
-  };
-
-  const changeValute = (PRICE) => {
-    if (valute == "Dollar") {
-      return PRICE.toFixed(2);
-    } else return (PRICE * 0.876).toFixed(2);
   };
 
   /* ADD CHANGE */
@@ -258,6 +284,11 @@ function Product({ valute }) {
   /* SWIPER */
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
+  const priceStyleObj = {
+    fontWeight: 700,
+    fontSize: 24,
+  };
 
   return (
     <>
@@ -342,43 +373,14 @@ function Product({ valute }) {
                   <div className={css.product_info}>
                     <div className={css.product_info_top}>
                       <div className={style.valute_tile}>
-                        <div>
-                          {selfItem.sale && (
-                            <span
-                              style={{
-                                color: "var(--danger)",
-                                fontWeight: "700",
-                                fontSize: "24px",
-                                lineHeight: "1",
-                              }}
-                            >
-                              {valute == "Dollar" ? "$" : "€"}
-                              {(
-                                changeValute(selfItem.price) * count -
-                                changeValute(selfItem.price) *
-                                  count *
-                                  (selfItem.saleValue / 100)
-                              ).toFixed(2)}
-                            </span>
-                          )}
-                          <span
-                            style={{
-                              marginLeft: selfItem.sale ? "14px" : "0",
-                              textDecoration: selfItem.sale
-                                ? "line-through"
-                                : "none",
-                              fontSize: selfItem.sale ? "16px" : "24px",
-                              color: selfItem.sale
-                                ? "var(--gray-700)"
-                                : "var(--gray-900)",
-                              fontWeight: selfItem.sale ? "400" : "900",
-                            }}
-                            className={css.product_price}
-                          >
-                            {valute == "Dollar" ? "$" : "€"}
-                            {(changeValute(selfItem.price) * count).toFixed(2)}
-                          </span>
-                        </div>
+                        <ConfigPrice
+                          style={priceStyleObj}
+                          count={count}
+                          price={selfItem.price}
+                          sale={selfItem.sale}
+                          saleValue={selfItem.saleValue}
+                          valute={valute}
+                        />
                         <div
                           className={style.sale_tile}
                           style={{ marginLeft: "24px" }}
@@ -467,41 +469,12 @@ function Product({ valute }) {
                       </div>
                       <div className={css.size_select}>
                         {selfItem.numeric ? (
-                          <>
-                            <form className={css.sizeForm}>
-                              {selfItem.numeric.map((item, index) => {
-                                return (
-                                  <label
-                                    key={index}
-                                    className={
-                                      size == item
-                                        ? css.size_item_label_active
-                                        : css.size_item_label
-                                    }
-                                  >
-                                    <span className={css.size_number}>
-                                      {item}
-                                    </span>
-
-                                    <input
-                                      type="radio"
-                                      name="size"
-                                      value={item}
-                                      onChange={handleChange}
-                                    />
-                                  </label>
-                                );
-                              })}
-                              {sizeError && (
-                                <span
-                                  style={{ marginLeft: "10px" }}
-                                  className="error_form--text"
-                                >
-                                  Choose a size
-                                </span>
-                              )}
-                            </form>
-                          </>
+                          <SizeCheckBox
+                            sizeArray={selfItem.numeric}
+                            size={size}
+                            error={sizeError}
+                            action={handleChange}
+                          />
                         ) : (
                           <FormControl
                             sx={{ m: 1, minWidth: 120 }}
@@ -553,6 +526,10 @@ function Product({ valute }) {
                               newValue = "1";
                             }
 
+                            if (Number(newValue) < 0) {
+                              newValue = "1";
+                            }
+
                             setCount(Number(newValue));
                           }}
                           max={50}
@@ -585,39 +562,14 @@ function Product({ valute }) {
                       </div>
                       {/* ADD TO CARD */}
                       <button
-                        onClick={() => {
-                          if (
-                            basketID.find((itemID) => itemID == selfItem.id)
-                          ) {
-                            setInBasket(false);
-                            deleteItem();
-                            return;
-                          }
-                          if (checkProps() != true) {
-                            return;
-                          }
-                          getToBasket(
-                            selfItem.id,
-                            selfItem.gender,
-                            selfItem.title,
-                            selfItem.rating,
-                            selfItem.price,
-                            salePrice(selfItem.price, selfItem.saleValue),
-                            selfItem.sale,
-                            selfItem.saleValue,
-                            selfItem.image,
-                            count,
-                            color,
-                            size
-                          );
-                        }}
+                        onClick={addToBasket}
                         className={css.add_to_cart_button}
                       >
                         <BsCart2 className={css.cart_icon} />
                         <span>
-                          {!basketID.find((itemID) => itemID == selfItem.id)
-                            ? "Add to cart"
-                            : "Remove from cart"}
+                          {checkInCart(selfItem.id)
+                            ? "Remove from cart"
+                            : "Add to cart"}
                         </span>
                       </button>
                       {/* ADD TO FAVORITES */}
@@ -657,7 +609,26 @@ function Product({ valute }) {
                   </div>
                 </div>
               )}
-              {tab == "Product details" && <>Product</>}
+              {tab == "Product details" && (
+                <div className={css.tab_details_wrapper}>
+                  <Details item={selfItem}></Details>
+                  <SelfGoodCard
+                    good={selfItem}
+                    count={count}
+                    valute={valute}
+                    size={size}
+                    checkInCart={checkInCart}
+                    addToBasket={addToBasket}
+                    error={sizeError}
+                    action={handleChange}
+                    color={color}
+                    colorError={colorError}
+                    setColor={setColor}
+                    rating={rating}
+                    setRating={setRating}
+                  ></SelfGoodCard>
+                </div>
+              )}
               {tab == "Reviews" && (
                 <div>
                   {selfItem.reviews && (

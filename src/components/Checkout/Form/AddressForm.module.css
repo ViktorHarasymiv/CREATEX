@@ -108,3 +108,9 @@
   color: var(--primary);
   background-color: var(--gray-200);
 }
+
+.agree-checkbox {
+  display: inline-flex;
+  width: 100%;
+  color: var(--gray-800);
+}

@@ -63,7 +63,7 @@ const PdfGenerator = ({ valute }) => {
               Back to checkout
             </Link>
 
-            <Link className="fakture_btn">End session</Link>
+            {/* <Link className="fakture_btn">End session</Link> */}
           </div>
 
           <button onClick={generatePDF} className="fakture_btn">

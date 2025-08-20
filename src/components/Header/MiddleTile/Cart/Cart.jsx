@@ -45,7 +45,7 @@ function Card({ valute }) {
 
   const openModal = (event) => {
     if (event.target === event.currentTarget) {
-      if (openCart) {
+      if (openCart === true) {
         document.querySelector("html").classList.remove("lock");
         setOpenCart(false);
       }

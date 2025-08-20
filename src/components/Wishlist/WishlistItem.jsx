@@ -13,6 +13,8 @@ import css from "./../NewArrivals/ArrivalsItem/ArrivalsItem.module.css";
 import { AiOutlineDelete } from "react-icons/ai";
 import starEmpty from "./icons/StarEmpty.svg";
 import starSelect from "./icons/StarColor.svg";
+import SaleBadg from "../ui/SaleBadg/SaleBadg";
+import Rating from "../ui/Rating/Rating";
 
 function WishlistItem({ data, valute }) {
   const dispatch = useDispatch();
@@ -31,10 +33,10 @@ function WishlistItem({ data, valute }) {
 
   /* BODY */
 
-  console.log(data);
-
   return (
-    <div className={css.product_tile}>
+    <div className={css.product_card}>
+      {data.sale && <SaleBadg value={data.saleValue} />}
+      <Rating value={data.rating} />
       <div className={css.product_image_tile}>
         <Link to={`/${data.gender}/${data.id}`}>
           <img
@@ -43,28 +45,6 @@ function WishlistItem({ data, valute }) {
             alt={data.alt}
           />
         </Link>
-        <div className={css.top_info_panel}>
-          <div className={css.sale_tile}>
-            {data.saleValue.length > 0 && (
-              <span className={css.sale_band}>-{data.saleValue}%</span>
-            )}
-          </div>
-          <div className={css.rating_tile}>
-            {[...Array(5)].map((_, index) => {
-              const currentRating = index + 1;
-              return (
-                <span key={index}>
-                  <img
-                    src={currentRating <= data.rating ? starSelect : starEmpty}
-                    alt=""
-                    width={14}
-                    height={14}
-                  />
-                </span>
-              );
-            })}
-          </div>
-        </div>
         <div className={css.favorite_tile}>
           <button className={css.favorite_button}>
             <AiOutlineDelete onClick={() => deleteLike(data.id)} />

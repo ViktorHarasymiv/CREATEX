@@ -17,7 +17,6 @@ function Slider({ url, image, relations, title, data, motivation }) {
           className={css.image_background}
           width="100%"
           height="100%"
-          loading="lazy"
         />
         {/* )} */}
       </div>

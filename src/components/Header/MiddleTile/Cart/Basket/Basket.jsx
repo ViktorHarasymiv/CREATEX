@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteFromBasket,
@@ -161,9 +161,7 @@ function Modal({ overlay, content, closePage, setOpen, valute }) {
           </div>
           {basket.length > 0 && (
             <Link
-              onClick={() => {
-                closePage();
-              }}
+              onClick={() => closePage()}
               to={"/checkout"}
               className={css.checkout_link}
             >

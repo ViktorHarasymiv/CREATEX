@@ -297,20 +297,18 @@ export default function AddressForm() {
                 htmlFor={`${fieldId}-agree-checkbox`}
                 className={checkbox.subscribe_checkbox}
               >
+                <input
+                  onChange={handleChange}
+                  className={checkbox.checkbox_input}
+                  type="checkbox"
+                  id={`${fieldId}-agree-checkbox`}
+                  name={`${fieldId}-agree-checkbox`}
+                  defaultChecked={agree}
+                />
                 <span className={checkbox.checkbox_label}>
                   I agree to receive communications from Createx Store.
                 </span>
-                <div className={checkbox.custom_checkbox}>
-                  <input
-                    onChange={handleChange}
-                    className={checkbox.checkbox_input}
-                    type="checkbox"
-                    id={`${fieldId}-agree-checkbox`}
-                    name={`${fieldId}-agree-checkbox`}
-                    defaultChecked={agree}
-                  />
-                  <div className={checkbox.primary_checkbox}></div>
-                </div>
+                <div className={checkbox.primary_checkbox}></div>
               </label>
               <button
                 type="submit"

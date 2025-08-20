@@ -108,7 +108,7 @@ const goodsSlice = createSlice({
         favorite: false,
         rating: 4,
         sale: false,
-        saleValue: 0,
+        saleValue: null,
         price: 28.15,
         reviews: [
           {
@@ -569,6 +569,43 @@ const goodsSlice = createSlice({
         size: ["XS", "S", "M", "L", "XL", "XXL"],
         numeric: "",
         color: ["White", "Beige", "Dimgray", "Black"],
+        productInfo: [
+          {
+            details: {
+              brand: "Jordan",
+              color: ["White", "Beige", "Dimgray", "Black"],
+              design: "Mid-cut design",
+              fastening: "Lace-up fastening",
+            },
+          },
+          {
+            fabric: {
+              wash: "Upper: 50% real leather, 50% textile",
+              material: "Lining: 100% textile",
+              secoundMaterial: "Sole: 100% other materials",
+            },
+          },
+          {
+            care: {
+              washing: {
+                icon: "/icons/goodDetails/hand-wash.svg",
+                text: "Hand wash only (30°)",
+              },
+              praska: {
+                icon: "/icons/goodDetails/no-ironing.svg",
+                text: "No ironing",
+              },
+              ban: {
+                icon: "/icons/goodDetails/no-bleach.svg",
+                text: "Do not use any bleach",
+              },
+              banSecound: {
+                icon: "/icons/goodDetails/no-tumble-dry.svg",
+                text: "Do not tumble dry",
+              },
+            },
+          },
+        ],
         favorite: false,
         rating: 4,
         sale: false,
@@ -597,6 +634,43 @@ const goodsSlice = createSlice({
         size: ["XS", "S", "M", "L", "XL", "XXL"],
         numeric: "",
         color: ["White", "Beige", "Dimgray", "Black"],
+        productInfo: [
+          {
+            details: {
+              brand: "Jordan",
+              color: ["Beige", "Black"],
+              design: "Mid-cut design",
+              fastening: "Lace-up fastening",
+            },
+          },
+          {
+            fabric: {
+              wash: "Upper: 50% real leather, 50% textile",
+              material: "Lining: 100% textile",
+              secoundMaterial: "Sole: 100% other materials",
+            },
+          },
+          {
+            care: {
+              washing: {
+                icon: "/icons/goodDetails/hand-wash.svg",
+                text: "Hand wash only (30°)",
+              },
+              praska: {
+                icon: "/icons/goodDetails/no-ironing.svg",
+                text: "No ironing",
+              },
+              ban: {
+                icon: "/icons/goodDetails/no-bleach.svg",
+                text: "Do not use any bleach",
+              },
+              banSecound: {
+                icon: "/icons/goodDetails/no-tumble-dry.svg",
+                text: "Do not tumble dry",
+              },
+            },
+          },
+        ],
         favorite: false,
         rating: 5,
         sale: false,
@@ -629,6 +703,43 @@ const goodsSlice = createSlice({
         size: "",
         numeric: ["40", "41", "42", "43", "44"],
         color: ["Beige", "Black"],
+        productInfo: [
+          {
+            details: {
+              brand: "Jordan",
+              color: ["Beige", "Black"],
+              design: "Mid-cut design",
+              fastening: "Lace-up fastening",
+            },
+          },
+          {
+            fabric: {
+              wash: "Upper: 50% real leather, 50% textile",
+              material: "Lining: 100% textile",
+              secoundMaterial: "Sole: 100% other materials",
+            },
+          },
+          {
+            care: {
+              washing: {
+                icon: "/icons/goodDetails/hand-wash.svg",
+                text: "Hand wash only (30°)",
+              },
+              praska: {
+                icon: "/icons/goodDetails/no-ironing.svg",
+                text: "No ironing",
+              },
+              ban: {
+                icon: "/icons/goodDetails/no-bleach.svg",
+                text: "Do not use any bleach",
+              },
+              banSecound: {
+                icon: "/icons/goodDetails/no-tumble-dry.svg",
+                text: "Do not tumble dry",
+              },
+            },
+          },
+        ],
         favorite: false,
         rating: 5,
         sale: false,
@@ -658,9 +769,46 @@ const goodsSlice = createSlice({
         title: "Płaszcz Regular Fit",
         category: "Jackets",
         subCategory: "New",
-        size: "",
+        size: null,
         numeric: ["40", "41", "42", "43", "44"],
         color: ["Beige", "Black"],
+        productInfo: [
+          {
+            details: {
+              brand: "Jordan",
+              color: ["Beige", "Black"],
+              design: "Mid-cut design",
+              fastening: "Lace-up fastening",
+            },
+          },
+          {
+            fabric: {
+              wash: "Upper: 50% real leather, 50% textile",
+              material: "Lining: 100% textile",
+              secoundMaterial: "Sole: 100% other materials",
+            },
+          },
+          {
+            care: {
+              washing: {
+                icon: "/icons/goodDetails/hand-wash.svg",
+                text: "Hand wash only (30°)",
+              },
+              praska: {
+                icon: "/icons/goodDetails/no-ironing.svg",
+                text: "No ironing",
+              },
+              ban: {
+                icon: "/icons/goodDetails/no-bleach.svg",
+                text: "Do not use any bleach",
+              },
+              banSecound: {
+                icon: "/icons/goodDetails/no-tumble-dry.svg",
+                text: "Do not tumble dry",
+              },
+            },
+          },
+        ],
         favorite: false,
         rating: 5,
         sale: false,
@@ -687,7 +835,44 @@ const goodsSlice = createSlice({
         category: "T-shirt",
         subCategory: "New",
         size: ["XS", "S", "M", "L", "XL", "XXL"],
-        numeric: "",
+        numeric: null,
+        productInfo: [
+          {
+            details: {
+              brand: "Jordan",
+              color: "gray / red / yellow",
+              design: "Mid-cut design",
+              fastening: "Lace-up fastening",
+            },
+          },
+          {
+            fabric: {
+              wash: "Upper: 50% real leather, 50% textile",
+              material: "Lining: 100% textile",
+              secoundMaterial: "Sole: 100% other materials",
+            },
+          },
+          {
+            care: {
+              washing: {
+                icon: "/icons/goodDetails/hand-wash.svg",
+                text: "Hand wash only (30°)",
+              },
+              praska: {
+                icon: "/icons/goodDetails/no-ironing.svg",
+                text: "No ironing",
+              },
+              ban: {
+                icon: "/icons/goodDetails/no-bleach.svg",
+                text: "Do not use any bleach",
+              },
+              banSecound: {
+                icon: "/icons/goodDetails/no-tumble-dry.svg",
+                text: "Do not tumble dry",
+              },
+            },
+          },
+        ],
         color: ["Beige", "Black"],
         favorite: false,
         rating: 5,
@@ -714,7 +899,44 @@ const goodsSlice = createSlice({
         title: "Kolczyki kółka 2 pary",
         category: "Accessories",
         subCategory: "Earrings",
-        size: ["XS", "S", "M", "L", "XL"],
+        productInfo: [
+          {
+            details: {
+              brand: "Jordan",
+              color: "gray / red / yellow",
+              design: "Mid-cut design",
+              fastening: "Lace-up fastening",
+            },
+          },
+          {
+            fabric: {
+              wash: "Upper: 50% real leather, 50% textile",
+              material: "Lining: 100% textile",
+              secoundMaterial: "Sole: 100% other materials",
+            },
+          },
+          {
+            care: {
+              washing: {
+                icon: "/icons/goodDetails/hand-wash.svg",
+                text: "Hand wash only (30°)",
+              },
+              praska: {
+                icon: "/icons/goodDetails/no-ironing.svg",
+                text: "No ironing",
+              },
+              ban: {
+                icon: "/icons/goodDetails/no-bleach.svg",
+                text: "Do not use any bleach",
+              },
+              banSecound: {
+                icon: "/icons/goodDetails/no-tumble-dry.svg",
+                text: "Do not tumble dry",
+              },
+            },
+          },
+        ],
+        size: null,
         numeric: ["36", "37", "38", "39", "40"],
         color: ["Gold", "White", "Brown"],
         favorite: false,
@@ -745,6 +967,43 @@ const goodsSlice = createSlice({
         title: "Komplet 2-częściowy top i spodnie",
         category: "girl",
         subCategory: "Summer",
+        productInfo: [
+          {
+            details: {
+              brand: "Jordan",
+              color: "gray / red / yellow",
+              design: "Mid-cut design",
+              fastening: "Lace-up fastening",
+            },
+          },
+          {
+            fabric: {
+              wash: "Upper: 50% real leather, 50% textile",
+              material: "Lining: 100% textile",
+              secoundMaterial: "Sole: 100% other materials",
+            },
+          },
+          {
+            care: {
+              washing: {
+                icon: "/icons/goodDetails/hand-wash.svg",
+                text: "Hand wash only (30°)",
+              },
+              praska: {
+                icon: "/icons/goodDetails/no-ironing.svg",
+                text: "No ironing",
+              },
+              ban: {
+                icon: "/icons/goodDetails/no-bleach.svg",
+                text: "Do not use any bleach",
+              },
+              banSecound: {
+                icon: "/icons/goodDetails/no-tumble-dry.svg",
+                text: "Do not tumble dry",
+              },
+            },
+          },
+        ],
         size: "",
         numeric: ["92", "98", "104", "110"],
         color: ["black", "white", "red", "brown"],
@@ -766,8 +1025,45 @@ const goodsSlice = createSlice({
         title: "Dzianinowy komplet 2-częściowy",
         category: "boy",
         subCategory: "Summer",
+        productInfo: [
+          {
+            details: {
+              brand: "Jordan",
+              color: "gray / red / yellow",
+              design: "Mid-cut design",
+              fastening: "Lace-up fastening",
+            },
+          },
+          {
+            fabric: {
+              wash: "Upper: 50% real leather, 50% textile",
+              material: "Lining: 100% textile",
+              secoundMaterial: "Sole: 100% other materials",
+            },
+          },
+          {
+            care: {
+              washing: {
+                icon: "/icons/goodDetails/hand-wash.svg",
+                text: "Hand wash only (30°)",
+              },
+              praska: {
+                icon: "/icons/goodDetails/no-ironing.svg",
+                text: "No ironing",
+              },
+              ban: {
+                icon: "/icons/goodDetails/no-bleach.svg",
+                text: "Do not use any bleach",
+              },
+              banSecound: {
+                icon: "/icons/goodDetails/no-tumble-dry.svg",
+                text: "Do not tumble dry",
+              },
+            },
+          },
+        ],
         size: ["92", "98", "104", "110"],
-        numeric: "",
+        numeric: null,
         color: ["black", "white", "red", "brown"],
         favorite: false,
         rating: 5,

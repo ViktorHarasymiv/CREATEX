@@ -2,9 +2,10 @@ import React from "react";
 
 import css from "./Button.module.css";
 
-function Button({ children, type, height }) {
+function Button({ children, type, height, action }) {
   return (
     <button
+      onClick={action}
       type={type}
       style={{ maxHeight: height }}
       className={css.button_primary}

@@ -1,0 +1,8 @@
+.rating_tile {
+  z-index: 2;
+
+  position: absolute;
+
+  top: 16px;
+  right: 16px;
+}
