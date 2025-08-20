@@ -15,7 +15,7 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Navigation } from "swiper/modules";
-import ConfigPrice from "../../ui/configPrice";
+import ConfigPrice from "../../ui/ConfigPrice";
 import SizeCheckBox from "../../ui/SizeCheckBox/SizeCheckBox";
 import ColorCheckBox from "../../ui/ColorCheckBox/ColorCheckBox";
 import SaleBadg from "../../ui/SaleBadg/SaleBadg";

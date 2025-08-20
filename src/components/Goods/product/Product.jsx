@@ -46,7 +46,7 @@ import "./Swiper.css";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import Details from "./Tabs/Details/Details";
 import SelfGoodCard from "../SelfGoodCard/SelfGoodCard";
-import ConfigPrice from "../../ui/configPrice.js";
+import ConfigPrice from "../../ui/ConfigPrice";
 import { PriceWithSale } from "../../../utils/configPrice";
 import SizeCheckBox from "../../ui/SizeCheckBox/SizeCheckBox";
 
