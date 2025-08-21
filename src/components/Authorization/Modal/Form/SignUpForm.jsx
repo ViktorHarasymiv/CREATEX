@@ -238,7 +238,7 @@ export default function SignUpForm({ close, switchSuccess, changeContent }) {
               className="checkbox_label"
             >
               <div className="custom_checkbox">
-                <span className="accept_text">
+                <span className="accept_text _form">
                   I accept the Terms of Use & Private Policy.
                 </span>
                 <Field

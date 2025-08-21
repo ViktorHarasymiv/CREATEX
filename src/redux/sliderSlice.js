@@ -29,7 +29,7 @@ const sliderSlice = createSlice({
         id: crypto.randomUUID(),
         name: "kidswear",
         url: "kids",
-        image: "../images/slider/kids.jpg",
+        image: "../images/slider/kids.avif",
         relations: "New collection",
         title: "Kidswear",
         data: "2025",

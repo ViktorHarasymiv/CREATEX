@@ -20,6 +20,7 @@ import SizeCheckBox from "../../ui/SizeCheckBox/SizeCheckBox";
 import ColorCheckBox from "../../ui/ColorCheckBox/ColorCheckBox";
 import SaleBadg from "../../ui/SaleBadg/SaleBadg";
 import Rating from "../../ui/Rating/Rating";
+import Like from "../../ui/Like/Like";
 
 // Dynamic style
 
@@ -46,13 +47,14 @@ export default function SelfGoodCard({
 }) {
   return (
     <div className={style.good_card}>
-      {good.saleValue && <SaleBadg value={good.saleValue} />}
-      <Rating value={good.rating} rating={rating} setRating={setRating} />
       <Swiper
         navigation={true}
         modules={[Navigation]}
         className={style.mySwiper}
       >
+        {good.saleValue && <SaleBadg value={good.saleValue} />}
+        <Rating value={good.rating} rating={rating} setRating={setRating} />
+        <Like id={good.id} good={good}></Like>
         {good.image.map((item, key) => (
           <SwiperSlide key={key}>
             <img src={item} alt="" width={390} height={440} />

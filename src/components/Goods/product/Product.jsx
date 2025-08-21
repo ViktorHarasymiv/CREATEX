@@ -49,6 +49,7 @@ import SelfGoodCard from "../SelfGoodCard/SelfGoodCard";
 import ConfigPrice from "../../ui/ConfigPrice";
 import { PriceWithSale } from "../../../utils/configPrice";
 import SizeCheckBox from "../../ui/SizeCheckBox/SizeCheckBox";
+import Reviews from "./Tabs/Reviews/Reviews";
 
 function Product({ valute }) {
   // REDUX
@@ -385,7 +386,7 @@ function Product({ valute }) {
                           className={style.sale_tile}
                           style={{ marginLeft: "24px" }}
                         >
-                          {selfItem.saleValue > 0 && (
+                          {selfItem.sale > 0 && (
                             <span className={style.sale_band}>
                               -{selfItem.saleValue}%
                             </span>
@@ -630,23 +631,25 @@ function Product({ valute }) {
                 </div>
               )}
               {tab == "Reviews" && (
-                <div>
-                  {selfItem.reviews && (
-                    <ul>
-                      {selfItem.reviews.map(({ index, name, comment }) => {
-                        return (
-                          <li key={index}>
-                            <span>{name}</span>
-                            <br />
-                            <p>{comment}</p>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  )}
+                <div className={css.tab_details_wrapper}>
+                  <Reviews data={selfItem} />
+                  <SelfGoodCard
+                    good={selfItem}
+                    count={count}
+                    valute={valute}
+                    size={size}
+                    checkInCart={checkInCart}
+                    addToBasket={addToBasket}
+                    error={sizeError}
+                    action={handleChange}
+                    color={color}
+                    colorError={colorError}
+                    setColor={setColor}
+                    rating={rating}
+                    setRating={setRating}
+                  ></SelfGoodCard>
                 </div>
               )}
-              <div />
             </div>
           </div>
         )}

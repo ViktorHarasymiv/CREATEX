@@ -18,8 +18,9 @@ function Women({ valute, filter, setFilter, sliceValue, setSliceValue }) {
       (filter != "All"
         ? women.category == filter ||
           women.subCategory == filter ||
-          women.numeric.includes(filter) ||
-          women.size.includes(filter) ||
+          (women.numeric
+            ? women.numeric.includes(filter)
+            : women.size.includes(filter)) ||
           women.color.includes(filter) ||
           women.filter == filter ||
           (women.price > filter[0] && women.price < filter[1])

@@ -17,8 +17,9 @@ function Men({ valute, filter, setFilter, sliceValue, setSliceValue }) {
       (filter != "All"
         ? men.category == filter ||
           men.subCategory == filter ||
-          men.numeric.includes(filter) ||
-          men.size.includes(filter) ||
+          (men.numeric
+            ? men.numeric.includes(filter)
+            : men.size.includes(filter)) ||
           men.color.includes(filter) ||
           men.filter == filter ||
           (men.price > filter[0] && men.price < filter[1])

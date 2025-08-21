@@ -4,14 +4,14 @@ import style from "./Details.module.css";
 import SelfGoodCard from "../../../SelfGoodCard/SelfGoodCard";
 
 export default function Details({ item }) {
-  console.log(item);
-
   return (
     <div className={style.tab_wrapper}>
       <div className={style.tab_body}>
         {item.productInfo ? (
           item.productInfo.map((section, index) => {
             const [sectionName, details] = Object.entries(section)[0];
+            if (sectionName === "about") return <span>{details}</span>;
+
             return (
               <div className={style.tab_content} key={index}>
                 <h4 className={style.detail_title}>{sectionName}</h4>

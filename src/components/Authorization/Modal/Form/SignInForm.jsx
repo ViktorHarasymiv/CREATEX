@@ -200,7 +200,7 @@ export default function SignInForm({ close, switchSuccess, changeContent }) {
               className="checkbox_label signIn_label"
             >
               <div className="custom_checkbox">
-                <span className="accept_text">Keep me signed in</span>
+                <span className="accept_text _form">Keep me signed in</span>
                 <Field
                   type="checkbox"
                   name="acceptConfig"

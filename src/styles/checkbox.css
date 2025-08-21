@@ -39,6 +39,10 @@
   text-wrap: nowrap;
   line-height: 1;
 
+  color: var(--gray-800);
+}
+
+._form {
   color: var(--white);
 }
 

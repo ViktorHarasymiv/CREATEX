@@ -1,0 +1,39 @@
+.favorite_tile {
+  z-index: 2;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+
+  width: 32px;
+  height: 32px;
+
+  background-color: var(--white);
+  border-radius: 25px;
+}
+
+.favorite_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  background-color: transparent;
+}
+
+.favorite_button svg {
+  width: 16px;
+  height: 16px;
+  fill: #787a80;
+}
+
+.favorite_button:hover svg {
+  stroke-width: 1px;
+  stroke: var(--primary);
+  fill: var(--primary);
+}

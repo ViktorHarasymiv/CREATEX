@@ -10,6 +10,7 @@ import starSelect from "../../../../public/icons/StarColor.svg";
 
 import css from "./ArrivalsItem.module.css";
 import { Link } from "react-router-dom";
+import Rating from "../../ui/Rating/Rating";
 
 function ArrivalsItem({
   id,
@@ -77,7 +78,13 @@ function ArrivalsItem({
   const salePrice = price - price * (saleValue / 100);
 
   return (
-    <div className={css.product_tile}>
+    <div className={css.product_card}>
+      {filter == "New" && <span className={css.new_band}>{filter}</span>}
+      <Rating
+        value={ratingState}
+        rating={rating}
+        setRating={setRating}
+      ></Rating>
       <Link to={`/${gender}/${id}`}>
         <div className={css.product_image_tile}>
           <img
@@ -87,35 +94,6 @@ function ArrivalsItem({
             width={285}
             style={{ backgroundColor: "#f8f8f8" }}
           />
-          <div className={css.top_info_panel}>
-            <div className={css.sale_tile}>
-              {filter == "New" && (
-                <span className={css.sale_band}>{filter}</span>
-              )}
-            </div>
-            <div className={css.rating_tile}>
-              {[...Array(5)].map((_, index) => {
-                const currentRating = index + 1;
-                return (
-                  <span key={index}>
-                    <img
-                      src={
-                        currentRating <= (hover || rating || ratingState)
-                          ? starSelect
-                          : starEmpty
-                      }
-                      alt=""
-                      width={14}
-                      height={14}
-                      onClick={() => setRating(currentRating)}
-                      onMouseEnter={() => setHover(currentRating)}
-                      onMouseLeave={() => setHover(0)}
-                    />
-                  </span>
-                );
-              })}
-            </div>
-          </div>
           <div className={css.favorite_tile}>
             {wishlistID.find((itemID) => itemID == id) ? (
               <button onClick={deleteLike} className={css.favorite_button}>

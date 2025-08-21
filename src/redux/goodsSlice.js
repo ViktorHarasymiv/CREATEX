@@ -1,12 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// DATA
+
+const formattedDate = new Date().toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
 const goodsSlice = createSlice({
   name: "goods",
   initialState: {
     items: [
       {
         id: 183260000,
-        filter: "",
+        filter: "popular",
         gender: "kids",
         image: [
           "/images/goods/6.png",
@@ -17,16 +25,38 @@ const goodsSlice = createSlice({
         ],
         alt: "Baby shoes with laces",
         title: "Baby shoes with laces",
-        category: "",
+        category: "Shoes",
         subCategory: "girl",
-        size: "",
+        size: null,
         numeric: ["36", "37", "38", "39", "40"],
         color: ["black", "white", "red", "brown"],
         favorite: false,
-        rating: 5,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: false,
         saleValue: "",
         price: 30.6,
+        reviews: [
+          {
+            data: formattedDate,
+            name: "Devon Lane",
+            rating: 2,
+            comment:
+              "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
+          },
+          {
+            data: formattedDate,
+            name: "Annette Black",
+            rating: 1,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
+          },
+        ],
       },
       {
         id: 183260001,
@@ -44,13 +74,35 @@ const goodsSlice = createSlice({
         category: "girl",
         subCategory: "",
         size: ["XS", "S", "M", "L", "XL"],
-        numeric: ["36", "37", "38", "39", "40"],
+        numeric: null,
         color: ["black", "white", "red", "brown"],
         favorite: false,
-        rating: 5,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: false,
         saleValue: "",
         price: 20.3,
+        reviews: [
+          {
+            data: formattedDate,
+            name: "Devon Lane",
+            rating: 5,
+            comment:
+              "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
+          },
+          {
+            data: formattedDate,
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
+          },
+        ],
       },
       {
         id: 183260002,
@@ -62,13 +114,35 @@ const goodsSlice = createSlice({
         category: "Jeans",
         subCategory: "",
         size: ["XS", "S", "M", "L", "XL"],
-        numeric: "",
+        numeric: null,
         color: ["black", "white", "red", "brown"],
         favorite: false,
-        rating: 4,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: true,
         saleValue: 50,
         price: 40.0,
+        reviews: [
+          {
+            data: formattedDate,
+            name: "Devon Lane",
+            rating: 5,
+            comment:
+              "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
+          },
+          {
+            data: formattedDate,
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
+          },
+        ],
       },
       {
         id: 183260003,
@@ -80,13 +154,35 @@ const goodsSlice = createSlice({
         category: "Sunglasses",
         subCategory: "Interesting",
         size: ["XS", "S", "M", "L", "XL"],
-        numeric: "",
+        numeric: null,
         color: ["Black", "Brown"],
         favorite: false,
-        rating: 4,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: false,
-        saleValue: "",
+        saleValue: null,
         price: 54.95,
+        reviews: [
+          {
+            data: formattedDate,
+            name: "Devon Lane",
+            rating: 5,
+            comment:
+              "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
+          },
+          {
+            data: formattedDate,
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
+          },
+        ],
       },
       {
         id: 183260004,
@@ -103,10 +199,16 @@ const goodsSlice = createSlice({
         category: "",
         subCategory: "Cap",
         size: ["XS", "S", "M", "L", "XL"],
-        numeric: "",
+        numeric: null,
         color: ["white", "beige", "black", "brown"],
         favorite: false,
-        rating: 4,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: false,
         saleValue: null,
         price: 28.15,
@@ -131,21 +233,33 @@ const goodsSlice = createSlice({
         category: "Accessories",
         subCategory: "Earrings",
         size: ["XS", "S", "M", "L", "XL"],
-        numeric: ["36", "37", "38", "39", "40"],
+        numeric: null,
         color: ["Black", "White", "Red", "Brown"],
         favorite: false,
-        rating: 5,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: true,
         saleValue: 30,
         price: 18.15,
         reviews: [
           {
-            name: "admin",
-            comment: "very nice product...",
+            data: formattedDate,
+            name: "Devon Lane",
+            rating: 5,
+            comment:
+              "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
           },
           {
-            name: "any user",
-            comment: "I recommend...",
+            data: formattedDate,
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
           },
         ],
       },
@@ -158,22 +272,34 @@ const goodsSlice = createSlice({
         title: "Men fashion gray shoes",
         category: "Boots",
         subCategory: "",
-        size: ["XS", "S", "M", "L", "XL"],
+        size: null,
         numeric: ["36", "37", "38", "39", "40"],
         color: ["Black", "Grey", "Red", "Brown"],
         favorite: false,
-        rating: 5,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: true,
         saleValue: 40,
         price: 85.5,
         reviews: [
           {
-            name: "admin",
-            comment: "very nice product...",
+            data: formattedDate,
+            name: "Devon Lane",
+            rating: 5,
+            comment:
+              "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
           },
           {
-            name: "any user",
-            comment: "I recommend...",
+            data: formattedDate,
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
           },
         ],
       },
@@ -187,10 +313,16 @@ const goodsSlice = createSlice({
         category: "Bag",
         subCategory: "",
         size: ["XS", "S", "M", "L", "XL", "XXL"],
-        numeric: ["36", "37", "38", "39", "40"],
+        numeric: null,
         color: ["Black", "White", "Red", "Brown"],
         favorite: false,
-        rating: 5,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: true,
         saleValue: 50,
         price: 179.0,
@@ -205,10 +337,16 @@ const goodsSlice = createSlice({
         category: "Cardigans & sweaters",
         subCategory: "",
         size: ["XS", "S", "M", "L", "XL"],
-        numeric: "",
+        numeric: null,
         color: ["black", "IndianRed", "red", "brown"],
         favorite: false,
-        rating: 5,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: false,
         saleValue: "",
         price: 49.95,
@@ -233,10 +371,16 @@ const goodsSlice = createSlice({
         category: "coat",
         subCategory: "Jackets",
         size: ["XS", "S", "M", "L", "XL"],
-        numeric: "",
+        numeric: null,
         color: ["black", "IndianRed", "red", "brown"],
         favorite: false,
-        rating: 3,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: false,
         saleValue: "",
         price: 183.45,
@@ -261,10 +405,16 @@ const goodsSlice = createSlice({
         category: "Clock",
         subCategory: "Popular",
         size: ["XS", "S", "M", "L", "XL"],
-        numeric: "",
+        numeric: null,
         color: ["black", "white", "red", "brown"],
         favorite: false,
-        rating: 4,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: false,
         saleValue: "",
         price: 120.6,
@@ -292,7 +442,13 @@ const goodsSlice = createSlice({
         numeric: ["36", "37", "38", "39", "40"],
         color: ["black", "white", "red", "brown"],
         favorite: false,
-        rating: 5,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: true,
         saleValue: 20,
         price: 148.95,
@@ -321,19 +477,30 @@ const goodsSlice = createSlice({
         numeric: "",
         color: ["black", "white", "red", "brown"],
         favorite: false,
-        rating: 1,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: true,
         saleValue: 50,
         price: 80.0,
-
         reviews: [
           {
-            name: "admin",
-            comment: "very nice product...",
+            data: formattedDate,
+            name: "Devon Lane",
+            rating: 5,
+            comment:
+              "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
           },
           {
-            name: "any user",
-            comment: "I recommend...",
+            data: formattedDate,
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
           },
         ],
       },
@@ -350,19 +517,30 @@ const goodsSlice = createSlice({
         numeric: "",
         color: ["black", "white", "red", "brown"],
         favorite: false,
-        rating: 1,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: true,
         saleValue: 50,
         price: 31.0,
-
         reviews: [
           {
-            name: "admin",
-            comment: "very nice product...",
+            data: formattedDate,
+            name: "Devon Lane",
+            rating: 5,
+            comment:
+              "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
           },
           {
-            name: "any user",
-            comment: "I recommend...",
+            data: formattedDate,
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
           },
         ],
       },
@@ -379,19 +557,31 @@ const goodsSlice = createSlice({
         numeric: "",
         color: ["black", "white", "red", "brown"],
         favorite: false,
-        rating: 4,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: true,
         saleValue: 20,
         price: 24.0,
 
         reviews: [
           {
-            name: "admin",
-            comment: "very nice product...",
+            data: formattedDate,
+            name: "Devon Lane",
+            rating: 5,
+            comment:
+              "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
           },
           {
-            name: "any user",
-            comment: "I recommend...",
+            data: formattedDate,
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
           },
         ],
       },
@@ -408,18 +598,30 @@ const goodsSlice = createSlice({
         numeric: "",
         color: ["black", "white", "red", "brown"],
         favorite: false,
-        rating: 5,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: false,
         saleValue: "",
         price: 45.2,
         reviews: [
           {
-            name: "admin",
-            comment: "very nice product...",
+            data: formattedDate,
+            name: "Devon Lane",
+            rating: 5,
+            comment:
+              "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
           },
           {
-            name: "any user",
-            comment: "I recommend...",
+            data: formattedDate,
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
           },
         ],
       },
@@ -436,18 +638,30 @@ const goodsSlice = createSlice({
         numeric: ["40", "41", "42", "43", "44"],
         color: ["Black", "Brown", "Gray"],
         favorite: false,
-        rating: 5,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: false,
         saleValue: "",
         price: 48.0,
         reviews: [
           {
-            name: "admin",
-            comment: "good sandals...",
+            data: formattedDate,
+            name: "Devon Lane",
+            rating: 5,
+            comment:
+              "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
           },
           {
-            name: "any user",
-            comment: "I recommend...",
+            data: formattedDate,
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
           },
         ],
       },
@@ -468,18 +682,30 @@ const goodsSlice = createSlice({
         numeric: "",
         color: ["White", "Beige"],
         favorite: false,
-        rating: 5,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: false,
         saleValue: "",
         price: 36.75,
         reviews: [
           {
-            name: "Viktor Harasymiv",
-            comment: "good...",
+            data: formattedDate,
+            name: "Devon Lane",
+            rating: 5,
+            comment:
+              "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
           },
           {
-            name: "User...",
-            comment: "I recommend...",
+            data: formattedDate,
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
           },
         ],
       },
@@ -498,78 +724,13 @@ const goodsSlice = createSlice({
         category: "Jackets",
         subCategory: "Interesting",
         size: ["XS", "S", "M", "L", "XL"],
-        numeric: "",
+        numeric: null,
         color: ["Royalblue", "White", "Beige", "Dimgray"],
-        favorite: false,
-        rating: 5,
-        sale: false,
-        saleValue: "",
-        price: 147.99,
-        reviews: [
-          {
-            name: "Viktor Harasymiv",
-            comment: "good sandals...",
-          },
-          {
-            name: "User...",
-            comment: "I recommend...",
-          },
-        ],
-      },
-      {
-        id: 183260020,
-        filter: "New",
-        gender: "men",
-        image: [
-          "/images/goods/20.avif",
-          "/images/goods/drop20-1.avif",
-          "/images/goods/drop20-2.avif",
-          "/images/goods/drop20-3.avif",
-        ],
-        alt: "T-shirt Loose Fit",
-        title: "T-shirt Loose Fit",
-        category: "T-shirt",
-        subCategory: "Hot",
-        size: ["XS", "S", "M", "L", "XL", "XXL"],
-        numeric: "",
-        color: [
-          "Royalblue",
-          "White",
-          "Beige",
-          "Dimgray",
-          "Rose",
-          "Brown",
-          "Green",
-        ],
-        favorite: false,
-        rating: 4,
-        sale: false,
-        saleValue: "",
-        price: 39.99,
-        reviews: [
-          {
-            name: "Viktor Harasymiv",
-            comment: "good sandals...",
-          },
-          {
-            name: "User...",
-            comment: "I recommend...",
-          },
-        ],
-      },
-      {
-        id: 183260021,
-        filter: "New",
-        gender: "men",
-        image: ["/images/goods/21.avif", "/images/goods/drop21-1.avif"],
-        alt: "Szorty dresowe Regular Fit",
-        title: "Szorty dresowe Regular Fit",
-        category: "Shorts",
-        subCategory: "Popular",
-        size: ["XS", "S", "M", "L", "XL", "XXL"],
-        numeric: "",
-        color: ["White", "Beige", "Dimgray", "Black"],
         productInfo: [
+          {
+            about:
+              "Id habitant tempor aliquam vulputate enim velit tincidunt sed. Urna sed facilisis nulla feugiat amet venenatis. Id suspendisse ut quis tellus aliquam pellentesque neque, semper donec.",
+          },
           {
             details: {
               brand: "Jordan",
@@ -607,10 +768,108 @@ const goodsSlice = createSlice({
           },
         ],
         favorite: false,
-        rating: 4,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
+        sale: false,
+        saleValue: null,
+        price: 147.99,
+        reviews: [
+          {
+            data: formattedDate,
+            name: "Devon Lane",
+            rating: 5,
+            comment:
+              "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
+          },
+          {
+            data: formattedDate,
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
+          },
+        ],
+      },
+      {
+        id: 183260020,
+        filter: "New",
+        gender: "men",
+        image: [
+          "/images/goods/20.avif",
+          "/images/goods/drop20-1.avif",
+          "/images/goods/drop20-2.avif",
+          "/images/goods/drop20-3.avif",
+        ],
+        alt: "T-shirt Loose Fit",
+        title: "T-shirt Loose Fit",
+        category: "T-shirt",
+        subCategory: "Hot",
+        size: ["XS", "S", "M", "L", "XL", "XXL"],
+        numeric: "",
+        color: [
+          "Royalblue",
+          "White",
+          "Beige",
+          "Dimgray",
+          "Rose",
+          "Brown",
+          "Green",
+        ],
+        productInfo: [
+          {
+            details: {
+              about:
+                "Id habitant tempor aliquam vulputate enim velit tincidunt sed. Urna sed facilisis nulla feugiat amet venenatis. Id suspendisse ut quis tellus aliquam pellentesque neque, semper donec.",
+              brand: "Jordan",
+              color: ["White", "Beige", "Dimgray", "Black"],
+              design: "Mid-cut design",
+              fastening: "Lace-up fastening",
+            },
+          },
+          {
+            fabric: {
+              wash: "Upper: 50% real leather, 50% textile",
+              material: "Lining: 100% textile",
+              secoundMaterial: "Sole: 100% other materials",
+            },
+          },
+          {
+            care: {
+              washing: {
+                icon: "/icons/goodDetails/hand-wash.svg",
+                text: "Hand wash only (30°)",
+              },
+              praska: {
+                icon: "/icons/goodDetails/no-ironing.svg",
+                text: "No ironing",
+              },
+              ban: {
+                icon: "/icons/goodDetails/no-bleach.svg",
+                text: "Do not use any bleach",
+              },
+              banSecound: {
+                icon: "/icons/goodDetails/no-tumble-dry.svg",
+                text: "Do not tumble dry",
+              },
+            },
+          },
+        ],
+        favorite: false,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: false,
         saleValue: "",
-        price: 54.99,
+        price: 39.99,
         reviews: [
           {
             name: "Viktor Harasymiv",
@@ -619,6 +878,85 @@ const goodsSlice = createSlice({
           {
             name: "User...",
             comment: "I recommend...",
+          },
+        ],
+      },
+      {
+        id: 183260021,
+        filter: "New",
+        gender: "men",
+        image: ["/images/goods/21.avif", "/images/goods/drop21-1.avif"],
+        alt: "Szorty dresowe Regular Fit",
+        title: "Szorty dresowe Regular Fit",
+        category: "Shorts",
+        subCategory: "Popular",
+        size: ["XS", "S", "M", "L", "XL", "XXL"],
+        numeric: "",
+        color: ["White", "Beige", "Dimgray", "Black"],
+        productInfo: [
+          {
+            details: {
+              about:
+                "Id habitant tempor aliquam vulputate enim velit tincidunt sed. Urna sed facilisis nulla feugiat amet venenatis. Id suspendisse ut quis tellus aliquam pellentesque neque, semper donec.",
+              brand: "Jordan",
+              color: ["White", "Beige", "Dimgray", "Black"],
+              design: "Mid-cut design",
+              fastening: "Lace-up fastening",
+            },
+          },
+          {
+            fabric: {
+              wash: "Upper: 50% real leather, 50% textile",
+              material: "Lining: 100% textile",
+              secoundMaterial: "Sole: 100% other materials",
+            },
+          },
+          {
+            care: {
+              washing: {
+                icon: "/icons/goodDetails/hand-wash.svg",
+                text: "Hand wash only (30°)",
+              },
+              praska: {
+                icon: "/icons/goodDetails/no-ironing.svg",
+                text: "No ironing",
+              },
+              ban: {
+                icon: "/icons/goodDetails/no-bleach.svg",
+                text: "Do not use any bleach",
+              },
+              banSecound: {
+                icon: "/icons/goodDetails/no-tumble-dry.svg",
+                text: "Do not tumble dry",
+              },
+            },
+          },
+        ],
+        favorite: false,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
+        sale: false,
+        saleValue: "",
+        price: 54.99,
+        reviews: [
+          {
+            data: formattedDate,
+            name: "Devon Lane",
+            rating: 5,
+            comment:
+              "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
+          },
+          {
+            data: formattedDate,
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
           },
         ],
       },
@@ -672,18 +1010,30 @@ const goodsSlice = createSlice({
           },
         ],
         favorite: false,
-        rating: 5,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: false,
         saleValue: "",
         price: 54.99,
         reviews: [
           {
-            name: "Viktor Harasymiv",
-            comment: "good sandals...",
+            data: formattedDate,
+            name: "Devon Lane",
+            rating: 5,
+            comment:
+              "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
           },
           {
-            name: "User...",
-            comment: "I recommend...",
+            data: formattedDate,
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
           },
         ],
       },
@@ -741,18 +1091,30 @@ const goodsSlice = createSlice({
           },
         ],
         favorite: false,
-        rating: 5,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: false,
         saleValue: "",
         price: 209.99,
         reviews: [
           {
-            name: "Viktor Harasymiv",
-            comment: "good sandals...",
+            data: formattedDate,
+            name: "Devon Lane",
+            rating: 5,
+            comment:
+              "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
           },
           {
-            name: "User...",
-            comment: "I recommend...",
+            data: formattedDate,
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
           },
         ],
       },
@@ -810,18 +1172,30 @@ const goodsSlice = createSlice({
           },
         ],
         favorite: false,
-        rating: 5,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: false,
         saleValue: "",
         price: 319.99,
         reviews: [
           {
-            name: "Viktor Harasymiv",
-            comment: "good sandals...",
+            data: formattedDate,
+            name: "Devon Lane",
+            rating: 5,
+            comment:
+              "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
           },
           {
-            name: "User...",
-            comment: "I recommend...",
+            data: formattedDate,
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
           },
         ],
       },
@@ -875,18 +1249,30 @@ const goodsSlice = createSlice({
         ],
         color: ["Beige", "Black"],
         favorite: false,
-        rating: 5,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: false,
         saleValue: "",
         price: 26.7,
         reviews: [
           {
-            name: "Viktor Harasymiv",
-            comment: "good sandals...",
+            data: formattedDate,
+            name: "Devon Lane",
+            rating: 5,
+            comment:
+              "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
           },
           {
-            name: "User...",
-            comment: "I recommend...",
+            data: formattedDate,
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
           },
         ],
       },
@@ -940,18 +1326,30 @@ const goodsSlice = createSlice({
         numeric: ["36", "37", "38", "39", "40"],
         color: ["Gold", "White", "Brown"],
         favorite: false,
-        rating: 5,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: false,
         saleValue: 0,
         price: 77.15,
         reviews: [
           {
-            name: "admin",
-            comment: "very nice product...",
+            data: formattedDate,
+            name: "Devon Lane",
+            rating: 5,
+            comment:
+              "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
           },
           {
-            name: "any user",
-            comment: "I recommend...",
+            data: formattedDate,
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
           },
         ],
       },
@@ -1008,10 +1406,32 @@ const goodsSlice = createSlice({
         numeric: ["92", "98", "104", "110"],
         color: ["black", "white", "red", "brown"],
         favorite: false,
-        rating: 5,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: false,
         saleValue: "",
         price: 66.99,
+        reviews: [
+          {
+            data: formattedDate,
+            name: "Devon Lane",
+            rating: 5,
+            comment:
+              "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
+          },
+          {
+            data: formattedDate,
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
+          },
+        ],
       },
       {
         id: 283260001,
@@ -1066,10 +1486,32 @@ const goodsSlice = createSlice({
         numeric: null,
         color: ["black", "white", "red", "brown"],
         favorite: false,
-        rating: 5,
+        rating: {
+          1: ["1", "1"],
+          2: ["2"],
+          3: ["3"],
+          4: ["4", "4"],
+          5: ["5", "5", "5", "5", "5", "5", "5"],
+        },
         sale: true,
         saleValue: 15,
         price: 127.99,
+        reviews: [
+          {
+            data: formattedDate,
+            name: "Devon Lane",
+            rating: 5,
+            comment:
+              "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
+          },
+          {
+            data: formattedDate,
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
+          },
+        ],
       },
     ],
   },
