@@ -82,7 +82,10 @@
 .footer_copyright_heart_ico {
   display: inline-block;
 
-  padding-inline: 4px;
+  margin-inline: 4px;
+
+  width: 16px;
+  height: 14px;
 }
 
 .footer_copyright_to_top_link {

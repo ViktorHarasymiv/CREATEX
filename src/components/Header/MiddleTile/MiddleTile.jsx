@@ -1,8 +1,4 @@
-import { useEffect, useState } from "react";
-import clsx from "clsx";
-
 import css from "./MiddleTile.module.css";
-import "./scrolled.css";
 
 import Logo from "./Logo/Logo";
 import Navigation from "./Navigation/Navigation";
@@ -17,36 +13,11 @@ function MiddleTile({
   active,
   windowWidth,
   valute,
-  heroOffset,
   switchSignIn,
   switchSignUp,
 }) {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
-    <div
-      // className={
-      //   scrollY <= heroOffset
-      //     ? css.middle_tile_wrapper
-      //     : css.middle_tile_wrapper_scrolled
-      // }
-      className={clsx(
-        "middle_tile_wrapper",
-        scrollY > heroOffset && "scrolled"
-      )}
-    >
+    <div className={css.middle_tile_wrapper}>
       <div className="container">
         <div className={css.middle_tile}>
           <Logo />

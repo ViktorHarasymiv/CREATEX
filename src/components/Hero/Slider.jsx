@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { memo } from "react";
 
 import css from "./Slider.module.css";
 
@@ -15,8 +16,10 @@ function Slider({ url, image, relations, title, data, motivation }) {
           src={image}
           alt={image}
           className={css.image_background}
-          width="100%"
-          height="100%"
+          width={1920}
+          height={890}
+          priority="true"
+          style={{ backgroundColor: "var(--gray-100)" }}
         />
         {/* )} */}
       </div>
@@ -40,4 +43,4 @@ function Slider({ url, image, relations, title, data, motivation }) {
   );
 }
 
-export default Slider;
+export default memo(Slider);

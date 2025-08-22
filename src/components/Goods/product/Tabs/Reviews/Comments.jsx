@@ -8,9 +8,9 @@ import starSelect from "/icons/StarColor.svg";
 export default function Comments({ data }) {
   return (
     <div className={style.reviews_content}>
-      {data.reviews.map(({ data, name, rating, comment }) => {
+      {data.reviews.map(({ data, name, rating, comment }, index) => {
         return (
-          <div className={style.reviews_tile}>
+          <div key={index} className={style.reviews_tile}>
             <div className={style.reviews_user_tile}>
               <div
                 className={style.reviews_user_info}

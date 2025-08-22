@@ -1,33 +1,36 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
-
-import style from "./../SortModule/Sort.module.css";
 
 import HistoryBar from "../HistoryBar/HistoryBar";
 
 import ProductCard from "../Goods/components/ProductCard";
+import Filters from "../Filters/Filters";
 import Sort from "../SortModule/Sort";
 
 export default function Kids({
   valute,
-  setFilter,
   filter,
+  setFilter,
   sliceValue,
   setSliceValue,
 }) {
   const products = useSelector((state) => state.goods.items);
 
-  const boysGoods = products.filter(
-    (boy) =>
-      boy.category === "boy" &&
+  const [onFilters, setOnFilters] = useState(true);
+
+  const arrayBoy = products.filter(
+    (kids) =>
+      kids.category == "boy" &&
       (filter != "All"
-        ? boy.category == filter ||
-          boy.subCategory == filter ||
-          boy.numeric.includes(filter) ||
-          boy.size.includes(filter) ||
-          boy.color.includes(filter) ||
-          boy.filter == filter ||
-          (boy.price > filter[0] && boy.price < filter[1])
-        : boy)
+        ? kids.category == filter ||
+          kids.subCategory == filter ||
+          (kids.numeric
+            ? kids.numeric.includes(filter)
+            : kids.size.includes(filter)) ||
+          kids.color.includes(filter) ||
+          kids.filter == filter ||
+          (kids.price > filter[0] && kids.price < filter[1])
+        : kids)
   );
 
   return (
@@ -35,43 +38,42 @@ export default function Kids({
       <HistoryBar></HistoryBar>
       <div className="container">
         <div className="product_wrapper">
+          <Sort
+            data={arrayBoy.length}
+            setFilter={setFilter}
+            sliceValue={sliceValue}
+            setSliceValue={setSliceValue}
+            showFilter={setOnFilters}
+            isOnFilter={onFilters}
+          ></Sort>
           <div className="product_wrapper-sort">
-            <Sort
-              setFilter={setFilter}
-              sliceValue={sliceValue}
-              setSliceValue={setSliceValue}
-            ></Sort>
-            <div className="product_page">
-              {boysGoods.slice(0, sliceValue).map((boys) => {
-                const {
-                  id,
-                  gender,
-                  title,
-                  image,
-                  alt,
-                  rating,
-                  saleValue,
-                  price,
-                  sale,
-                } = boys;
-
-                return (
-                  <ProductCard
-                    key={id}
-                    id={id}
-                    gender={gender}
-                    title={title}
-                    image={image}
-                    alt={alt}
-                    ratingStart={rating}
-                    saleValue={saleValue}
-                    price={price}
-                    sale={sale}
-                    valute={valute}
+            {onFilters && <Filters setFilter={setFilter}></Filters>}
+            {arrayBoy.length > 0 ? (
+              <div className="product_column_page">
+                <div className="product_page">
+                  {arrayBoy.slice(0, sliceValue).map((arrayBoy, index) => {
+                    return (
+                      <ProductCard
+                        key={index}
+                        data={arrayBoy}
+                        valute={valute}
+                      />
+                    );
+                  })}
+                </div>
+                {arrayBoy.length > 6 && (
+                  <LoadMore
+                    sliceValue={sliceValue}
+                    setSliceValue={setSliceValue}
+                    context={
+                      sliceValue >= arrayBoy.length ? "Hide All" : "Load More"
+                    }
                   />
-                );
-              })}
-            </div>
+                )}
+              </div>
+            ) : (
+              <h4>No products found, please enter another value</h4>
+            )}
           </div>
         </div>
       </div>

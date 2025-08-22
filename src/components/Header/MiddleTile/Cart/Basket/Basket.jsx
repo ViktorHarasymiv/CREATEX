@@ -87,6 +87,7 @@ function Modal({ overlay, content, closePage, setOpen, valute }) {
                   alt={item.title}
                   width={80}
                   height={80}
+                  className={css.basket_product_image}
                 />
                 <div className={css.basket_product_info_tile}>
                   <div className={css.basket_tile_top}>

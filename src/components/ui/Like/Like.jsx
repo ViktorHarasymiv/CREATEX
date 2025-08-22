@@ -28,11 +28,13 @@ export default function Like({ id, good }) {
 
   return (
     <div
-      onClick={() =>
+      onClick={(e) => {
+        e.stopPropagation();
+        e.preventDefault();
         wishlistID.some((itemID) => itemID === id)
           ? deleteLike(id)
-          : getLike(good)
-      }
+          : getLike(good);
+      }}
       className={style.favorite_tile}
     >
       <button className={style.favorite_button}>

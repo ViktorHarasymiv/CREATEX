@@ -42,6 +42,8 @@
 }
 
 .category_filters {
+  margin-bottom: 20px;
+
   overflow: auto;
   height: 140px;
 }
@@ -181,40 +183,35 @@
 }
 
 .filters_list {
-  margin-top: 10px;
-  z-index: 9999;
+  margin-right: 60px;
 
-  position: absolute;
-
-  width: 160px;
-  transform-origin: left center;
+  min-width: 255px;
+  height: 100%;
+  transform-origin: top center;
 
   background-color: rgba(255, 255, 255, 0.9) !important;
 
   backdrop-filter: blur(2px);
 
   animation-name: showFilter;
-  animation-duration: 0.6s;
   animation-iteration-count: 1;
 
   transition: transform cubic-bezier(0.215, 0.61, 0.355, 1);
 
-  padding: 20px 30px;
-  width: 320px;
-
-  border: 1px solid var(--gray-400);
-
   border-radius: 4px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.filter_options {
+  border-bottom: 1px solid var(--gray-300);
 }
 
 @keyframes showFilter {
   0% {
-    transform: scaleX(0.8);
+    transform: scaleY(0.8);
     opacity: 0;
   }
   100% {
-    transform: scaleX(1);
+    transform: scaleY(1);
     opacity: 1;
   }
 }

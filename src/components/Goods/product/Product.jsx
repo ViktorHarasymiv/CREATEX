@@ -332,19 +332,17 @@ function Product({ valute }) {
                       modules={[FreeMode, Navigation, Thumbs]}
                       className="mySwiper2"
                     >
-                      {selfItem.image && selfItem.image.length > 0 ? (
+                      {selfItem.image &&
                         selfItem.image.map((image, index) => (
                           <SwiperSlide key={index}>
-                            <img src={image} alt={`Product ${index}`} />
+                            <img
+                              src={image}
+                              alt={`Product ${index}`}
+                              width={530}
+                              height={588}
+                            />
                           </SwiperSlide>
-                        ))
-                      ) : (
-                        <Skeleton
-                          sx={{ width: 450, height: 450 }}
-                          animation="wave"
-                          variant="rectangular"
-                        />
-                      )}
+                        ))}
                     </Swiper>
                     <Swiper
                       onSwiper={(swiper) => {

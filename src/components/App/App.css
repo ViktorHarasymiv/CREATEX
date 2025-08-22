@@ -49,7 +49,7 @@ h1 {
   flex-direction: column;
   justify-content: space-between;
 }
-@media screen and (max-width: 477.98px) {
+@media screen and (max-width: 768.98px) {
   .container {
     padding-inline: var(--container-mobile-padding-x);
   }

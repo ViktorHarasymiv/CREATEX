@@ -1,7 +1,4 @@
-import React from "react";
-
 import style from "./Details.module.css";
-import SelfGoodCard from "../../../SelfGoodCard/SelfGoodCard";
 
 export default function Details({ item }) {
   return (
@@ -10,7 +7,8 @@ export default function Details({ item }) {
         {item.productInfo ? (
           item.productInfo.map((section, index) => {
             const [sectionName, details] = Object.entries(section)[0];
-            if (sectionName === "about") return <span>{details}</span>;
+            if (sectionName === "about")
+              return <span key={index}>{details}</span>;
 
             return (
               <div className={style.tab_content} key={index}>

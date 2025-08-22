@@ -85,73 +85,74 @@ function ArrivalsItem({
         rating={rating}
         setRating={setRating}
       ></Rating>
-      <Link to={`/${gender}/${id}`}>
-        <div className={css.product_image_tile}>
-          <img
-            className={css.product_image}
-            src={image[0]}
-            alt={alt}
-            width={285}
-            style={{ backgroundColor: "#f8f8f8" }}
-          />
-          <div className={css.favorite_tile}>
-            {wishlistID.find((itemID) => itemID == id) ? (
-              <button onClick={deleteLike} className={css.favorite_button}>
-                <IoMdHeart style={{ fill: "red" }} />
-              </button>
-            ) : (
-              <button
-                onClick={() =>
-                  getLike(
-                    id,
-                    title,
-                    gender,
-                    rating,
-                    price,
-                    sale,
-                    saleValue,
-                    image
-                  )
-                }
-                className={css.favorite_button}
-              >
-                <CiHeart onClick={() => setIsLiked(true)} />
-              </button>
-            )}
-          </div>
+
+      <div className={css.product_image_tile}>
+        <img
+          className={css.product_image}
+          src={image[0]}
+          alt={alt}
+          width={285}
+          style={{ backgroundColor: "#f8f8f8" }}
+        />
+        <div className={css.favorite_tile}>
+          {wishlistID.find((itemID) => itemID == id) ? (
+            <button onClick={deleteLike} className={css.favorite_button}>
+              <IoMdHeart style={{ fill: "red" }} />
+            </button>
+          ) : (
+            <button
+              onClick={() =>
+                getLike(
+                  id,
+                  title,
+                  gender,
+                  rating,
+                  price,
+                  sale,
+                  saleValue,
+                  image
+                )
+              }
+              className={css.favorite_button}
+            >
+              <CiHeart onClick={() => setIsLiked(true)} />
+            </button>
+          )}
         </div>
-        <div className={css.product_info}>
+      </div>
+      <div className={css.product_info}>
+        <Link to={`/${gender}/${id}`}>
           <h3 className={css.product_title}>{title}</h3>
-          <div className={css.valute_tile}>
-            {sale && (
-              <span
-                style={{
-                  color: "var(--danger)",
-                  fontWeight: "700",
-                  fontSize: "24px",
-                  lineHeight: "1",
-                }}
-              >
-                ${salePrice.toFixed(2)}
-              </span>
-            )}
+        </Link>
+        <div className={css.valute_tile}>
+          {sale && (
             <span
               style={{
-                textDecoration: sale ? "line-through" : "none",
-                fontSize: sale ? "16px" : "18px",
-                color: sale ? "var(--gray-700)" : "var(--gray-900)",
-                fontWeight: sale ? "400" : "900",
+                color: "var(--danger)",
+                fontWeight: "700",
+                fontSize: "24px",
+                lineHeight: "1",
               }}
-              className={css.product_price}
             >
-              <span style={{ marginRight: "5px" }}>
-                {valute == "Dollar" ? "$" : "€"}
-              </span>
-              {changeValute()}
+              ${salePrice.toFixed(2)}
             </span>
-          </div>
+          )}
+          <span
+            style={{
+              textDecoration: sale ? "line-through" : "none",
+              fontSize: sale ? "16px" : "18px",
+              color: sale ? "var(--gray-700)" : "var(--gray-900)",
+              fontWeight: sale ? "400" : "900",
+            }}
+            className={css.product_price}
+          >
+            <span style={{ marginRight: "5px" }}>
+              {valute == "Dollar" ? "$" : "€"}
+            </span>
+            {changeValute()}
+          </span>
         </div>
-      </Link>
+      </div>
     </div>
   );
 }

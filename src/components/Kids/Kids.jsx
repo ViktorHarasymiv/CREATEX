@@ -1,6 +1,6 @@
-import { useSelector } from "react-redux";
+import { useState } from "react";
 
-import style from "./../SortModule/Sort.module.css";
+import { useSelector } from "react-redux";
 
 import HistoryBar from "../HistoryBar/HistoryBar";
 
@@ -17,17 +17,20 @@ export default function Kids({
 }) {
   const products = useSelector((state) => state.goods.items);
 
+  const [onFilters, setOnFilters] = useState(true);
   return (
     <main>
       <HistoryBar></HistoryBar>
       <div className="container">
         <div className="product_wrapper">
+          <Sort
+            showFilter={onFilters}
+            onFilter={setOnFilters}
+            sliceValue={sliceValue}
+            setSliceValue={setSliceValue}
+          ></Sort>
           <div className="product_wrapper-sort">
-            <Sort
-              setFilter={setFilter}
-              sliceValue={sliceValue}
-              setSliceValue={setSliceValue}
-            ></Sort>
+            {onFilters && <Filters setFilter={setFilter} />}
             <div className="product_page">
               {products
                 .filter(
@@ -36,7 +39,9 @@ export default function Kids({
                     (filter != "All"
                       ? kids.category == filter ||
                         kids.subCategory == filter ||
-                        kids.numeric.includes(filter) ||
+                        (kids.numeric
+                          ? kids.numeric.includes(filter)
+                          : kids.size.includes(filter)) ||
                         kids.color.includes(filter) ||
                         kids.filter == filter ||
                         (kids.price > filter[0] && kids.price < filter[1])

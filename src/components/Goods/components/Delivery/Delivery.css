@@ -23,12 +23,8 @@
   min-height: 46px !important;
 }
 
-.css-yfrx4k-MuiAccordionSummary-content.Mui-expanded {
-  margin: 20px 0px !important;
-}
-
 .css-yfrx4k-MuiAccordionSummary-content {
-  margin: 20px 0px !important;
+  margin-block: 20px !important;
 }
 
 .css-1808mag-MuiPaper-root-MuiAccordion-root::before {

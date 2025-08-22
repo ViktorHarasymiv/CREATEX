@@ -80,6 +80,11 @@
   border-bottom: var(--border-light-grey);
 }
 
+.basket_product_image {
+  min-width: 80px;
+  min-height: 100px;
+}
+
 .basket_product_info_tile {
   width: 100%;
   display: flex;

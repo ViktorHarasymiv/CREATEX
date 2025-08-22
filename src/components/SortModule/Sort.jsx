@@ -11,19 +11,29 @@ import { TiArrowSortedDown } from "react-icons/ti";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import Filters from "../Filters/Filters";
+import FilterButton from "../Filters/FilterButton";
 
 const sortArray = ["Popular", "New", "Interesting", "Sale", "Hot"];
 
-function Sort({ data, setFilter, setPage, sliceValue, setSliceValue, array }) {
+function Sort({
+  data,
+  setPage,
+  setFilter,
+  sliceValue,
+  setSliceValue,
+  onFilter,
+  showFilter,
+  isOnFilter,
+}) {
   const [sort, setSort] = useState("");
 
   return (
     <div className={css.sort_module_tile}>
       <div className={css.sort_show_tile}>
-        <Filters
-          array={array}
-          setFilter={setFilter}
+        <FilterButton
+          onFilter={onFilter}
+          showFilter={showFilter}
+          isOnFilter={isOnFilter}
           className={css.fixScrool}
         />
         <div className={css.sort_tile}>

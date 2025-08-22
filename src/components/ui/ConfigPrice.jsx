@@ -30,7 +30,7 @@ export default function ConfigPrice({
             style={{
               marginLeft: "14px",
               textDecoration: "line-through",
-              fontSize: "18px",
+              fontSize: "16px",
               color: "var(--gray-700)",
               fontWeight: "400",
             }}
