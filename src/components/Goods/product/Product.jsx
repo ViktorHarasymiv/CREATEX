@@ -50,6 +50,7 @@ import ConfigPrice from "../../ui/ConfigPrice";
 import { PriceWithSale } from "../../../utils/configPrice";
 import SizeCheckBox from "../../ui/SizeCheckBox/SizeCheckBox";
 import Reviews from "./Tabs/Reviews/Reviews";
+import Rating from "../../ui/Rating/Rating";
 
 function Product({ valute }) {
   // REDUX
@@ -291,6 +292,10 @@ function Product({ valute }) {
     fontSize: 24,
   };
 
+  const styleObj = {
+    top: 0,
+  };
+
   return (
     <>
       <HistoryBar></HistoryBar>
@@ -392,29 +397,10 @@ function Product({ valute }) {
                         </div>
                       </div>
                       <div className={css.product_info_rating}>
-                        <div>
-                          {[...Array(5)].map((_, index) => {
-                            const currentRating = index + 1;
-                            return (
-                              <span key={index}>
-                                <img
-                                  src={
-                                    currentRating <=
-                                    (hover || rating || selfItem.rating)
-                                      ? starSelect
-                                      : starEmpty
-                                  }
-                                  alt=""
-                                  width={14}
-                                  height={14}
-                                  onClick={() => setRating(currentRating)}
-                                  onMouseEnter={() => setHover(currentRating)}
-                                  onMouseLeave={() => setHover(0)}
-                                />
-                              </span>
-                            );
-                          })}
-                        </div>
+                        <Rating
+                          value={selfItem.rating}
+                          style={styleObj}
+                        ></Rating>
                         <div
                           onClick={() => {
                             setTab("Reviews");

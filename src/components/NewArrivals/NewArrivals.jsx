@@ -54,38 +54,12 @@ function NewArrivals({ valute }) {
             .reverse()
             .slice(0, 9)
             .map((filteredProduct) => {
-              const {
-                id,
-                filter,
-                gender,
-                title,
-                image,
-                alt,
-                rating,
-                saleValue,
-                price,
-                sale,
-              } = filteredProduct;
-
               return (
                 <SwiperSlide
                   style={{ marginRight: "0" }}
                   className={css.product_slide}
                 >
-                  <ArrivalsItem
-                    id={id}
-                    gender={gender}
-                    filter={filter}
-                    title={title}
-                    image={image}
-                    alt={alt}
-                    ratingState={rating}
-                    saleValue={saleValue}
-                    price={price}
-                    sale={sale}
-                    data={filteredProduct}
-                    valute={valute}
-                  />
+                  <ArrivalsItem data={filteredProduct} valute={valute} />
                 </SwiperSlide>
               );
             })}

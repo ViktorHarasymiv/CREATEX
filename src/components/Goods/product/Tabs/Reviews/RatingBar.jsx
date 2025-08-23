@@ -10,7 +10,7 @@ export default function RatingBar({ stars, count, maxCount, color }) {
     <div style={{ display: "flex", alignItems: "center", marginBottom: "8px" }}>
       <div className={style.star_block}>
         <span className={style.number_style}>{stars}</span>
-        <img src={starEmpty} alt="" />
+        <img src={starEmpty} alt="Star" width={12} height={12} />
       </div>
       <div
         style={{

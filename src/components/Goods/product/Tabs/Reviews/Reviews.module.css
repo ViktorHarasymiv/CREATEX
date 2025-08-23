@@ -52,6 +52,7 @@
 .star_block {
   margin-left: 16px;
   display: flex;
+  align-items: center;
   flex-wrap: nowrap;
 
   gap: 2px;

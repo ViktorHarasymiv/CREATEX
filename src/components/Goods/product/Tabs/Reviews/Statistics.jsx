@@ -1,4 +1,4 @@
-import React from "react";
+import { configRating } from "../../../../../utils/configRating";
 
 import style from "./Reviews.module.css";
 
@@ -7,39 +7,14 @@ import starSelect from "/icons/StarColor.svg";
 import RatingBar from "./RatingBar";
 
 export default function Statistics({ data }) {
-  let totalSum = 0;
-  let totalCount = 0;
-  let countReccommended = 0;
-
-  let five = 0;
-  let four = 0;
-  let three = 0;
-  let two = 0;
-  let one = 0;
-
-  for (let key in data.rating) {
-    let count = data.rating[key].length;
-    let value = parseInt(key);
-
-    countReccommended += value > 3 ? count : 0;
-    five += value === 5 ? count : 0;
-    four += value === 4 ? count : 0;
-    three += value === 3 ? count : 0;
-    two += value === 2 ? count : 0;
-    one += value === 1 ? count : 0;
-
-    totalSum += value * count;
-    totalCount += count;
-  }
-
-  let average = totalSum / totalCount;
+  const configData = configRating(data.rating);
 
   const ratingData = [
-    { stars: 5, count: five, color: "var(--success)" },
-    { stars: 4, count: four, color: "#1fdf58" },
-    { stars: 3, count: three, color: "#f2ea2b" },
-    { stars: 2, count: two, color: "var(--warning)" },
-    { stars: 1, count: one, color: "var(--danger)" },
+    { stars: 5, count: configData.columns.five, color: "var(--success)" },
+    { stars: 4, count: configData.columns.four, color: "#1fdf58" },
+    { stars: 3, count: configData.columns.three, color: "#f2ea2b" },
+    { stars: 2, count: configData.columns.two, color: "var(--warning)" },
+    { stars: 1, count: configData.columns.one, color: "var(--danger)" },
   ];
 
   const maxCount = Math.max(...ratingData.map((r) => r.count));
@@ -48,15 +23,17 @@ export default function Statistics({ data }) {
     <div className={style.reviews_block}>
       <div className={style.counter_block}>
         <div className={style.total_rating_block}>
-          <span className={style.reviews_lenght}>{totalCount} reviews</span>
+          <span className={style.reviews_lenght}>
+            {configData.result.totalCount} reviews
+          </span>
           <div>
             {[...Array(5)].map((_, index) => {
-              const currentRating = index + 1;
+              const currentRating = index + 0;
               return (
                 <span key={index}>
                   <img
                     src={
-                      currentRating <= average.toFixed(2)
+                      currentRating <= configData.result.average.toFixed(2)
                         ? starSelect
                         : starEmpty
                     }
@@ -71,8 +48,14 @@ export default function Statistics({ data }) {
         </div>
         <div className={style.reviews_reccommended}>
           <span>
-            {countReccommended} out of {totalCount} (
-            {((countReccommended / totalCount) * 100).toFixed(0)}%)
+            {configData.result.countReccommended} out of{" "}
+            {configData.result.totalCount}(
+            {(
+              (configData.result.countReccommended /
+                configData.result.totalCount) *
+              100
+            ).toFixed(0)}
+            %)
           </span>
           <p>Customers recommended this product</p>
         </div>

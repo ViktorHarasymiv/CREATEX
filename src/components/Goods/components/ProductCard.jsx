@@ -12,34 +12,23 @@ import Like from "../../ui/Like/Like";
 import Rating from "../../ui/Rating/Rating";
 
 function ProductCard({ data, valute }) {
-  // STATE
-
-  const [rating, setRating] = useState(data.ratingStart || 0);
-
-  /* VALUTE */
-
-  const changeValute = (PRICE) => {
-    if (data.valute == "Dollar") {
-      return PRICE.toFixed(2);
-    } else return (PRICE * 0.876).toFixed(2);
-  };
-
-  /* BODY */
-
   const priceStyleObj = {
     fontWeight: 700,
     fontSize: 18,
     marginBottom: 20,
   };
 
+  const styleObj = {
+    zIndex: 2,
+    position: "absolute",
+    top: 16,
+    right: 16,
+  };
+
   return (
     <div key={data.id} className={css.product_card}>
       {data.sale && <SaleBadg value={data.saleValue} />}
-      <Rating
-        value={data.ratingStart}
-        rating={data.rating}
-        setRating={setRating}
-      />
+      <Rating value={data.rating} style={styleObj} />
       <Link to={`/${data.gender}/${data.id}`}>
         <div className={css.product_image_tile}>
           <img

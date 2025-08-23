@@ -30,6 +30,13 @@ const priceStyleObj = {
   marginBottom: 20,
 };
 
+const styleObj = {
+  zIndex: 2,
+  position: "absolute",
+  top: 16,
+  right: 16,
+};
+
 export default function SelfGoodCard({
   good,
   valute,
@@ -42,8 +49,6 @@ export default function SelfGoodCard({
   color,
   colorError,
   setColor,
-  rating,
-  setRating,
 }) {
   return (
     <div className={style.good_card}>
@@ -53,7 +58,7 @@ export default function SelfGoodCard({
         className={style.mySwiper}
       >
         {good.saleValue && <SaleBadg value={good.saleValue} />}
-        <Rating value={good.rating} rating={rating} setRating={setRating} />
+        <Rating value={good.rating} style={styleObj} />
         <Like id={good.id} good={good}></Like>
         {good.image.map((item, key) => (
           <SwiperSlide key={key}>

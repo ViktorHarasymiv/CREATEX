@@ -1,158 +1,57 @@
-import React, { useState } from "react";
-
-import { useDispatch, useSelector } from "react-redux";
-import { addProduct, deleteProduct } from "../../../redux/wishlistSlice";
-
-import { CiHeart } from "react-icons/ci";
-import { IoMdHeart } from "react-icons/io";
-import starEmpty from "../../../../public/icons/StarEmpty.svg";
-import starSelect from "../../../../public/icons/StarColor.svg";
+import { Link } from "react-router-dom";
 
 import css from "./ArrivalsItem.module.css";
-import { Link } from "react-router-dom";
+
 import Rating from "../../ui/Rating/Rating";
+import ConfigPrice from "../../ui/ConfigPrice";
+import Like from "../../ui/Like/Like";
 
-function ArrivalsItem({
-  id,
-  gender,
-  filter,
-  title,
-  image,
-  alt,
-  ratingState,
-  saleValue,
-  price,
-  sale,
+function ArrivalsItem({ data, valute }) {
+  // Dynamic style
 
-  data,
-
-  valute,
-}) {
-  const wishlistArray = useSelector((state) => state.wishlist.products);
-  const dispatch = useDispatch();
-  const [isLiked, setIsLiked] = useState(false);
-  const [rating, setRating] = useState(ratingState || 0);
-  const [hover, setHover] = useState(0);
-
-  // ADD CONTACT ACTION
-
-  const getLike = (
-    id,
-    title,
-    gender,
-    rating,
-    price,
-    sale,
-    saleValue,
-    image
-  ) => {
-    dispatch(
-      addProduct({
-        id,
-        title,
-        gender,
-        rating,
-        price,
-        sale,
-        saleValue,
-        image,
-      })
-    );
+  const priceStyleObj = {
+    fontWeight: 700,
+    fontSize: 20,
+    marginBottom: 20,
   };
 
-  const deleteLike = () => {
-    dispatch(deleteProduct(data.id));
-    setIsLiked(false);
+  const styleObj = {
+    zIndex: 2,
+    position: "absolute",
+    top: 16,
+    right: 16,
   };
-
-  const wishlistID = wishlistArray.map((item) => {
-    return item.id;
-  });
-
-  const changeValute = () => {
-    if (valute == "Dollar") {
-      return price.toFixed(2);
-    } else return (price * 0.876).toFixed(2);
-  };
-
-  const salePrice = price - price * (saleValue / 100);
 
   return (
     <div className={css.product_card}>
-      {filter == "New" && <span className={css.new_band}>{filter}</span>}
-      <Rating
-        value={ratingState}
-        rating={rating}
-        setRating={setRating}
-      ></Rating>
+      {data.filter == "New" && (
+        <span className={css.new_band}>{data.filter}</span>
+      )}
+      <Rating value={data.rating} style={styleObj}></Rating>
+      <Link to={`/${data.gender}/${data.id}`}>
+        <div className={css.product_image_tile}>
+          <img
+            className={css.product_image}
+            src={data.image[0]}
+            alt={data.alt}
+            width={285}
+            style={{ backgroundColor: "#f8f8f8" }}
+          />
+          <Like id={data.id} good={data}></Like>
+        </div>
 
-      <div className={css.product_image_tile}>
-        <img
-          className={css.product_image}
-          src={image[0]}
-          alt={alt}
-          width={285}
-          style={{ backgroundColor: "#f8f8f8" }}
-        />
-        <div className={css.favorite_tile}>
-          {wishlistID.find((itemID) => itemID == id) ? (
-            <button onClick={deleteLike} className={css.favorite_button}>
-              <IoMdHeart style={{ fill: "red" }} />
-            </button>
-          ) : (
-            <button
-              onClick={() =>
-                getLike(
-                  id,
-                  title,
-                  gender,
-                  rating,
-                  price,
-                  sale,
-                  saleValue,
-                  image
-                )
-              }
-              className={css.favorite_button}
-            >
-              <CiHeart onClick={() => setIsLiked(true)} />
-            </button>
-          )}
+        <div className={css.product_info}>
+          <h3 className={css.product_title}>{data.title}</h3>
+          <ConfigPrice
+            style={priceStyleObj}
+            price={data.price}
+            count={1}
+            sale={data.sale}
+            saleValue={data.saleValue}
+            valute={valute}
+          />
         </div>
-      </div>
-      <div className={css.product_info}>
-        <Link to={`/${gender}/${id}`}>
-          <h3 className={css.product_title}>{title}</h3>
-        </Link>
-        <div className={css.valute_tile}>
-          {sale && (
-            <span
-              style={{
-                color: "var(--danger)",
-                fontWeight: "700",
-                fontSize: "24px",
-                lineHeight: "1",
-              }}
-            >
-              ${salePrice.toFixed(2)}
-            </span>
-          )}
-          <span
-            style={{
-              textDecoration: sale ? "line-through" : "none",
-              fontSize: sale ? "16px" : "18px",
-              color: sale ? "var(--gray-700)" : "var(--gray-900)",
-              fontWeight: sale ? "400" : "900",
-            }}
-            className={css.product_price}
-          >
-            <span style={{ marginRight: "5px" }}>
-              {valute == "Dollar" ? "$" : "€"}
-            </span>
-            {changeValute()}
-          </span>
-        </div>
-      </div>
+      </Link>
     </div>
   );
 }

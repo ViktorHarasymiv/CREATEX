@@ -1,31 +1,26 @@
-import React, { useState } from "react";
-
-import style from "./Rating.module.css";
+import { configRating } from "../../../utils/configRating";
 
 import starEmpty from "../../../../public/icons/StarEmpty.svg";
 import starSelect from "../../../../public/icons/StarColor.svg";
 
-export default function Rating({ value, rating, setRating }) {
-  const [hover, setHover] = useState(0);
+export default function Rating({ value, style }) {
+  const configData = configRating(value);
 
   return (
-    <div className={style.rating_tile}>
+    <div className={style.rating_tile} style={style}>
       {[...Array(5)].map((_, index) => {
-        const currentRating = index + 1;
+        const currentRating = index + 0;
         return (
           <span key={index}>
             <img
               src={
-                currentRating <= (hover || rating || value)
+                currentRating < configData.result.average.toFixed(2)
                   ? starSelect
                   : starEmpty
               }
-              alt=""
+              alt="Stars"
               width={14}
               height={14}
-              onClick={() => setRating(currentRating)}
-              onMouseEnter={() => setHover(currentRating)}
-              onMouseLeave={() => setHover(0)}
             />
           </span>
         );

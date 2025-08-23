@@ -15,7 +15,7 @@
 .selfItem_title {
   margin-bottom: 32px;
   font-weight: 900;
-  font-size: clamp(1.5rem, 1.1044rem + 1.978vw, 2.625rem);
+  font-size: clamp(1.2rem, 1.1rem + 1.1vw, 2.625rem);
   line-height: 130%;
   color: var(--gray-900);
 }
