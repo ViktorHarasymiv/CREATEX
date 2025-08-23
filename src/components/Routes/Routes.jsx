@@ -10,7 +10,7 @@ import Checkout from "../Checkout/Checkout";
 import Order from "../Checkout/MyOrder/Order";
 import Latest from "../Latest/Latest";
 
-const Home = lazy(() => import("../Home/Home"));
+import Home from "../Home/Home";
 
 const Delivery = lazy(() => import("../Delivery/Delivery"));
 const Track = lazy(() => import("../Track/Track"));
@@ -36,7 +36,6 @@ import SetGoods from "../Authorization/CMS/components/SetGoods/SetGoods";
 import SetHeroSlider from "../Authorization/CMS/components/SetHeroSlider/SetHeroSlider";
 import SetBlog from "../Authorization/CMS/components/SetBlog/SetBlog";
 
-SetBlog;
 /* ACCOUNT COMPONENTS */
 
 const Account = lazy(() => import("../Authorization/Account/Account"));
@@ -84,10 +83,7 @@ function Router({
     <>
       <Routes>
         {/* Home */}
-        <Route
-          path="/"
-          element={<Home valute={valute} setHeroOffset={setHeroOffset} />}
-        />
+        <Route path="/" element={<Home valute={valute} />} />
 
         {/* Components navigation */}
 

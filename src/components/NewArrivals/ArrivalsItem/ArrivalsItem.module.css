@@ -83,18 +83,6 @@
   justify-content: center;
 }
 
-.favorite_button svg {
-  width: 16px;
-  height: 16px;
-  fill: #787a80;
-}
-
-.favorite_button:hover svg {
-  stroke-width: 1px;
-  stroke: var(--primary);
-  fill: var(--primary);
-}
-
 .product_info {
   display: flex;
   flex-direction: column;

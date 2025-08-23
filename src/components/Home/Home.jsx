@@ -1,12 +1,10 @@
-import React from "react";
-
 import Hero from "../Hero/Hero";
 import NewArrivals from "../NewArrivals/NewArrivals";
 
-function Home({ valute, setHeroOffset }) {
+function Home({ valute }) {
   return (
     <>
-      <Hero setHeroOffset={setHeroOffset} />
+      <Hero />
       <NewArrivals valute={valute} />
     </>
   );

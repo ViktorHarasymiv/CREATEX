@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Suspense, lazy } from "react";
 
 import { useLocation } from "react-router-dom";
 
@@ -9,7 +8,6 @@ import "../../styles/checkbox.css";
 
 import Router from "../Routes/Routes";
 
-import PuffLoader from "react-spinners/PuffLoader";
 import Subscribe from "../Subscribe/Subscribe";
 import SubscribePage from "../Subscribe/SubscribePage";
 import Footer from "../Footer/Footer";
@@ -18,18 +16,8 @@ import SignIn from "../Authorization/Modal/SignIn/SignIn";
 import SignUp from "../Authorization/Modal/SignUp/SignUp";
 import Successful from "../successfulPage/successfulPage";
 
-/* Setup for spiner */
+import Header from "./../Header/Header/Header";
 
-const override = {
-  display: "block",
-
-  position: "fixed",
-  top: "50%",
-  left: "50%",
-  transfotm: "translate(-50%, -50%)",
-};
-
-const Header = lazy(() => import("./../Header/Header/Header"));
 function App() {
   const location = useLocation();
   const [valute, setValute] = useState(() => {
@@ -182,44 +170,29 @@ function App() {
 
   return (
     <>
-      {openSubscribe && (
-        <Subscribe
-          isSubscribe={openSubscribe}
-          openSubscribe={openSubscribePanel}
-        />
-      )}
       <Header
         switchSignIn={openModalPageSignIn}
         switchSignUp={openModalPageRegistration}
         openSubscribe={openSubscribePanel}
         setValute={setValute}
         valute={valute}
-        heroOffset={heroOffset}
       />
-      {
-        <Suspense
-          fallback={
-            <PuffLoader
-              color={"#000"}
-              cssOverride={override}
-              size={28}
-              aria-label="Loading Spinner"
-              data-testid="loader"
-            />
-          }
-        >
-          <Router
-            valute={valute}
-            filter={changeValue}
-            setFilter={setChangeValue}
-            sliceValue={sliceValue}
-            setSliceValue={setSliceValue}
-            setHeroOffset={setHeroOffset}
-            switcher={successfulOpen}
-            content={setScontent}
-          />
-        </Suspense>
-      }
+
+      <Router
+        valute={valute}
+        filter={changeValue}
+        setFilter={setChangeValue}
+        sliceValue={sliceValue}
+        setSliceValue={setSliceValue}
+        switcher={successfulOpen}
+        content={setScontent}
+      />
+      {openSubscribe && (
+        <Subscribe
+          isSubscribe={openSubscribe}
+          openSubscribe={openSubscribePanel}
+        />
+      )}
       <SubscribePage />
       <Footer />
 
