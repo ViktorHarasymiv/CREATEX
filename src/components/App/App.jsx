@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 import "./App.css";
-import "../../styles/checkbox.css";
 
 import Router from "../Routes/Routes";
 
@@ -14,7 +13,7 @@ import Footer from "../Footer/Footer";
 
 import SignIn from "../Authorization/Modal/SignIn/SignIn";
 import SignUp from "../Authorization/Modal/SignUp/SignUp";
-import Successful from "../successfulPage/successfulPage";
+import SuccessModal from "../SuccessModal/SuccessModal";
 
 import Header from "./../Header/Header/Header";
 
@@ -36,7 +35,7 @@ function App() {
   const [successful, setSuccessful] = useState(false);
   const [sContent, setScontent] = useState("");
 
-  // AUTH MODAL
+  // MODAL
 
   const [signIn, setSignIn] = useState(false);
   const [signUp, setSignUp] = useState(false);
@@ -50,10 +49,6 @@ function App() {
   useEffect(() => {
     setChangeValue("All");
   }, [location]);
-
-  // HERO OFSET
-
-  const [heroOffset, setHeroOffset] = useState(0);
 
   // BASKET
 
@@ -187,12 +182,6 @@ function App() {
         switcher={successfulOpen}
         content={setScontent}
       />
-      {openSubscribe && (
-        <Subscribe
-          isSubscribe={openSubscribe}
-          openSubscribe={openSubscribePanel}
-        />
-      )}
       <SubscribePage />
       <Footer />
 
@@ -206,6 +195,7 @@ function App() {
           changeContent={setScontent}
         />
       )}
+
       {signUp && (
         <SignUp
           switchSignIn={openModalPageSignIn}
@@ -215,7 +205,16 @@ function App() {
         />
       )}
 
-      {successful && <Successful switch={successfulOpen} content={sContent} />}
+      {openSubscribe && (
+        <Subscribe
+          isSubscribe={openSubscribe}
+          openSubscribe={openSubscribePanel}
+        />
+      )}
+
+      {successful && (
+        <SuccessModal switch={successfulOpen} content={sContent} />
+      )}
     </>
   );
 }

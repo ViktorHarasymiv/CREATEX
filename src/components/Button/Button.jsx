@@ -2,12 +2,12 @@ import React from "react";
 
 import css from "./Button.module.css";
 
-function Button({ children, type, height, action }) {
+function Button({ children, type, style, action }) {
   return (
     <button
       onClick={action}
       type={type}
-      style={{ maxHeight: height }}
+      style={{ ...style }}
       className={css.button_primary}
     >
       <span className={css.button_context}>{children}</span>

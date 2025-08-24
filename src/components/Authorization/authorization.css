@@ -1,5 +1,5 @@
 .overlay {
-  z-index: 9999;
+  z-index: 1199;
   position: fixed;
 
   top: 0;
@@ -11,7 +11,7 @@
 }
 
 .override {
-  z-index: 9999;
+  z-index: 1200;
   position: absolute;
 
   padding: 48px;
@@ -22,6 +22,7 @@
   transform: translate(-50%, -50%);
 
   max-width: 486px;
+  width: 100%;
 
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);

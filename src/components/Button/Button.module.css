@@ -33,8 +33,8 @@
   background: transparent;
 }
 
-.button_primary:active .button_context {
-  color: var(--primary);
+.button_primary:active {
+  transform: scale(0.95);
 }
 
 .button_transparent {

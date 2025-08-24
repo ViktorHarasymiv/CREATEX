@@ -21,13 +21,8 @@ function SignUp({ close, switchSignIn, switchSuccess, changeContent }) {
     };
   }, [close]);
 
-  const overlayClose = (event) => {
-    event.stopPropagation();
-    close();
-  };
-
   return (
-    <div onClick={overlayClose} className="overlay">
+    <div className="overlay">
       <div onClick={(e) => e.stopPropagation()} className="override">
         <button onClick={close} className="auth_form--close-button">
           <IoMdClose />

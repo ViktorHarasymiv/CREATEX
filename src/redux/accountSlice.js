@@ -34,8 +34,11 @@ const initialState = {
 
 const currentUser = () => {
   const savedCurrentUser = localStorage.getItem("currentUser");
-  return savedCurrentUser ? JSON.parse(savedCurrentUser) : { initialState }; // Десеріалізація JSON у масив
+  return savedCurrentUser
+    ? JSON.parse(savedCurrentUser)
+    : { ...initialState.loggedUser }; // ← розпаковуємо, не загортаємо
 };
+
 const accountSlice = createSlice({
   name: "account",
   initialState: {

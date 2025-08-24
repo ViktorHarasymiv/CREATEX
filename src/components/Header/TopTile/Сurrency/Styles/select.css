@@ -1,33 +1,14 @@
 .css-si86to-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-si86to-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-si86to-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
-  padding: 0 !important;
-
-  display: flex;
-
-  align-items: center;
+  padding: 0 35px 0 0 !important;
 }
-
-.css-si86to-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
-  width: auto !important;
-}
-
-.css-sc8y68-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
-  justify-content: space-between;
-  flex-grow: 0 !important;
-}
-
-.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiSelect-icon.MuiSelect-iconOutlined.css-lohd6h-MuiSvgIcon-root-MuiSelect-icon,
-.css-d551zc-MuiSvgIcon-root-MuiSelect-icon {
-  position: static !important;
-}
-
 .MuiOutlinedInput-notchedOutline {
   border: none !important;
 }
 
-.select_text {
-  min-width: 55px !important;
-}
+.error_form--text {
+  font-family: var(--second-family);
+  font-size: 14px;
+  color: var(--warning);
 
-.css-uxvpzc {
-  padding: 0 35px 0px 0px !important;
+  font-weight: 300;
 }

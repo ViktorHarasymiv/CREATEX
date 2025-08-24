@@ -56,9 +56,9 @@ function Router({
   setFilter,
   sliceValue,
   setSliceValue,
-  setHeroOffset,
   switcher,
   content,
+  setReviewModal,
 }) {
   document.title = "Createx | Home";
   const location = useLocation();
@@ -107,7 +107,10 @@ function Router({
             />
           }
         />
-        <Route path="/women/:id" element={<Product valute={valute} />} />
+        <Route
+          path="/women/:id"
+          element={<Product valute={valute} setReviewModal={setReviewModal} />}
+        />
         {/* Men */}
         <Route
           path="/men"
@@ -121,7 +124,10 @@ function Router({
             />
           }
         />
-        <Route path="/men/:id" element={<Product valute={valute} />}></Route>
+        <Route
+          path="/men/:id"
+          element={<Product valute={valute} setReviewModal={setReviewModal} />}
+        ></Route>
         {/* Kids */}
         <Route
           path="/kids"
@@ -135,7 +141,11 @@ function Router({
             />
           }
         />
-        <Route path="/kids/:id" element={<Product valute={valute} />}></Route>
+        <Route
+          path="/kids/:id"
+          element={<Product valute={valute} setReviewModal={setReviewModal} />}
+        ></Route>
+
         <Route
           path="/boys"
           element={
@@ -148,7 +158,10 @@ function Router({
             />
           }
         />
-        <Route path="/boys/:id" element={<Product valute={valute} />}></Route>
+        <Route
+          path="/boys/:id"
+          element={<Product valute={valute} setReviewModal={setReviewModal} />}
+        ></Route>
 
         <Route
           path="/girls"
@@ -162,7 +175,10 @@ function Router({
             />
           }
         />
-        <Route path="/girls/:id" element={<Product valute={valute} />}></Route>
+        <Route
+          path="/girls/:id"
+          element={<Product valute={valute} setReviewModal={setReviewModal} />}
+        ></Route>
 
         {/* Media */}
         {isLogged && (
@@ -193,6 +209,7 @@ function Router({
             </Route>
           </>
         )}
+
         <Route path="/wishlist" element={<Wishlist valute={valute} />} />
         <Route path="/checkout" element={<Checkout valute={valute} />} />
         <Route path="/checkout/:id" element={<Order valute={valute} />} />

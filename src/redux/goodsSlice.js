@@ -2,11 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // DATA
 
-const formattedDate = new Date().toLocaleDateString("en-US", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-});
+import { formattedDate } from "../utils/data";
 
 const goodsSlice = createSlice({
   name: "goods",
@@ -163,14 +159,30 @@ const goodsSlice = createSlice({
         price: 54.95,
         reviews: [
           {
-            data: formattedDate,
+            data: "August 24, 2024 at 14:40:00",
             name: "Devon Lane",
             rating: 5,
             comment:
               "Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.",
           },
           {
-            data: formattedDate,
+            data: "August 24, 2025 at 14:40:01",
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
+          },
+
+          {
+            data: "August 24, 2025 at 14:40:02",
+            name: "Annette Black",
+            rating: 2,
+            comment:
+              "Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.",
+          },
+
+          {
+            data: "August 24, 2025 at 14:40:03",
             name: "Annette Black",
             rating: 2,
             comment:
@@ -1204,6 +1216,11 @@ const goodsSlice = createSlice({
         subCategory: "New",
         size: ["XS", "S", "M", "L", "XL", "XXL"],
         numeric: null,
+        color: ["Beige", "Black"],
+        favorite: false,
+        sale: false,
+        saleValue: "",
+        price: 26.7,
         productInfo: [
           {
             details: {
@@ -1241,18 +1258,13 @@ const goodsSlice = createSlice({
             },
           },
         ],
-        color: ["Beige", "Black"],
-        favorite: false,
         rating: {
-          1: ["1", "1"],
-          2: ["2"],
-          3: ["3"],
-          4: ["4", "4"],
-          5: ["5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5"],
+          1: [],
+          2: [],
+          3: [],
+          4: [],
+          5: [],
         },
-        sale: false,
-        saleValue: "",
-        price: 26.7,
         reviews: [
           {
             data: formattedDate,
@@ -1522,9 +1534,29 @@ const goodsSlice = createSlice({
         items: state.items.filter((user) => user.id !== action.payload),
       };
     },
+    addReview: (state, action) => {
+      const { productId, review } = action.payload;
+
+      // Знаходимо товар
+      const product = state.items.find((item) => item.id === productId);
+      if (!product) return;
+
+      // Додаємо відгук
+      if (!product.reviews) {
+        product.reviews = [];
+      }
+      product.reviews.push(review);
+
+      // Оновлюємо рейтинг
+      const key = review.rating.toString();
+      if (!product.rating[key]) {
+        product.rating[key] = [];
+      }
+      product.rating[key].push(key);
+    },
   },
 });
 
-export const { setNewProduct, deleteGood } = goodsSlice.actions;
+export const { setNewProduct, deleteGood, addReview } = goodsSlice.actions;
 
 export default goodsSlice.reducer;

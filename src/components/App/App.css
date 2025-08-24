@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 
-/* Setup */
+@import "../../styles/Pagination.css";
+@import "../../styles/Checkbox.css";
 
+/* Setup */
 #root {
   width: 100%;
 

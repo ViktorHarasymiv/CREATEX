@@ -13,7 +13,6 @@ import starEmpty from "../../../../public/icons/StarEmpty.svg";
 import starSelect from "../../../../public/icons/StarColor.svg";
 
 import css from "./SelfProduct.module.css";
-import "./mui.css";
 import style from "./../../NewArrivals/ArrivalsItem/ArrivalsItem.module.css";
 import clsx from "clsx";
 
@@ -52,7 +51,7 @@ import SizeCheckBox from "../../ui/SizeCheckBox/SizeCheckBox";
 import Reviews from "./Tabs/Reviews/Reviews";
 import Rating from "../../ui/Rating/Rating";
 
-function Product({ valute }) {
+function Product({ valute, setReviewModal }) {
   // REDUX
   const product = useSelector((state) => state.goods.items);
 
@@ -72,8 +71,6 @@ function Product({ valute }) {
 
   const [isLiked, setIsLiked] = useState(false);
   const [inBasket, setInBasket] = useState(false);
-  const [rating, setRating] = useState(0);
-  const [hover, setHover] = useState(0);
 
   /* PRODUCT STATE */
   const [color, setColor] = useState("");
@@ -609,14 +606,12 @@ function Product({ valute }) {
                     color={color}
                     colorError={colorError}
                     setColor={setColor}
-                    rating={rating}
-                    setRating={setRating}
                   ></SelfGoodCard>
                 </div>
               )}
               {tab == "Reviews" && (
                 <div className={css.tab_details_wrapper}>
-                  <Reviews data={selfItem} />
+                  <Reviews data={selfItem} setReviewModal={setReviewModal} />
                   <SelfGoodCard
                     good={selfItem}
                     count={count}
@@ -629,8 +624,6 @@ function Product({ valute }) {
                     color={color}
                     colorError={colorError}
                     setColor={setColor}
-                    rating={rating}
-                    setRating={setRating}
                   ></SelfGoodCard>
                 </div>
               )}

@@ -34,21 +34,24 @@ function Hero() {
       modules={[Pagination, Navigation]}
       className="hero_swiper"
     >
-      {slider.map(({ id, url, image, relations, title, data, motivation }) => {
-        return (
-          <SwiperSlide>
-            <Slider
-              id={id}
-              url={url}
-              image={image}
-              relations={relations}
-              title={title}
-              data={data}
-              motivation={motivation}
-            />
-          </SwiperSlide>
-        );
-      })}
+      {slider.map(
+        ({ id, url, name, image, relations, title, data, motivation }) => {
+          return (
+            <SwiperSlide>
+              <Slider
+                id={id}
+                url={url}
+                name={name}
+                image={image}
+                relations={relations}
+                title={title}
+                data={data}
+                motivation={motivation}
+              />
+            </SwiperSlide>
+          );
+        }
+      )}
     </Swiper>
   );
 }

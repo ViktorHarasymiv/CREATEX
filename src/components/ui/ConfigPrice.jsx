@@ -13,7 +13,7 @@ export default function ConfigPrice({
   valute,
 }) {
   return (
-    <div>
+    <>
       {sale ? (
         <div style={{ ...style }}>
           <span
@@ -45,6 +45,6 @@ export default function ConfigPrice({
           {Price(price, (saleValue = 0), valute, count)}
         </span>
       )}
-    </div>
+    </>
   );
 }

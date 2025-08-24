@@ -9,6 +9,8 @@ import RatingBar from "./RatingBar";
 export default function Statistics({ data }) {
   const configData = configRating(data.rating);
 
+  console.log(configData);
+
   const ratingData = [
     { stars: 5, count: configData.columns.five, color: "var(--success)" },
     { stars: 4, count: configData.columns.four, color: "#1fdf58" },
@@ -28,7 +30,8 @@ export default function Statistics({ data }) {
           </span>
           <div>
             {[...Array(5)].map((_, index) => {
-              const currentRating = index + 0;
+              const currentRating = index + 1;
+
               return (
                 <span key={index}>
                   <img
@@ -44,20 +47,28 @@ export default function Statistics({ data }) {
                 </span>
               );
             })}
+            <p className={style.ratingValue}>
+              {configData.result.totalCount > 0 &&
+                configData.result.average.toFixed(2)}
+            </p>
           </div>
         </div>
         <div className={style.reviews_reccommended}>
-          <span>
-            {configData.result.countReccommended} out of{" "}
-            {configData.result.totalCount}(
-            {(
-              (configData.result.countReccommended /
-                configData.result.totalCount) *
-              100
-            ).toFixed(0)}
-            %)
-          </span>
-          <p>Customers recommended this product</p>
+          {configData.result.totalCount > 0 && (
+            <>
+              <span>
+                {configData.result.countReccommended} out of{" "}
+                {configData.result.totalCount} (
+                {(
+                  (configData.result.countReccommended /
+                    configData.result.totalCount) *
+                  100
+                ).toFixed(0)}
+                %)
+              </span>
+              <p>Customers recommended this product</p>
+            </>
+          )}
         </div>
       </div>
       <div className={style.diagram_block}>

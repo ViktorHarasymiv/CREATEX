@@ -9,7 +9,7 @@ export default function Rating({ value, style }) {
   return (
     <div className={style.rating_tile} style={style}>
       {[...Array(5)].map((_, index) => {
-        const currentRating = index + 0;
+        const currentRating = index + 1;
         return (
           <span key={index}>
             <img

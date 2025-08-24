@@ -1,0 +1,26 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  gap: 8px;
+  padding: 0;
+}
+
+.pagination li {
+  cursor: pointer;
+}
+
+.pagination li a {
+  padding: 0px 10px;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 160%;
+  color: var(--gray-800);
+}
+
+.pagination .active a {
+  background-color: transparent;
+
+  color: var(--primary);
+}
