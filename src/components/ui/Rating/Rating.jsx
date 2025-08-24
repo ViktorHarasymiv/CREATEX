@@ -6,6 +6,8 @@ import starSelect from "../../../../public/icons/StarColor.svg";
 export default function Rating({ value, style }) {
   const configData = configRating(value);
 
+  console.log(configData.result.average.toFixed(2));
+
   return (
     <div className={style.rating_tile} style={style}>
       {[...Array(5)].map((_, index) => {
@@ -14,7 +16,7 @@ export default function Rating({ value, style }) {
           <span key={index}>
             <img
               src={
-                currentRating < configData.result.average.toFixed(2)
+                currentRating <= configData.result.average.toFixed(2)
                   ? starSelect
                   : starEmpty
               }

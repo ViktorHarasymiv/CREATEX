@@ -38,7 +38,10 @@ function Sort({
         />
         <div className={css.sort_tile}>
           <h4>Sort by</h4>
-          <FormControl sx={{ m: 1, minWidth: 120 }} className={css.sort_list}>
+          <FormControl
+            sx={{ m: 1, minWidth: 120, margin: 0, marginLeft: "8px" }}
+            className={css.sort_list}
+          >
             <Select
               className={css.select_size_tile}
               value={sort ? sort : "All"}
@@ -58,7 +61,7 @@ function Sort({
               ))}
             </Select>
           </FormControl>
-          {data > 8 && (
+          {data > 6 && (
             <div className={css.sort_tile_page}>
               <h4>Show</h4>
               {/* COUNT PRICE */}
@@ -75,7 +78,7 @@ function Sort({
                       if (sliceValue >= 22) {
                         return;
                       }
-                      setSliceValue(sliceValue + 8);
+                      setSliceValue(sliceValue + 3);
                     }}
                   >
                     <TiArrowSortedUp />
@@ -83,11 +86,10 @@ function Sort({
                   <button
                     className={style.custom_count_button}
                     onClick={() => {
-                      if (sliceValue <= 8) {
+                      if (sliceValue <= 6) {
                         return;
                       } else {
-                        setPage(0);
-                        setSliceValue(sliceValue - 8);
+                        setSliceValue(sliceValue - 3);
                       }
                     }}
                   >

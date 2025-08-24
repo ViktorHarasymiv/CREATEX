@@ -112,7 +112,15 @@ function Filters({ setFilter }) {
   return (
     <ul className={css.filters_list}>
       <li className={css.filter_options}>
-        <Accordion defaultExpanded style={{ boxShadow: "none" }}>
+        <Accordion
+          defaultExpanded
+          style={{ boxShadow: "none" }}
+          sx={{
+            "& .MuiAccordionSummary-content": {
+              marginBlock: "20px",
+            },
+          }}
+        >
           <AccordionSummary
             onClick={handleClick}
             expandIcon={expanded ? <HiOutlineMinus /> : <HiOutlinePlus />}
@@ -152,7 +160,15 @@ function Filters({ setFilter }) {
       </li>
 
       <li className={css.filter_options}>
-        <Accordion style={{ boxShadow: "none" }}>
+        <Accordion
+          style={{ boxShadow: "none" }}
+          sx={{
+            "& .MuiAccordionSummary-content": {
+              marginBlock: "20px",
+              boxShadow: "none",
+            },
+          }}
+        >
           <AccordionSummary
             onClick={handleClick}
             expandIcon={expanded == 2 ? <HiOutlineMinus /> : <HiOutlinePlus />}
@@ -192,7 +208,15 @@ function Filters({ setFilter }) {
       </li>
 
       <li className={css.filter_options}>
-        <Accordion style={{ boxShadow: "none" }}>
+        <Accordion
+          style={{ boxShadow: "none" }}
+          sx={{
+            "& .MuiAccordionSummary-content": {
+              marginBlock: "20px",
+              boxShadow: "none",
+            },
+          }}
+        >
           <AccordionSummary
             onClick={handleClick}
             expandIcon={expanded ? <HiOutlineMinus /> : <HiOutlinePlus />}
@@ -232,7 +256,15 @@ function Filters({ setFilter }) {
       </li>
 
       <li className={css.filter_options}>
-        <Accordion style={{ boxShadow: "none" }}>
+        <Accordion
+          style={{ boxShadow: "none" }}
+          sx={{
+            "& .MuiAccordionSummary-content": {
+              marginBlock: "20px",
+              boxShadow: "none",
+            },
+          }}
+        >
           <AccordionSummary
             onClick={handleClick}
             expandIcon={expanded ? <HiOutlineMinus /> : <HiOutlinePlus />}
@@ -272,7 +304,15 @@ function Filters({ setFilter }) {
       </li>
 
       <li className={css.filter_options}>
-        <Accordion style={{ boxShadow: "none" }}>
+        <Accordion
+          style={{ boxShadow: "none" }}
+          sx={{
+            "& .MuiAccordionSummary-content": {
+              marginBlock: "20px",
+              boxShadow: "none",
+            },
+          }}
+        >
           <AccordionSummary
             onClick={handleClick}
             expandIcon={expanded ? <HiOutlineMinus /> : <HiOutlinePlus />}

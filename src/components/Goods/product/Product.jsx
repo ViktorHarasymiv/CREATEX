@@ -459,7 +459,7 @@ function Product({ valute, setReviewModal }) {
                           />
                         ) : (
                           <FormControl
-                            sx={{ m: 1, minWidth: 120 }}
+                            sx={{ m: 1, minWidth: 120, margin: 0 }}
                             className="form_size_tile"
                           >
                             <FormHelperText className={css.label}>

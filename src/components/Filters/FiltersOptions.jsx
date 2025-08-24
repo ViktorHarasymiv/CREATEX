@@ -14,7 +14,7 @@ export default function FiltersOptions({ item }) {
   return (
     <>
       {/* ACCORDION */}
-      <Accordion style={{ boxShadow: "none" }}>
+      <Accordion>
         <AccordionSummary
           onClick={handleClick}
           expandIcon={expanded ? <HiOutlineMinus /> : <HiOutlinePlus />}

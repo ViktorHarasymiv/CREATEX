@@ -17,11 +17,7 @@ function Currency({ setValute, valute }) {
 
   return (
     <div className={css.valute_tile}>
-      <FormControl
-        className={css.custom_select_tile}
-        sx={{ m: 1 }}
-        size="small"
-      >
+      <FormControl sx={{ m: 1, margin: 0, padding: 0 }} size="small">
         <Select
           className={css.custom_select}
           value={valute}

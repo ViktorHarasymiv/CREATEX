@@ -49,9 +49,14 @@
   max-width: 158px;
   max-height: 46px;
 
+  border: 1px solid transparent;
   border-radius: 4px;
 
   transition: all 0.2s ease-in-out;
+}
+
+.self_product_tabs_button:active {
+  transform: scale(0.95);
 }
 
 .self_product_tabs_button span {
@@ -69,7 +74,7 @@
   font-weight: 700;
 
   line-height: 160%;
-  border: 1px solid var(--primary);
+  border-color: var(--primary);
 }
 
 .self_product_tabs_button_active span {

@@ -9,8 +9,6 @@ import RatingBar from "./RatingBar";
 export default function Statistics({ data }) {
   const configData = configRating(data.rating);
 
-  console.log(configData);
-
   const ratingData = [
     { stars: 5, count: configData.columns.five, color: "var(--success)" },
     { stars: 4, count: configData.columns.four, color: "#1fdf58" },

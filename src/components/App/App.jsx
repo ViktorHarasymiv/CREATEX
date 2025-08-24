@@ -30,7 +30,7 @@ function App() {
 
   const [openSubscribe, setSubscribe] = useState(false);
   const [changeValue, setChangeValue] = useState("All");
-  const [sliceValue, setSliceValue] = useState(8);
+  const [sliceValue, setSliceValue] = useState(6);
 
   const [successful, setSuccessful] = useState(false);
   const [sContent, setScontent] = useState("");

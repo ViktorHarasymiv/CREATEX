@@ -14,9 +14,9 @@ import { FaFacebookF } from "react-icons/fa6";
 import { BsTwitterX } from "react-icons/bs";
 import { TfiInstagram } from "react-icons/tfi";
 
-import VISA from "../../../../../public/icons/visa.png";
-import MASTERCARD from "../../../../../public/icons/master-card.png";
-import PAYPAL from "../../../../../public/icons/pay-pal.png";
+import VISA from "/icons/visa.png";
+import MASTERCARD from "/icons/master-card.png";
+import PAYPAL from "/icons/pay-pal.png";
 
 function Delivery() {
   const deliveryOptions = [
@@ -40,7 +40,17 @@ function Delivery() {
   return (
     <div className="accordion_tile">
       {/* ACCORDION */}
-      <Accordion defaultExpanded style={{ boxShadow: "none" }}>
+
+      <Accordion
+        defaultExpanded
+        style={{ boxShadow: "none" }}
+        sx={{
+          "& .MuiAccordionSummary-content": {
+            marginBlock: "20px",
+            boxShadow: "none",
+          },
+        }}
+      >
         <AccordionSummary
           onClick={handleClick}
           expandIcon={expanded ? <HiOutlineMinus /> : <HiOutlinePlus />}
@@ -76,8 +86,18 @@ function Delivery() {
           </table>
         </AccordionDetails>
       </Accordion>
+
       {/* SECOND */}
-      <Accordion style={{ boxShadow: "none" }}>
+
+      <Accordion
+        style={{ boxShadow: "none" }}
+        sx={{
+          "& .MuiAccordionSummary-content": {
+            marginBlock: "20px",
+            boxShadow: "none",
+          },
+        }}
+      >
         <AccordionSummary
           onClick={handleClickTwo}
           expandIcon={expandedTwo ? <HiOutlineMinus /> : <HiOutlinePlus />}
@@ -99,6 +119,7 @@ function Delivery() {
       </Accordion>
 
       {/* SHARE */}
+
       <div className="share_tile">
         <span className="share_title">Share:</span>
         <ul className="share_list">
@@ -119,7 +140,9 @@ function Delivery() {
           </li>
         </ul>
       </div>
+
       {/* PAYMANT */}
+
       <div className="paymant_tile">
         <ul className="paymant_list">
           {payment.map((image, index) => {
