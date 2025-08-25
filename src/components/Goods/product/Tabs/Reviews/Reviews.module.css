@@ -50,12 +50,11 @@
 }
 
 .star_block {
-  margin-left: 16px;
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
 
-  gap: 2px;
+  gap: 6px;
 }
 .ratingValue {
   display: block;
@@ -79,8 +78,6 @@
   display: flex;
   flex-wrap: wrap;
 
-  justify-content: space-between;
-
   gap: 30px;
 
   border-bottom: 1px solid var(--gray-300);
@@ -98,7 +95,6 @@
 .reviews_user_tile {
   display: inherit;
   flex-direction: column;
-  flex-grow: 1;
 }
 
 .reviews_user_info {
@@ -120,4 +116,22 @@
   font-size: 16px;
   line-height: 160%;
   color: var(--gray-800);
+}
+
+@media screen and (max-width: 768.98px) {
+  .reviews_block {
+    padding-bottom: 40px;
+    gap: 40px;
+  }
+
+  .counter_block {
+    width: 100%;
+  }
+  .total_rating_block {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .reviews_tile {
+    flex-direction: column;
+  }
 }

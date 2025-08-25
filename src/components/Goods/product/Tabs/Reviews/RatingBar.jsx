@@ -15,6 +15,8 @@ export default function RatingBar({ stars, count, maxCount, color }) {
       <div
         style={{
           backgroundColor: "#eee",
+          minWidth: "150px",
+          maxWidth: "356px",
           width: "100%",
           height: "4px",
           borderRadius: "8px",

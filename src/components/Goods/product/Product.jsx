@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -9,16 +9,12 @@ import Delivery from "../components/Delivery/Delivery";
 
 import { BsCart2 } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
-import starEmpty from "../../../../public/icons/StarEmpty.svg";
-import starSelect from "../../../../public/icons/StarColor.svg";
 
 import css from "./SelfProduct.module.css";
 import style from "./../../NewArrivals/ArrivalsItem/ArrivalsItem.module.css";
 import clsx from "clsx";
 
 import HistoryBar from "../../HistoryBar/HistoryBar";
-
-import Skeleton from "@mui/material/Skeleton";
 
 import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
@@ -350,25 +346,17 @@ function Product({ valute, setReviewModal }) {
                       onSwiper={(swiper) => {
                         setThumbsSwiper(swiper);
                       }}
-                      spaceBetween={10}
+                      spaceBetween={20}
                       slidesPerView={5}
                       freeMode={true}
                       modules={[FreeMode, Navigation, Thumbs]}
                       className="mySwiperThumbs"
                     >
-                      {selfItem.image && selfItem.image.length > 0 ? (
-                        selfItem.image.map((image, index) => (
-                          <SwiperSlide key={index} style={{ width: "104px" }}>
-                            <img src={image} alt={`Product ${index}`} />
-                          </SwiperSlide>
-                        ))
-                      ) : (
-                        <Skeleton
-                          sx={{ width: 104, height: 104 }}
-                          animation="wave"
-                          variant="rectangular"
-                        />
-                      )}
+                      {selfItem.image.map((image, index) => (
+                        <SwiperSlide key={index}>
+                          <img src={image} alt={`Product ${index}`} />
+                        </SwiperSlide>
+                      ))}
                     </Swiper>
                   </div>
                   <div className={css.product_info}>
@@ -474,9 +462,14 @@ function Product({ valute, setReviewModal }) {
                               className={css.select_size_tile}
                               value={size}
                               onChange={handleChange}
+                              sx={{
+                                "& .MuiOutlinedInput-notchedOutline": {
+                                  border: "none",
+                                },
+                              }}
                               displayEmpty
                             >
-                              <MenuItem value="" className={css.menu_select}>
+                              <MenuItem value="">
                                 <em>Please select</em>
                               </MenuItem>
                               {selfItem.size.map((item, index) => (

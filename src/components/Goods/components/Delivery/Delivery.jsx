@@ -56,8 +56,22 @@ function Delivery() {
           expandIcon={expanded ? <HiOutlineMinus /> : <HiOutlinePlus />}
           aria-controls="panel1-content"
           id="panel1-header"
+          sx={{
+            padding: "0",
+          }}
         >
-          <Typography component="span">Delivery</Typography>
+          <Typography
+            component="span"
+            sx={{
+              fontFamily: "inherit",
+              fontWeight: 700,
+              fontSize: "16px",
+              lineHeight: "160%",
+              color: "var(--gray-900)",
+            }}
+          >
+            Delivery
+          </Typography>
         </AccordionSummary>
         <p className="accordion_sub--title">
           Free standard shipping on orders <b>over $35</b> before tax, plus free
@@ -103,8 +117,22 @@ function Delivery() {
           expandIcon={expandedTwo ? <HiOutlineMinus /> : <HiOutlinePlus />}
           aria-controls="panel2-content"
           id="panel2-header"
+          sx={{
+            padding: "0",
+          }}
         >
-          <Typography component="span">Return</Typography>
+          <Typography
+            component="span"
+            sx={{
+              fontFamily: "inherit",
+              fontWeight: 700,
+              fontSize: "16px",
+              lineHeight: "160%",
+              color: "var(--gray-900)",
+            }}
+          >
+            Return
+          </Typography>
         </AccordionSummary>
         <p className="accordion_sub--title">
           You have <b>60 days</b> to return the item(s) using any of the

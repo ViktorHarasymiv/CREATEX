@@ -2,37 +2,10 @@
   margin-top: 35px;
 }
 
-.css-1f1pi2l-MuiButtonBase-root-MuiAccordionSummary-root {
-  padding: 0 !important;
-}
-
-.MuiTypography-root.MuiTypography-body1.css-rizt0-MuiTypography-root {
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 160%;
-  color: var(--gray-900);
-}
-
 .accordion_sub--title {
   margin-bottom: 16px;
   font-size: 14px;
   color: var(--gray-800);
-}
-
-.css-1f1pi2l-MuiButtonBase-root-MuiAccordionSummary-root.Mui-expanded {
-  min-height: 46px !important;
-}
-
-.css-1808mag-MuiPaper-root-MuiAccordion-root::before {
-  background-color: var(--gray-300) !important;
-}
-
-.css-1808mag-MuiPaper-root-MuiAccordion-root {
-  background-color: rgba(255, 255, 255, 0.2) !important;
-}
-
-.css-1pug5wj {
-  background-color: rgba(255, 255, 255, 0.2) !important;
 }
 
 .accordion_delivery--title_tile {
@@ -89,25 +62,10 @@
 }
 
 .accordion_delivery--option {
-  padding-block: 15px;
+  padding-block: 20px;
 
   font-size: 14px;
   letter-spacing: 0.08em;
-}
-
-.css-1lj39kh-MuiAccordionDetails-root {
-  padding: 0 !important;
-}
-
-.accordion_return--list .css-1lj39kh-MuiAccordionDetails-root {
-  padding: 0 0 0 18px !important;
-}
-
-@media screen and (max-width: 767.98px) {
-  .accordion_return--list,
-  .css-1lj39kh-MuiAccordionDetails-root {
-    padding: 0 !important;
-  }
 }
 
 .accordion_return--list {
@@ -144,15 +102,6 @@
 
   display: flex;
   align-items: center;
-}
-
-.share_title {
-  margin-right: 16px;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 160%;
-
-  color: var(--gray-900);
 }
 
 .share_list {

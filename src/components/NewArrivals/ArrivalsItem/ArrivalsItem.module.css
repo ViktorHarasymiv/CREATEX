@@ -19,7 +19,7 @@
   width: 100%;
   max-height: 320px;
 
-  object-fit: contain;
+  object-fit: cover;
 
   transition-duration: var(--transition-duration);
 
@@ -145,6 +145,6 @@
   }
 
   .product_image_tile img {
-    max-height: 230px;
+    max-height: 220px;
   }
 }

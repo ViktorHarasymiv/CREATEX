@@ -195,6 +195,10 @@ export default function LeaveModal({ id, setLeaveReview }) {
                           padding: "11px 16px",
                         },
 
+                        "& .MuiOutlinedInput-notchedOutline": {
+                          border: "none",
+                        },
+
                         "&:hover": {
                           outlineColor: "var(--gray-200)",
                         },

@@ -283,7 +283,7 @@ input[type="select"] {
   border: none;
   outline: 1px solid var(--gray-400);
 
-  font-size: clamp(10px, 2vw, 16px);
+  font-size: clamp(10px, 4vw, 16px);
 
   border-radius: 4px;
   background: transparent;

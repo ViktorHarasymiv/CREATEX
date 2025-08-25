@@ -1,7 +1,4 @@
-import * as React from "react";
-
-import css from "./Styles/Currency.module.css";
-import "./Styles/select.css";
+import css from "./Currency.module.css";
 
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -22,10 +19,24 @@ function Currency({ setValute, valute }) {
           className={css.custom_select}
           value={valute}
           onChange={handleChange}
+          sx={{
+            "& .MuiOutlinedInput-notchedOutline": {
+              border: "none",
+            },
+          }}
+          inputProps={{
+            sx: {
+              padding: "0",
+            },
+          }}
         >
           <MenuItem value={"Dollar"}>
             <img
-              style={{ width: "20px", height: "12px", marginRight: "7px" }}
+              style={{
+                width: "20px",
+                height: "12px",
+                marginRight: "7px",
+              }}
               src={America}
               alt="America"
             />

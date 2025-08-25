@@ -17,6 +17,9 @@
 }
 
 .mySwiper2 img {
+  width: 100%;
+  height: 100%;
+
   background-color: var(--gray-100);
 }
 
@@ -81,22 +84,26 @@
   }
 
   .image_slider {
-    margin: 0 auto;
-    width: 80%;
+    width: 100%;
     flex-direction: row;
   }
+
   .mySwiperThumbs {
+    margin-top: 0;
     max-width: 120px;
     margin-left: 35px;
     padding: 0;
   }
+
   .mySwiperThumbs .swiper-slide {
     min-width: 104px;
   }
+
   .mySwiperThumbs .swiper-wrapper {
     flex-direction: column;
     row-gap: 20px;
   }
+
   .mySwiperThumbs img {
     min-width: 104px !important;
   }
@@ -111,8 +118,10 @@
     margin: 0;
     flex-direction: column;
   }
+
   .mySwiperThumbs {
     padding-block: 5px;
+
     margin-top: 20px;
     margin-left: 0;
 
@@ -122,9 +131,8 @@
 
   .mySwiperThumbs .swiper-wrapper {
     margin-left: 2px;
-    overflow: auto;
-    flex-direction: row;
 
+    flex-direction: row;
     align-items: center;
   }
 }
